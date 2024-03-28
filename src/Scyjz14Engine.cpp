@@ -30,31 +30,17 @@ void Scyjz14Engine::virtMouseDown(int iButton, int iX, int iY) {
 	state->virtMouseDown(iButton, iX, iY);
 }
 
+void Scyjz14Engine::virtMouseUp(int iButton, int iX, int iY) {
+	state->virtMouseUp(iButton, iX, iY);
+}
+
 int Scyjz14Engine::virtInitialiseObjects() {
+
 	// Initialize the object settings
-	notifyObjectsAboutMouse(true);
-	drawableObjectsChanged();
-	destroyOldObjects(true);
+	state->initialiseState();
 
-	// Add objects to the engine
-	appendObjectToArray(new Button(400, 400, this, "resources/cyan-button.png"));
-	ObjectIndexes::addStartUpIndex(getContentCount() - 1);
-
-	appendObjectToArray(new Player(this, &m_oTiles));
-	// Add indexes to the global, make sure do this after add it into array
-	ObjectIndexes::addPlayerIndexes({getContentCount() - 1});
-
-	// Make only start up UI visible to start with
-	setOnlyStartUpObjectsVisible();
 	return 0;
 }
-
-void Scyjz14Engine::setOnlyStartUpObjectsVisible() {
-	setAllObjectsVisible(false);
-	for (auto& id : ObjectIndexes::getStartUpIndexes())
-		getDisplayableObject(id)->setVisible(true);
-}
-
 
 
 

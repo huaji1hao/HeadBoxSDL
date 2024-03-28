@@ -12,19 +12,19 @@ class Scyjz14Engine :
 public:
     Scyjz14Engine() {
         //setState(new RunningState);
-        setState(new StartUpState(this));
+        m_oTiles.reset(new Scyjz14TileManager);
+        state.reset(new StartUpState(this));
     }
     
     void virtSetupBackgroundBuffer() override;
     void virtDrawStringsUnderneath() override;
     void virtDrawStringsOnTop() override;
     void virtMouseDown(int iButton, int iX, int iY) override;
+    void virtMouseUp(int iButton, int iX, int iY) override;
     int virtInitialiseObjects() override;
-    void setOnlyStartUpObjectsVisible();
-    //void setOnlyGameObjectsVisible();
 
     // Get a reference to the current tile manager - which is defined below!
-    Scyjz14TileManager& GetTileManager() { return m_oTiles; }
+    Scyjz14TileManager* GetTileManager() { return m_oTiles.get(); }
 
     void setState(State* newState) {
         state.reset(newState);
@@ -33,7 +33,7 @@ public:
 
 private:
     // Contained object (composition) for the tile manager
-    Scyjz14TileManager m_oTiles;
+    std::unique_ptr<Scyjz14TileManager> m_oTiles;
     std::unique_ptr<State> state;
 };
 

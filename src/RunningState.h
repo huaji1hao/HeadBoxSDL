@@ -7,6 +7,7 @@ class RunningState :
 {
 public:
     RunningState(Scyjz14Engine* engine) : State(engine) {};
+    ~RunningState();
     
     void virtSetupBackgroundBuffer() override;
 
@@ -14,7 +15,8 @@ public:
 
     void virtDrawStringsOnTop() override;
 
-    void virtMouseDown(int iButton, int iX, int iY){}
+    void virtMouseDown(int iButton, int iX, int iY) override;
+    void virtMouseUp(int iButton, int iX, int iY) override;
 
     void initialiseState() override;
 

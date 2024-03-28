@@ -7,8 +7,9 @@ class StartUpState :
 public:
     StartUpState(Scyjz14Engine* engine) : State(engine) {
     }
+    ~StartUpState();
 
-    void initialiseState() {};
+    void initialiseState();
 
     void virtSetupBackgroundBuffer() override;
 
@@ -17,6 +18,7 @@ public:
     void virtDrawStringsOnTop() override;
 
     void virtMouseDown(int iButton, int iX, int iY) override;
+    void virtMouseUp(int iButton, int iX, int iY) override;
 
 };
 

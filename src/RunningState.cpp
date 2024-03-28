@@ -9,12 +9,16 @@
 
 
 void RunningState::initialiseState() {
+	eg->notifyObjectsAboutMouse(true);
+	eg->drawableObjectsChanged();
+	eg->lockAndSetupBackground();
+	//eg->redrawDisplay();
+
+	eg->appendObjectToArray(new Player(eg, eg->GetTileManager()));
+	ObjectIndexes::addPlayerIndexes({ eg->getContentCount() - 1 });
+
 	eg->appendObjectToArray(new Zombie(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, "resources/wall.png", "Zombie", 15, 15));
 	ObjectIndexes::addZombieIndexes({ eg->getContentCount() - 1 });
-
-	eg->lockAndSetupBackground();
-	eg->setAllObjectsVisible(true);
-	eg->redrawDisplay();
 };
 
 void RunningState::virtSetupBackgroundBuffer() {
@@ -30,7 +34,7 @@ void RunningState::virtSetupBackgroundBuffer() {
 	stains.renderImageApplyingMappingAndTransparency(eg, surface, -255, 110, 401, 401, &ImagePixelMappingRotate(-0.55 * M_PI));
 	stains.renderImageApplyingMappingAndTransparency(eg, surface, 470, 110, 410, 401, &ImagePixelMappingRotate(-0.7 * M_PI));
 	// Draw the tiles
-	dynamic_cast<Scyjz14Engine*>(eg)->GetTileManager().setUpTileManager(eg);
+	eg->GetTileManager()->setUpTileManager(eg);
 	// Draw an rectangle on the screen
 	int width = eg->getWindowWidth();
 	int height = eg->getWindowHeight();
@@ -55,4 +59,19 @@ void RunningState::virtDrawStringsOnTop() {
 	char buf[128];
 	strftime(buf, sizeof(buf), "Time is %Y-%m-%d %H:%M:%S now", timeinfo);
 	eg->drawForegroundString(150, 200, buf, 0xff00ff, eg->getFont("resources/kenvector_future.ttf", 24));
+}
+
+void RunningState::virtMouseDown(int iButton, int iX, int iY) {
+	//eg->setState(new StartUpState(eg));
+}
+
+void RunningState::virtMouseUp(int iButton, int iX, int iY) {
+	eg->setState(new StartUpState(eg));
+}
+
+RunningState::~RunningState() {
+
+	ObjectIndexes::initialize();
+	eg->destroyOldObjects(true);
+	eg->clearContents();
 }

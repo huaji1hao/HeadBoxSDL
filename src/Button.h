@@ -8,6 +8,9 @@ public:
         : ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible)
     {
         clickTimes = 0;
+        m_szLabel = nullptr;
+        m_iXLabelOffset = 0;
+        m_iYLabelOffset = 0;
     }
 
     // Handle a key being pressed
@@ -16,9 +19,16 @@ public:
     void virtMouseUp(int iButton, int iX, int iY);
     // get click times
     int getClickTimes();
+    bool isInClickArea(int iX, int iY);
     // draw the button
     void virtDraw() override;
+    void setLabel(char* label, int xOffset, int yOffset);
 
 private:
     int clickTimes;
+    // Label to apply
+    const char* m_szLabel;
+    // Label offset in pixels
+    int m_iXLabelOffset;
+    int m_iYLabelOffset;
 };

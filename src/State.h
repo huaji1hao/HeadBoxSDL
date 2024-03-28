@@ -16,8 +16,9 @@ public:
     virtual void virtDrawStringsUnderneath() = 0;
     virtual void virtDrawStringsOnTop() = 0;
     virtual void virtMouseDown(int iButton, int iX, int iY) = 0;
+    virtual void virtMouseUp(int iButton, int iX, int iY) = 0;
 
-    virtual ~State() {}
+    virtual ~State();
 
 protected:
     Scyjz14Engine* eg;

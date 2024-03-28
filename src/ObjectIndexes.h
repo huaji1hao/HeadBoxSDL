@@ -13,22 +13,16 @@ public:
         return *playerIndexes;
     }
 
-    static const std::vector<int>& getStartUpIndexes() {
-        return *startUpIndexes;
-    }
-
     // initialize the vectors
     static void initialize() {
         zombieIndexes = std::make_unique<std::vector<int>>();
         playerIndexes = std::make_unique<std::vector<int>>();
-        startUpIndexes = std::make_unique<std::vector<int>>();
     }
 
     // reset the vectors
     static void cleanup() {
         zombieIndexes.reset();
         playerIndexes.reset();
-        startUpIndexes.reset();
     }
 
     // add indexes to the zombie vector
@@ -39,11 +33,6 @@ public:
     // add indexes to the player vector
     static void addPlayerIndex(int index) {
         playerIndexes->push_back(index);
-    }
-
-    // add indexes to the start up UI vector
-    static void addStartUpIndex(int index) {
-        startUpIndexes->push_back(index);
     }
 
     // add multiple indexes to the zombie vector
@@ -62,5 +51,4 @@ private:
     // Here are two vectors to store indexes of zombies and players
     static std::unique_ptr<std::vector<int>> zombieIndexes;
     static std::unique_ptr<std::vector<int>> playerIndexes;
-    static std::unique_ptr<std::vector<int>> startUpIndexes;
 };
