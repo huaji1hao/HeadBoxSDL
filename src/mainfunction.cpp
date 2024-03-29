@@ -67,7 +67,9 @@ int main(int argc, char *argv[])
 	// Free the cached images by destroying the image manager
 	// Ensure that you do this AFTER the main object and any other objects have been destroyed
 	// The game object is a stack object inside doProgram() so will have been 
+	Scyjz14ImageManager::destroyImageManager();
 	ImageManager::destroyImageManager();
+
 	ObjectIndexes::cleanup();
 	// Uncomment the following line to introduce a memory leak!
 	 //new int();

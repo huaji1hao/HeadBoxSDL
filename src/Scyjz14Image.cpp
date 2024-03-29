@@ -4,6 +4,16 @@
 
 static CroppedImagePixelMapping nullMapping;
 
+
+// Standard constructor taking a pointer to the image which is being used
+Scyjz14Image::Scyjz14Image(std::shared_ptr<Scyjz14RawImageData> theData)
+	: theData(theData)
+{
+	m_pRescaleSurface = nullptr;
+	m_iTransparencyColour = -1;
+}
+
+
 void Scyjz14Image::renderImageApplyingMappingAndTransparency(BaseEngine* pEngine, DrawingSurface* pTarget,
 	int iXDrawLocation, int iYDrawLocation, int iWidth, int iHeight,
 	ImagePixelMapping* mapping) const
@@ -105,4 +115,97 @@ void Scyjz14Image::renderImageApplyingMappingAndTransparency(BaseEngine* pEngine
 			}
 		}
 	}
+}
+
+bool isColorSimilar(int color1, int color2, int tolerance) {
+	int r1 = (color1 >> 16) & 0xFF;
+	int g1 = (color1 >> 8) & 0xFF;
+	int b1 = color1 & 0xFF;
+
+	int r2 = (color2 >> 16) & 0xFF;
+	int g2 = (color2 >> 8) & 0xFF;
+	int b2 = color2 & 0xFF;
+
+	return abs(r1 - r2) <= tolerance && abs(g1 - g2) <= tolerance && abs(b1 - b2) <= tolerance;
+}
+
+void Scyjz14Image::renderImageWithMask(DrawingSurface* pTarget,
+	int iXSource, int iYSource,
+	int iXTarget, int iYTarget,
+	int iWidth, int iHeight,
+	int iMaskColor) const
+{
+	if (!adjustXYWidthHeight(pTarget, iXSource, iYSource, iXTarget, iYTarget, iWidth, iHeight))
+		return; // No need - off the screen
+
+	if (iMaskColor == -1)
+	{ // Assumes that the bottom right pixel is the transparency colour if you do not provide one.
+		iMaskColor = theData->getRawPixelColour(theData->getWidth() - 1, theData->getHeight() - 1);
+	}
+
+	int iXS, iYS = iYSource, iXT, iYT = iYTarget;
+	int tolerance = 108;
+
+	for (int iYOffset = 0; iYOffset < iHeight; iYOffset++)
+	{
+		iXS = iXSource;
+		iXT = iXTarget;
+		for (int iXOffset = 0; iXOffset < iWidth; iXOffset++)
+		{
+			int iPixel = theData->getRawPixelColour(iXS, iYS);
+			if (!isColorSimilar(iPixel, iMaskColor, tolerance))
+				pTarget->setPixel(iXT, iYT, iPixel);
+			iXS++;
+			iXT++;
+		}
+		iYS++;
+		iYT++;
+	}
+}
+
+//STOP!!!!
+//You don't need to understand most of what is in this file.
+
+void Scyjz14Image::renderImageWithAlpha(DrawingSurface* pTarget,
+	int iXSource, int iYSource,
+	int iXTarget, int iYTarget,
+	int iWidth, int iHeight) const {
+
+	if (!adjustXYWidthHeight(pTarget, iXSource, iYSource, iXTarget, iYTarget, iWidth, iHeight)) {
+		return;
+	}
+
+	int iXS, iYS = iYSource, iXT, iYT = iYTarget;
+
+	for (int iYOffset = 0; iYOffset < iHeight; iYOffset++) {
+		iXS = iXSource;
+		iXT = iXTarget;
+		for (int iXOffset = 0; iXOffset < iWidth; iXOffset++) {
+			unsigned int iPixel = theData->getRawPixelColour(iXS, iYS);
+
+			unsigned int alpha = iPixel >> 24;
+			
+			if (alpha > 0) { 
+				if (alpha == 255) { 
+					pTarget->setPixel(iXT, iYT, iPixel);
+				}
+				else {
+					
+					unsigned int backgroundPixel = pTarget->getPixel(iXT, iYT);
+					unsigned int blendedPixel = blendPixels(backgroundPixel, iPixel, alpha);
+					pTarget->setPixel(iXT, iYT, blendedPixel);
+				}
+			}
+			iXS++;
+			iXT++;
+		}
+		iYS++;
+		iYT++;
+	}
+}
+
+unsigned int Scyjz14Image::blendPixels(unsigned int background, unsigned int foreground, unsigned int alpha) const{
+	unsigned int rb = ((background & 0xFF00FF) * (255 - alpha) + (foreground & 0xFF00FF) * alpha) >> 8;
+	unsigned int g = ((background & 0x00FF00) * (255 - alpha) + (foreground & 0x00FF00) * alpha) >> 8;
+	return (rb & 0xFF00FF) | (g & 0x00FF00) | 0xFF000000; // 假定背景总是完全不透明
 }

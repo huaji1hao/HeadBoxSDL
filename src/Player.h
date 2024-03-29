@@ -1,13 +1,13 @@
 #pragma once
-#include "ExampleObjects.h"
+#include "Scyjz14ImageManager.h"
 #include "Scyjz14TileManager.h"
 class Player :
-    public ImageObject
+    public Scyjz14ImageObject
 {
 
 public:
     Player(BaseEngine* pEngine, Scyjz14TileManager* pTileManager, std::string strURL = "resources/oil.png", bool useTopLeftFor00 = true, bool bVisible = true)
-        : ImageObject(pEngine, strURL, useTopLeftFor00, bVisible), m_pTileManager(pTileManager)
+        : Scyjz14ImageObject(pEngine, strURL, useTopLeftFor00, bVisible), m_pTileManager(pTileManager)
     {
     }
     /*Player(BaseEngine* pEngine, std::string strURL = "resources/oil.png", bool useTopLeftFor00 = true, bool bVisible = true)
@@ -16,7 +16,7 @@ public:
     }*/
 
     Player(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* pTileManager, std::string strURL = "resources/oil.png", bool useTopLeftFor00 = true, bool bVisible = true)
-        : ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible), m_pTileManager(pTileManager)
+        : Scyjz14ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible), m_pTileManager(pTileManager)
     {
     }
     

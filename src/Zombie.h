@@ -1,20 +1,20 @@
 #pragma once
-#include "ExampleObjects.h"
+#include "Scyjz14ImageManager.h"
 #include <vector>
 #include "Player.h"
 class Zombie :
-    public ImageObject
+    public Scyjz14ImageObject
 {
 public:
     Zombie(int xStart, int yStart, BaseEngine* pEngine, std::string strURL, bool useTopLeftFor00 = true, bool bVisible = true)
-        : ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible)
+        : Scyjz14ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible)
         , m_szLabel(NULL)
         , m_iXLabelOffset(0)
         , m_iYLabelOffset(0)
     {
     }
     Zombie(int xStart, int yStart, BaseEngine* pEngine, std::string strURL, const char* label, int iXLabelOffset, int iYLabelOffset, bool useTopLeftFor00 = true, bool bVisible = true)
-        : ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible)
+        : Scyjz14ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible)
         , m_szLabel(label)
         , m_iXLabelOffset(iXLabelOffset)
         , m_iYLabelOffset(iYLabelOffset)

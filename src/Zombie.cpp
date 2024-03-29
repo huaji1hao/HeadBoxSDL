@@ -11,7 +11,7 @@ void Zombie::virtDoUpdate(int iCurrentTime) {
 }
 
 void Zombie::virtDraw() {
-	ImageObject::virtDraw();
+	Scyjz14ImageObject::virtDraw();
 	// If there is a label then draw the text
 	if ((m_szLabel != NULL) && (strlen(m_szLabel) > 0))
 	{

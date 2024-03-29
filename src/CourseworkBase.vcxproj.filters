@@ -37,17 +37,11 @@
     <Filter Include="Header Files\Utils">
       <UniqueIdentifier>{c568ab8a-507c-4aad-891f-d50d15c7bf91}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Component">
-      <UniqueIdentifier>{00067f0e-ebf2-45a7-8ec8-b547372225c5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Object">
       <UniqueIdentifier>{8a80351e-ef19-486e-bff4-d1a74f6283de}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Utils">
       <UniqueIdentifier>{fd69bdd8-caa2-4405-a09a-43ad9c9a6f95}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Component">
-      <UniqueIdentifier>{6f6c5d3a-4140-4ed3-90cb-45d7bbaab283}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\States">
       <UniqueIdentifier>{bbe2c219-f9d5-44bb-8ec2-bbf8bc27d5e7}</UniqueIdentifier>
@@ -165,12 +159,6 @@
     <ClInclude Include="ObjectIndexes.h">
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
-    <ClInclude Include="Scyjz14Image.h">
-      <Filter>Header Files\Component</Filter>
-    </ClInclude>
-    <ClInclude Include="Scyjz14TileManager.h">
-      <Filter>Header Files\Component</Filter>
-    </ClInclude>
     <ClInclude Include="State.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
@@ -179,6 +167,18 @@
     </ClInclude>
     <ClInclude Include="RunningState.h">
       <Filter>Header Files\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Scyjz14Image.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Scyjz14ImageManager.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Scyjz14RawImageData.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Scyjz14TileManager.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -251,12 +251,6 @@
     <ClCompile Include="ObjectIndexes.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
-    <ClCompile Include="Scyjz14TileManager.cpp">
-      <Filter>Source Files\Component</Filter>
-    </ClCompile>
-    <ClCompile Include="Scyjz14Image.cpp">
-      <Filter>Source Files\Component</Filter>
-    </ClCompile>
     <ClCompile Include="State.cpp">
       <Filter>Source Files\States</Filter>
     </ClCompile>
@@ -265,6 +259,18 @@
     </ClCompile>
     <ClCompile Include="RunningState.cpp">
       <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Scyjz14Image.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Scyjz14ImageManager.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Scyjz14RawImageData.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Scyjz14TileManager.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -28,7 +28,7 @@ int Button::getClickTimes() {
 
 void Button::virtDraw()
 {
-	ImageObject::virtDraw();
+	Scyjz14ImageObject::virtDraw();
 
 	//char buf2[56];
 	//sprintf(buf2, "Button has been clicked %d times", getClickTimes());

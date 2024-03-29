@@ -4,9 +4,17 @@
 #include "Scyjz14Engine.h"
 #include "StartUpState.h"
 #include "ObjectIndexes.h"
+#include "Scyjz14Image.h"
+#include "Scyjz14ImageManager.h"
 
 void StartUpState::virtSetupBackgroundBuffer(){
-	eg->fillBackground(0x548746);
+	eg->fillBackground(0xffffff);
+	Scyjz14Image title = Scyjz14ImageManager::loadImage("resources/background/menu_background.png", true);
+	DrawingSurface* surface = eg->getBackgroundSurface();
+	//title.renderImageWithMask(surface, 0, 0, 150, 200, 400, 169, -1);
+	title.renderImageWithAlpha(surface, 0, 0, 150, 200, 400, 169);
+
+
 }
 
 void StartUpState::virtDrawStringsUnderneath(){

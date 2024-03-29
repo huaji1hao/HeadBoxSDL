@@ -2,6 +2,7 @@
 #include "BaseEngine.h"
 #include "Scyjz14TileManager.h"
 #include "State.h"
+#include "Scyjz14ImageManager.h"
 #include "RunningState.h"
 #include "StartUpState.h"
 
@@ -30,6 +31,8 @@ public:
         state.reset(newState);
         state->initialiseState();
     }
+
+
 
 private:
     // Contained object (composition) for the tile manager

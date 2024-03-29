@@ -1,11 +1,11 @@
 #pragma once
-#include "ExampleObjects.h"
+#include "Scyjz14ImageManager.h"
 class Button :
-    public ImageObject
+    public Scyjz14ImageObject
 {
 public:
     Button(int xStart, int yStart, BaseEngine* pEngine, std::string strURL, bool useTopLeftFor00 = true, bool bVisible = true)
-        : ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible)
+        : Scyjz14ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible)
     {
         clickTimes = 0;
         m_szLabel = nullptr;

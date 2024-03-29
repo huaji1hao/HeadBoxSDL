@@ -102,6 +102,8 @@
     <ClInclude Include="RunningState.h" />
     <ClInclude Include="Scyjz14Engine.h" />
     <ClInclude Include="Scyjz14Image.h" />
+    <ClInclude Include="Scyjz14ImageManager.h" />
+    <ClInclude Include="Scyjz14RawImageData.h" />
     <ClInclude Include="Scyjz14TileManager.h" />
     <ClInclude Include="SimpleFlashingDragableImageObject.h" />
     <ClInclude Include="StarfieldDemo.h" />
@@ -150,6 +152,8 @@
     <ClCompile Include="RunningState.cpp" />
     <ClCompile Include="Scyjz14Engine.cpp" />
     <ClCompile Include="Scyjz14Image.cpp" />
+    <ClCompile Include="Scyjz14ImageManager.cpp" />
+    <ClCompile Include="Scyjz14RawImageData.cpp" />
     <ClCompile Include="Scyjz14TileManager.cpp" />
     <ClCompile Include="SimpleImage.cpp" />
     <ClCompile Include="SimpleDemo.cpp" />
