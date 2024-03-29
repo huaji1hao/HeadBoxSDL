@@ -129,40 +129,6 @@ bool isColorSimilar(int color1, int color2, int tolerance) {
 	return abs(r1 - r2) <= tolerance && abs(g1 - g2) <= tolerance && abs(b1 - b2) <= tolerance;
 }
 
-void Scyjz14Image::renderImageWithMask(DrawingSurface* pTarget,
-	int iXSource, int iYSource,
-	int iXTarget, int iYTarget,
-	int iWidth, int iHeight,
-	int iMaskColor) const
-{
-	if (!adjustXYWidthHeight(pTarget, iXSource, iYSource, iXTarget, iYTarget, iWidth, iHeight))
-		return; // No need - off the screen
-
-	if (iMaskColor == -1)
-	{ // Assumes that the bottom right pixel is the transparency colour if you do not provide one.
-		iMaskColor = theData->getRawPixelColour(theData->getWidth() - 1, theData->getHeight() - 1);
-	}
-
-	int iXS, iYS = iYSource, iXT, iYT = iYTarget;
-	int tolerance = 108;
-
-	for (int iYOffset = 0; iYOffset < iHeight; iYOffset++)
-	{
-		iXS = iXSource;
-		iXT = iXTarget;
-		for (int iXOffset = 0; iXOffset < iWidth; iXOffset++)
-		{
-			int iPixel = theData->getRawPixelColour(iXS, iYS);
-			if (!isColorSimilar(iPixel, iMaskColor, tolerance))
-				pTarget->setPixel(iXT, iYT, iPixel);
-			iXS++;
-			iXT++;
-		}
-		iYS++;
-		iYT++;
-	}
-}
-
 //STOP!!!!
 //You don't need to understand most of what is in this file.
 

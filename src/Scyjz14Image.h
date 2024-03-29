@@ -25,11 +25,6 @@ public:
 		int iXDrawLocation, int iYDrawLocation, int iWidth, int iHeight,
 		ImagePixelMapping* mapping) const;
 
-	void renderImageWithMask(DrawingSurface* pTarget,
-		int iXSource, int iYSource,
-		int iXTarget, int iYTarget,
-		int iWidth, int iHeight,
-		int iMaskColour = -1) const;
 
 	void renderImageWithAlpha(DrawingSurface* pTarget,
 		int iXSource, int iYSource,
