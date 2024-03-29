@@ -12,7 +12,7 @@ void StartUpState::virtSetupBackgroundBuffer(){
 	Scyjz14Image title = Scyjz14ImageManager::loadImage("resources/background/menu_background.png", true);
 	DrawingSurface* surface = eg->getBackgroundSurface();
 	//title.renderImageWithMask(surface, 0, 0, 150, 200, 400, 169, -1);
-	title.renderImageWithAlpha(surface, 0, 0, 150, 200, 400, 169);
+	title.renderImageWithAlpha(surface, 0, 0, 150, 50, 400, 169);
 
 
 }
@@ -30,15 +30,15 @@ void StartUpState::initialiseState(){
 	eg->drawableObjectsChanged();
 
 	eg->lockAndSetupBackground();
-	//eg->redrawDisplay();
 
 	// Create array with default size for one object
 	eg->createObjectArray(10);
-	Button* button1 = new Button(400, 400, eg, "resources/cyan-button.png");
-	button1->setLabel("Go to game", 50, 5);
-
+	Button* button1 = new Button(280, 300, eg, "resources/cyan-button.png");
+	button1->setLabel("Go to game", 5, 5);
+	
 	eg->storeObjectInArray(0, button1);
-	eg->appendObjectToArray(new Button(400, 600, eg, "resources/cyan-button.png"));
+	eg->appendObjectToArray(new Button(280, 400, eg, "resources/cyan-button.png"));
+
 }
 
 void StartUpState::virtMouseDown(int iButton, int iX, int iY) {

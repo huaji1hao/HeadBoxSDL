@@ -23,6 +23,9 @@ public:
     // draw the button
     void virtDraw() override;
     void setLabel(char* label, int xOffset, int yOffset);
+    void virtDoUpdate(int iCurrentTime) override {
+        this->redrawDisplay();
+    };
 
 private:
     int clickTimes;

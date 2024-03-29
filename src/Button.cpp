@@ -10,7 +10,7 @@ void Button::virtMouseDown(int iButton, int iX, int iY) {
 	// If the mouse is not within the object, return
 	if(virtIsPositionWithinObject(iX, iY))
 		setPosition(getDrawingRegionLeft(), getDrawingRegionTop() + 5);
-	redrawDisplay();
+	
 }
 
 void Button::virtMouseUp(int iButton, int iX, int iY) {
@@ -19,7 +19,7 @@ void Button::virtMouseUp(int iButton, int iX, int iY) {
 	// else increment clickTimes and move the button back to its original position
 	clickTimes++;
 	setPosition(getDrawingRegionLeft(), getDrawingRegionTop() - 5);
-	redrawDisplay();
+	
 }
 
 int Button::getClickTimes() {
@@ -29,16 +29,18 @@ int Button::getClickTimes() {
 void Button::virtDraw()
 {
 	Scyjz14ImageObject::virtDraw();
-
 	//char buf2[56];
 	//sprintf(buf2, "Button has been clicked %d times", getClickTimes());
 	//getEngine()->drawForegroundString(400, 350, buf2, 0xff00ff, getEngine()->getFont("resources/Truculenta-Regular.ttf", 24));
 	
 	if ((m_szLabel != nullptr) && (strlen(m_szLabel) > 0))
 	{
-		getEngine()->drawForegroundString(getDrawingRegionLeft() + m_iXLabelOffset, getDrawingRegionTop() + m_iYLabelOffset, m_szLabel, 0xffffff, getEngine()->getFont("resources/Truculenta-Regular.ttf", 24));
+		if (isInClickArea(getEngine()->getCurrentMouseX(), getEngine()->getCurrentMouseY())) 
+			getEngine()->drawForegroundString(getDrawingRegionLeft() + m_iXLabelOffset, getDrawingRegionTop() + m_iYLabelOffset, m_szLabel, 0xa6a6a6, getEngine()->getFont("resources/Arial_Rounded_Bold.ttf", 28));
+		else
+			getEngine()->drawForegroundString(getDrawingRegionLeft() + m_iXLabelOffset, getDrawingRegionTop() + m_iYLabelOffset, m_szLabel, 0x000000, getEngine()->getFont("resources/Arial_Rounded_Bold.ttf", 28));
 	}
-	redrawDisplay();
+	
 }
 
 void Button::setLabel(char* label, int xOffset, int yOffset) {
