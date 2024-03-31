@@ -14,7 +14,7 @@ void RunningState::initialiseState() {
 	eg->lockAndSetupBackground();
 	//eg->redrawDisplay();
 
-	eg->appendObjectToArray(new Player(eg, eg->GetTileManager()));
+	eg->appendObjectToArray(new Player(0, 0, eg, eg->GetTileManager()));
 	ObjectIndexes::addPlayerIndexes({ eg->getContentCount() - 1 });
 
 	eg->appendObjectToArray(new Zombie(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, "resources/wall.png", "Zombie", 15, 15));
