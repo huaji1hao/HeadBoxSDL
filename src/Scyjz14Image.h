@@ -6,10 +6,13 @@ class Scyjz14Image :
     public SimpleImage
 {
 public:
+	Scyjz14Image(){}
 	Scyjz14Image::Scyjz14Image(const SimpleImage& simpleImage) : SimpleImage(simpleImage) {
 	}
 
 	Scyjz14Image(std::shared_ptr<Scyjz14RawImageData> theData);
+
+	bool exists() const { return theData != nullptr; }
 
 	int getWidth() const { return theData->getWidth(); }
 

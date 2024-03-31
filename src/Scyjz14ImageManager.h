@@ -204,7 +204,8 @@ public:
 		}
 	}
 
-private:
+
+protected:
 	Scyjz14Image image;
 };
 
