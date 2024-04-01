@@ -3,41 +3,48 @@
 #include <vector>
 #include "Player.h"
 class Zombie :
-    public Scyjz14ImageObject
+    public AgentBaseObject
 {
 public:
-    Zombie(int xStart, int yStart, BaseEngine* pEngine, std::string strURL, bool useTopLeftFor00 = true, bool bVisible = true)
-        : Scyjz14ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible)
-        , m_szLabel(NULL)
-        , m_iXLabelOffset(0)
-        , m_iYLabelOffset(0)
+    Zombie(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* pTileManager, std::string strURL = "resources/game/zombie/zombie_8.png",
+        int frameWidth = 45, int frameHeight = 50, bool useTopLeftFor00 = true, bool bVisible = true)
+        : AgentBaseObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible), m_pTileManager(pTileManager)
     {
+        m_direction = UP;
+        setSpeed(1);
+        setFrameRate(24);
     }
-    Zombie(int xStart, int yStart, BaseEngine* pEngine, std::string strURL, const char* label, int iXLabelOffset, int iYLabelOffset, bool useTopLeftFor00 = true, bool bVisible = true)
-        : Scyjz14ImageObject(xStart, yStart, pEngine, strURL, useTopLeftFor00, bVisible)
-        , m_szLabel(label)
-        , m_iXLabelOffset(iXLabelOffset)
-        , m_iYLabelOffset(iYLabelOffset)
-    {
+    
 
-    }
+    virtual void virtDoUpdate(int iCurrentTime) override;
 
-    void virtDraw() override;
-    void virtDoUpdate(int iCurrentTime) override;
+protected:
+    Scyjz14TileManager* m_pTileManager;
 
-private:
+    struct DirectionVector {
+        int dx, dy;
+        Direction dir;
+    };
+
+    const std::vector<DirectionVector> directionVectors = {
+        {0, -1, UP},
+        {0, 1, DOWN},
+        {-1, 0, LEFT},
+        {1, 0, RIGHT},
+        {-1, -1, UPLEFT},
+        {1, -1, UPRIGHT},
+        {-1, 1, DOWNLEFT},
+        {1, 1, DOWNRIGHT},
+    };
+
+    virtual void updateAnimationFrame(int iCurrentTime) override;
+
+    void updateDirection(int dx, int dy);
+
+    void updateDirectionTowardsPlayer(Player* player);
+
     // the function to attack all the player
-    void attackPlayer();
+    virtual void attackPlayer();
 
-    // the function to move the zombie by levy flight
-    void levyFlight();
-
-    void setLabel(char* label, int xOffset, int yOffset);
-
-    // Label to apply
-    const char* m_szLabel;
-    // Label offset in pixels
-    int m_iXLabelOffset;
-    int m_iYLabelOffset;
 };
 

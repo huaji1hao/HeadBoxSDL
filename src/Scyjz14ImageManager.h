@@ -275,7 +275,8 @@ class AgentBaseObject : public SpriteObject {
 public:
 	
 	// Define an enumeration for the directions the sprite object can face
-	enum Direction { UP, DOWN, LEFT, RIGHT };
+	enum Direction { UP, DOWN, LEFT, RIGHT, 
+		UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT };
 
 	AgentBaseObject(int xStart, int yStart, BaseEngine* pEngine, const std::string& strURL,
 		int frameWidth, int frameHeight,
@@ -305,7 +306,7 @@ public:
 
 protected:
 	Direction m_direction; // Current direction the object faces
-	int moving_speed = 1;
+	int moving_speed = 2;
 
 	virtual int getFrameCount() override{
 		// Manually count that it is 8 for player

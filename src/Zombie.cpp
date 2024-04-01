@@ -5,33 +5,67 @@
 
 
 void Zombie::virtDoUpdate(int iCurrentTime) {
-	levyFlight();
-	attackPlayer();
+	updateAnimationFrame(iCurrentTime);
 	fixPosition();
 }
 
-void Zombie::virtDraw() {
-	Scyjz14ImageObject::virtDraw();
-	// If there is a label then draw the text
-	if ((m_szLabel != NULL) && (strlen(m_szLabel) > 0))
-	{
-		getEngine()->drawForegroundString(getXCentre() + m_iXLabelOffset, getYCentre() + m_iYLabelOffset, m_szLabel, 0xffffff);
+void Zombie::updateAnimationFrame(int iCurrentTime){
+	// Calculate the time elapsed since the last frame update
+	int iElapsedTime = iCurrentTime - m_iLastUpdateTime;
+
+	// Check if it is time to update the frame
+	if (iElapsedTime >= m_iTimeBetweenFrames) {
+		// Update the frame index
+		m_iCurrentFrameX = (m_iCurrentFrameX + 1) % getFrameCount();
+		// Reset the last update time
+		m_iLastUpdateTime = iCurrentTime;
+
+		attackPlayer();
 	}
 }
 
-void Zombie::levyFlight() {
-	double alpha = 1.5; 
-	double u = ((double)rand() / RAND_MAX) * M_PI / 2; 
-	double v = ((double)rand() / RAND_MAX) * 10 + 1; 
-	double step = sin(alpha * u) / pow(cos(u), 1 / alpha) * pow(cos((1 - alpha) * u) / v, (1 - alpha) / alpha);
+void Zombie::updateDirection(int dx, int dy) {
+	// Normalize dx and dy to -1, 0, or 1
+	int normDx = (dx > 0) - (dx < 0);
+	int normDy = (dy > 0) - (dy < 0);
 
-	// A constant to scale the step size
-	double k = 1.2;
-	double stepSize = step * k;
-	double angle = (double)(rand() % 360) * M_PI / 180.0;
+	for (const auto& dirVec : directionVectors) {
+		if (dirVec.dx == normDx && dirVec.dy == normDy) {
+			m_direction = dirVec.dir;
+			break;
+		}
+	}
+}
 
-	m_iCurrentScreenX += (int)(stepSize * cos(angle));
-	m_iCurrentScreenY += (int)(stepSize * sin(angle));
+void Zombie::updateDirectionTowardsPlayer(Player* player) {
+	if (player == nullptr) return;
+
+	// Calculate direction vector from zombie to player
+	int dx = player->getXCentre() - this->getXCentre();
+	int dy = player->getYCentre() - this->getYCentre();
+
+	// Normalize the direction vector
+	double length = std::sqrt(dx * dx + dy * dy);
+	double dirX = dx / length;
+	double dirY = dy / length;
+
+	// Make sure the smallest step is 1 pixel for either x or y by rounding
+	int stepX = (dirX > 0) ? std::ceil(dirX) : std::floor(dirX);
+	int stepY = (dirY > 0) ? std::ceil(dirY) : std::floor(dirY);
+
+	// Ensure there's at least 1 pixel movement in any direction
+	if (stepX == 0 && stepY == 0) {
+		stepX = (dirX > 0) ? 1 : -1;
+		stepY = (dirY > 0) ? 1 : -1;
+	}
+
+	// Apply the calculated step, ensuring at least 1 pixel movement
+	m_iCurrentScreenX += stepX * moving_speed;
+	m_iCurrentScreenY += stepY * moving_speed;
+
+	// Update the direction of the zombie based on movement
+	updateDirection(stepX, stepY);
+
 }
 
 void Zombie::attackPlayer() {
@@ -39,6 +73,9 @@ void Zombie::attackPlayer() {
 		// Get the player object
 		Player* player = dynamic_cast<Player*>(getEngine()->getDisplayableObject(playerid));
 		if (player == nullptr) return;
+
+		updateDirectionTowardsPlayer(player);
+
 		// Check if the zombie is colliding with the player
 		if (CollisionDetection::checkRectangles(getDrawingRegionLeft(), getDrawingRegionRight(),
 			getDrawingRegionTop(), getDrawingRegionBottom(),
@@ -49,10 +86,4 @@ void Zombie::attackPlayer() {
 			player->knockedAway(getXCentre(), getYCentre());
 		}
 	}
-}
-
-void Zombie::setLabel(char* label, int xOffset, int yOffset) {
-	m_szLabel = label;
-	m_iXLabelOffset = xOffset;
-	m_iYLabelOffset = yOffset;
 }

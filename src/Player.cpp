@@ -10,23 +10,6 @@ void Player::virtDoUpdate(int iCurrentTime)
 	if (!isVisible()) return;
 	
 	// Handle key inputs to update position and direction
-	struct Movement {
-		int dx, dy;
-		Direction dir;
-	};
-
-	// Movement table
-	const std::map<SDL_Keycode, Movement> movements{
-		{ SDLK_w, { 0, -moving_speed, UP }},
-		{ SDLK_s, { 0, moving_speed, DOWN }},
-		{ SDLK_a, { -moving_speed, 0, LEFT }},
-		{ SDLK_d, { moving_speed, 0, RIGHT }},
-
-		{ SDLK_UP, { 0, -moving_speed, UP }},
-		{ SDLK_DOWN, { 0, moving_speed, DOWN }},
-		{ SDLK_LEFT, { -moving_speed, 0, LEFT }},
-		{ SDLK_RIGHT, { moving_speed, 0, RIGHT }},
-	};
 
 	for (const auto& pair : movements) {
 		SDL_Keycode key = pair.first;
