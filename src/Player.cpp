@@ -34,7 +34,9 @@ void Player::virtDoUpdate(int iCurrentTime)
 	//		int iTileX = m_pTileManager->getMapXForScreenX(getXCentre());
 	//		int iTileY = m_pTileManager->getMapYForScreenY(getYCentre());
 	//		int iCurrentTile = m_pTileManager->getMapValue(iTileX, iTileY);
-	//		m_pTileManager->setAndRedrawMapValueAt(iTileX, iTileY, (iCurrentTile + 1) % 3, getEngine(), getEngine()->getBackgroundSurface());
+	//		m_pTileManager->setAndRedrawMapValueAt(iTileX, iTileY, 0, getEngine(), getEngine()->getBackgroundSurface());
+	//		//m_pTileManager->setAndRedrawMapValueAt(iTileX, iTileY, (iCurrentTile + 1) % 10, getEngine(), getEngine()->getBackgroundSurface());
+	//		
 	//	}
 	//}
 

@@ -50,8 +50,8 @@ void Zombie::updateDirectionTowardsPlayer(Player* player) {
 	double dirY = dy / length;
 
 	// Make sure the smallest step is 1 pixel for either x or y by rounding
-	int stepX = (dirX > 0) ? std::ceil(dirX) : std::floor(dirX);
-	int stepY = (dirY > 0) ? std::ceil(dirY) : std::floor(dirY);
+	int stepX = static_cast<int>((dirX > 0) ? std::ceil(dirX) : std::floor(dirX));
+	int stepY = static_cast<int>((dirY > 0) ? std::ceil(dirY) : std::floor(dirY));
 
 	// Ensure there's at least 1 pixel movement in any direction
 	if (stepX == 0 && stepY == 0) {
