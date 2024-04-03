@@ -127,3 +127,10 @@ bool Scyjz14TileManager::isPassable(int tileType) const {
 	}
 }
 
+bool Scyjz14TileManager::isPassable(int iScreenX, int iScreenY) const {
+	int tileX = getMapXForScreenX(iScreenX);
+	int tileY = getMapYForScreenY(iScreenY);
+	int mapValue = getMapValue(tileX, tileY);
+	return isPassable(mapValue);
+}
+

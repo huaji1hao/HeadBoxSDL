@@ -34,6 +34,12 @@ public:
 		int iXTarget, int iYTarget,
 		int iWidth, int iHeight) const;
 
+	// Only draw the part which background is a specfic color
+	void renderImageWithAlphaAndOverlay(DrawingSurface* pTarget,
+		int iXSource, int iYSource,
+		int iXTarget, int iYTarget,
+		int iWidth, int iHeight, unsigned int backgroundColour) const;
+
 	unsigned int blendPixels(unsigned int background, unsigned int foreground, unsigned int alpha) const;
 
 private:

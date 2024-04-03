@@ -28,9 +28,7 @@ public:
 
 	bool isPassable(int tileType) const;
 
-	int getBaseScreenX() { return m_iBaseScreenX; }
-
-	int getBaseScreenY() { return m_iBaseScreenY; }
+	bool isPassable(int iScreenX, int iScreenY) const;
 
 
 	enum Type { 

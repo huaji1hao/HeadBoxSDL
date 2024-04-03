@@ -32,10 +32,10 @@ void RunningState::virtSetupBackgroundBuffer() {
 	stains.setTransparencyColour(0);
 	// Rotate the images and draw them
 	DrawingSurface* surface = eg->getBackgroundSurface();
-	stains.renderImage(surface, 0, 0, 150, 500, 401, 352);
+	/*stains.renderImage(surface, 0, 0, 150, 500, 401, 352);
 	stains.renderImageApplyingMappingAndTransparency(eg, surface, 150, -120, 401, 401, &ImagePixelMappingRotate(-0.22 * M_PI));
 	stains.renderImageApplyingMappingAndTransparency(eg, surface, -255, 110, 401, 401, &ImagePixelMappingRotate(-0.55 * M_PI));
-	stains.renderImageApplyingMappingAndTransparency(eg, surface, 470, 110, 410, 401, &ImagePixelMappingRotate(-0.7 * M_PI));
+	stains.renderImageApplyingMappingAndTransparency(eg, surface, 470, 110, 410, 401, &ImagePixelMappingRotate(-0.7 * M_PI));*/
 	// Draw the tiles
 	eg->GetTileManager()->setUpTileManager(eg);
 	// Draw an rectangle on the screen

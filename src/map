@@ -1,6 +1,6 @@
  CourseworkBase2020
 
- Timestamp is 660c8fce (Wed Apr  3 00:07:58 2024)
+ Timestamp is 660d603b (Wed Apr  3 14:57:15 2024)
 
  Preferred load address is 00400000
 
@@ -48,30 +48,30 @@
 
   Address         Publics by Value              Rva+Base       Lib:Object
 
- 0000:00000000       ___arm64x_extra_rfe_table  00000000     <absolute>
  0000:00000000       ___arm64x_redirection_metadata_count 00000000     <absolute>
- 0000:00000000       ___guard_eh_cont_table     00000000     <absolute>
- 0000:00000000       ___guard_check_icall_a64n_fptr 00000000     <absolute>
- 0000:00000000       ___arm64x_native_entrypoint 00000000     <absolute>
- 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
- 0000:00000000       ___hybrid_code_map         00000000     <absolute>
- 0000:00000000       ___arm64x_redirection_metadata 00000000     <absolute>
- 0000:00000000       ___volatile_metadata       00000000     <absolute>
- 0000:00000000       ___hybrid_auxiliary_iat_copy 00000000     <absolute>
- 0000:00000000       ___x64_code_ranges_to_entry_points_count 00000000     <absolute>
- 0000:00000000       ___guard_fids_table        00000000     <absolute>
- 0000:00000000       ___AbsoluteZero            00000000     <absolute>
- 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
- 0000:00000000       ___hybrid_auxiliary_iat    00000000     <absolute>
- 0000:00000000       ___guard_fids_count        00000000     <absolute>
- 0000:00000000       ___x64_code_ranges_to_entry_points 00000000     <absolute>
- 0000:00000000       ___guard_iat_table         00000000     <absolute>
- 0000:00000000       ___hybrid_code_map_count   00000000     <absolute>
- 0000:00000000       ___guard_eh_cont_count     00000000     <absolute>
  0000:00000000       ___arm64x_extra_rfe_table_size 00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat    00000000     <absolute>
+ 0000:00000000       ___guard_iat_table         00000000     <absolute>
+ 0000:00000000       ___dynamic_value_reloc_table 00000000     <absolute>
+ 0000:00000000       ___guard_fids_count        00000000     <absolute>
+ 0000:00000000       ___guard_check_icall_a64n_fptr 00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map_count   00000000     <absolute>
+ 0000:00000000       ___guard_fids_table        00000000     <absolute>
+ 0000:00000000       ___hybrid_auxiliary_iat_copy 00000000     <absolute>
+ 0000:00000000       ___AbsoluteZero            00000000     <absolute>
+ 0000:00000000       ___arm64x_extra_rfe_table  00000000     <absolute>
+ 0000:00000000       ___arm64x_redirection_metadata 00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_table     00000000     <absolute>
+ 0000:00000000       ___hybrid_code_map         00000000     <absolute>
+ 0000:00000000       ___arm64x_native_entrypoint 00000000     <absolute>
+ 0000:00000000       ___guard_longjmp_table     00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points 00000000     <absolute>
+ 0000:00000000       ___guard_eh_cont_count     00000000     <absolute>
  0000:00000000       ___guard_longjmp_count     00000000     <absolute>
- 0000:00000000       ___enclave_config          00000000     <absolute>
  0000:00000000       ___guard_iat_count         00000000     <absolute>
+ 0000:00000000       ___x64_code_ranges_to_entry_points_count 00000000     <absolute>
+ 0000:00000000       ___volatile_metadata       00000000     <absolute>
+ 0000:00000000       ___enclave_config          00000000     <absolute>
  0000:00000088       ___safe_se_handler_count   00000088     <absolute>
  0000:00000100       ___guard_flags             00000100     <absolute>
  0000:00000000       ___ImageBase               00400000     <linker-defined>
@@ -84,7 +84,8 @@
  0001:00006210       ?virtDoUpdate@Button@@UAEXH@Z 00407210 f   Button.obj
  0001:000062f0       ?getTileHeight@TileManager@@QBEHXZ 004072f0 f i Player.obj
  0001:00006320       ?getTileWidth@TileManager@@QBEHXZ 00407320 f i Player.obj
- 0001:000063b0       ?lockBackgroundForDrawing@BaseEngine@@QAEXXZ 004073b0 f i RunningState.obj
+ 0001:00006340       ?rawGetPixel@DrawingSurface@@QBEIHH@Z 00407340 f i Scyjz14Image.obj
+ 0001:000063a0       ?max_size@?$_Default_allocator_traits@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@SAIABV?$allocator@UDirectionVector@Zombie@@@2@@Z 004073a0 f i RunningState.obj
  0001:000063e0       ??$?9VScyjz14RawImageData@@@std@@YA_NABV?$shared_ptr@VScyjz14RawImageData@@@0@$$T@Z 004073e0 f i Button.obj
  0001:00006410       ?__empty_global_delete@@YAXPAX@Z 00407410 f i Button.obj
  0001:00006420       ?__empty_global_delete@@YAXPAXI@Z 00407420 f i Button.obj
@@ -102,8 +103,10 @@
  0001:000065d0       ?virtSetupBackgroundBuffer@DraggingDemo@@UAEXXZ 004075d0 f   DraggingDemo.obj
  0001:00006710       ?virtInitialiseObjects@DraggingDemo@@UAEHXZ 00407710 f   DraggingDemo.obj
  0001:00006960       ?virtKeyDown@DraggingDemo@@UAEXH@Z 00407960 f   DraggingDemo.obj
- 0001:00006990       ?loadImage@ImageManager@@SA?AVSimpleImage@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z 00407990 f i RunningState.obj
- 0001:00006a30       ?max_size@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 00407a30 f i RunningState.obj
+ 0001:00006990       ?max_size@?$_Default_allocator_traits@V?$allocator@H@std@@@std@@SAIABV?$allocator@H@2@@Z 00407990 f i RunningState.obj
+ 0001:000069a0       ?max_size@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 004079a0 f i RunningState.obj
+ 0001:000069e0       ?setState@Scyjz14Engine@@QAEXPAVState@@@Z 004079e0 f i RunningState.obj
+ 0001:00006a30       ?setSpeed@AgentBaseObject@@QAEXH@Z 00407a30 f i RunningState.obj
  0001:00006a80       ??$?0$$V@?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QAE@U_Zero_then_variadic_args_t@1@@Z 00407a80 f i DraggingDemo.obj
  0001:00006ab0       ??$?0$$V@?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@std@@@2@$00@std@@QAE@U_Zero_then_variadic_args_t@1@@Z 00407ab0 f i DraggingDemo.obj
  0001:00006ae0       ??$?0$$V@?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@2@$00@std@@QAE@U_Zero_then_variadic_args_t@1@@Z 00407ae0 f i DraggingDemo.obj
@@ -119,24 +122,27 @@
  0001:00006db0       ??$?0U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@?$allocator@U_Container_proxy@std@@@std@@QAE@ABV?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@1@@Z 00407db0 f i DraggingDemo.obj
  0001:00006dd0       ??$?0U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@?$allocator@U_Container_proxy@std@@@std@@QAE@ABV?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@1@@Z 00407dd0 f i DraggingDemo.obj
  0001:00006df0       ??$?0U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@?$_Tree_temp_node@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@@std@@QAE@AAV?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@1@PAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@1@$$QAU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@1@@Z 00407df0 f i DraggingDemo.obj
+ 0001:00006ed0       ??1?$_Uninitialized_backout_al@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QAE@XZ 00407ed0 f i RunningState.obj
  0001:00006f00       ??$?0U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@?$_Tree_temp_node@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@@std@@QAE@AAV?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@1@PAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@1@$$QAU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@1@@Z 00407f00 f i DraggingDemo.obj
+ 0001:00006fe0       ??R?$less@H@std@@QBE_NABH0@Z 00407fe0 f i RunningState.obj
  0001:00007010       ??$?0V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@std@@@std@@@std@@AB_N$0A@@?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@std@@@std@@@std@@_N@std@@QAE@$$QAV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@std@@@std@@@1@AB_N@Z 00408010 f i DraggingDemo.obj
  0001:00007060       ??$?0V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@std@@@std@@AB_N$0A@@?$pair@V?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@std@@@std@@_N@std@@QAE@$$QAV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@std@@@1@AB_N@Z 00408060 f i DraggingDemo.obj
  0001:000070b0       ??$?0V?$allocator@D@std@@$$V@?$_Compressed_pair@V?$allocator@D@std@@V?$_String_val@U?$_Simple_types@D@std@@@2@$00@std@@QAE@U_One_then_variadic_args_t@1@$$QAV?$allocator@D@1@@Z 004080b0 f i DraggingDemo.obj
  0001:000070e0       ??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@1@$0A@@?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@QAE@$$QAU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@1@@Z 004080e0 f i DraggingDemo.obj
  0001:00007130       ??$?0V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@1@$0A@@?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@QAE@$$QAU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@1@@Z 00408130 f i DraggingDemo.obj
  0001:00007180       ??$?0VRawImageData@@$0A@@?$shared_ptr@VRawImageData@@@std@@QAE@PAVRawImageData@@@Z 00408180 f i DraggingDemo.obj
+ 0001:00007240       ?_Allocate@?$_Alloc_construct_ptr@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAEXXZ 00408240 f i RunningState.obj
  0001:00007270       ??$?0VRawImageData@@$0A@@?$weak_ptr@VRawImageData@@@std@@QAE@ABV?$shared_ptr@VRawImageData@@@1@@Z 00408270 f i DraggingDemo.obj
  0001:000072a0       ??$?6DU?$char_traits@D@std@@V?$allocator@D@1@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@@Z 004082a0 f i DraggingDemo.obj
  0001:000072d0       ??$?6U?$char_traits@D@std@@@std@@YAAAV?$basic_ostream@DU?$char_traits@D@std@@@0@AAV10@PBD@Z 004082d0 f i DraggingDemo.obj
- 0001:00007600       ?max_size@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QBEIXZ 00408600 f i RunningState.obj
- 0001:00007640       ?virtDraw@Scyjz14ImageObject@@UAEXXZ 00408640 f i RunningState.obj
+ 0001:00007620       ?loadImage@ImageManager@@SA?AVSimpleImage@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N@Z 00408620 f i RunningState.obj
  0001:000076d0       ??$?9VRawImageData@@@std@@YA_NABV?$shared_ptr@VRawImageData@@@0@$$T@Z 004086d0 f i DraggingDemo.obj
  0001:00007700       ??$?CVRawImageData@@$0A@@?$shared_ptr@VRawImageData@@@std@@QBEPAVRawImageData@@XZ 00408700 f i DraggingDemo.obj
  0001:00007720       ??$?MDU?$char_traits@D@std@@V?$allocator@D@1@@std@@YA_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@0@0@Z 00408720 f i DraggingDemo.obj
  0001:00007760       ??$_Alloc_proxy@V?$allocator@U_Container_proxy@std@@@std@@@_Container_base12@std@@QAEX$$QAV?$allocator@U_Container_proxy@std@@@1@@Z 00408760 f i DraggingDemo.obj
  0001:000077c0       ??$_Allocate@$07U_Default_allocate_traits@std@@$0A@@std@@YAPAXI@Z 004087c0 f i DraggingDemo.obj
  0001:00007800       ??$_Allocate_manually_vector_aligned@U_Default_allocate_traits@std@@@std@@YAPAXI@Z 00408800 f i DraggingDemo.obj
+ 0001:000078c0       ?capacity@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 004088c0 f i RunningState.obj
  0001:000078f0       ??$_Buyheadnode@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@@?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@SAPAU01@AAV?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@1@@Z 004088f0 f i DraggingDemo.obj
  0001:00007970       ??$_Buyheadnode@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@@?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@SAPAU01@AAV?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@1@@Z 00408970 f i DraggingDemo.obj
  0001:000079f0       ??$_Construct_from_weak@VRawImageData@@@?$_Ptr_base@VRawImageData@@@std@@IAE_NABV?$weak_ptr@VRawImageData@@@1@@Z 004089f0 f i DraggingDemo.obj
@@ -159,7 +165,9 @@
  0001:00007f40       ??$_Destroy_in_place@PAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@YAXAAPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@0@@Z 00408f40 f i DraggingDemo.obj
  0001:00007f50       ??$_Destroy_range@V?$allocator@PAVDisplayableObject@@@std@@@std@@YAXPAPAVDisplayableObject@@QAPAV1@AAV?$allocator@PAVDisplayableObject@@@0@@Z 00408f50 f i DraggingDemo.obj
  0001:00007f60       ??$_Emplace@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@2@$0A@@std@@@std@@IAE?AU?$pair@PAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@_N@1@$$QAU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@1@@Z 00408f60 f i DraggingDemo.obj
+ 0001:00008050       ??0SimpleImage@@QAE@ABV0@@Z 00409050 f i RunningState.obj
  0001:00008090       ??$_Emplace@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@2@$0A@@std@@@std@@IAE?AU?$pair@PAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@_N@1@$$QAU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@1@@Z 00409090 f i DraggingDemo.obj
+ 0001:00008180       ?drawBackgroundRectangle@BaseEngine@@QAEXHHHHI@Z 00409180 f i RunningState.obj
  0001:000081c0       ??$_Emplace_back@$$V@?$_Uninitialized_backout_al@V?$allocator@PAVDisplayableObject@@@std@@@std@@QAEXXZ 004091c0 f i DraggingDemo.obj
  0001:00008210       ??$_Emplace_back@PAVDisplayableObject@@@?$_Uninitialized_backout_al@V?$allocator@PAVDisplayableObject@@@std@@@std@@QAEX$$QAPAVDisplayableObject@@@Z 00409210 f i DraggingDemo.obj
  0001:00008270       ??$_Erase_head@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@std@@QAEXAAV?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@1@@Z 00409270 f i DraggingDemo.obj
@@ -184,6 +192,7 @@
  0001:00008c20       ??$_Reallocate_for@V<lambda_9366063389c5f42a00a5088cf24e69de>@@PBD@?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AAEAAV01@IV<lambda_9366063389c5f42a00a5088cf24e69de>@@PBD@Z 00409c20 f i DraggingDemo.obj
  0001:00008d20       ??$_Resize@U_Value_init_tag@std@@@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@AAEXIABU_Value_init_tag@1@@Z 00409d20 f i DraggingDemo.obj
  0001:00008e40       ??$_Resize_reallocate@U_Value_init_tag@std@@@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@AAEXIABU_Value_init_tag@1@@Z 00409e40 f i DraggingDemo.obj
+ 0001:00008fa0       ??1?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QAE@XZ 00409fa0 f i RunningState.obj
  0001:00008ff0       ??$_Set_ptr_rep_and_enable_shared@VRawImageData@@@?$shared_ptr@VRawImageData@@@std@@AAEXQAVRawImageData@@QAV_Ref_count_base@1@@Z 00409ff0 f i DraggingDemo.obj
  0001:00009020       ??$_To_address@PAPAVDisplayableObject@@@std@@YA?A_PABQAPAVDisplayableObject@@@Z 0040a020 f i DraggingDemo.obj
  0001:00009030       ??$_Traits_compare@U?$char_traits@D@std@@@std@@YAHQBDI0I@Z 0040a030 f i DraggingDemo.obj
@@ -191,6 +200,7 @@
  0001:000090b0       ??$_Unfancy@PAVDisplayableObject@@@std@@YAPAPAVDisplayableObject@@PAPAV1@@Z 0040a0b0 f i DraggingDemo.obj
  0001:000090c0       ??$_Unfancy@U_Container_proxy@std@@@std@@YAPAU_Container_proxy@0@PAU10@@Z 0040a0c0 f i DraggingDemo.obj
  0001:000090d0       ??$_Uninitialized_move@PAPAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@YAPAPAVDisplayableObject@@QAPAV1@0PAPAV1@AAV?$allocator@PAVDisplayableObject@@@0@@Z 0040a0d0 f i DraggingDemo.obj
+ 0001:000091b0       ?end@?$vector@HV?$allocator@H@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@2@XZ 0040a1b0 f i RunningState.obj
  0001:000091f0       ??$_Uninitialized_value_construct_n@V?$allocator@PAVDisplayableObject@@@std@@@std@@YAPAPAVDisplayableObject@@PAPAV1@IAAV?$allocator@PAVDisplayableObject@@@0@@Z 0040a1f0 f i DraggingDemo.obj
  0001:000092d0       ??$_Voidify_iter@PAPAD@std@@YAPAXPAPAD@Z 0040a2d0 f i DraggingDemo.obj
  0001:000092e0       ??$_Voidify_iter@PAPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@YAPAXPAPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@0@@Z 0040a2e0 f i DraggingDemo.obj
@@ -385,12 +395,12 @@
  0001:0000c0c0       ??E?$_Tree_unchecked_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@std@@U_Iterator_base0@2@@std@@QAEAAV01@XZ 0040d0c0 f i DraggingDemo.obj
  0001:0000c150       ??R<lambda_9366063389c5f42a00a5088cf24e69de>@@QBE@QADIQBD@Z 0040d150 f i DraggingDemo.obj
  0001:0000c1a0       ??R?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@QBE_NABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@1@0@Z 0040d1a0 f i DraggingDemo.obj
- 0001:0000c1d0       ??_E?$_Ref_count@VRawImageData@@@std@@UAEPAXI@Z 0040d1d0 f i DraggingDemo.obj
  0001:0000c1d0       ??_G?$_Ref_count@VRawImageData@@@std@@UAEPAXI@Z 0040d1d0 f i DraggingDemo.obj
+ 0001:0000c1d0       ??_E?$_Ref_count@VRawImageData@@@std@@UAEPAXI@Z 0040d1d0 f i DraggingDemo.obj
  0001:0000c210       ??_G?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@QAEPAXI@Z 0040d210 f i DraggingDemo.obj
  0001:0000c250       ??_G?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@QAEPAXI@Z 0040d250 f i DraggingDemo.obj
- 0001:0000c290       ??_GDragableBaseClassObject@@UAEPAXI@Z 0040d290 f i DraggingDemo.obj
  0001:0000c290       ??_EDragableBaseClassObject@@UAEPAXI@Z 0040d290 f i DraggingDemo.obj
+ 0001:0000c290       ??_GDragableBaseClassObject@@UAEPAXI@Z 0040d290 f i DraggingDemo.obj
  0001:0000c2d0       ??_GDragableImageObject@@UAEPAXI@Z 0040d2d0 f i DraggingDemo.obj
  0001:0000c2d0       ??_EDragableImageObject@@UAEPAXI@Z 0040d2d0 f i DraggingDemo.obj
  0001:0000c310       ??_GDragableObject@@UAEPAXI@Z 0040d310 f i DraggingDemo.obj
@@ -398,10 +408,10 @@
  0001:0000c350       ??_EImageObject@@UAEPAXI@Z 0040d350 f i DraggingDemo.obj
  0001:0000c350       ??_GImageObject@@UAEPAXI@Z 0040d350 f i DraggingDemo.obj
  0001:0000c390       ??_GRawImageData@@QAEPAXI@Z 0040d390 f i DraggingDemo.obj
- 0001:0000c3d0       ??_Gbad_alloc@std@@UAEPAXI@Z 0040d3d0 f i DraggingDemo.obj
  0001:0000c3d0       ??_Ebad_alloc@std@@UAEPAXI@Z 0040d3d0 f i DraggingDemo.obj
- 0001:0000c410       ??_Gbad_array_new_length@std@@UAEPAXI@Z 0040d410 f i DraggingDemo.obj
+ 0001:0000c3d0       ??_Gbad_alloc@std@@UAEPAXI@Z 0040d3d0 f i DraggingDemo.obj
  0001:0000c410       ??_Ebad_array_new_length@std@@UAEPAXI@Z 0040d410 f i DraggingDemo.obj
+ 0001:0000c410       ??_Gbad_array_new_length@std@@UAEPAXI@Z 0040d410 f i DraggingDemo.obj
  0001:0000c450       ??_Eexception@std@@UAEPAXI@Z 0040d450 f i DraggingDemo.obj
  0001:0000c450       ??_Gexception@std@@UAEPAXI@Z 0040d450 f i DraggingDemo.obj
  0001:0000c490       ?_Adjust_manually_vector_aligned@std@@YAXAAPAXAAI@Z 0040d490 f i DraggingDemo.obj
@@ -434,6 +444,8 @@
  0001:0000cf60       ?_Extract@?$_In_place_key_extract_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@2@@std@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@2@@Z 0040df60 f i DraggingDemo.obj
  0001:0000cf70       ?_Extract@?$_In_place_key_extract_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@2@@std@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@2@@Z 0040df70 f i DraggingDemo.obj
  0001:0000cf80       ?_Extract@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@2@V?$_Tree_unchecked_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@std@@U_Iterator_base0@2@@2@@Z 0040df80 f i DraggingDemo.obj
+ 0001:0000d3b0       ?mapCoordinates@CroppedImagePixelMapping@@UAE_NAAN0ABVSimpleImage@@@Z 0040e3b0 f i Scyjz14Image.obj
+ 0001:0000d430       ?_Buy_raw@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEXI@Z 0040e430 f i RunningState.obj
  0001:0000d4c0       ?_Get_deleter@_Ref_count_base@std@@UBEPAXABVtype_info@@@Z 0040e4c0 f i DraggingDemo.obj
  0001:0000d4e0       ?_Get_first@?$_Compressed_pair@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@std@@@2@$00@2@$00@std@@QBEABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@XZ 0040e4e0 f i DraggingDemo.obj
  0001:0000d500       ?_Get_first@?$_Compressed_pair@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@2@$00@2@$00@std@@QBEABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@XZ 0040e500 f i DraggingDemo.obj
@@ -465,7 +477,9 @@
  0001:0000d870       ?_Incref_nz@_Ref_count_base@std@@QAE_NXZ 0040e870 f i DraggingDemo.obj
  0001:0000d8e0       ?_Incwref@_Ref_count_base@std@@QAEXXZ 0040e8e0 f i DraggingDemo.obj
  0001:0000d900       ?_Insert_node@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@2@U?$_Tree_id@PAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@std@@@2@QAU32@@Z 0040e900 f i DraggingDemo.obj
+ 0001:0000db10       ?_Calculate_growth@?$vector@HV?$allocator@H@std@@@std@@ABEII@Z 0040eb10 f i RunningState.obj
  0001:0000db90       ?_Insert_node@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@2@U?$_Tree_id@PAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@std@@@2@QAU32@@Z 0040eb90 f i DraggingDemo.obj
+ 0001:0000dda0       ?_Orphan_range_locked@?$vector@HV?$allocator@H@std@@@std@@ABEXPAH0@Z 0040eda0 f i RunningState.obj
  0001:0000de20       ?_Large_string_engaged@?$_String_val@U?$_Simple_types@D@std@@@std@@QBE_NXZ 0040ee20 f i DraggingDemo.obj
  0001:0000de60       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VRawImageData@@@2@@std@@PAX@2@@Z 0040ee60 f i DraggingDemo.obj
  0001:0000df20       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VRawImageData@@@2@@std@@PAX@2@@Z 0040ef20 f i DraggingDemo.obj
@@ -544,6 +558,7 @@
  0001:0000f550       ?getHeight@RawImageData@@QBEHXZ 00410550 f i DraggingDemo.obj
  0001:0000f570       ?getHeight@SimpleImage@@QBEHXZ 00410570 f i DraggingDemo.obj
  0001:0000f5a0       ?getImagePtrbyURL@ImageManager@@QAE?AV?$shared_ptr@VRawImageData@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@_N1@Z 004105a0 f i DraggingDemo.obj
+ 0001:0000f900       ??1?$_Tree_temp_node@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAE@XZ 00410900 f i RunningState.obj
  0001:0000f9e0       ?getImagebyURL@ImageManager@@QAE?AVSimpleImage@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N1@Z 004109e0 f i DraggingDemo.obj
  0001:0000fab0       ?getIntsPerWindowRow@DrawingSurface@@QBEIXZ 00410ab0 f i DraggingDemo.obj
  0001:0000fad0       ?getSurfaceHeight@DrawingSurface@@QBEHXZ 00410ad0 f i DraggingDemo.obj
@@ -557,6 +572,7 @@
  0001:0000fc80       ?length@?$_Narrow_char_traits@DH@std@@SAIQBD@Z 00410c80 f i DraggingDemo.obj
  0001:0000fca0       ?loadAsNew@ImageManager@@QAE?AV?$shared_ptr@VRawImageData@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@@Z 00410ca0 f i DraggingDemo.obj
  0001:0000fe70       ?loadImage@RawImageData@@QAE_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHHHH_N@Z 00410e70 f i DraggingDemo.obj
+ 0001:000100e0       ??F?$_Tree_unchecked_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@U_Iterator_base0@2@@std@@QAEAAV01@XZ 004110e0 f i RunningState.obj
  0001:00010180       ?lock@?$weak_ptr@VRawImageData@@@std@@QBE?AV?$shared_ptr@VRawImageData@@@2@XZ 00411180 f i DraggingDemo.obj
  0001:000101d0       ?max@?$numeric_limits@H@std@@SAHXZ 004111d0 f i DraggingDemo.obj
  0001:000101e0       ?max_size@?$_Default_allocator_traits@V?$allocator@D@std@@@std@@SAIABV?$allocator@D@2@@Z 004111e0 f i DraggingDemo.obj
@@ -627,8 +643,16 @@
  0001:00013900       ?getRealRedrawMaxX@DrawingSurface@@QAEHXZ 00414900 f   DrawingSurface.obj
  0001:00013950       ?getRealRedrawMaxY@DrawingSurface@@QAEHXZ 00414950 f   DrawingSurface.obj
  0001:000139a0       ?fixPosition@AgentBaseObject@@QAEXXZ 004149a0 f i Player.obj
- 0001:00013b00       ?mapCoordinates@ImagePixelMappingRotate@@UAE_NAAN0ABVSimpleImage@@@Z 00414b00 f i RunningState.obj
- 0001:00013d60       ?virtDraw@AgentBaseObject@@UAEXXZ 00414d60 f i RunningState.obj
+ 0001:00013a70       ?_Orphan_range_unlocked@?$vector@HV?$allocator@H@std@@@std@@ABEXPAH0@Z 00414a70 f i RunningState.obj
+ 0001:00013b00       ?max_size@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@QBEIXZ 00414b00 f i RunningState.obj
+ 0001:00013b40       ?unlockBackgroundForDrawing@BaseEngine@@QAEXXZ 00414b40 f i RunningState.obj
+ 0001:00013ba0       ?updateAnimationFrame@SpriteObject@@MAEXH@Z 00414ba0 f i RunningState.obj
+ 0001:00013ce0       ?virtDraw@AgentBaseObject@@UAEXXZ 00414ce0 f i RunningState.obj
+ 0001:00013e90       ??0Player@@QAE@HHPAVBaseEngine@@PAVScyjz14TileManager@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH_N3@Z 00414e90 f i RunningState.obj
+ 0001:00014160       ??0Zombie@@QAE@HHPAVBaseEngine@@PAVScyjz14TileManager@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH_N3@Z 00415160 f i RunningState.obj
+ 0001:00014300       ?_Alloc_sentinel_and_proxy@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IAEXXZ 00415300 f i RunningState.obj
+ 0001:000143a0       ?_Change_array@?$vector@HV?$allocator@H@std@@@std@@AAEXQAHII@Z 004153a0 f i RunningState.obj
+ 0001:00014440       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@@Z 00415440 f i RunningState.obj
  0001:00014550       ??$move@AAH@std@@YA$$QAHAAH@Z 00415550 f i DrawingSurface.obj
  0001:00014560       ??$move@AAN@std@@YA$$QANAAN@Z 00415560 f i DrawingSurface.obj
  0001:00014570       ??$swap@H$0A@@std@@YAXAAH0@Z 00415570 f i DrawingSurface.obj
@@ -655,9 +679,11 @@
  0001:00014a20       ?virtSetupBackgroundBuffer@FlashingDemo@@UAEXXZ 00415a20 f   FlashingDemo.obj
  0001:00014ea0       ?virtMainLoopDoBeforeUpdate@FlashingDemo@@UAEXXZ 00415ea0 f   FlashingDemo.obj
  0001:00014f60       ?virtCreateSurfaces@FlashingDemo@@UAEXXZ 00415f60 f   FlashingDemo.obj
+ 0001:00014fd0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@@Z 00415fd0 f i RunningState.obj
+ 0001:00015070       ?_Tidy@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEXXZ 00416070 f i RunningState.obj
  0001:00015180       ??1DrawingSurface@@QAE@XZ  00416180 f i FlashingDemo.obj
- 0001:00015190       ??_EFlashingDemo@@UAEPAXI@Z 00416190 f i FlashingDemo.obj
  0001:00015190       ??_GFlashingDemo@@UAEPAXI@Z 00416190 f i FlashingDemo.obj
+ 0001:00015190       ??_EFlashingDemo@@UAEPAXI@Z 00416190 f i FlashingDemo.obj
  0001:000151d0       ?copyAllBackgroundBuffer@BaseEngine@@UAEXXZ 004161d0 f i FlashingDemo.obj
  0001:00015200       ?copyBackgroundPixels@BaseEngine@@UAEXHHHH@Z 00416200 f i FlashingDemo.obj
  0001:00015250       ?createSurface@DrawingSurface@@QAEXHH@Z 00416250 f i FlashingDemo.obj
@@ -703,6 +729,9 @@
  0001:00015f20       ?virtKeyDown@ImageMappingDemo@@UAEXH@Z 00416f20 f   ImageMappingDemo.obj
  0001:00015f50       ?virtMainLoopDoBeforeUpdate@ImageMappingDemo@@UAEXXZ 00416f50 f   ImageMappingDemo.obj
  0001:00015fe0       ?mapCoordinates@ImageMappingDemo@@UAE_NAAN0ABVSimpleImage@@@Z 00416fe0 f   ImageMappingDemo.obj
+ 0001:00016260       ?addPlayerIndexes@ObjectIndexes@@SAXABV?$initializer_list@H@std@@@Z 00417260 f i RunningState.obj
+ 0001:00016310       ?addZombieIndexes@ObjectIndexes@@SAXABV?$initializer_list@H@std@@@Z 00417310 f i RunningState.obj
+ 0001:000163c0       ?clear@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@QAEXXZ 004173c0 f i RunningState.obj
  0001:00016450       ??0MappableImageObject@@QAE@PAVImagePixelMapping@@HHPAVBaseEngine@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N3@Z 00417450 f i ImageMappingDemo.obj
  0001:00016510       ??1MappableImageObject@@UAE@XZ 00417510 f i ImageMappingDemo.obj
  0001:00016530       ??_EMappableImageObject@@UAEPAXI@Z 00417530 f i ImageMappingDemo.obj
@@ -940,21 +969,21 @@
  0001:0001a6a0       ??E?$_Tree_unchecked_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@@std@@@std@@@std@@U_Iterator_base0@2@@std@@QAEAAV01@XZ 0041b6a0 f i mainfunction.obj
  0001:0001a730       ??R?$default_delete@VScyjz14TileManager@@@std@@QBEXPAVScyjz14TileManager@@@Z 0041b730 f i mainfunction.obj
  0001:0001a780       ??R?$default_delete@VState@@@std@@QBEXPAVState@@@Z 0041b780 f i mainfunction.obj
- 0001:0001a7d0       ??_E?$_Ref_count@VScyjz14RawImageData@@@std@@UAEPAXI@Z 0041b7d0 f i mainfunction.obj
  0001:0001a7d0       ??_G?$_Ref_count@VScyjz14RawImageData@@@std@@UAEPAXI@Z 0041b7d0 f i mainfunction.obj
+ 0001:0001a7d0       ??_E?$_Ref_count@VScyjz14RawImageData@@@std@@UAEPAXI@Z 0041b7d0 f i mainfunction.obj
  0001:0001a810       ??_G?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VScyjz14RawImageData@@@2@@std@@QAEPAXI@Z 0041b810 f i mainfunction.obj
  0001:0001a850       ??_G?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@@std@@QAEPAXI@Z 0041b850 f i mainfunction.obj
  0001:0001a890       ??_GImageManager@@QAEPAXI@Z 0041b890 f i mainfunction.obj
- 0001:0001a8d0       ??_EScyjz14Engine@@UAEPAXI@Z 0041b8d0 f i mainfunction.obj
  0001:0001a8d0       ??_GScyjz14Engine@@UAEPAXI@Z 0041b8d0 f i mainfunction.obj
+ 0001:0001a8d0       ??_EScyjz14Engine@@UAEPAXI@Z 0041b8d0 f i mainfunction.obj
  0001:0001a910       ??_GScyjz14ImageManager@@QAEPAXI@Z 0041b910 f i mainfunction.obj
  0001:0001a950       ??_GScyjz14RawImageData@@QAEPAXI@Z 0041b950 f i mainfunction.obj
- 0001:0001a990       ??_EScyjz14TileManager@@UAEPAXI@Z 0041b990 f i mainfunction.obj
  0001:0001a990       ??_GScyjz14TileManager@@UAEPAXI@Z 0041b990 f i mainfunction.obj
+ 0001:0001a990       ??_EScyjz14TileManager@@UAEPAXI@Z 0041b990 f i mainfunction.obj
  0001:0001a9d0       ??_EStartUpState@@UAEPAXI@Z 0041b9d0 f i mainfunction.obj
  0001:0001a9d0       ??_GStartUpState@@UAEPAXI@Z 0041b9d0 f i mainfunction.obj
- 0001:0001aa10       ??_EState@@UAEPAXI@Z       0041ba10 f i mainfunction.obj
  0001:0001aa10       ??_GState@@UAEPAXI@Z       0041ba10 f i mainfunction.obj
+ 0001:0001aa10       ??_EState@@UAEPAXI@Z       0041ba10 f i mainfunction.obj
  0001:0001aa50       ??_GTileManager@@UAEPAXI@Z 0041ba50 f i mainfunction.obj
  0001:0001aa50       ??_ETileManager@@UAEPAXI@Z 0041ba50 f i mainfunction.obj
  0001:0001aa90       ?_Alloc_sentinel_and_proxy@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VScyjz14RawImageData@@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VScyjz14RawImageData@@@2@@std@@@2@$0A@@std@@@std@@IAEXXZ 0041ba90 f i mainfunction.obj
@@ -971,6 +1000,7 @@
  0001:0001ae80       ?_Extract@?$_In_place_key_extract_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VScyjz14RawImageData@@@2@@2@@std@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VScyjz14RawImageData@@@2@@2@@Z 0041be80 f i mainfunction.obj
  0001:0001ae90       ?_Extract@?$_In_place_key_extract_map@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@U?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@@2@@std@@SAABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@ABU?$pair@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@@2@@Z 0041be90 f i mainfunction.obj
  0001:0001aea0       ?_Extract@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@@std@@PAX@2@V?$_Tree_unchecked_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@@std@@@std@@@std@@U_Iterator_base0@2@@2@@Z 0041bea0 f i mainfunction.obj
+ 0001:0001b2d0       ?insert@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@QAEXV?$initializer_list@U?$pair@$$CBHUMovement@Player@@@std@@@2@@Z 0041c2d0 f i RunningState.obj
  0001:0001b3e0       ?_Get_first@?$_Compressed_pair@U?$default_delete@VScyjz14TileManager@@@std@@PAVScyjz14TileManager@@$00@std@@QAEAAU?$default_delete@VScyjz14TileManager@@@2@XZ 0041c3e0 f i mainfunction.obj
  0001:0001b400       ?_Get_first@?$_Compressed_pair@U?$default_delete@VState@@@std@@PAVState@@$00@std@@QAEAAU?$default_delete@VState@@@2@XZ 0041c400 f i mainfunction.obj
  0001:0001b420       ?_Get_first@?$_Compressed_pair@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@std@@V?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VScyjz14RawImageData@@@2@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$shared_ptr@VScyjz14RawImageData@@@2@@std@@@std@@@2@$00@2@$00@std@@QBEABU?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@XZ 0041c420 f i mainfunction.obj
@@ -1019,6 +1049,7 @@
  0001:0001c350       ?find@?$_Tree@V?$_Tmap_traits@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@U?$less@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@2@V?$allocator@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@@std@@@2@$0A@@std@@@std@@QAE?AV?$_Tree_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V?$weak_ptr@VScyjz14RawImageData@@@2@@std@@@std@@@std@@@2@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@2@@Z 0041d350 f i mainfunction.obj
  0001:0001c3a0       ?get@Scyjz14ImageManager@@SAPAV1@XZ 0041d3a0 f i mainfunction.obj
  0001:0001c450       ?getImagePtrbyURL@Scyjz14ImageManager@@QAE?AV?$shared_ptr@VScyjz14RawImageData@@@std@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@3@_N1@Z 0041d450 f i mainfunction.obj
+ 0001:0001c7b0       ?virtDraw@Scyjz14ImageObject@@UAEXXZ 0041d7b0 f i RunningState.obj
  0001:0001c890       ?getImagebyURL@Scyjz14ImageManager@@QAE?AVScyjz14Image@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N1@Z 0041d890 f i mainfunction.obj
  0001:0001c960       ?get_deleter@?$unique_ptr@V?$vector@HV?$allocator@H@std@@@std@@U?$default_delete@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QAEAAU?$default_delete@V?$vector@HV?$allocator@H@std@@@std@@@2@XZ 0041d960 f i mainfunction.obj
  0001:0001c980       ?initialize@ObjectIndexes@@SAXXZ 0041d980 f i mainfunction.obj
@@ -1067,6 +1098,7 @@
  0001:0001e1f0       ?drawAllObjects@BaseEngine@@UAEXXZ 0041f1f0 f   BaseEngine.obj
  0001:0001e3b0       ?updateAllObjects@BaseEngine@@UAEXH@Z 0041f3b0 f   BaseEngine.obj
  0001:0001e570       _mydebug                   0041f570 f   BaseEngine.obj
+ 0001:0001e770       ?_Insert_node@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@U?$_Tree_id@PAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@QAU32@@Z 0041f770 f i RunningState.obj
  0001:0001ed30       ??$?0ABV?$allocator@PAVDisplayableObject@@@std@@$$V@?$_Compressed_pair@V?$allocator@PAVDisplayableObject@@@std@@V?$_Vector_val@U?$_Simple_types@PAVDisplayableObject@@@std@@@2@$00@std@@QAE@U_One_then_variadic_args_t@1@ABV?$allocator@PAVDisplayableObject@@@1@@Z 0041fd30 f i BaseEngine.obj
  0001:0001ed60       ??$?0PAVDisplayableObject@@@?$allocator@U_Container_proxy@std@@@std@@QAE@ABV?$allocator@PAVDisplayableObject@@@1@@Z 0041fd60 f i BaseEngine.obj
  0001:0001ed80       ??$_Adl_verify_range@V?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVDisplayableObject@@@std@@@std@@@std@@V12@@std@@YAXABV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVDisplayableObject@@@std@@@std@@@0@0@Z 0041fd80 f i BaseEngine.obj
@@ -1098,8 +1130,8 @@
  0001:0001fa10       ??E?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@PAVDisplayableObject@@@std@@@std@@@std@@QAE?AV01@H@Z 00420a10 f i BaseEngine.obj
  0001:0001fa60       ??_EBaseEngine@@UAEPAXI@Z  00420a60 f i BaseEngine.obj
  0001:0001fa60       ??_GBaseEngine@@UAEPAXI@Z  00420a60 f i BaseEngine.obj
- 0001:0001faa0       ??_EDisplayableObjectContainer@@UAEPAXI@Z 00420aa0 f i BaseEngine.obj
  0001:0001faa0       ??_GDisplayableObjectContainer@@UAEPAXI@Z 00420aa0 f i BaseEngine.obj
+ 0001:0001faa0       ??_EDisplayableObjectContainer@@UAEPAXI@Z 00420aa0 f i BaseEngine.obj
  0001:0001fae0       ?_Buy_nonzero@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@AAEXI@Z 00420ae0 f i BaseEngine.obj
  0001:0001fb20       ?_Buy_raw@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@AAEXI@Z 00420b20 f i BaseEngine.obj
  0001:0001fba0       ?_Compat@?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@PAVDisplayableObject@@@std@@@std@@@std@@QBEXABV12@@Z 00420ba0 f i BaseEngine.obj
@@ -1124,8 +1156,8 @@
  0001:00020780       ?redrawRectangle@DisplayableObject@@QAEXXZ 00421780 f   DisplayableObject.obj
  0001:000207c0       ?virtIsObjectInRedrawArea@DisplayableObject@@QAE_NXZ 004217c0 f   DisplayableObject.obj
  0001:00020860       ?fixPosition@DisplayableObject@@QAEXXZ 00421860 f   DisplayableObject.obj
- 0001:00020a30       ??_EDisplayableObject@@UAEPAXI@Z 00421a30 f i DisplayableObject.obj
  0001:00020a30       ??_GDisplayableObject@@UAEPAXI@Z 00421a30 f i DisplayableObject.obj
+ 0001:00020a30       ??_EDisplayableObject@@UAEPAXI@Z 00421a30 f i DisplayableObject.obj
  0001:00020a70       ?convertVirtualPixelToClickedXPosition@BaseEngine@@QAEHH@Z 00421a70 f i DisplayableObject.obj
  0001:00020aa0       ?convertVirtualPixelToClickedYPosition@BaseEngine@@QAEHH@Z 00421aa0 f i DisplayableObject.obj
  0001:00020ad0       ?convertVirtualToRealXPosition@DrawingSurface@@QAEHH@Z 00421ad0 f i DisplayableObject.obj
@@ -1160,11 +1192,11 @@
  0001:00021880       ?getYCentre@DisplayableObject@@QBEHXZ 00422880 f i Player.obj
  0001:000218f0       ??1RunningState@@UAE@XZ    004228f0 f   RunningState.obj
  0001:00021960       ?virtSetupBackgroundBuffer@RunningState@@UAEXXZ 00422960 f   RunningState.obj
- 0001:00021b70       ?virtDrawStringsUnderneath@RunningState@@UAEXXZ 00422b70 f   RunningState.obj
- 0001:00021be0       ?virtDrawStringsOnTop@RunningState@@UAEXXZ 00422be0 f   RunningState.obj
- 0001:00021c90       ?virtMouseDown@RunningState@@UAEXHHH@Z 00422c90 f   RunningState.obj
- 0001:00021ca0       ?virtMouseUp@RunningState@@UAEXHHH@Z 00422ca0 f   RunningState.obj
- 0001:00021d30       ?initialiseState@RunningState@@UAEXXZ 00422d30 f   RunningState.obj
+ 0001:00021a90       ?virtDrawStringsUnderneath@RunningState@@UAEXXZ 00422a90 f   RunningState.obj
+ 0001:00021b00       ?virtDrawStringsOnTop@RunningState@@UAEXXZ 00422b00 f   RunningState.obj
+ 0001:00021bb0       ?virtMouseDown@RunningState@@UAEXHHH@Z 00422bb0 f   RunningState.obj
+ 0001:00021bc0       ?virtMouseUp@RunningState@@UAEXHHH@Z 00422bc0 f   RunningState.obj
+ 0001:00021c50       ?initialiseState@RunningState@@UAEXXZ 00422c50 f   RunningState.obj
  0001:000221c0       ??$?0$$CBHUMovement@Player@@$0A@@?$pair@$$CBHUMovement@Player@@@std@@QAE@ABHABUMovement@Player@@@Z 004231c0 f i RunningState.obj
  0001:00022200       ??$?0$$V@?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@$00@std@@QAE@U_Zero_then_variadic_args_t@1@@Z 00423200 f i RunningState.obj
  0001:00022230       ??$?0ABU?$less@H@std@@U_Zero_then_variadic_args_t@1@@?$_Compressed_pair@U?$less@H@std@@V?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@$00@2@$00@std@@QAE@U_One_then_variadic_args_t@1@ABU?$less@H@1@$$QAU_Zero_then_variadic_args_t@1@@Z 00423230 f i RunningState.obj
@@ -1272,150 +1304,117 @@
  0001:00024bb0       ??0?$map@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@@std@@QAE@V?$initializer_list@U?$pair@$$CBHUMovement@Player@@@std@@@1@@Z 00425bb0 f i RunningState.obj
  0001:00024c30       ??0?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QAE@V?$initializer_list@UDirectionVector@Zombie@@@1@ABV?$allocator@UDirectionVector@Zombie@@@1@@Z 00425c30 f i RunningState.obj
  0001:00024d10       ??0AgentBaseObject@@QAE@HHPAVBaseEngine@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH_N2@Z 00425d10 f i RunningState.obj
- 0001:00024da0       ??0ImagePixelMapping@@QAE@XZ 00425da0 f i RunningState.obj
- 0001:00024dc0       ??0ImagePixelMappingRotate@@QAE@N@Z 00425dc0 f i RunningState.obj
- 0001:00024e00       ??0Player@@QAE@HHPAVBaseEngine@@PAVScyjz14TileManager@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH_N3@Z 00425e00 f i RunningState.obj
- 0001:00025180       ??0Scyjz14Image@@QAE@ABVSimpleImage@@@Z 00426180 f i RunningState.obj
- 0001:000251b0       ??0Scyjz14ImageObject@@QAE@HHPAVBaseEngine@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N2@Z 004261b0 f i RunningState.obj
- 0001:00025340       ??0SimpleImage@@QAE@ABV0@@Z 00426340 f i RunningState.obj
- 0001:00025390       ??0SpriteObject@@QAE@HHPAVBaseEngine@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH_N2@Z 00426390 f i RunningState.obj
- 0001:00025440       ??0Zombie@@QAE@HHPAVBaseEngine@@PAVScyjz14TileManager@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH_N3@Z 00426440 f i RunningState.obj
- 0001:00025640       ??1?$_Alloc_construct_ptr@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAE@XZ 00426640 f i RunningState.obj
- 0001:000256b0       ??1?$_Tidy_guard@V?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@@std@@QAE@XZ 004266b0 f i RunningState.obj
- 0001:000256e0       ??1?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@QAE@XZ 004266e0 f i RunningState.obj
- 0001:00025750       ??1?$_Tree_temp_node@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAE@XZ 00426750 f i RunningState.obj
- 0001:00025820       ??1?$_Tree_temp_node_alloc@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAE@XZ 00426820 f i RunningState.obj
- 0001:00025840       ??1?$_Uninitialized_backout_al@V?$allocator@H@std@@@std@@QAE@XZ 00426840 f i RunningState.obj
- 0001:00025870       ??1?$_Uninitialized_backout_al@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QAE@XZ 00426870 f i RunningState.obj
- 0001:000258a0       ??1?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@std@@QAE@XZ 004268a0 f i RunningState.obj
- 0001:000258c0       ??1?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@std@@QAE@XZ 004268c0 f i RunningState.obj
- 0001:000258e0       ??1?$map@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@@std@@QAE@XZ 004268e0 f i RunningState.obj
- 0001:00025900       ??1?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QAE@XZ 00426900 f i RunningState.obj
- 0001:00025970       ??1AgentBaseObject@@UAE@XZ 00426970 f i RunningState.obj
- 0001:00025990       ??1Player@@UAE@XZ          00426990 f i RunningState.obj
- 0001:000259c0       ??1Scyjz14ImageObject@@UAE@XZ 004269c0 f i RunningState.obj
- 0001:000259f0       ??1SpriteObject@@UAE@XZ    004269f0 f i RunningState.obj
- 0001:00025a10       ??1Zombie@@UAE@XZ          00426a10 f i RunningState.obj
- 0001:00025a40       ??C?$unique_ptr@V?$vector@HV?$allocator@H@std@@@std@@U?$default_delete@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QBEPAV?$vector@HV?$allocator@H@std@@@1@XZ 00426a40 f i RunningState.obj
- 0001:00025a60       ??C?$unique_ptr@VState@@U?$default_delete@VState@@@std@@@std@@QBEPAVState@@XZ 00426a60 f i RunningState.obj
- 0001:00025a80       ??F?$_Tree_unchecked_const_iterator@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@U_Iterator_base0@2@@std@@QAEAAV01@XZ 00426a80 f i RunningState.obj
- 0001:00025b40       ??R?$less@H@std@@QBE_NABH0@Z 00426b40 f i RunningState.obj
- 0001:00025b80       ??_GAgentBaseObject@@UAEPAXI@Z 00426b80 f i RunningState.obj
- 0001:00025b80       ??_EAgentBaseObject@@UAEPAXI@Z 00426b80 f i RunningState.obj
- 0001:00025bc0       ??_EPlayer@@UAEPAXI@Z      00426bc0 f i RunningState.obj
- 0001:00025bc0       ??_GPlayer@@UAEPAXI@Z      00426bc0 f i RunningState.obj
- 0001:00025c00       ??_ERunningState@@UAEPAXI@Z 00426c00 f i RunningState.obj
- 0001:00025c00       ??_GRunningState@@UAEPAXI@Z 00426c00 f i RunningState.obj
- 0001:00025c40       ??_EScyjz14ImageObject@@UAEPAXI@Z 00426c40 f i RunningState.obj
- 0001:00025c40       ??_GScyjz14ImageObject@@UAEPAXI@Z 00426c40 f i RunningState.obj
- 0001:00025c80       ??_ESpriteObject@@UAEPAXI@Z 00426c80 f i RunningState.obj
- 0001:00025c80       ??_GSpriteObject@@UAEPAXI@Z 00426c80 f i RunningState.obj
- 0001:00025cc0       ??_GZombie@@UAEPAXI@Z      00426cc0 f i RunningState.obj
- 0001:00025cc0       ??_EZombie@@UAEPAXI@Z      00426cc0 f i RunningState.obj
- 0001:00025d00       ?GetTileManager@Scyjz14Engine@@QAEPAVScyjz14TileManager@@XZ 00426d00 f i RunningState.obj
- 0001:00025d20       ?_Alloc_sentinel_and_proxy@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IAEXXZ 00426d20 f i RunningState.obj
- 0001:00025df0       ?_Allocate@?$_Alloc_construct_ptr@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAEXXZ 00426df0 f i RunningState.obj
- 0001:00025e20       ?_Buy_nonzero@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEXI@Z 00426e20 f i RunningState.obj
- 0001:00025e60       ?_Buy_raw@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEXI@Z 00426e60 f i RunningState.obj
- 0001:00025ee0       ?_Calculate_growth@?$vector@HV?$allocator@H@std@@@std@@ABEII@Z 00426ee0 f i RunningState.obj
- 0001:00025f50       ?_Change_array@?$vector@HV?$allocator@H@std@@@std@@AAEXQAHII@Z 00426f50 f i RunningState.obj
- 0001:00026020       ?_Check_grow_by_1@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IAEXXZ 00427020 f i RunningState.obj
- 0001:00026060       ?_Destroy@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEXPAUDirectionVector@Zombie@@0@Z 00427060 f i RunningState.obj
- 0001:00026090       ?_Extract@?$_In_place_key_extract_map@HU?$pair@$$CBHUMovement@Player@@@std@@@std@@SAABHABU?$pair@$$CBHUMovement@Player@@@2@@Z 00427090 f i RunningState.obj
- 0001:000260a0       ?_Get_first@?$_Compressed_pair@U?$less@H@std@@V?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@$00@2@$00@std@@QBEABU?$less@H@2@XZ 004270a0 f i RunningState.obj
- 0001:000260c0       ?_Get_first@?$_Compressed_pair@V?$allocator@H@std@@V?$_Vector_val@U?$_Simple_types@H@std@@@2@$00@std@@QBEABV?$allocator@H@2@XZ 004270c0 f i RunningState.obj
- 0001:000260e0       ?_Get_first@?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@$00@std@@QAEAAV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@XZ 004270e0 f i RunningState.obj
- 0001:00026100       ?_Get_first@?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@$00@std@@QBEABV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@XZ 00427100 f i RunningState.obj
- 0001:00026120       ?_Get_first@?$_Compressed_pair@V?$allocator@UDirectionVector@Zombie@@@std@@V?$_Vector_val@U?$_Simple_types@UDirectionVector@Zombie@@@std@@@2@$00@std@@QAEAAV?$allocator@UDirectionVector@Zombie@@@2@XZ 00427120 f i RunningState.obj
- 0001:00026140       ?_Get_first@?$_Compressed_pair@V?$allocator@UDirectionVector@Zombie@@@std@@V?$_Vector_val@U?$_Simple_types@UDirectionVector@Zombie@@@std@@@2@$00@std@@QBEABV?$allocator@UDirectionVector@Zombie@@@2@XZ 00427140 f i RunningState.obj
- 0001:00026160       ?_Get_scary@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IAEPAV?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@XZ 00427160 f i RunningState.obj
- 0001:00026180       ?_Getal@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IAEAAV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@XZ 00427180 f i RunningState.obj
- 0001:000261a0       ?_Getal@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IBEABV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@XZ 004271a0 f i RunningState.obj
- 0001:000261c0       ?_Getal@?$vector@HV?$allocator@H@std@@@std@@ABEABV?$allocator@H@2@XZ 004271c0 f i RunningState.obj
- 0001:000261e0       ?_Getal@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEAAV?$allocator@UDirectionVector@Zombie@@@2@XZ 004271e0 f i RunningState.obj
- 0001:00026200       ?_Getal@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@ABEABV?$allocator@UDirectionVector@Zombie@@@2@XZ 00427200 f i RunningState.obj
- 0001:00026220       ?_Getcomp@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IBEABU?$less@H@2@XZ 00427220 f i RunningState.obj
- 0001:00026240       ?_Insert_node@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@U?$_Tree_id@PAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@QAU32@@Z 00427240 f i RunningState.obj
- 0001:000264d0       ?_Lrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@@Z 004274d0 f i RunningState.obj
- 0001:00026590       ?_Make_iterator_offset@?$vector@HV?$allocator@H@std@@@std@@AAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@2@I@Z 00427590 f i RunningState.obj
- 0001:000265e0       ?_Max@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@SAPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@PAU32@@Z 004275e0 f i RunningState.obj
- 0001:00026610       ?_Orphan_range@?$vector@HV?$allocator@H@std@@@std@@ABEXPAH0@Z 00427610 f i RunningState.obj
- 0001:00026640       ?_Orphan_range_locked@?$vector@HV?$allocator@H@std@@@std@@ABEXPAH0@Z 00427640 f i RunningState.obj
- 0001:000266d0       ?_Orphan_range_unlocked@?$vector@HV?$allocator@H@std@@@std@@ABEXPAH0@Z 004276d0 f i RunningState.obj
- 0001:00026760       ?_Release@?$_Alloc_construct_ptr@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@XZ 00427760 f i RunningState.obj
- 0001:00026790       ?_Release@?$_Uninitialized_backout_al@V?$allocator@H@std@@@std@@QAEPAHXZ 00427790 f i RunningState.obj
- 0001:000267c0       ?_Release@?$_Uninitialized_backout_al@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QAEPAUDirectionVector@Zombie@@XZ 004277c0 f i RunningState.obj
- 0001:000267f0       ?_Rrotate@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@QAEXPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@@Z 004277f0 f i RunningState.obj
- 0001:000268c0       ?_Tidy@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEXXZ 004278c0 f i RunningState.obj
- 0001:000269c0       ?_Umove@?$vector@HV?$allocator@H@std@@@std@@AAEPAHPAH00@Z 004279c0 f i RunningState.obj
- 0001:00026a00       ?_Umove@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@AAEPAPAVDisplayableObject@@PAPAV3@00@Z 00427a00 f i RunningState.obj
- 0001:00026a40       ?_Umove_if_noexcept1@?$vector@HV?$allocator@H@std@@@std@@AAEXPAH00U?$integral_constant@_N$00@2@@Z 00427a40 f i RunningState.obj
- 0001:00026a80       ?_Umove_if_noexcept@?$vector@HV?$allocator@H@std@@@std@@AAEXPAH00@Z 00427a80 f i RunningState.obj
- 0001:00026ac0       ?_Xlength@?$vector@HV?$allocator@H@std@@@std@@CAXXZ 00427ac0 f i RunningState.obj
- 0001:00026ae0       ?_Xlength@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@CAXXZ 00427ae0 f i RunningState.obj
- 0001:00026b00       ?addPlayerIndexes@ObjectIndexes@@SAXABV?$initializer_list@H@std@@@Z 00427b00 f i RunningState.obj
- 0001:00026be0       ?addZombieIndexes@ObjectIndexes@@SAXABV?$initializer_list@H@std@@@Z 00427be0 f i RunningState.obj
- 0001:00026cc0       ?allocate@?$allocator@H@std@@QAEPAHI@Z 00427cc0 f i RunningState.obj
- 0001:00026cf0       ?allocate@?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@I@Z 00427cf0 f i RunningState.obj
- 0001:00026d20       ?allocate@?$allocator@UDirectionVector@Zombie@@@std@@QAEPAUDirectionVector@Zombie@@I@Z 00427d20 f i RunningState.obj
- 0001:00026d50       ?appendObjectToArray@DisplayableObjectContainer@@QAEXPAVDisplayableObject@@@Z 00427d50 f i RunningState.obj
- 0001:00026d90       ?begin@?$initializer_list@H@std@@QBEPBHXZ 00427d90 f i RunningState.obj
- 0001:00026db0       ?begin@?$initializer_list@U?$pair@$$CBHUMovement@Player@@@std@@@std@@QBEPBU?$pair@$$CBHUMovement@Player@@@2@XZ 00427db0 f i RunningState.obj
- 0001:00026dd0       ?begin@?$initializer_list@UDirectionVector@Zombie@@@std@@QBEPBUDirectionVector@Zombie@@XZ 00427dd0 f i RunningState.obj
- 0001:00026df0       ?capacity@?$vector@HV?$allocator@H@std@@@std@@QBEIXZ 00427df0 f i RunningState.obj
- 0001:00026e20       ?changePixelColour@ImagePixelMapping@@UAE_NHHAAHPAVDrawingSurface@@@Z 00427e20 f i RunningState.obj
- 0001:00026e40       ?clear@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@QAEXXZ 00427e40 f i RunningState.obj
- 0001:00026ee0       ?clearContents@DisplayableObjectContainer@@QAEXXZ 00427ee0 f i RunningState.obj
- 0001:00026f20       ?deallocate@?$_Default_allocator_traits@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@SAXAAV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@QAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@I@Z 00427f20 f i RunningState.obj
- 0001:00026f40       ?deallocate@?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@QAEXQAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@I@Z 00427f40 f i RunningState.obj
- 0001:00026f70       ?deallocate@?$allocator@UDirectionVector@Zombie@@@std@@QAEXQAUDirectionVector@Zombie@@I@Z 00427f70 f i RunningState.obj
- 0001:00026fa0       ?drawBackgroundRectangle@BaseEngine@@QAEXHHHHI@Z 00427fa0 f i RunningState.obj
- 0001:00026fe0       ?drawBackgroundString@BaseEngine@@QAEXHHPBDIPAVFont@@@Z 00427fe0 f i RunningState.obj
- 0001:00027020       ?end@?$initializer_list@H@std@@QBEPBHXZ 00428020 f i RunningState.obj
- 0001:00027040       ?end@?$initializer_list@U?$pair@$$CBHUMovement@Player@@@std@@@std@@QBEPBU?$pair@$$CBHUMovement@Player@@@2@XZ 00428040 f i RunningState.obj
- 0001:00027060       ?end@?$initializer_list@UDirectionVector@Zombie@@@std@@QBEPBUDirectionVector@Zombie@@XZ 00428060 f i RunningState.obj
- 0001:00027080       ?end@?$vector@HV?$allocator@H@std@@@std@@QAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@2@XZ 00428080 f i RunningState.obj
- 0001:000270d0       ?get@?$unique_ptr@VScyjz14TileManager@@U?$default_delete@VScyjz14TileManager@@@std@@@std@@QBEPAVScyjz14TileManager@@XZ 004280d0 f i RunningState.obj
- 0001:000270f0       ?getBackgroundSurface@BaseEngine@@QAEPAVDrawingSurface@@XZ 004280f0 f i RunningState.obj
- 0001:00027110       ?getBaseScreenY@Scyjz14TileManager@@QAEHXZ 00428110 f i RunningState.obj
- 0001:00027130       ?getContentCount@DisplayableObjectContainer@@QBEHXZ 00428130 f i RunningState.obj
- 0001:00027150       ?getDrawingRegionBottom@DisplayableObject@@QBEHXZ 00428150 f i RunningState.obj
- 0001:00027180       ?getFrameCount@AgentBaseObject@@MAEHXZ 00428180 f i RunningState.obj
- 0001:000271b0       ?getHeight@Scyjz14Image@@QBEHXZ 004281b0 f i RunningState.obj
- 0001:000271e0       ?getWidth@Scyjz14Image@@QBEHXZ 004281e0 f i RunningState.obj
- 0001:000272a0       ?insert@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@QAEXV?$initializer_list@U?$pair@$$CBHUMovement@Player@@@std@@@2@@Z 004282a0 f i RunningState.obj
- 0001:00027300       ?lockAndSetupBackground@BaseEngine@@QAEXXZ 00428300 f i RunningState.obj
- 0001:00027610       ?max_size@?$_Default_allocator_traits@V?$allocator@H@std@@@std@@SAIABV?$allocator@H@2@@Z 00428610 f i RunningState.obj
- 0001:00027620       ?max_size@?$_Default_allocator_traits@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@SAIABV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@@Z 00428620 f i RunningState.obj
- 0001:00027670       ?max_size@?$_Default_allocator_traits@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@SAIABV?$allocator@UDirectionVector@Zombie@@@2@@Z 00428670 f i RunningState.obj
- 0001:000276c0       ?max_size@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@QBEIXZ 004286c0 f i RunningState.obj
- 0001:00027760       ?push_back@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@QAEXABQAVDisplayableObject@@@Z 00428760 f i RunningState.obj
- 0001:00027780       ?setFrameRate@SpriteObject@@QAEXH@Z 00428780 f i RunningState.obj
- 0001:000277d0       ?setSpeed@AgentBaseObject@@QAEXH@Z 004287d0 f i RunningState.obj
- 0001:000277f0       ?setState@Scyjz14Engine@@QAEXPAVState@@@Z 004287f0 f i RunningState.obj
- 0001:00027860       ?unlockBackgroundForDrawing@BaseEngine@@QAEXXZ 00428860 f i RunningState.obj
- 0001:00027910       ?updateAnimationFrame@SpriteObject@@MAEXH@Z 00428910 f i RunningState.obj
+ 0001:00024dc0       ??0Scyjz14Image@@QAE@ABVSimpleImage@@@Z 00425dc0 f i RunningState.obj
+ 0001:00024e00       ??0Scyjz14ImageObject@@QAE@HHPAVBaseEngine@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@_N2@Z 00425e00 f i RunningState.obj
+ 0001:000251b0       ??0SpriteObject@@QAE@HHPAVBaseEngine@@ABV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HH_N2@Z 004261b0 f i RunningState.obj
+ 0001:00025390       ??1?$_Alloc_construct_ptr@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAE@XZ 00426390 f i RunningState.obj
+ 0001:00025440       ??1?$_Tidy_guard@V?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@@std@@QAE@XZ 00426440 f i RunningState.obj
+ 0001:00025640       ??1?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@QAE@XZ 00426640 f i RunningState.obj
+ 0001:000256e0       ??1?$_Tree_temp_node_alloc@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAE@XZ 004266e0 f i RunningState.obj
+ 0001:00025750       ??1?$_Uninitialized_backout_al@V?$allocator@H@std@@@std@@QAE@XZ 00426750 f i RunningState.obj
+ 0001:00025840       ??1?$_Vector_const_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@std@@QAE@XZ 00426840 f i RunningState.obj
+ 0001:00025870       ??1?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@std@@QAE@XZ 00426870 f i RunningState.obj
+ 0001:000258a0       ??1?$map@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@@std@@QAE@XZ 004268a0 f i RunningState.obj
+ 0001:000258e0       ??1AgentBaseObject@@UAE@XZ 004268e0 f i RunningState.obj
+ 0001:00025900       ??1Player@@UAE@XZ          00426900 f i RunningState.obj
+ 0001:00025970       ??1Scyjz14ImageObject@@UAE@XZ 00426970 f i RunningState.obj
+ 0001:00025990       ??1SpriteObject@@UAE@XZ    00426990 f i RunningState.obj
+ 0001:000259c0       ??1Zombie@@UAE@XZ          004269c0 f i RunningState.obj
+ 0001:000259f0       ??C?$unique_ptr@V?$vector@HV?$allocator@H@std@@@std@@U?$default_delete@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@QBEPAV?$vector@HV?$allocator@H@std@@@1@XZ 004269f0 f i RunningState.obj
+ 0001:00025a10       ??C?$unique_ptr@VState@@U?$default_delete@VState@@@std@@@std@@QBEPAVState@@XZ 00426a10 f i RunningState.obj
+ 0001:00025a80       ??_GAgentBaseObject@@UAEPAXI@Z 00426a80 f i RunningState.obj
+ 0001:00025a80       ??_EAgentBaseObject@@UAEPAXI@Z 00426a80 f i RunningState.obj
+ 0001:00025b40       ??_EPlayer@@UAEPAXI@Z      00426b40 f i RunningState.obj
+ 0001:00025b40       ??_GPlayer@@UAEPAXI@Z      00426b40 f i RunningState.obj
+ 0001:00025b80       ??_ERunningState@@UAEPAXI@Z 00426b80 f i RunningState.obj
+ 0001:00025b80       ??_GRunningState@@UAEPAXI@Z 00426b80 f i RunningState.obj
+ 0001:00025bc0       ??_EScyjz14ImageObject@@UAEPAXI@Z 00426bc0 f i RunningState.obj
+ 0001:00025bc0       ??_GScyjz14ImageObject@@UAEPAXI@Z 00426bc0 f i RunningState.obj
+ 0001:00025c00       ??_GSpriteObject@@UAEPAXI@Z 00426c00 f i RunningState.obj
+ 0001:00025c00       ??_ESpriteObject@@UAEPAXI@Z 00426c00 f i RunningState.obj
+ 0001:00025c40       ??_GZombie@@UAEPAXI@Z      00426c40 f i RunningState.obj
+ 0001:00025c40       ??_EZombie@@UAEPAXI@Z      00426c40 f i RunningState.obj
+ 0001:00025c80       ?GetTileManager@Scyjz14Engine@@QAEPAVScyjz14TileManager@@XZ 00426c80 f i RunningState.obj
+ 0001:00025d20       ?_Buy_nonzero@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEXI@Z 00426d20 f i RunningState.obj
+ 0001:00025ee0       ?_Check_grow_by_1@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IAEXXZ 00426ee0 f i RunningState.obj
+ 0001:00025f50       ?_Destroy@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEXPAUDirectionVector@Zombie@@0@Z 00426f50 f i RunningState.obj
+ 0001:00026020       ?_Extract@?$_In_place_key_extract_map@HU?$pair@$$CBHUMovement@Player@@@std@@@std@@SAABHABU?$pair@$$CBHUMovement@Player@@@2@@Z 00427020 f i RunningState.obj
+ 0001:00026060       ?_Get_first@?$_Compressed_pair@U?$less@H@std@@V?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@$00@2@$00@std@@QBEABU?$less@H@2@XZ 00427060 f i RunningState.obj
+ 0001:00026090       ?_Get_first@?$_Compressed_pair@V?$allocator@H@std@@V?$_Vector_val@U?$_Simple_types@H@std@@@2@$00@std@@QBEABV?$allocator@H@2@XZ 00427090 f i RunningState.obj
+ 0001:000260a0       ?_Get_first@?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@$00@std@@QAEAAV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@XZ 004270a0 f i RunningState.obj
+ 0001:000260c0       ?_Get_first@?$_Compressed_pair@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@V?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@$00@std@@QBEABV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@XZ 004270c0 f i RunningState.obj
+ 0001:000260e0       ?_Get_first@?$_Compressed_pair@V?$allocator@UDirectionVector@Zombie@@@std@@V?$_Vector_val@U?$_Simple_types@UDirectionVector@Zombie@@@std@@@2@$00@std@@QAEAAV?$allocator@UDirectionVector@Zombie@@@2@XZ 004270e0 f i RunningState.obj
+ 0001:00026100       ?_Get_first@?$_Compressed_pair@V?$allocator@UDirectionVector@Zombie@@@std@@V?$_Vector_val@U?$_Simple_types@UDirectionVector@Zombie@@@std@@@2@$00@std@@QBEABV?$allocator@UDirectionVector@Zombie@@@2@XZ 00427100 f i RunningState.obj
+ 0001:00026120       ?_Get_scary@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IAEPAV?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@2@XZ 00427120 f i RunningState.obj
+ 0001:00026140       ?_Getal@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IAEAAV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@XZ 00427140 f i RunningState.obj
+ 0001:00026160       ?_Getal@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IBEABV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@XZ 00427160 f i RunningState.obj
+ 0001:00026180       ?_Getal@?$vector@HV?$allocator@H@std@@@std@@ABEABV?$allocator@H@2@XZ 00427180 f i RunningState.obj
+ 0001:000261a0       ?_Getal@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@AAEAAV?$allocator@UDirectionVector@Zombie@@@2@XZ 004271a0 f i RunningState.obj
+ 0001:000261c0       ?_Getal@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@ABEABV?$allocator@UDirectionVector@Zombie@@@2@XZ 004271c0 f i RunningState.obj
+ 0001:000261e0       ?_Getcomp@?$_Tree@V?$_Tmap_traits@HUMovement@Player@@U?$less@H@std@@V?$allocator@U?$pair@$$CBHUMovement@Player@@@std@@@4@$0A@@std@@@std@@IBEABU?$less@H@2@XZ 004271e0 f i RunningState.obj
+ 0001:00026240       ?_Make_iterator_offset@?$vector@HV?$allocator@H@std@@@std@@AAE?AV?$_Vector_iterator@V?$_Vector_val@U?$_Simple_types@H@std@@@std@@@2@I@Z 00427240 f i RunningState.obj
+ 0001:000264d0       ?_Max@?$_Tree_val@U?$_Tree_simple_types@U?$pair@$$CBHUMovement@Player@@@std@@@std@@@std@@SAPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@PAU32@@Z 004274d0 f i RunningState.obj
+ 0001:00026590       ?_Orphan_range@?$vector@HV?$allocator@H@std@@@std@@ABEXPAH0@Z 00427590 f i RunningState.obj
+ 0001:00026640       ?_Release@?$_Alloc_construct_ptr@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@XZ 00427640 f i RunningState.obj
+ 0001:000266d0       ?_Release@?$_Uninitialized_backout_al@V?$allocator@H@std@@@std@@QAEPAHXZ 004276d0 f i RunningState.obj
+ 0001:00026760       ?_Release@?$_Uninitialized_backout_al@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QAEPAUDirectionVector@Zombie@@XZ 00427760 f i RunningState.obj
+ 0001:000267f0       ?_Umove@?$vector@HV?$allocator@H@std@@@std@@AAEPAHPAH00@Z 004277f0 f i RunningState.obj
+ 0001:000268c0       ?_Umove@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@AAEPAPAVDisplayableObject@@PAPAV3@00@Z 004278c0 f i RunningState.obj
+ 0001:000269c0       ?_Umove_if_noexcept1@?$vector@HV?$allocator@H@std@@@std@@AAEXPAH00U?$integral_constant@_N$00@2@@Z 004279c0 f i RunningState.obj
+ 0001:00026a00       ?_Umove_if_noexcept@?$vector@HV?$allocator@H@std@@@std@@AAEXPAH00@Z 00427a00 f i RunningState.obj
+ 0001:00026a40       ?_Xlength@?$vector@HV?$allocator@H@std@@@std@@CAXXZ 00427a40 f i RunningState.obj
+ 0001:00026a80       ?_Xlength@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@CAXXZ 00427a80 f i RunningState.obj
+ 0001:00026b00       ?allocate@?$allocator@H@std@@QAEPAHI@Z 00427b00 f i RunningState.obj
+ 0001:00026be0       ?allocate@?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@QAEPAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@I@Z 00427be0 f i RunningState.obj
+ 0001:00026cc0       ?allocate@?$allocator@UDirectionVector@Zombie@@@std@@QAEPAUDirectionVector@Zombie@@I@Z 00427cc0 f i RunningState.obj
+ 0001:00026cf0       ?appendObjectToArray@DisplayableObjectContainer@@QAEXPAVDisplayableObject@@@Z 00427cf0 f i RunningState.obj
+ 0001:00026d20       ?begin@?$initializer_list@H@std@@QBEPBHXZ 00427d20 f i RunningState.obj
+ 0001:00026d50       ?begin@?$initializer_list@U?$pair@$$CBHUMovement@Player@@@std@@@std@@QBEPBU?$pair@$$CBHUMovement@Player@@@2@XZ 00427d50 f i RunningState.obj
+ 0001:00026d90       ?begin@?$initializer_list@UDirectionVector@Zombie@@@std@@QBEPBUDirectionVector@Zombie@@XZ 00427d90 f i RunningState.obj
+ 0001:00026df0       ?clearContents@DisplayableObjectContainer@@QAEXXZ 00427df0 f i RunningState.obj
+ 0001:00026e20       ?deallocate@?$_Default_allocator_traits@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@SAXAAV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@QAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@I@Z 00427e20 f i RunningState.obj
+ 0001:00026e40       ?deallocate@?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@QAEXQAU?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@2@I@Z 00427e40 f i RunningState.obj
+ 0001:00026ee0       ?deallocate@?$allocator@UDirectionVector@Zombie@@@std@@QAEXQAUDirectionVector@Zombie@@I@Z 00427ee0 f i RunningState.obj
+ 0001:00026f40       ?drawBackgroundString@BaseEngine@@QAEXHHPBDIPAVFont@@@Z 00427f40 f i RunningState.obj
+ 0001:00026f70       ?end@?$initializer_list@H@std@@QBEPBHXZ 00427f70 f i RunningState.obj
+ 0001:00026fa0       ?end@?$initializer_list@U?$pair@$$CBHUMovement@Player@@@std@@@std@@QBEPBU?$pair@$$CBHUMovement@Player@@@2@XZ 00427fa0 f i RunningState.obj
+ 0001:00026fe0       ?end@?$initializer_list@UDirectionVector@Zombie@@@std@@QBEPBUDirectionVector@Zombie@@XZ 00427fe0 f i RunningState.obj
+ 0001:00027040       ?get@?$unique_ptr@VScyjz14TileManager@@U?$default_delete@VScyjz14TileManager@@@std@@@std@@QBEPAVScyjz14TileManager@@XZ 00428040 f i RunningState.obj
+ 0001:00027060       ?getBackgroundSurface@BaseEngine@@QAEPAVDrawingSurface@@XZ 00428060 f i RunningState.obj
+ 0001:00027080       ?getContentCount@DisplayableObjectContainer@@QBEHXZ 00428080 f i RunningState.obj
+ 0001:000270d0       ?getDrawingRegionBottom@DisplayableObject@@QBEHXZ 004280d0 f i RunningState.obj
+ 0001:000270f0       ?getDrawingRegionRight@DisplayableObject@@QBEHXZ 004280f0 f i RunningState.obj
+ 0001:00027110       ?getFrameCount@AgentBaseObject@@MAEHXZ 00428110 f i RunningState.obj
+ 0001:00027130       ?getHeight@Scyjz14Image@@QBEHXZ 00428130 f i RunningState.obj
+ 0001:00027150       ?getWidth@Scyjz14Image@@QBEHXZ 00428150 f i RunningState.obj
+ 0001:000271e0       ?lockAndSetupBackground@BaseEngine@@QAEXXZ 004281e0 f i RunningState.obj
+ 0001:000272a0       ?lockBackgroundForDrawing@BaseEngine@@QAEXXZ 004282a0 f i RunningState.obj
+ 0001:00027300       ?max_size@?$_Default_allocator_traits@V?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@std@@@std@@SAIABV?$allocator@U?$_Tree_node@U?$pair@$$CBHUMovement@Player@@@std@@PAX@std@@@2@@Z 00428300 f i RunningState.obj
+ 0001:00027620       ?max_size@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QBEIXZ 00428620 f i RunningState.obj
+ 0001:00027670       ?push_back@?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@QAEXABQAVDisplayableObject@@@Z 00428670 f i RunningState.obj
+ 0001:000276c0       ?setFrameRate@SpriteObject@@QAEXH@Z 004286c0 f i RunningState.obj
  0001:00027a40       ?virtSetupBackgroundBuffer@Scyjz14Engine@@UAEXXZ 00428a40 f   Scyjz14Engine.obj
  0001:00027a70       ?virtDrawStringsUnderneath@Scyjz14Engine@@UAEXXZ 00428a70 f   Scyjz14Engine.obj
  0001:00027aa0       ?virtDrawStringsOnTop@Scyjz14Engine@@UAEXXZ 00428aa0 f   Scyjz14Engine.obj
  0001:00027ad0       ?virtMouseDown@Scyjz14Engine@@UAEXHHH@Z 00428ad0 f   Scyjz14Engine.obj
  0001:00027b10       ?virtMouseUp@Scyjz14Engine@@UAEXHHH@Z 00428b10 f   Scyjz14Engine.obj
  0001:00027b50       ?virtInitialiseObjects@Scyjz14Engine@@UAEHXZ 00428b50 f   Scyjz14Engine.obj
- 0001:00027bd0       ?mapCoordinates@CroppedImagePixelMapping@@UAE_NAAN0ABVSimpleImage@@@Z 00428bd0 f i Scyjz14Image.obj
+ 0001:00027bd0       ?changePixelColour@ImagePixelMapping@@UAE_NHHAAHPAVDrawingSurface@@@Z 00428bd0 f i Scyjz14Image.obj
  0001:00027c70       ??0Scyjz14Image@@QAE@V?$shared_ptr@VScyjz14RawImageData@@@std@@@Z 00428c70 f   Scyjz14Image.obj
  0001:00027cf0       ?renderImageApplyingMappingAndTransparency@Scyjz14Image@@QBEXPAVBaseEngine@@PAVDrawingSurface@@HHHHPAVImagePixelMapping@@@Z 00428cf0 f   Scyjz14Image.obj
  0001:00028000       ?renderImageWithAlpha@Scyjz14Image@@QBEXPAVDrawingSurface@@HHHHHH@Z 00429000 f   Scyjz14Image.obj
- 0001:00028150       ?blendPixels@Scyjz14Image@@QBEIIII@Z 00429150 f   Scyjz14Image.obj
- 0001:000281d0       ?isColorSimilar@@YA_NHHH@Z 004291d0 f   Scyjz14Image.obj
- 0001:00028400       ?convertClickedToVirtualPixelXPosition@BaseEngine@@QAEHH@Z 00429400 f i Scyjz14Image.obj
- 0001:00028430       ?convertClickedToVirtualPixelYPosition@BaseEngine@@QAEHH@Z 00429430 f i Scyjz14Image.obj
- 0001:00028460       ?getPixel@DrawingSurface@@QAEIHH@Z 00429460 f i Scyjz14Image.obj
- 0001:000284e0       ?rawGetPixel@DrawingSurface@@QBEIHH@Z 004294e0 f i Scyjz14Image.obj
+ 0001:00028150       ?renderImageWithAlphaAndOverlay@Scyjz14Image@@QBEXPAVDrawingSurface@@HHHHHHI@Z 00429150 f   Scyjz14Image.obj
+ 0001:000282c0       ?blendPixels@Scyjz14Image@@QBEIIII@Z 004292c0 f   Scyjz14Image.obj
+ 0001:00028340       ?isColorSimilar@@YA_NHHH@Z 00429340 f   Scyjz14Image.obj
+ 0001:00028430       ?convertClickedToVirtualPixelXPosition@BaseEngine@@QAEHH@Z 00429430 f i Scyjz14Image.obj
+ 0001:00028460       ?convertClickedToVirtualPixelYPosition@BaseEngine@@QAEHH@Z 00429460 f i Scyjz14Image.obj
+ 0001:000284e0       ?getPixel@DrawingSurface@@QAEIHH@Z 004294e0 f i Scyjz14Image.obj
  0001:00028550       ?getRawPixelColour@Scyjz14RawImageData@@QBEHHH@Z 00429550 f   Scyjz14RawImageData.obj
  0001:000285a0       ?loadImage@Scyjz14RawImageData@@QAE_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@HHHHH_N@Z 004295a0 f   Scyjz14RawImageData.obj
  0001:000288c0       ?virtDrawTileAt@Scyjz14TileManager@@UBEXPAVBaseEngine@@PAVDrawingSurface@@HHHH@Z 004298c0 f   Scyjz14TileManager.obj
  0001:00028a00       ?setUpTileManager@Scyjz14TileManager@@QAEXPAVBaseEngine@@@Z 00429a00 f   Scyjz14TileManager.obj
  0001:00028b60       ?isPassable@Scyjz14TileManager@@QBE_NH@Z 00429b60 f   Scyjz14TileManager.obj
+ 0001:00028bc0       ?isPassable@Scyjz14TileManager@@QBE_NHH@Z 00429bc0 f   Scyjz14TileManager.obj
  0001:00028c80       ?setMapSize@TileManager@@QAEXHH@Z 00429c80 f i Scyjz14TileManager.obj
  0001:00028d30       ?setMapValue@TileManager@@QAEHHHH@Z 00429d30 f i Scyjz14TileManager.obj
  0001:00028d70       ??0SimpleImage@@QAE@XZ     00429d70 f   SimpleImage.obj
@@ -1463,8 +1462,8 @@
  0001:0002b330       ??0RunningState@@QAE@PAVScyjz14Engine@@@Z 0042c330 f i StartUpState.obj
  0001:0002b360       ??1Button@@UAE@XZ          0042c360 f i StartUpState.obj
  0001:0002b390       ??A?$vector@PAVDisplayableObject@@V?$allocator@PAVDisplayableObject@@@std@@@std@@QBEABQAVDisplayableObject@@I@Z 0042c390 f i StartUpState.obj
- 0001:0002b440       ??_GButton@@UAEPAXI@Z      0042c440 f i StartUpState.obj
  0001:0002b440       ??_EButton@@UAEPAXI@Z      0042c440 f i StartUpState.obj
+ 0001:0002b440       ??_GButton@@UAEPAXI@Z      0042c440 f i StartUpState.obj
  0001:0002b480       ?getDisplayableObject@DisplayableObjectContainer@@QBEPAVDisplayableObject@@H@Z 0042c480 f i StartUpState.obj
  0001:0002b4c0       ?setEnterImage@Button@@QAEXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z 0042c4c0 f i StartUpState.obj
  0001:0002b580       ?setJumpState@Button@@QAEX_N@Z 0042c580 f i StartUpState.obj
@@ -1486,10 +1485,10 @@
  0001:0002c570       ??0MovementPosition@@QAE@XZ 0042d570 f i BouncingBall.obj
  0001:0002c5f0       ??1BouncingBall1@@UAE@XZ   0042d5f0 f i BouncingBall.obj
  0001:0002c610       ??1BouncingBall2@@UAE@XZ   0042d610 f i BouncingBall.obj
- 0001:0002c630       ??_GBouncingBall1@@UAEPAXI@Z 0042d630 f i BouncingBall.obj
  0001:0002c630       ??_EBouncingBall1@@UAEPAXI@Z 0042d630 f i BouncingBall.obj
- 0001:0002c670       ??_EBouncingBall2@@UAEPAXI@Z 0042d670 f i BouncingBall.obj
+ 0001:0002c630       ??_GBouncingBall1@@UAEPAXI@Z 0042d630 f i BouncingBall.obj
  0001:0002c670       ??_GBouncingBall2@@UAEPAXI@Z 0042d670 f i BouncingBall.obj
+ 0001:0002c670       ??_EBouncingBall2@@UAEPAXI@Z 0042d670 f i BouncingBall.obj
  0001:0002c6b0       ??_EBouncingBall@@UAEPAXI@Z 0042d6b0 f i BouncingBall.obj
  0001:0002c6b0       ??_GBouncingBall@@UAEPAXI@Z 0042d6b0 f i BouncingBall.obj
  0001:0002c6f0       ?calculate@MovementPosition@@QAEXH@Z 0042d6f0 f i BouncingBall.obj
@@ -1527,8 +1526,7 @@
  0001:0002e5d0       ?_Unchecked_end@?$vector@HV?$allocator@H@std@@@std@@QBEPBHXZ 0042f5d0 f i Zombie.obj
  0001:0002e5f0       ?_Unchecked_end@?$vector@UDirectionVector@Zombie@@V?$allocator@UDirectionVector@Zombie@@@std@@@std@@QBEPBUDirectionVector@Zombie@@XZ 0042f5f0 f i Zombie.obj
  0001:0002e610       ?checkRectangles@CollisionDetection@@SA_NHHHHHHHH@Z 0042f610 f i Zombie.obj
- 0001:0002e660       ?getDrawingRegionRight@DisplayableObject@@QBEHXZ 0042f660 f i Zombie.obj
- 0001:0002e690       ?getPlayerIndexes@ObjectIndexes@@SAABV?$vector@HV?$allocator@H@std@@@std@@XZ 0042f690 f i Zombie.obj
+ 0001:0002e660       ?getPlayerIndexes@ObjectIndexes@@SAABV?$vector@HV?$allocator@H@std@@@std@@XZ 0042f660 f i Zombie.obj
  0001:0002e6e0       ?virtInitialise@ZoomingDemo@@UAEHXZ 0042f6e0 f   ZoomingDemo.obj
  0001:0002e730       ?virtSetupBackgroundBuffer@ZoomingDemo@@UAEXXZ 0042f730 f   ZoomingDemo.obj
  0001:0002e750       ?virtInitialiseObjects@ZoomingDemo@@UAEHXZ 0042f750 f   ZoomingDemo.obj
@@ -1576,8 +1574,8 @@
  0001:0002ffc0       ??1MazeDemoObject@@UAE@XZ  00430fc0 f   MazeDemoObject.obj
  0001:0002ffe0       ?virtDraw@MazeDemoObject@@UAEXXZ 00430fe0 f   MazeDemoObject.obj
  0001:00030090       ?virtDoUpdate@MazeDemoObject@@UAEXH@Z 00431090 f   MazeDemoObject.obj
- 0001:00030730       ??_GMazeDemoObject@@UAEPAXI@Z 00431730 f i MazeDemoObject.obj
  0001:00030730       ??_EMazeDemoObject@@UAEPAXI@Z 00431730 f i MazeDemoObject.obj
+ 0001:00030730       ??_GMazeDemoObject@@UAEPAXI@Z 00431730 f i MazeDemoObject.obj
  0001:00030770       ?GetTileManager@MazeDemoMain@@QAEAAVMazeDemoTileManager@@XZ 00431770 f i MazeDemoObject.obj
  0001:00030790       ?checkCircles@CollisionDetection@@SA_NHHHHH@Z 00431790 f i MazeDemoObject.obj
  0001:000307f0       ?drawForegroundOval@BaseEngine@@QAEXHHHHI@Z 004317f0 f i MazeDemoObject.obj
@@ -1641,8 +1639,8 @@
  0001:00031150       ??_V@YAXPAX@Z              00432150 f   MSVCRTD:delete_array.obj
  0001:00031170       @__security_check_cookie@4 00432170 f   MSVCRTD:secchk.obj
  0001:00031190       ??1type_info@@UAE@XZ       00432190 f   MSVCRTD:std_type_info_static.obj
- 0001:000311b0       ??_Etype_info@@UAEPAXI@Z   004321b0 f i MSVCRTD:std_type_info_static.obj
  0001:000311b0       ??_Gtype_info@@UAEPAXI@Z   004321b0 f i MSVCRTD:std_type_info_static.obj
+ 0001:000311b0       ??_Etype_info@@UAEPAXI@Z   004321b0 f i MSVCRTD:std_type_info_static.obj
  0001:00031330       _NtCurrentTeb              00432330 f i MSVCRTD:utility.obj
  0001:00031340       ___scrt_acquire_startup_lock 00432340 f   MSVCRTD:utility.obj
  0001:000313a0       ___scrt_dllmain_after_initialize_c 004323a0 f   MSVCRTD:utility.obj
@@ -1803,23 +1801,23 @@
  0001:000331a5       _WideCharToMultiByte@32    004341a5 f   kernel32:KERNEL32.dll
  0001:000331ab       _SDL_SetMainReady          004341ab f   SDL2:SDL2.dll
  0001:000331b1       _SDL_ShowSimpleMessageBox  004341b1 f   SDL2:SDL2.dll
+ 0001:000331c0       ___scrt_stub_for_acrt_initialize 004341c0 f   MSVCRTD:ucrt_stubs.obj
  0001:000331c0       ___acrt_initialize         004341c0 f   MSVCRTD:ucrt_stubs.obj
  0001:000331c0       ___vcrt_initialize         004341c0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000331c0       ___scrt_stub_for_acrt_initialize 004341c0 f   MSVCRTD:ucrt_stubs.obj
  0001:000331d0       ___acrt_thread_attach      004341d0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000331d0       ___scrt_stub_for_acrt_thread_attach 004341d0 f   MSVCRTD:ucrt_stubs.obj
  0001:000331d0       ___vcrt_thread_attach      004341d0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:000331d0       ___scrt_stub_for_acrt_thread_attach 004341d0 f   MSVCRTD:ucrt_stubs.obj
  0001:000331e0       ___vcrt_thread_detach      004341e0 f   MSVCRTD:ucrt_stubs.obj
- 0001:000331e0       ___acrt_thread_detach      004341e0 f   MSVCRTD:ucrt_stubs.obj
  0001:000331e0       ___scrt_stub_for_acrt_thread_detach 004341e0 f   MSVCRTD:ucrt_stubs.obj
+ 0001:000331e0       ___acrt_thread_detach      004341e0 f   MSVCRTD:ucrt_stubs.obj
  0001:000331f0       ___vcrt_uninitialize       004341f0 f   MSVCRTD:ucrt_stubs.obj
  0001:000331f0       ___scrt_stub_for_acrt_uninitialize 004341f0 f   MSVCRTD:ucrt_stubs.obj
  0001:000331f0       ___acrt_uninitialize       004341f0 f   MSVCRTD:ucrt_stubs.obj
  0001:00033200       ___vcrt_uninitialize_critical 00434200 f   MSVCRTD:ucrt_stubs.obj
- 0001:00033200       ___acrt_uninitialize_critical 00434200 f   MSVCRTD:ucrt_stubs.obj
  0001:00033200       ___scrt_stub_for_acrt_uninitialize_critical 00434200 f   MSVCRTD:ucrt_stubs.obj
- 0001:00033210       ___scrt_stub_for_is_c_termination_complete 00434210 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00033200       ___acrt_uninitialize_critical 00434200 f   MSVCRTD:ucrt_stubs.obj
  0001:00033210       __is_c_termination_complete 00434210 f   MSVCRTD:ucrt_stubs.obj
+ 0001:00033210       ___scrt_stub_for_is_c_termination_complete 00434210 f   MSVCRTD:ucrt_stubs.obj
  0001:00033220       __filter_x86_sse2_floating_point_exception_default 00434220 f   MSVCRTD:x86_exception_filter.obj
  0001:00033220       __filter_x86_sse2_floating_point_exception 00434220 f   MSVCRTD:x86_exception_filter.obj
  0002:00000000       ___xc_a                    0043b000     MSVCRTD:initializers.obj
@@ -1830,6 +1828,9 @@
  0002:0000092c       ___xp_z                    0043b92c     MSVCRTD:initializers.obj
  0002:00000a30       ___xt_a                    0043ba30     MSVCRTD:initializers.obj
  0002:00000b34       ___xt_z                    0043bb34     MSVCRTD:initializers.obj
+ 0002:00000ec8       ??_C@_0CF@NNBLLPGF@vector?5insert?5iterator?5outside?5@ 0043bec8     RunningState.obj
+ 0002:00000ef0       ??_C@_0BJ@HAJGEHKO@transposed?5pointer?5range@ 0043bef0     RunningState.obj
+ 0002:00000f0c       ??_C@_1DG@FJIKMGFD@?$AA?$CC?$AAt?$AAr?$AAa?$AAn?$AAs?$AAp?$AAo?$AAs?$AAe?$AAd?$AA?5?$AAp?$AAo?$AAi@ 0043bf0c     RunningState.obj
  0002:00001224       ??_7exception@std@@6B@     0043c224     DraggingDemo.obj
  0002:00001230       ??_C@_0BC@EOODALEL@Unknown?5exception@ 0043c230     DraggingDemo.obj
  0002:0000124c       ??_7bad_alloc@std@@6B@     0043c24c     DraggingDemo.obj
@@ -1930,15 +1931,7 @@
  0002:000043d0       ??_7AgentBaseObject@@6B@   0043f3d0     RunningState.obj
  0002:0000441c       ??_7Player@@6B@            0043f41c     RunningState.obj
  0002:00004468       ??_7Zombie@@6B@            0043f468     RunningState.obj
- 0002:000044bc       ??_7ImagePixelMapping@@6B@ 0043f4bc     RunningState.obj
- 0002:000044cc       ??_7ImagePixelMappingRotate@@6B@ 0043f4cc     RunningState.obj
- 0002:000044d8       ??_C@_0CF@NNBLLPGF@vector?5insert?5iterator?5outside?5@ 0043f4d8     RunningState.obj
  0002:00004508       ??_C@_1EO@HCJPCNBE@?$AA?$CC?$AAv?$AAe?$AAc?$AAt?$AAo?$AAr?$AA?5?$AAi?$AAn?$AAs?$AAe?$AAr?$AAt?$AA?5@ 0043f508     RunningState.obj
- 0002:00004568       ??_C@_0BJ@HAJGEHKO@transposed?5pointer?5range@ 0043f568     RunningState.obj
- 0002:00004588       ??_C@_1DG@FJIKMGFD@?$AA?$CC?$AAt?$AAr?$AAa?$AAn?$AAs?$AAp?$AAo?$AAs?$AAe?$AAd?$AA?5?$AAp?$AAo?$AAi@ 0043f588     RunningState.obj
- 0002:000045c8       __real@bfe61de768dfd5c3    0043f5c8     RunningState.obj
- 0002:000045d8       __real@bffba5614317cb35    0043f5d8     RunningState.obj
- 0002:000045e8       __real@c00197c987c952c4    0043f5e8     RunningState.obj
  0002:000048b0       ??_7CroppedImagePixelMapping@@6B@ 0043f8b0     Scyjz14Image.obj
  0002:00005a88       ??_7BouncingObject@@6B@    00440a88     SimpleDemo.obj
  0002:00005ac8       __real@0000000000000000    00440ac8     SimpleDemo.obj
@@ -2073,42 +2066,35 @@
  0002:000090ec       ??_R4FilterPoints@@6B@     004440ec     BaseEngine.obj
  0002:00009104       ??_R4DisplayableObjectContainer@@6B@ 00444104     BaseEngine.obj
  0002:0000911c       ??_R4DisplayableObject@@6B@ 0044411c     DisplayableObject.obj
- 0002:00009134       ??_R4ImagePixelMapping@@6B@ 00444134     RunningState.obj
- 0002:0000914c       ??_R3ImagePixelMapping@@8  0044414c     RunningState.obj
- 0002:00009160       ??_R2ImagePixelMapping@@8  00444160     RunningState.obj
- 0002:00009168       ??_R1A@?0A@EA@ImagePixelMapping@@8 00444168     RunningState.obj
- 0002:0000918c       ??_R4RunningState@@6B@     0044418c     RunningState.obj
- 0002:000091a4       ??_R3RunningState@@8       004441a4     RunningState.obj
- 0002:000091b8       ??_R2RunningState@@8       004441b8     RunningState.obj
- 0002:000091c4       ??_R1A@?0A@EA@RunningState@@8 004441c4     RunningState.obj
- 0002:000091e8       ??_R4Scyjz14ImageObject@@6B@ 004441e8     RunningState.obj
- 0002:00009200       ??_R3Scyjz14ImageObject@@8 00444200     RunningState.obj
- 0002:00009214       ??_R2Scyjz14ImageObject@@8 00444214     RunningState.obj
- 0002:00009220       ??_R1A@?0A@EA@Scyjz14ImageObject@@8 00444220     RunningState.obj
- 0002:00009244       ??_R4SpriteObject@@6B@     00444244     RunningState.obj
- 0002:0000925c       ??_R3SpriteObject@@8       0044425c     RunningState.obj
- 0002:00009270       ??_R2SpriteObject@@8       00444270     RunningState.obj
- 0002:00009280       ??_R1A@?0A@EA@SpriteObject@@8 00444280     RunningState.obj
- 0002:000092a4       ??_R4AgentBaseObject@@6B@  004442a4     RunningState.obj
- 0002:000092bc       ??_R3AgentBaseObject@@8    004442bc     RunningState.obj
- 0002:000092d0       ??_R2AgentBaseObject@@8    004442d0     RunningState.obj
- 0002:000092e4       ??_R1A@?0A@EA@AgentBaseObject@@8 004442e4     RunningState.obj
- 0002:00009308       ??_R4Player@@6B@           00444308     RunningState.obj
- 0002:00009320       ??_R3Player@@8             00444320     RunningState.obj
- 0002:00009334       ??_R2Player@@8             00444334     RunningState.obj
- 0002:00009350       ??_R1A@?0A@EA@Player@@8    00444350     RunningState.obj
- 0002:00009374       ??_R4Zombie@@6B@           00444374     RunningState.obj
- 0002:0000938c       ??_R3Zombie@@8             0044438c     RunningState.obj
- 0002:000093a0       ??_R2Zombie@@8             004443a0     RunningState.obj
- 0002:000093bc       ??_R1A@?0A@EA@Zombie@@8    004443bc     RunningState.obj
- 0002:000093e0       ??_R4ImagePixelMappingRotate@@6B@ 004443e0     RunningState.obj
- 0002:000093f8       ??_R3ImagePixelMappingRotate@@8 004443f8     RunningState.obj
- 0002:0000940c       ??_R2ImagePixelMappingRotate@@8 0044440c     RunningState.obj
- 0002:00009418       ??_R1A@?0A@EA@ImagePixelMappingRotate@@8 00444418     RunningState.obj
- 0002:0000943c       ??_R4CroppedImagePixelMapping@@6B@ 0044443c     Scyjz14Image.obj
- 0002:00009454       ??_R3CroppedImagePixelMapping@@8 00444454     Scyjz14Image.obj
- 0002:00009468       ??_R2CroppedImagePixelMapping@@8 00444468     Scyjz14Image.obj
- 0002:00009474       ??_R1A@?0A@EA@CroppedImagePixelMapping@@8 00444474     Scyjz14Image.obj
+ 0002:00009134       ??_R4RunningState@@6B@     00444134     RunningState.obj
+ 0002:0000914c       ??_R3RunningState@@8       0044414c     RunningState.obj
+ 0002:0000915c       ??_R2RunningState@@8       0044415c     RunningState.obj
+ 0002:00009168       ??_R1A@?0A@EA@RunningState@@8 00444168     RunningState.obj
+ 0002:0000918c       ??_R4Scyjz14ImageObject@@6B@ 0044418c     RunningState.obj
+ 0002:000091a4       ??_R3Scyjz14ImageObject@@8 004441a4     RunningState.obj
+ 0002:000091b8       ??_R2Scyjz14ImageObject@@8 004441b8     RunningState.obj
+ 0002:000091c4       ??_R1A@?0A@EA@Scyjz14ImageObject@@8 004441c4     RunningState.obj
+ 0002:000091e8       ??_R4SpriteObject@@6B@     004441e8     RunningState.obj
+ 0002:00009200       ??_R3SpriteObject@@8       00444200     RunningState.obj
+ 0002:00009210       ??_R2SpriteObject@@8       00444210     RunningState.obj
+ 0002:00009220       ??_R1A@?0A@EA@SpriteObject@@8 00444220     RunningState.obj
+ 0002:00009244       ??_R4AgentBaseObject@@6B@  00444244     RunningState.obj
+ 0002:0000925c       ??_R3AgentBaseObject@@8    0044425c     RunningState.obj
+ 0002:0000926c       ??_R2AgentBaseObject@@8    0044426c     RunningState.obj
+ 0002:00009280       ??_R1A@?0A@EA@AgentBaseObject@@8 00444280     RunningState.obj
+ 0002:000092a4       ??_R4Player@@6B@           004442a4     RunningState.obj
+ 0002:000092bc       ??_R3Player@@8             004442bc     RunningState.obj
+ 0002:000092cc       ??_R2Player@@8             004442cc     RunningState.obj
+ 0002:000092e4       ??_R1A@?0A@EA@Player@@8    004442e4     RunningState.obj
+ 0002:00009308       ??_R4Zombie@@6B@           00444308     RunningState.obj
+ 0002:00009320       ??_R3Zombie@@8             00444320     RunningState.obj
+ 0002:00009334       ??_R2Zombie@@8             00444334     RunningState.obj
+ 0002:00009350       ??_R1A@?0A@EA@Zombie@@8    00444350     RunningState.obj
+ 0002:0000943c       ??_R3ImagePixelMapping@@8  0044443c     Scyjz14Image.obj
+ 0002:00009454       ??_R2ImagePixelMapping@@8  00444454     Scyjz14Image.obj
+ 0002:0000945c       ??_R3CroppedImagePixelMapping@@8 0044445c     Scyjz14Image.obj
+ 0002:00009474       ??_R4CroppedImagePixelMapping@@6B@ 00444474     Scyjz14Image.obj
+ 0002:00009488       ??_R2CroppedImagePixelMapping@@8 00444488     Scyjz14Image.obj
  0002:00009498       ??_R4BouncingObject@@6B@   00444498     SimpleDemo.obj
  0002:000094b0       ??_R3BouncingObject@@8     004444b0     SimpleDemo.obj
  0002:000094c4       ??_R2BouncingObject@@8     004444c4     SimpleDemo.obj
@@ -2155,6 +2141,8 @@
  0002:00009894       ??_R3type_info@@8          00444894     MSVCRTD:std_type_info_static.obj
  0002:000098a8       ??_R2type_info@@8          004448a8     MSVCRTD:std_type_info_static.obj
  0002:000098b0       ??_R1A@?0A@EA@type_info@@8 004448b0     MSVCRTD:std_type_info_static.obj
+ 0002:000098cc       ??_R1A@?0A@EA@ImagePixelMapping@@8 004448cc     Scyjz14Image.obj
+ 0002:000098e8       ??_R1A@?0A@EA@CroppedImagePixelMapping@@8 004448e8     Scyjz14Image.obj
  0002:00009a34       ___safe_se_handler_table   00444a34     <linker-defined>
  0002:00009f5c       ___rtc_iaa                 00444f5c     MSVCRTD:initsect.obj
  0002:0000a060       ___rtc_izz                 00445060     MSVCRTD:initsect.obj
@@ -2196,15 +2184,13 @@
  0003:00000514       ??_R0?AVState@@@8          00448514     mainfunction.obj
  0003:0000052c       ??_R0?AVStartUpState@@@8   0044852c     mainfunction.obj
  0003:0000054c       ??_R0?AV?$_Ref_count@VScyjz14RawImageData@@@std@@@8 0044854c     mainfunction.obj
- 0003:0000058c       ??_R0?AVImagePixelMapping@@@8 0044858c     RunningState.obj
- 0003:000005b4       ??_R0?AVRunningState@@@8   004485b4     RunningState.obj
- 0003:000005d4       ??_R0?AVScyjz14ImageObject@@@8 004485d4     RunningState.obj
- 0003:000005fc       ??_R0?AVSpriteObject@@@8   004485fc     RunningState.obj
- 0003:0000061c       ??_R0?AVAgentBaseObject@@@8 0044861c     RunningState.obj
- 0003:00000640       ??_R0?AVPlayer@@@8         00448640     RunningState.obj
- 0003:0000065c       ??_R0?AVZombie@@@8         0044865c     RunningState.obj
- 0003:00000678       ??_R0?AVImagePixelMappingRotate@@@8 00448678     RunningState.obj
- 0003:000006a8       ??_R0?AVCroppedImagePixelMapping@@@8 004486a8     Scyjz14Image.obj
+ 0003:0000058c       ??_R0?AVRunningState@@@8   0044858c     RunningState.obj
+ 0003:000005a8       ??_R0?AVScyjz14ImageObject@@@8 004485a8     RunningState.obj
+ 0003:000005d4       ??_R0?AVSpriteObject@@@8   004485d4     RunningState.obj
+ 0003:000005fc       ??_R0?AVAgentBaseObject@@@8 004485fc     RunningState.obj
+ 0003:0000061c       ??_R0?AVPlayer@@@8         0044861c     RunningState.obj
+ 0003:00000640       ??_R0?AVZombie@@@8         00448640     RunningState.obj
+ 0003:000006a8       ??_R0?AVImagePixelMapping@@@8 004486a8     Scyjz14Image.obj
  0003:000006d8       ??_R0?AVBouncingObject@@@8 004486d8     SimpleDemo.obj
  0003:000006fc       ??_R0?AVStarfieldDemo@@@8  004486fc     StarfieldDemo.obj
  0003:00000720       ??_R0?AVBouncingBall@@@8   00448720     BouncingBall.obj
@@ -2215,6 +2201,7 @@
  0003:000007e4       ??_R0?AVMazeDemoTileManager@@@8 004487e4     MazeDemoMain.obj
  0003:0000080c       ??_R0?AVMazeDemoObject@@@8 0044880c     MazeDemoObject.obj
  0003:00000830       ??_R0?AVtype_info@@@8      00448830     MSVCRTD:std_type_info_static.obj
+ 0003:00000848       ??_R0?AVCroppedImagePixelMapping@@@8 00448848     Scyjz14Image.obj
  0003:00000968       ?_OptionsStorage@?1??__local_stdio_printf_options@@9@4_KA 00448968     DraggingDemo.obj
  0003:00000974       ?zombieIndexes@ObjectIndexes@@0V?$unique_ptr@V?$vector@HV?$allocator@H@std@@@std@@U?$default_delete@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@A 00448974     ObjectIndexes.obj
  0003:00000978       ?playerIndexes@ObjectIndexes@@0V?$unique_ptr@V?$vector@HV?$allocator@H@std@@@std@@U?$default_delete@V?$vector@HV?$allocator@H@std@@@std@@@2@@std@@A 00448978     ObjectIndexes.obj
@@ -4299,21 +4286,21 @@
  0002:0000020c       ??playerIndexes$initializer$@ObjectIndexes@@0P6AXXZA@@3P6AXXZA 0043b20c     ObjectIndexes.obj
  0002:0000051c       ?pre_c_initializer@@3P6AHXZA 0043b51c     MSVCRTD:exe_main.obj
  0002:00000620       ?post_pgo_initializer@@3P6AHXZA 0043b620     MSVCRTD:exe_main.obj
- 0002:00000c40       $SG90490                   0043bc40     Button.obj
- 0002:00000c64       $SG90491                   0043bc64     Button.obj
- 0002:00000c88       $SG103407                  0043bc88     Button.obj
- 0002:00000c9c       $SG103408                  0043bc9c     Button.obj
- 0002:00000ca0       $SG103409                  0043bca0     Button.obj
- 0002:00000cdc       $SG103411                  0043bcdc     Button.obj
- 0002:00000ce0       $SG103410                  0043bce0     Button.obj
- 0002:00000d54       $SG103412                  0043bd54     Button.obj
- 0002:00000d7c       $SG103715                  0043bd7c     Button.obj
- 0002:00000db8       $SG103914                  0043bdb8     Button.obj
- 0002:00000dd4       $SG103915                  0043bdd4     Button.obj
- 0002:00000dd8       $SG103916                  0043bdd8     Button.obj
- 0002:00000e14       $SG103918                  0043be14     Button.obj
- 0002:00000e18       $SG103917                  0043be18     Button.obj
- 0002:00000e90       $SG103919                  0043be90     Button.obj
+ 0002:00000c40       $SG90499                   0043bc40     Button.obj
+ 0002:00000c64       $SG90500                   0043bc64     Button.obj
+ 0002:00000c88       $SG103416                  0043bc88     Button.obj
+ 0002:00000c9c       $SG103417                  0043bc9c     Button.obj
+ 0002:00000ca0       $SG103418                  0043bca0     Button.obj
+ 0002:00000cdc       $SG103420                  0043bcdc     Button.obj
+ 0002:00000ce0       $SG103419                  0043bce0     Button.obj
+ 0002:00000d54       $SG103421                  0043bd54     Button.obj
+ 0002:00000d7c       $SG103724                  0043bd7c     Button.obj
+ 0002:00000db8       $SG103923                  0043bdb8     Button.obj
+ 0002:00000dd4       $SG103924                  0043bdd4     Button.obj
+ 0002:00000dd8       $SG103925                  0043bdd8     Button.obj
+ 0002:00000e14       $SG103927                  0043be14     Button.obj
+ 0002:00000e18       $SG103926                  0043be18     Button.obj
+ 0002:00000e90       $SG103928                  0043be90     Button.obj
  0002:00000f50       $SG86472                   0043bf50     DraggingDemo.obj
  0002:00000f5c       $SG86474                   0043bf5c     DraggingDemo.obj
  0002:00000f68       $SG97632                   0043bf68     DraggingDemo.obj
@@ -4380,21 +4367,21 @@
  0002:00002898       $SG98178                   0043d898     ImageMappingDemo.obj
  0002:00002910       $SG98179                   0043d910     ImageMappingDemo.obj
  0002:00002914       $SG98180                   0043d914     ImageMappingDemo.obj
- 0002:00002a58       $SG106953                  0043da58     mainfunction.obj
- 0002:00002a6c       $SG106954                  0043da6c     mainfunction.obj
- 0002:00002a70       $SG106955                  0043da70     mainfunction.obj
- 0002:00002aac       $SG106957                  0043daac     mainfunction.obj
- 0002:00002ab0       $SG106956                  0043dab0     mainfunction.obj
- 0002:00002b24       $SG106958                  0043db24     mainfunction.obj
- 0002:00002b4c       $SG107407                  0043db4c     mainfunction.obj
- 0002:00002b88       $SG107618                  0043db88     mainfunction.obj
- 0002:00002ba4       $SG107619                  0043dba4     mainfunction.obj
- 0002:00002ba8       $SG107620                  0043dba8     mainfunction.obj
- 0002:00002be4       $SG107622                  0043dbe4     mainfunction.obj
- 0002:00002be8       $SG107621                  0043dbe8     mainfunction.obj
- 0002:00002c60       $SG107623                  0043dc60     mainfunction.obj
- 0002:00002c98       $SG93254                   0043dc98     mainfunction.obj
- 0002:00002cc8       $SG93255                   0043dcc8     mainfunction.obj
+ 0002:00002a58       $SG106959                  0043da58     mainfunction.obj
+ 0002:00002a6c       $SG106960                  0043da6c     mainfunction.obj
+ 0002:00002a70       $SG106961                  0043da70     mainfunction.obj
+ 0002:00002aac       $SG106963                  0043daac     mainfunction.obj
+ 0002:00002ab0       $SG106962                  0043dab0     mainfunction.obj
+ 0002:00002b24       $SG106964                  0043db24     mainfunction.obj
+ 0002:00002b4c       $SG107413                  0043db4c     mainfunction.obj
+ 0002:00002b88       $SG107624                  0043db88     mainfunction.obj
+ 0002:00002ba4       $SG107625                  0043dba4     mainfunction.obj
+ 0002:00002ba8       $SG107626                  0043dba8     mainfunction.obj
+ 0002:00002be4       $SG107628                  0043dbe4     mainfunction.obj
+ 0002:00002be8       $SG107627                  0043dbe8     mainfunction.obj
+ 0002:00002c60       $SG107629                  0043dc60     mainfunction.obj
+ 0002:00002c98       $SG93260                   0043dc98     mainfunction.obj
+ 0002:00002cc8       $SG93261                   0043dcc8     mainfunction.obj
  0002:00002ee0       $SG140777                  0043dee0     BaseEngine.obj
  0002:00002f10       $SG140810                  0043df10     BaseEngine.obj
  0002:00002f28       $SG152421                  0043df28     BaseEngine.obj
@@ -4432,79 +4419,79 @@
  0002:00003b64       $SG80514                   0043eb64     FontManager.obj
  0002:00003ba0       $SG72485                   0043eba0     FontManager.obj
  0002:00003bbc       $SG72489                   0043ebbc     FontManager.obj
- 0002:00003c38       $SG105406                  0043ec38     Player.obj
- 0002:00003c4c       $SG105407                  0043ec4c     Player.obj
- 0002:00003c50       $SG105408                  0043ec50     Player.obj
- 0002:00003c8c       $SG105410                  0043ec8c     Player.obj
- 0002:00003c90       $SG105409                  0043ec90     Player.obj
- 0002:00003d04       $SG105411                  0043ed04     Player.obj
- 0002:00003d2c       $SG105744                  0043ed2c     Player.obj
- 0002:00003d68       $SG106052                  0043ed68     Player.obj
- 0002:00003d84       $SG106053                  0043ed84     Player.obj
- 0002:00003d88       $SG106054                  0043ed88     Player.obj
- 0002:00003dc4       $SG106056                  0043edc4     Player.obj
- 0002:00003dc8       $SG106055                  0043edc8     Player.obj
- 0002:00003e40       $SG106057                  0043ee40     Player.obj
- 0002:00003ef0       $SG109230                  0043eef0     RunningState.obj
- 0002:00003f04       $SG109231                  0043ef04     RunningState.obj
- 0002:00003f08       $SG109232                  0043ef08     RunningState.obj
- 0002:00003f44       $SG109234                  0043ef44     RunningState.obj
- 0002:00003f48       $SG109233                  0043ef48     RunningState.obj
- 0002:00003fbc       $SG109235                  0043efbc     RunningState.obj
- 0002:00003fe4       $SG109719                  0043efe4     RunningState.obj
- 0002:00004020       $SG110039                  0043f020     RunningState.obj
- 0002:0000403c       $SG110040                  0043f03c     RunningState.obj
- 0002:00004040       $SG110041                  0043f040     RunningState.obj
- 0002:0000407c       $SG110043                  0043f07c     RunningState.obj
- 0002:00004080       $SG110042                  0043f080     RunningState.obj
- 0002:000040f8       $SG110044                  0043f0f8     RunningState.obj
- 0002:00004130       $SG94666                   0043f130     RunningState.obj
- 0002:00004154       $SG94668                   0043f154     RunningState.obj
- 0002:00004178       $SG94670                   0043f178     RunningState.obj
- 0002:0000419c       $SG94683                   0043f19c     RunningState.obj
- 0002:000041bc       $SG94689                   0043f1bc     RunningState.obj
- 0002:000041e0       $SG94688                   0043f1e0     RunningState.obj
- 0002:00004224       $SG94696                   0043f224     RunningState.obj
- 0002:00004244       $SG94697                   0043f244     RunningState.obj
- 0002:000045f8       $SG109248                  0043f5f8     Scyjz14Engine.obj
- 0002:0000460c       $SG109249                  0043f60c     Scyjz14Engine.obj
- 0002:00004610       $SG109250                  0043f610     Scyjz14Engine.obj
- 0002:0000464c       $SG109252                  0043f64c     Scyjz14Engine.obj
- 0002:00004650       $SG109251                  0043f650     Scyjz14Engine.obj
- 0002:000046c4       $SG109253                  0043f6c4     Scyjz14Engine.obj
- 0002:000046ec       $SG109737                  0043f6ec     Scyjz14Engine.obj
- 0002:00004728       $SG110057                  0043f728     Scyjz14Engine.obj
- 0002:00004744       $SG110058                  0043f744     Scyjz14Engine.obj
- 0002:00004748       $SG110059                  0043f748     Scyjz14Engine.obj
- 0002:00004784       $SG110061                  0043f784     Scyjz14Engine.obj
- 0002:00004788       $SG110060                  0043f788     Scyjz14Engine.obj
- 0002:00004800       $SG110062                  0043f800     Scyjz14Engine.obj
- 0002:000048c0       $SG97764                   0043f8c0     Scyjz14Image.obj
- 0002:000048d4       $SG97765                   0043f8d4     Scyjz14Image.obj
- 0002:000048d8       $SG97766                   0043f8d8     Scyjz14Image.obj
- 0002:00004914       $SG97768                   0043f914     Scyjz14Image.obj
- 0002:00004918       $SG97767                   0043f918     Scyjz14Image.obj
- 0002:0000498c       $SG97769                   0043f98c     Scyjz14Image.obj
- 0002:000049b4       $SG97997                   0043f9b4     Scyjz14Image.obj
- 0002:000049f0       $SG98171                   0043f9f0     Scyjz14Image.obj
- 0002:00004a0c       $SG98172                   0043fa0c     Scyjz14Image.obj
- 0002:00004a10       $SG98173                   0043fa10     Scyjz14Image.obj
- 0002:00004a4c       $SG98175                   0043fa4c     Scyjz14Image.obj
- 0002:00004a50       $SG98174                   0043fa50     Scyjz14Image.obj
- 0002:00004ac8       $SG98176                   0043fac8     Scyjz14Image.obj
- 0002:00004b78       $SG102943                  0043fb78     Scyjz14ImageManager.obj
- 0002:00004b8c       $SG102944                  0043fb8c     Scyjz14ImageManager.obj
- 0002:00004b90       $SG102945                  0043fb90     Scyjz14ImageManager.obj
- 0002:00004bcc       $SG102947                  0043fbcc     Scyjz14ImageManager.obj
- 0002:00004bd0       $SG102946                  0043fbd0     Scyjz14ImageManager.obj
- 0002:00004c44       $SG102948                  0043fc44     Scyjz14ImageManager.obj
- 0002:00004c6c       $SG103249                  0043fc6c     Scyjz14ImageManager.obj
- 0002:00004ca8       $SG103448                  0043fca8     Scyjz14ImageManager.obj
- 0002:00004cc4       $SG103449                  0043fcc4     Scyjz14ImageManager.obj
- 0002:00004cc8       $SG103450                  0043fcc8     Scyjz14ImageManager.obj
- 0002:00004d04       $SG103452                  0043fd04     Scyjz14ImageManager.obj
- 0002:00004d08       $SG103451                  0043fd08     Scyjz14ImageManager.obj
- 0002:00004d80       $SG103453                  0043fd80     Scyjz14ImageManager.obj
+ 0002:00003c38       $SG105413                  0043ec38     Player.obj
+ 0002:00003c4c       $SG105414                  0043ec4c     Player.obj
+ 0002:00003c50       $SG105415                  0043ec50     Player.obj
+ 0002:00003c8c       $SG105417                  0043ec8c     Player.obj
+ 0002:00003c90       $SG105416                  0043ec90     Player.obj
+ 0002:00003d04       $SG105418                  0043ed04     Player.obj
+ 0002:00003d2c       $SG105751                  0043ed2c     Player.obj
+ 0002:00003d68       $SG106059                  0043ed68     Player.obj
+ 0002:00003d84       $SG106060                  0043ed84     Player.obj
+ 0002:00003d88       $SG106061                  0043ed88     Player.obj
+ 0002:00003dc4       $SG106063                  0043edc4     Player.obj
+ 0002:00003dc8       $SG106062                  0043edc8     Player.obj
+ 0002:00003e40       $SG106064                  0043ee40     Player.obj
+ 0002:00003ef0       $SG109234                  0043eef0     RunningState.obj
+ 0002:00003f04       $SG109235                  0043ef04     RunningState.obj
+ 0002:00003f08       $SG109236                  0043ef08     RunningState.obj
+ 0002:00003f44       $SG109238                  0043ef44     RunningState.obj
+ 0002:00003f48       $SG109237                  0043ef48     RunningState.obj
+ 0002:00003fbc       $SG109239                  0043efbc     RunningState.obj
+ 0002:00003fe4       $SG109723                  0043efe4     RunningState.obj
+ 0002:00004020       $SG110043                  0043f020     RunningState.obj
+ 0002:0000403c       $SG110044                  0043f03c     RunningState.obj
+ 0002:00004040       $SG110045                  0043f040     RunningState.obj
+ 0002:0000407c       $SG110047                  0043f07c     RunningState.obj
+ 0002:00004080       $SG110046                  0043f080     RunningState.obj
+ 0002:000040f8       $SG110048                  0043f0f8     RunningState.obj
+ 0002:00004130       $SG94673                   0043f130     RunningState.obj
+ 0002:00004154       $SG94675                   0043f154     RunningState.obj
+ 0002:00004178       $SG94677                   0043f178     RunningState.obj
+ 0002:0000419c       $SG94687                   0043f19c     RunningState.obj
+ 0002:000041bc       $SG94693                   0043f1bc     RunningState.obj
+ 0002:000041e0       $SG94692                   0043f1e0     RunningState.obj
+ 0002:00004224       $SG94700                   0043f224     RunningState.obj
+ 0002:00004244       $SG94701                   0043f244     RunningState.obj
+ 0002:000045f8       $SG109255                  0043f5f8     Scyjz14Engine.obj
+ 0002:0000460c       $SG109256                  0043f60c     Scyjz14Engine.obj
+ 0002:00004610       $SG109257                  0043f610     Scyjz14Engine.obj
+ 0002:0000464c       $SG109259                  0043f64c     Scyjz14Engine.obj
+ 0002:00004650       $SG109258                  0043f650     Scyjz14Engine.obj
+ 0002:000046c4       $SG109260                  0043f6c4     Scyjz14Engine.obj
+ 0002:000046ec       $SG109744                  0043f6ec     Scyjz14Engine.obj
+ 0002:00004728       $SG110064                  0043f728     Scyjz14Engine.obj
+ 0002:00004744       $SG110065                  0043f744     Scyjz14Engine.obj
+ 0002:00004748       $SG110066                  0043f748     Scyjz14Engine.obj
+ 0002:00004784       $SG110068                  0043f784     Scyjz14Engine.obj
+ 0002:00004788       $SG110067                  0043f788     Scyjz14Engine.obj
+ 0002:00004800       $SG110069                  0043f800     Scyjz14Engine.obj
+ 0002:000048c0       $SG97805                   0043f8c0     Scyjz14Image.obj
+ 0002:000048d4       $SG97806                   0043f8d4     Scyjz14Image.obj
+ 0002:000048d8       $SG97807                   0043f8d8     Scyjz14Image.obj
+ 0002:00004914       $SG97809                   0043f914     Scyjz14Image.obj
+ 0002:00004918       $SG97808                   0043f918     Scyjz14Image.obj
+ 0002:0000498c       $SG97810                   0043f98c     Scyjz14Image.obj
+ 0002:000049b4       $SG98038                   0043f9b4     Scyjz14Image.obj
+ 0002:000049f0       $SG98212                   0043f9f0     Scyjz14Image.obj
+ 0002:00004a0c       $SG98213                   0043fa0c     Scyjz14Image.obj
+ 0002:00004a10       $SG98214                   0043fa10     Scyjz14Image.obj
+ 0002:00004a4c       $SG98216                   0043fa4c     Scyjz14Image.obj
+ 0002:00004a50       $SG98215                   0043fa50     Scyjz14Image.obj
+ 0002:00004ac8       $SG98217                   0043fac8     Scyjz14Image.obj
+ 0002:00004b78       $SG102952                  0043fb78     Scyjz14ImageManager.obj
+ 0002:00004b8c       $SG102953                  0043fb8c     Scyjz14ImageManager.obj
+ 0002:00004b90       $SG102954                  0043fb90     Scyjz14ImageManager.obj
+ 0002:00004bcc       $SG102956                  0043fbcc     Scyjz14ImageManager.obj
+ 0002:00004bd0       $SG102955                  0043fbd0     Scyjz14ImageManager.obj
+ 0002:00004c44       $SG102957                  0043fc44     Scyjz14ImageManager.obj
+ 0002:00004c6c       $SG103258                  0043fc6c     Scyjz14ImageManager.obj
+ 0002:00004ca8       $SG103457                  0043fca8     Scyjz14ImageManager.obj
+ 0002:00004cc4       $SG103458                  0043fcc4     Scyjz14ImageManager.obj
+ 0002:00004cc8       $SG103459                  0043fcc8     Scyjz14ImageManager.obj
+ 0002:00004d04       $SG103461                  0043fd04     Scyjz14ImageManager.obj
+ 0002:00004d08       $SG103460                  0043fd08     Scyjz14ImageManager.obj
+ 0002:00004d80       $SG103462                  0043fd80     Scyjz14ImageManager.obj
  0002:00004e30       $SG82693                   0043fe30     Scyjz14RawImageData.obj
  0002:00004e44       $SG82694                   0043fe44     Scyjz14RawImageData.obj
  0002:00004e48       $SG82695                   0043fe48     Scyjz14RawImageData.obj
@@ -4513,33 +4500,33 @@
  0002:00004efc       $SG82698                   0043fefc     Scyjz14RawImageData.obj
  0002:00004f24       $SG82724                   0043ff24     Scyjz14RawImageData.obj
  0002:00004f60       $SG74716                   0043ff60     Scyjz14RawImageData.obj
- 0002:00004fd8       $SG90303                   0043ffd8     Scyjz14TileManager.obj
- 0002:00004ff4       $SG90304                   0043fff4     Scyjz14TileManager.obj
- 0002:00005010       $SG90305                   00440010     Scyjz14TileManager.obj
- 0002:0000502c       $SG90306                   0044002c     Scyjz14TileManager.obj
- 0002:00005048       $SG90307                   00440048     Scyjz14TileManager.obj
- 0002:00005064       $SG90308                   00440064     Scyjz14TileManager.obj
- 0002:00005080       $SG90309                   00440080     Scyjz14TileManager.obj
- 0002:0000509c       $SG90310                   0044009c     Scyjz14TileManager.obj
- 0002:000050b8       $SG90311                   004400b8     Scyjz14TileManager.obj
- 0002:000050d4       $SG90312                   004400d4     Scyjz14TileManager.obj
- 0002:000050f0       $SG90313                   004400f0     Scyjz14TileManager.obj
- 0002:0000510c       $SG90314                   0044010c     Scyjz14TileManager.obj
- 0002:00005128       $SG90315                   00440128     Scyjz14TileManager.obj
- 0002:00005144       $SG90316                   00440144     Scyjz14TileManager.obj
- 0002:00005160       $SG103363                  00440160     Scyjz14TileManager.obj
- 0002:00005174       $SG103364                  00440174     Scyjz14TileManager.obj
- 0002:00005178       $SG103365                  00440178     Scyjz14TileManager.obj
- 0002:000051b4       $SG103367                  004401b4     Scyjz14TileManager.obj
- 0002:000051b8       $SG103366                  004401b8     Scyjz14TileManager.obj
- 0002:0000522c       $SG103368                  0044022c     Scyjz14TileManager.obj
- 0002:00005254       $SG103671                  00440254     Scyjz14TileManager.obj
- 0002:00005290       $SG103870                  00440290     Scyjz14TileManager.obj
- 0002:000052ac       $SG103871                  004402ac     Scyjz14TileManager.obj
- 0002:000052b0       $SG103872                  004402b0     Scyjz14TileManager.obj
- 0002:000052ec       $SG103874                  004402ec     Scyjz14TileManager.obj
- 0002:000052f0       $SG103873                  004402f0     Scyjz14TileManager.obj
- 0002:00005368       $SG103875                  00440368     Scyjz14TileManager.obj
+ 0002:00004fd8       $SG90309                   0043ffd8     Scyjz14TileManager.obj
+ 0002:00004ff4       $SG90310                   0043fff4     Scyjz14TileManager.obj
+ 0002:00005010       $SG90311                   00440010     Scyjz14TileManager.obj
+ 0002:0000502c       $SG90312                   0044002c     Scyjz14TileManager.obj
+ 0002:00005048       $SG90313                   00440048     Scyjz14TileManager.obj
+ 0002:00005064       $SG90314                   00440064     Scyjz14TileManager.obj
+ 0002:00005080       $SG90315                   00440080     Scyjz14TileManager.obj
+ 0002:0000509c       $SG90316                   0044009c     Scyjz14TileManager.obj
+ 0002:000050b8       $SG90317                   004400b8     Scyjz14TileManager.obj
+ 0002:000050d4       $SG90318                   004400d4     Scyjz14TileManager.obj
+ 0002:000050f0       $SG90319                   004400f0     Scyjz14TileManager.obj
+ 0002:0000510c       $SG90320                   0044010c     Scyjz14TileManager.obj
+ 0002:00005128       $SG90321                   00440128     Scyjz14TileManager.obj
+ 0002:00005144       $SG90322                   00440144     Scyjz14TileManager.obj
+ 0002:00005160       $SG103377                  00440160     Scyjz14TileManager.obj
+ 0002:00005174       $SG103378                  00440174     Scyjz14TileManager.obj
+ 0002:00005178       $SG103379                  00440178     Scyjz14TileManager.obj
+ 0002:000051b4       $SG103381                  004401b4     Scyjz14TileManager.obj
+ 0002:000051b8       $SG103380                  004401b8     Scyjz14TileManager.obj
+ 0002:0000522c       $SG103382                  0044022c     Scyjz14TileManager.obj
+ 0002:00005254       $SG103685                  00440254     Scyjz14TileManager.obj
+ 0002:00005290       $SG103884                  00440290     Scyjz14TileManager.obj
+ 0002:000052ac       $SG103885                  004402ac     Scyjz14TileManager.obj
+ 0002:000052b0       $SG103886                  004402b0     Scyjz14TileManager.obj
+ 0002:000052ec       $SG103888                  004402ec     Scyjz14TileManager.obj
+ 0002:000052f0       $SG103887                  004402f0     Scyjz14TileManager.obj
+ 0002:00005368       $SG103889                  00440368     Scyjz14TileManager.obj
  0002:00005468       $SG98400                   00440468     SimpleImage.obj
  0002:00005484       $SG98401                   00440484     SimpleImage.obj
  0002:00005488       $SG98402                   00440488     SimpleImage.obj
@@ -4571,19 +4558,19 @@
  0002:0000593c       $SG97772                   0044093c     SimpleDemo.obj
  0002:00005940       $SG97771                   00440940     SimpleDemo.obj
  0002:000059b8       $SG97773                   004409b8     SimpleDemo.obj
- 0002:00005b48       $SG103304                  00440b48     SpriteObject.obj
- 0002:00005b5c       $SG103305                  00440b5c     SpriteObject.obj
- 0002:00005b60       $SG103306                  00440b60     SpriteObject.obj
- 0002:00005b9c       $SG103308                  00440b9c     SpriteObject.obj
- 0002:00005ba0       $SG103307                  00440ba0     SpriteObject.obj
- 0002:00005c14       $SG103309                  00440c14     SpriteObject.obj
- 0002:00005c3c       $SG103612                  00440c3c     SpriteObject.obj
- 0002:00005c78       $SG103811                  00440c78     SpriteObject.obj
- 0002:00005c94       $SG103812                  00440c94     SpriteObject.obj
- 0002:00005c98       $SG103813                  00440c98     SpriteObject.obj
- 0002:00005cd4       $SG103815                  00440cd4     SpriteObject.obj
- 0002:00005cd8       $SG103814                  00440cd8     SpriteObject.obj
- 0002:00005d50       $SG103816                  00440d50     SpriteObject.obj
+ 0002:00005b48       $SG103311                  00440b48     SpriteObject.obj
+ 0002:00005b5c       $SG103312                  00440b5c     SpriteObject.obj
+ 0002:00005b60       $SG103313                  00440b60     SpriteObject.obj
+ 0002:00005b9c       $SG103315                  00440b9c     SpriteObject.obj
+ 0002:00005ba0       $SG103314                  00440ba0     SpriteObject.obj
+ 0002:00005c14       $SG103316                  00440c14     SpriteObject.obj
+ 0002:00005c3c       $SG103619                  00440c3c     SpriteObject.obj
+ 0002:00005c78       $SG103818                  00440c78     SpriteObject.obj
+ 0002:00005c94       $SG103819                  00440c94     SpriteObject.obj
+ 0002:00005c98       $SG103820                  00440c98     SpriteObject.obj
+ 0002:00005cd4       $SG103822                  00440cd4     SpriteObject.obj
+ 0002:00005cd8       $SG103821                  00440cd8     SpriteObject.obj
+ 0002:00005d50       $SG103823                  00440d50     SpriteObject.obj
  0002:00005e00       $SG97050                   00440e00     StarfieldDemo.obj
  0002:00005e14       $SG97051                   00440e14     StarfieldDemo.obj
  0002:00005e18       $SG97052                   00440e18     StarfieldDemo.obj
@@ -4597,38 +4584,38 @@
  0002:00005f8c       $SG97461                   00440f8c     StarfieldDemo.obj
  0002:00005f90       $SG97460                   00440f90     StarfieldDemo.obj
  0002:00006008       $SG97462                   00441008     StarfieldDemo.obj
- 0002:00006180       $SG109013                  00441180     StartUpState.obj
- 0002:00006194       $SG109014                  00441194     StartUpState.obj
- 0002:00006198       $SG109015                  00441198     StartUpState.obj
- 0002:000061d4       $SG109017                  004411d4     StartUpState.obj
- 0002:000061d8       $SG109016                  004411d8     StartUpState.obj
- 0002:0000624c       $SG109018                  0044124c     StartUpState.obj
- 0002:00006274       $SG109502                  00441274     StartUpState.obj
- 0002:000062b0       $SG109822                  004412b0     StartUpState.obj
- 0002:000062cc       $SG109823                  004412cc     StartUpState.obj
- 0002:000062d0       $SG109824                  004412d0     StartUpState.obj
- 0002:0000630c       $SG109826                  0044130c     StartUpState.obj
- 0002:00006310       $SG109825                  00441310     StartUpState.obj
- 0002:00006388       $SG109827                  00441388     StartUpState.obj
- 0002:000063c0       $SG94449                   004413c0     StartUpState.obj
- 0002:000063ec       $SG94450                   004413ec     StartUpState.obj
- 0002:00006410       $SG94471                   00441410     StartUpState.obj
- 0002:00006434       $SG94472                   00441434     StartUpState.obj
- 0002:00006458       $SG94474                   00441458     StartUpState.obj
- 0002:0000647c       $SG94475                   0044147c     StartUpState.obj
- 0002:00006588       $SG104016                  00441588     State.obj
- 0002:0000659c       $SG104017                  0044159c     State.obj
- 0002:000065a0       $SG104018                  004415a0     State.obj
- 0002:000065dc       $SG104020                  004415dc     State.obj
- 0002:000065e0       $SG104019                  004415e0     State.obj
- 0002:00006654       $SG104021                  00441654     State.obj
- 0002:0000667c       $SG104324                  0044167c     State.obj
- 0002:000066b8       $SG104523                  004416b8     State.obj
- 0002:000066d4       $SG104524                  004416d4     State.obj
- 0002:000066d8       $SG104525                  004416d8     State.obj
- 0002:00006714       $SG104527                  00441714     State.obj
- 0002:00006718       $SG104526                  00441718     State.obj
- 0002:00006790       $SG104528                  00441790     State.obj
+ 0002:00006180       $SG109020                  00441180     StartUpState.obj
+ 0002:00006194       $SG109021                  00441194     StartUpState.obj
+ 0002:00006198       $SG109022                  00441198     StartUpState.obj
+ 0002:000061d4       $SG109024                  004411d4     StartUpState.obj
+ 0002:000061d8       $SG109023                  004411d8     StartUpState.obj
+ 0002:0000624c       $SG109025                  0044124c     StartUpState.obj
+ 0002:00006274       $SG109509                  00441274     StartUpState.obj
+ 0002:000062b0       $SG109829                  004412b0     StartUpState.obj
+ 0002:000062cc       $SG109830                  004412cc     StartUpState.obj
+ 0002:000062d0       $SG109831                  004412d0     StartUpState.obj
+ 0002:0000630c       $SG109833                  0044130c     StartUpState.obj
+ 0002:00006310       $SG109832                  00441310     StartUpState.obj
+ 0002:00006388       $SG109834                  00441388     StartUpState.obj
+ 0002:000063c0       $SG94456                   004413c0     StartUpState.obj
+ 0002:000063ec       $SG94457                   004413ec     StartUpState.obj
+ 0002:00006410       $SG94478                   00441410     StartUpState.obj
+ 0002:00006434       $SG94479                   00441434     StartUpState.obj
+ 0002:00006458       $SG94481                   00441458     StartUpState.obj
+ 0002:0000647c       $SG94482                   0044147c     StartUpState.obj
+ 0002:00006588       $SG104022                  00441588     State.obj
+ 0002:0000659c       $SG104023                  0044159c     State.obj
+ 0002:000065a0       $SG104024                  004415a0     State.obj
+ 0002:000065dc       $SG104026                  004415dc     State.obj
+ 0002:000065e0       $SG104025                  004415e0     State.obj
+ 0002:00006654       $SG104027                  00441654     State.obj
+ 0002:0000667c       $SG104330                  0044167c     State.obj
+ 0002:000066b8       $SG104529                  004416b8     State.obj
+ 0002:000066d4       $SG104530                  004416d4     State.obj
+ 0002:000066d8       $SG104531                  004416d8     State.obj
+ 0002:00006714       $SG104533                  00441714     State.obj
+ 0002:00006718       $SG104532                  00441718     State.obj
+ 0002:00006790       $SG104534                  00441790     State.obj
  0002:00006840       $SG97164                   00441840     TileManager.obj
  0002:00006854       $SG97165                   00441854     TileManager.obj
  0002:00006858       $SG97166                   00441858     TileManager.obj
@@ -4673,19 +4660,19 @@
  0002:00007048       $SG98081                   00442048     BouncingBallMain.obj
  0002:000070c0       $SG98082                   004420c0     BouncingBallMain.obj
  0002:000070c4       $SG98083                   004420c4     BouncingBallMain.obj
- 0002:000072b0       $SG108148                  004422b0     Zombie.obj
- 0002:000072c4       $SG108149                  004422c4     Zombie.obj
- 0002:000072c8       $SG108150                  004422c8     Zombie.obj
- 0002:00007304       $SG108152                  00442304     Zombie.obj
- 0002:00007308       $SG108151                  00442308     Zombie.obj
- 0002:0000737c       $SG108153                  0044237c     Zombie.obj
- 0002:000073a4       $SG108637                  004423a4     Zombie.obj
- 0002:000073e0       $SG108957                  004423e0     Zombie.obj
- 0002:000073fc       $SG108958                  004423fc     Zombie.obj
- 0002:00007400       $SG108959                  00442400     Zombie.obj
- 0002:0000743c       $SG108961                  0044243c     Zombie.obj
- 0002:00007440       $SG108960                  00442440     Zombie.obj
- 0002:000074b8       $SG108962                  004424b8     Zombie.obj
+ 0002:000072b0       $SG108155                  004422b0     Zombie.obj
+ 0002:000072c4       $SG108156                  004422c4     Zombie.obj
+ 0002:000072c8       $SG108157                  004422c8     Zombie.obj
+ 0002:00007304       $SG108159                  00442304     Zombie.obj
+ 0002:00007308       $SG108158                  00442308     Zombie.obj
+ 0002:0000737c       $SG108160                  0044237c     Zombie.obj
+ 0002:000073a4       $SG108644                  004423a4     Zombie.obj
+ 0002:000073e0       $SG108964                  004423e0     Zombie.obj
+ 0002:000073fc       $SG108965                  004423fc     Zombie.obj
+ 0002:00007400       $SG108966                  00442400     Zombie.obj
+ 0002:0000743c       $SG108968                  0044243c     Zombie.obj
+ 0002:00007440       $SG108967                  00442440     Zombie.obj
+ 0002:000074b8       $SG108969                  004424b8     Zombie.obj
  0002:00007568       $SG98648                   00442568     ZoomingDemo.obj
  0002:00007584       $SG98649                   00442584     ZoomingDemo.obj
  0002:00007588       $SG98650                   00442588     ZoomingDemo.obj

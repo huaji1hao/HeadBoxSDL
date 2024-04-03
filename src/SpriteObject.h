@@ -97,35 +97,37 @@ public:
 			// Assuming each direction is in a different row
 			int iYSource = m_direction * m_iDrawHeight;
 
-			int tileY = m_pTileManager->getMapYForScreenY(getDrawingRegionBottom());
-			int tileX = m_pTileManager->getMapXForScreenX(getXCentre());
-			int mapValue = m_pTileManager->getMapValue(tileX, tileY);
-			int drawHeight = m_iDrawHeight;
+			// If any part of bottom is covered by the wall
+			int bottomY = getDrawingRegionBottom();
+			bool isLeftPassible = m_pTileManager->isPassable(getDrawingRegionLeft(), bottomY);
+			bool isRightPassible = m_pTileManager->isPassable(getDrawingRegionRight(), bottomY);
+			bool isCentrePassible = m_pTileManager->isPassable(getXCentre(), bottomY);
 
-			if (!m_pTileManager->isPassable(mapValue)) {
-				int tileTop = m_pTileManager->getBaseScreenY() + m_pTileManager->getTileHeight() * tileY;
-				drawHeight -= getDrawingRegionBottom() - tileTop;
+			if (!isLeftPassible || !isRightPassible || !isCentrePassible) {
+				// Draw the image covered by the wall
+				image.renderImageWithAlphaAndOverlay(getEngine()->getForegroundSurface(),
+					iXSource, iYSource,
+					m_iCurrentScreenX + m_iStartDrawPosX,
+					m_iCurrentScreenY + m_iStartDrawPosY,
+					m_iDrawWidth, m_iDrawHeight, 0xEBDCC7);
+			}
+			else {
+				// Draw the current frame with transparency
+				image.renderImageWithAlpha(getEngine()->getForegroundSurface(),
+					iXSource, iYSource,
+					m_iCurrentScreenX + m_iStartDrawPosX,
+					m_iCurrentScreenY + m_iStartDrawPosY,
+					m_iDrawWidth, m_iDrawHeight);
 			}
 
-
-
-			// Draw the current frame with transparency
-			image.renderImageWithAlpha(getEngine()->getForegroundSurface(),
-				iXSource, iYSource,
-				m_iCurrentScreenX + m_iStartDrawPosX,
-				m_iCurrentScreenY + m_iStartDrawPosY,
-				m_iDrawWidth, drawHeight);
-
-			
 		}
 	}
 
 	void setSpeed(int speed) { moving_speed = speed; }
 
 	void fixPosition() {
-		DisplayableObject::fixPosition(); // 调用原有逻辑处理边界
-
-		// 获取当前所在的tile位置
+		DisplayableObject::fixPosition();
+		
 		int tileX = m_pTileManager->getMapXForScreenX(m_iCurrentScreenX + m_iStartDrawPosX + m_iDrawWidth / 2);
 		int tileY = m_pTileManager->getMapYForScreenY(m_iCurrentScreenY + m_iStartDrawPosY + m_iDrawHeight / 2);
 		int nextTileType = m_pTileManager->getMapValue(tileX, tileY);
@@ -133,12 +135,12 @@ public:
 
 		if (!m_pTileManager->isPassable(nextTileType)) {
 
-			// 如果下一步是不可穿越的，回滚到上一步的位置
+			// If next step is not passable, roll back to last position
 			m_iCurrentScreenX = m_iPrevScreenX;
 			m_iCurrentScreenY = m_iPrevScreenY;
 		}
 		else {
-			// 保存当前位置，以便下次可以回滚
+			// save the postion for rolling back
 			m_iPrevScreenX = m_iCurrentScreenX;
 			m_iPrevScreenY = m_iCurrentScreenY;
 		}

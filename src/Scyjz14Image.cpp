@@ -175,3 +175,45 @@ unsigned int Scyjz14Image::blendPixels(unsigned int background, unsigned int for
 	unsigned int g = ((background & 0x00FF00) * (255 - alpha) + (foreground & 0x00FF00) * alpha) >> 8;
 	return (rb & 0xFF00FF) | (g & 0x00FF00) | 0xFF000000; // 假定背景总是完全不透明
 }
+
+void Scyjz14Image::renderImageWithAlphaAndOverlay(DrawingSurface* pTarget,
+	int iXSource, int iYSource,
+	int iXTarget, int iYTarget,
+	int iWidth, int iHeight, unsigned int backgroundcolour) const {
+	if (!adjustXYWidthHeight(pTarget, iXSource, iYSource, iXTarget, iYTarget, iWidth, iHeight)) {
+		return;
+	}
+
+	backgroundcolour &= 0xFFFFFF;
+	int iXS, iYS = iYSource, iXT, iYT = iYTarget;
+
+	for (int iYOffset = 0; iYOffset < iHeight; iYOffset++) {
+		iXS = iXSource;
+		iXT = iXTarget;
+		for (int iXOffset = 0; iXOffset < iWidth; iXOffset++) {
+			unsigned int iPixel = theData->getRawPixelColour(iXS, iYS);
+
+			unsigned int alpha = iPixel >> 24;
+
+			unsigned int backgroundPixel = pTarget->getPixel(iXT, iYT) & 0xFFFFFF;
+			
+			if (backgroundPixel == backgroundcolour) {
+				if (alpha > 0) {
+					if (alpha == 255) {
+						pTarget->setPixel(iXT, iYT, iPixel);
+					}
+					else {
+						unsigned int blendedPixel = blendPixels(backgroundPixel, iPixel, alpha);
+						pTarget->setPixel(iXT, iYT, blendedPixel);
+					}
+				}
+			}
+
+			iXS++;
+			iXT++;
+		}
+		iYS++;
+		iYT++;
+	}
+
+}
