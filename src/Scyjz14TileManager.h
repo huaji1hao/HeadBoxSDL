@@ -30,6 +30,8 @@ public:
 
 	bool isPassable(int iScreenX, int iScreenY) const;
 
+	bool isPassableByObjectCentre(int iScreenX, int iScreenY, int offSet) const;
+
 
 	enum Type { 
 		NONE, WALL1, WALL2, WALL3, WALL4,

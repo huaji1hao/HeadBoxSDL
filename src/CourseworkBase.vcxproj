@@ -93,12 +93,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AStar.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="DraggingDemo.h" />
     <ClInclude Include="FlashingDemo.h" />
     <ClInclude Include="ObjectIndexes.h" />
     <ClInclude Include="ImageMappingDemo.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="RunningState.h" />
     <ClInclude Include="Scyjz14Engine.h" />
     <ClInclude Include="Scyjz14Image.h" />
@@ -139,6 +141,7 @@
     <ClInclude Include="ZoomingDemo.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AStar.cpp" />
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="DraggingDemo.cpp" />
     <ClCompile Include="DrawingSurface.cpp" />
@@ -176,6 +179,9 @@
     </ClCompile>
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZoomingDemo.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CourseworkBase2020.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

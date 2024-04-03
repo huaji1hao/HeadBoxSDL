@@ -46,22 +46,22 @@ void RunningState::virtSetupBackgroundBuffer() {
 }
 
 void RunningState::virtDrawStringsUnderneath() {
-	// Build the string to print
-	char buf[128];
-	sprintf(buf, "Use 'UP, DOWN, LEFT, RIGHT' and 'W, A, S, D' to control the object");
-	// Print the string
-	eg->drawBackgroundString(50, 10, buf, 0xff00ff, eg->getFont("resources/Truculenta-Regular.ttf", 24));
+	//// Build the string to print
+	//char buf[128];
+	//sprintf(buf, "Use 'UP, DOWN, LEFT, RIGHT' and 'W, A, S, D' to control the object");
+	//// Print the string
+	//eg->drawBackgroundString(50, 10, buf, 0xff00ff, eg->getFont("resources/Truculenta-Regular.ttf", 24));
 }
 
 void RunningState::virtDrawStringsOnTop() {
 	// Initialize the time
-	time_t now = time(0);
-	struct tm* timeinfo = localtime(&now);
+	//time_t now = time(0);
+	//struct tm* timeinfo = localtime(&now);
 
-	// Build the string to print
-	char buf[128];
-	strftime(buf, sizeof(buf), "Time is %Y-%m-%d %H:%M:%S now", timeinfo);
-	eg->drawForegroundString(150, 200, buf, 0xff00ff, eg->getFont("resources/kenvector_future.ttf", 24));
+	//// Build the string to print
+	//char buf[128];
+	//strftime(buf, sizeof(buf), "Time is %Y-%m-%d %H:%M:%S now", timeinfo);
+	//eg->drawForegroundString(150, 200, buf, 0xff00ff, eg->getFont("resources/kenvector_future.ttf", 24));
 }
 
 void RunningState::virtMouseDown(int iButton, int iX, int iY) {

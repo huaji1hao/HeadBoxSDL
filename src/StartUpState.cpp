@@ -12,7 +12,7 @@ void StartUpState::virtSetupBackgroundBuffer(){
 	Scyjz14Image title = Scyjz14ImageManager::loadImage("resources/background/menu_title.png", true);
 	DrawingSurface* surface = eg->getBackgroundSurface();
 	//title.renderImageWithMask(surface, 0, 0, 150, 200, 400, 169, -1);
-	background.renderImageWithAlpha(surface, 150, 0, 0, 0, 720, 550);
+	background.renderImageWithAlpha(surface, 150, 0, 0, 0, 720, 560);
 	title.renderImageWithAlpha(surface, 0, 0, 150, 20, 400, 169);
 
 }

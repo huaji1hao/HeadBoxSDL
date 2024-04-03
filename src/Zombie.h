@@ -47,5 +47,7 @@ protected:
     // the function to attack all the player
     virtual void attackPlayer();
 
+    void fixPosition() override;
+
 };
 

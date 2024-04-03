@@ -181,7 +181,13 @@
       <Filter>Header Files\Utils</Filter>
     </ClInclude>
     <ClInclude Include="SpriteObject.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AStar.h">
+      <Filter>Header Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -276,7 +282,15 @@
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
     <ClCompile Include="SpriteObject.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Object</Filter>
     </ClCompile>
+    <ClCompile Include="AStar.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="CourseworkBase2020.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

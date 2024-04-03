@@ -52,8 +52,7 @@ void Scyjz14TileManager::virtDrawTileAt(
 	{
 	
 	case NONE:
-		// Draw a grey rectangle
-		
+		// Draw None
 		break;
 	case WALL1:
 		iXSource = 1;
@@ -81,7 +80,6 @@ void Scyjz14TileManager::virtDrawTileAt(
 		break;
 	case BARREL:
 		iXSource = 0;
-		// Do nothing
 		break;
 	}
 
@@ -133,4 +131,13 @@ bool Scyjz14TileManager::isPassable(int iScreenX, int iScreenY) const {
 	int mapValue = getMapValue(tileX, tileY);
 	return isPassable(mapValue);
 }
+
+bool Scyjz14TileManager::isPassableByObjectCentre(int iScreenX, int iScreenY, int offSet) const {
+	bool isLeftCentrePassible = isPassable(iScreenX - offSet, iScreenY);
+	bool isRightCentrePassible = isPassable(iScreenX + offSet, iScreenY);
+
+	return isLeftCentrePassible && isRightCentrePassible;
+}
+
+
 
