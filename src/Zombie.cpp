@@ -41,44 +41,23 @@ void Zombie::updateDirection(int dx, int dy) {
 void Zombie::updateDirectionTowardsPlayer(Player* player) {
 	if (player == nullptr || m_pTileManager == nullptr) return;
 
-	//// Calculate direction vector from zombie to player
-	//int dx = player->getXCentre() - this->getXCentre();
-	//int dy = player->getYCentre() - this->getYCentre();
-
-	//// Normalize the direction vector
-	//double length = std::sqrt(dx * dx + dy * dy);
-	//double dirX = dx / length;
-	//double dirY = dy / length;
-
-	//// Make sure the smallest step is 1 pixel for either x or y by rounding
-	//int stepX = static_cast<int>((dirX > 0) ? std::ceil(dirX) : std::floor(dirX));
-	//int stepY = static_cast<int>((dirY > 0) ? std::ceil(dirY) : std::floor(dirY));
-
-	//// Ensure there's at least 1 pixel movement in any direction
-	//if (stepX == 0 && stepY == 0) {
-	//	stepX = (dirX > 0) ? 1 : -1;
-	//	stepY = (dirY > 0) ? 1 : -1;
-	//}
-
-	//// Apply the calculated step, ensuring at least 1 pixel movement
-	//m_iCurrentScreenX += stepX * moving_speed;
-	//m_iCurrentScreenY += stepY * moving_speed;
-
-	//// Update the direction of the zombie based on movement
-	//updateDirection(stepX, stepY);
-	Point zombiePos = {getXCentre(), getYCentre() };
-	Point playerPos = {player->getXCentre(), player->getYCentre() };
-
-	Point zombieMapPos = { 
+	Point zombieMapPos = {
 		m_pTileManager->getMapXForScreenX(getXCentre()),
 		m_pTileManager->getMapYForScreenY(getYCentre()) };
+	Point zombieMapPosLeft = { 
+		m_pTileManager->getMapXForScreenX(getXCentre() - widthOffset),
+		m_pTileManager->getMapYForScreenY(getYCentre()) };
+	Point zombieMapPosRight = {
+		m_pTileManager->getMapXForScreenX(getXCentre() + widthOffset),
+		m_pTileManager->getMapYForScreenY(getYCentre()) };
+
 	Point playerMapPos = { 
 		m_pTileManager->getMapXForScreenX(player->getXCentre()),
 		m_pTileManager->getMapYForScreenY(player->getYCentre()) };
 
 	Graph graph(m_pTileManager);
 	AStar astar;
-	std::pair<int, int> step = astar.a_star_search(graph, zombieMapPos, playerMapPos);
+	std::pair<int, int> step = astar.a_star_search(graph, zombieMapPos, zombieMapPosLeft, zombieMapPosRight, playerMapPos);
 
 	// Now apply the step to your zombie's position
 	m_iCurrentScreenX += step.first * moving_speed;
@@ -126,8 +105,11 @@ void Zombie::fixPosition() {
 				// if overlapping, then roll back
 				m_iCurrentScreenX = m_iPrevScreenX;
 				m_iCurrentScreenY = m_iPrevScreenY;
+
 				break; // if roll back, then return
 			}
 		}
 	}
+	
+
 }

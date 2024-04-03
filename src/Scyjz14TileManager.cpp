@@ -8,7 +8,7 @@ void Scyjz14TileManager::setUpTileManager(BaseEngine* pEngine) {
 				"000000000000000000000000",
 				"001100000000000000011000",
 				"002200000000000000022000",
-				"001100909009000900091000",
+				"001100989009000900091000",
 				"002200000000000000029000",
 				"000000000000000000000000",
 				"000000000000000000000000",
@@ -23,14 +23,13 @@ void Scyjz14TileManager::setUpTileManager(BaseEngine* pEngine) {
 	// Specify how many tiles wide and high
 	setMapSize(24, 14);
 	// Set up the tiles
-	for (int y = 0; y < 14; y++)
-		for (int x = 0; x < 24; x++)
+	for (int y = 0; y < getMapHeight(); y++)
+		for (int x = 0; x < getMapWidth(); x++)
 			setMapValue(x, y, data[y][x] - '0');
 
 	// Output the map to check
-	for (int y = 0; y < 14; y++)
-	{
-		for (int x = 0; x < 24; x++)
+	for (int y = 0; y < getMapHeight(); y++) {
+		for (int x = 0; x < getMapWidth(); x++)
 			std::cout << getMapValue(x, y);
 		std::cout << std::endl;
 	}

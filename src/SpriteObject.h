@@ -92,7 +92,7 @@ protected:
 	int moving_speed = 2;
 	int m_iPrevScreenX = 0;
 	int m_iPrevScreenY = 0;
-	bool sig_redrawWall = false;
+	int widthOffset = 12;
 	Scyjz14TileManager* m_pTileManager;
 
 	virtual int getFrameCount() override {

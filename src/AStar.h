@@ -51,15 +51,13 @@ struct Node {
 // A structure to represent the map or graph
 class Graph {
 public:
-    //const char* data[14] = {
-    //    // Your map data...
-    //};
     Graph(Scyjz14TileManager* tm) {
-        getData(tm);
-        m_pTileManager = tm;
+        this->tm = tm;
+        getData();
+        
     }
 
-    char data[25][25] = { 0 };
+    char data[127][127] = { 0 };
 
     // Directly adjacent neighbors (4-directional)
     std::vector<Point> directions = {
@@ -71,31 +69,13 @@ public:
         {1, 1}, {1, -1}, {-1, 1}, {-1, -1}
     };
 
-    int getPointCentreScreenX(Point p) const {
-        int tileWidth = m_pTileManager->getTileWidth();
-        int x = p.x * tileWidth + tileWidth / 2;
-        return x;
-    }
-
-    int getPointCentreScreenY(Point p) const{
-        int tileHeight = m_pTileManager->getTileHeight();
-        int y = p.y * tileHeight + tileHeight / 2;
-        return y;
-    }
-
     bool isPassable(Point point) const{
         // Check if the location at point is passable or not
         // If the point is out of bounds, return false
-        if(point.x < 0 || point.x >= 24 || point.y < 0 || point.y >= 14) {
+        if(point.x < 0 || point.x >= tm->getMapWidth() || point.y < 0 || point.y >= tm->getMapHeight()) {
             return false;
         }
 
-        /*if (!m_pTileManager->isPassableByObjectCentre(
-            getPointCentreScreenX(point), 
-            getPointCentreScreenY(point), 15)) {
-            return false;
-
-        }*/
         // Otherwise, return true if the tile is passable
         return data[point.y][point.x] == '0';
     }
@@ -107,17 +87,7 @@ public:
             Point newPoint = { point.x + dir.x, point.y + dir.y };
             if (isPassable(newPoint)) {
                 neighbors.push_back(newPoint);
-                // For vertical movement, ensure no walls on the sides
-                /*if (dir.x == 0) {
-                    Point left = { point.x - 1, point.y + dir.y };
-                    Point right = { point.x + 1, point.y + dir.y };
-                    if (isPassable(left) && isPassable(right)) {
-                        neighbors.push_back(newPoint);
-                    }
-                }
-                else {
-                    neighbors.push_back(newPoint);
-                }*/
+                
             }
         }
 
@@ -141,16 +111,15 @@ public:
         
     }
 
-    void getData(Scyjz14TileManager * tm) {
-        for (int y = 0; y < 14; y++)
-            for (int x = 0; x < 24; x++) {
+    void getData() {
+        for (int y = 0; y < tm->getMapHeight(); y++)
+            for (int x = 0; x < tm->getMapWidth(); x++) {
                 data[y][x] = tm->getMapValue(x, y) + '0';
-            }
-                
+            } 
     }
 
 private:
-    Scyjz14TileManager* m_pTileManager = nullptr;
+    Scyjz14TileManager* tm = nullptr;
 };
 
 
@@ -177,27 +146,50 @@ public:
         return path;
     }
 
-    // A* algorithm implementation
-    std::pair<int, int> a_star_search(Graph& graph, Point start, Point goal) {
+    /*
+      A* algorithm adaptation. 
+      During initialization, 
+      only nodes that are both neighbors of startLeft and startRight 
+      will be added to the search queue.
+    */
+    std::pair<int, int> a_star_search(Graph& graph, Point start, Point startLeft, Point startRight, Point goal) {
         std::priority_queue<Node> frontier;
-        frontier.push(Node{ start, 0 });
-
         std::unordered_map<Point, Point> came_from;
         std::unordered_map<Point, double> cost_so_far;
 
-        came_from[start] = start;
-        cost_so_far[start] = 0;
+        // Add unique neighbors to the frontier if passable
+        auto addIfPassable = [&](const Point& neighbor, Point startLR) {
+            if (graph.isPassable(neighbor)) {
+                came_from[neighbor] = start; // Start is the same for left and right in this context
+                cost_so_far[neighbor] = graph.cost(startLR, neighbor);
+                double priority = cost_so_far[neighbor] + heuristic(neighbor, goal);
+                frontier.push(Node{ neighbor, priority });
+            }
+        };
 
+        // Left unique neighbor
+        addIfPassable({ startLeft.x - 1, startLeft.y }, startLeft); 
+        // Right unique neighbor
+        addIfPassable({ startRight.x + 1, startRight.y }, startRight); 
+
+        // Add common neighbors to the priority queue
+        for (auto& nLeft : graph.getNeighbors(startLeft)) {
+            for (auto& nRight : graph.getNeighbors(startRight)) {
+                if (nLeft == nRight) {
+                    addIfPassable(nLeft, start);
+                }
+            }
+        }
+
+        // Continue with the A* algorithm
         while (!frontier.empty()) {
             Point current = frontier.top().point;
             frontier.pop();
 
-            if (current == goal) {
-                break;
-            }
+            if (current == goal) break; // Goal reached, stop search
 
             for (Point next : graph.getNeighbors(current)) {
-                if (!graph.isPassable(next)) continue;
+                if (!graph.isPassable(next)) continue; // Skip impassable
 
                 double new_cost = cost_so_far[current] + graph.cost(current, next);
                 if (!cost_so_far.count(next) || new_cost < cost_so_far[next]) {
@@ -209,16 +201,14 @@ public:
             }
         }
 
+        // Reconstruct the path and find the next step
         std::vector<Point> path = reconstruct_path(start, goal, came_from);
-
-        // Find next step on the path
         if (path.size() > 1) {
             Point next_step = path[1];
-            return std::make_pair(next_step.x - start.x, next_step.y - start.y);
+            return std::make_pair(next_step.x - start.x, next_step.y - start.y); // Return movement vector
         }
-        else {
-            return std::make_pair(0, 0);
-        }
+
+        return std::make_pair(0, 0); // No valid path found, no movement
     }
     
 
