@@ -102,6 +102,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="RunningState.h" />
+    <ClInclude Include="Scyjz14CollisionDetection.h" />
     <ClInclude Include="Scyjz14Engine.h" />
     <ClInclude Include="Scyjz14Image.h" />
     <ClInclude Include="Scyjz14ImageManager.h" />
@@ -154,6 +155,7 @@
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RunningState.cpp" />
+    <ClCompile Include="Scyjz14CollisionDetection.cpp" />
     <ClCompile Include="Scyjz14Engine.cpp" />
     <ClCompile Include="Scyjz14Image.cpp" />
     <ClCompile Include="Scyjz14ImageManager.cpp" />

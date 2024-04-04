@@ -13,8 +13,8 @@ public:
     {
         m_direction = UP;
         m_pTileManager = pTileManager;
-        setSpeed(1);
-        setFrameRate(24);
+        setSpeed(2);
+        setFrameRate(30);
     }
     
 

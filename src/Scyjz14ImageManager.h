@@ -195,6 +195,8 @@ public:
 		}
 	}
 
+	Scyjz14Image getImage() { return image; }
+
 
 protected:
 	Scyjz14Image image;

@@ -33,6 +33,10 @@ public:
 		m_iTimeBetweenFrames = 1000 / frameRate;
 	}
 
+	int getCurrentFrameX() { return m_iCurrentFrameX; }
+
+	int getCurrentFrameY() { return m_iCurrentFrameY; }
+
 protected:
 	// Function to update the animation frame based on the elapsed time
 	virtual void updateAnimationFrame(int iCurrentTime) {

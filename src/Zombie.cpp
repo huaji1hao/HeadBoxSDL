@@ -3,6 +3,7 @@
 #include "AStar.h"
 #include "ObjectIndexes.h"
 #include "UtilCollisionDetection.h"
+#include "Scyjz14CollisionDetection.h"
 
 
 void Zombie::virtDoUpdate(int iCurrentTime) {
@@ -76,10 +77,8 @@ void Zombie::attackPlayer() {
 		updateDirectionTowardsPlayer(player);
 
 		// Check if the zombie is colliding with the player
-		if (CollisionDetection::checkRectangles(getDrawingRegionLeft(), getDrawingRegionRight(),
-			getDrawingRegionTop(), getDrawingRegionBottom(),
-			player->getDrawingRegionLeft(), player->getDrawingRegionRight(),
-			player->getDrawingRegionTop(), player->getDrawingRegionBottom())) 
+		if (Scyjz14CollisionDetection::checkPixelWithOffset(3, getImage(), m_iCurrentFrameX * m_iDrawWidth, m_direction * m_iDrawHeight, m_iDrawWidth, m_iDrawHeight, getDrawingRegionLeft(), getDrawingRegionTop(), 
+		player->getImage(), player->getCurrentFrameX() * player->getDrawWidth(), player->getDirection() * player->getDrawHeight(), player->getDrawWidth(), player->getDrawHeight(), player->getDrawingRegionLeft(), player->getDrawingRegionTop()))
 		{
 			// If the zombie is colliding with the player, knock the player away
 			player->knockedAway(getXCentre(), getYCentre());
