@@ -5,8 +5,14 @@
 
 class SpriteObject : public Scyjz14ImageObject {
 public:
-	// Constructor to initialize the sprite object with a sprite sheet URL and frame dimensions
 
+	// Define an enumeration for the directions the sprite object can face
+	enum Direction {
+		UP, DOWN, LEFT, RIGHT,
+		UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT
+	};
+
+	// Constructor to initialize the sprite object with a sprite sheet URL and frame dimensions
 	SpriteObject(int xStart, int yStart, BaseEngine* pEngine, const std::string& strURL,
 		int frameWidth, int frameHeight,
 		bool useTopLeftFor00 = true, bool bVisible = true)
@@ -67,13 +73,6 @@ protected:
 
 class AgentBaseObject : public SpriteObject {
 public:
-
-	// Define an enumeration for the directions the sprite object can face
-	enum Direction {
-		UP, DOWN, LEFT, RIGHT,
-		UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT
-	};
-
 	AgentBaseObject(int xStart, int yStart, BaseEngine* pEngine, const std::string& strURL,
 		int frameWidth, int frameHeight,
 		bool useTopLeftFor00 = true, bool bVisible = true)

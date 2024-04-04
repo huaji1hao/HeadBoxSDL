@@ -6,6 +6,7 @@
 #include "ObjectIndexes.h"
 #include "ImagePixelMapping.h"
 #include "Scyjz14Engine.h"
+#include "Weapon.h"
 
 
 void RunningState::initialiseState() {
@@ -16,6 +17,8 @@ void RunningState::initialiseState() {
 
 	eg->appendObjectToArray(new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
 	ObjectIndexes::addPlayerIndexes({ eg->getContentCount() - 1 });
+	eg->appendObjectToArray(new Weapon(0, 0, eg));
+
 
 	eg->appendObjectToArray(new Zombie(0, 0, eg, eg->GetTileManager()));
 	ObjectIndexes::addZombieIndexes({ eg->getContentCount() - 1 });

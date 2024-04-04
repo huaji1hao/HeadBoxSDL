@@ -138,6 +138,7 @@
     <ClInclude Include="MazeDemoObject.h" />
     <ClInclude Include="MazeDemoTileManager.h" />
     <ClInclude Include="SimpleDemo.h" />
+    <ClInclude Include="Weapon.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZoomingDemo.h" />
   </ItemGroup>
@@ -179,6 +180,7 @@
     <ClCompile Include="MazeDemoTileManager.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Weapon.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZoomingDemo.cpp" />
   </ItemGroup>
