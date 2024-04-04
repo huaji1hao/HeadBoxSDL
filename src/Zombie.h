@@ -20,6 +20,8 @@ public:
 
     virtual void virtDoUpdate(int iCurrentTime) override;
 
+    void drawBody();
+
 protected:
 
     struct DirectionVector {

@@ -43,6 +43,12 @@ void AgentBaseObject::virtDraw(){
 				m_iDrawWidth, m_iDrawHeight);
 		}
 
+		health_bar.renderImageWithAlpha(getEngine()->getForegroundSurface(),
+			lifeValue * 50, 0,
+			m_iCurrentScreenX + m_iStartDrawPosX,
+			m_iCurrentScreenY + m_iStartDrawPosY - 15,
+			50, 10);
+
 	}
 }
 

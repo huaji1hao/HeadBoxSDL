@@ -55,4 +55,6 @@ void Player::knockedAway(int enemyX, int enemyY) {
 	// Calculate new position
 	m_iCurrentScreenX += static_cast<int> (k * dirX);
 	m_iCurrentScreenY += static_cast<int> (k * dirY);
+
+	lifeDecrease(10);
 }

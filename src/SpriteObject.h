@@ -78,7 +78,8 @@ public:
 		bool useTopLeftFor00 = true, bool bVisible = true)
 		: SpriteObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible) {
 		m_direction = UP; // Default direction
-		m_pTileManager = nullptr;
+		health_bar = Scyjz14ImageManager::loadImage("resources/game/my_blood/health_bar.png", true);
+
 	}
 
 	// Function to draw the Agent
@@ -90,13 +91,21 @@ public:
 
 	Direction getDirection() { return m_direction; }
 
+	void lifeDecrease(int value) { lifeValue -= value; if (lifeValue < 0) lifeValue = 0; }
+
+	bool isDied() { return lifeValue <= 0; }
+
+	void checkIsLife() { if (isDied()) setVisible(false); }
+
 protected:
 	Direction m_direction; // Current direction the object faces
 	int moving_speed = 2;
 	int m_iPrevScreenX = 0;
 	int m_iPrevScreenY = 0;
 	int widthOffset = 12;
-	Scyjz14TileManager* m_pTileManager;
+	int lifeValue = 100;  
+	Scyjz14TileManager* m_pTileManager = nullptr;
+	Scyjz14Image health_bar = nullptr;
 
 	virtual int getFrameCount() override {
 		// Manually count that it is 8 for player

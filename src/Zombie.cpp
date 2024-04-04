@@ -5,8 +5,42 @@
 #include "UtilCollisionDetection.h"
 #include "Scyjz14CollisionDetection.h"
 
+void Zombie::drawBody() {
+	Scyjz14Image body = Scyjz14ImageManager::loadImage("resources/game/zombie_die/zombie_died_with_blood.png", true);
+
+	DrawingSurface* surface = m_pEngine->getBackgroundSurface();
+
+	Direction bodyDir = m_direction;
+	if (bodyDir == UPLEFT) bodyDir = UP;
+	else if (bodyDir == UPRIGHT) bodyDir = RIGHT;
+	else if (bodyDir == DOWNLEFT) bodyDir = DOWN;
+	else if (bodyDir == DOWNRIGHT) bodyDir = LEFT;
+
+	m_pEngine->lockBackgroundForDrawing();
+	int bottomY = getDrawingRegionBottom();
+	if (!m_pTileManager->isPassableByObjectCentre(getXCentre(), bottomY, widthOffset)) {
+		// Draw the image covered by the wall
+		body.renderImageWithAlphaAndOverlay(surface,
+			bodyDir * getDrawWidth(), 0,
+			getDrawingRegionLeft(),
+			getDrawingRegionTop(),
+			m_iDrawWidth, m_iDrawHeight, 0xEBDCC7);
+	}
+	else {
+		// Draw the current frame with transparency
+		body.renderImageWithAlpha(surface,
+			bodyDir * getDrawWidth(), 0,
+			getDrawingRegionLeft(),
+			getDrawingRegionTop(),
+			m_iDrawWidth, m_iDrawHeight);
+	}
+
+	m_pEngine->unlockBackgroundForDrawing();
+}
 
 void Zombie::virtDoUpdate(int iCurrentTime) {
+	checkIsLife();
+	if (isDied()) return;
 	updateAnimationFrame(iCurrentTime);
 	fixPosition();
 }
