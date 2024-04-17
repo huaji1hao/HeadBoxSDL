@@ -11,14 +11,16 @@ public:
     State(Scyjz14Engine * engine): eg(engine) {
 
     }
-    virtual void initialiseState() = 0;
-    virtual void virtSetupBackgroundBuffer() = 0;
-    virtual void virtDrawStringsUnderneath() = 0;
-    virtual void virtDrawStringsOnTop() = 0;
-    virtual void virtMouseDown(int iButton, int iX, int iY) = 0;
-    virtual void virtMouseUp(int iButton, int iX, int iY) = 0;
-
-    virtual ~State();
+    virtual void initialise() {};
+    virtual void initialiseStateObject() {};
+    virtual void virtSetupBackgroundBuffer() {};
+    virtual void virtDrawStringsUnderneath() {};
+    virtual void virtDrawStringsOnTop() {};
+    virtual void virtMouseDown(int iButton, int iX, int iY) {};
+    virtual void virtMouseUp(int iButton, int iX, int iY) {};
+    virtual void virtMouseWheel(int x, int y, int which, int timestamp) {};
+    virtual void virtKeyDown(int iKeyCode) {};
+    virtual ~State() {};
 
 protected:
     Scyjz14Engine* eg;

@@ -37,9 +37,22 @@ void Scyjz14Engine::virtMouseUp(int iButton, int iX, int iY) {
 int Scyjz14Engine::virtInitialiseObjects() {
 
 	// Initialize the object settings
-	state->initialiseState();
+	state->initialiseStateObject();
 
 	return 0;
+}
+
+int Scyjz14Engine::virtInitialise() {
+	state->initialise();
+	return BaseEngine::virtInitialise();
+}
+
+void Scyjz14Engine::virtMouseWheel(int x, int y, int which, int timestamp) {
+	state->virtMouseWheel(x, y, which, timestamp);
+}
+
+void Scyjz14Engine::virtKeyDown(int iKeyCode) {
+	state->virtKeyDown(iKeyCode);
 }
 
 

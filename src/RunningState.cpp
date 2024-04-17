@@ -5,11 +5,22 @@
 #include "Zombie.h"
 #include "ObjectIndexes.h"
 #include "ImagePixelMapping.h"
+#include "PauseState.h"
 #include "Scyjz14Engine.h"
 #include "Weapon.h"
 
+void RunningState::virtKeyDown(int iKeyCode) {
+	switch (iKeyCode)
+	{
+	case SDLK_SPACE: // SPACE Pauses
+		std::shared_ptr<RunningState> currentState = shared_from_this();
+		eg->setState(std::make_shared<PauseState>(eg, currentState));
+	}
+}
 
-void RunningState::initialiseState() {
+void RunningState::initialiseStateObject() {
+	
+
 	eg->notifyObjectsAboutMouse(true);
 	eg->drawableObjectsChanged();
 	eg->lockAndSetupBackground();
@@ -72,7 +83,8 @@ void RunningState::virtMouseDown(int iButton, int iX, int iY) {
 }
 
 void RunningState::virtMouseUp(int iButton, int iX, int iY) {
-	eg->setState(new StartUpState(eg));
+	eg->setState(std::make_shared<StartUpState>(eg));
+
 }
 
 RunningState::~RunningState() {

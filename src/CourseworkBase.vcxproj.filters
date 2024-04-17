@@ -195,6 +195,9 @@
     <ClInclude Include="Weapon.h">
       <Filter>Header Files\Object</Filter>
     </ClInclude>
+    <ClInclude Include="PauseState.h">
+      <Filter>Header Files\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mainfunction.cpp">
@@ -298,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="Weapon.cpp">
       <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseState.cpp">
+      <Filter>Source Files\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

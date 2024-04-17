@@ -25,7 +25,7 @@ void StartUpState::virtDrawStringsOnTop(){
 
 }
 
-void StartUpState::initialiseState(){
+void StartUpState::initialiseStateObject(){
 	eg->notifyObjectsAboutMouse(true);
 	eg->drawableObjectsChanged();
 
@@ -55,8 +55,9 @@ void StartUpState::virtMouseUp(int iButton, int iX, int iY) {
 	Button* button1 = dynamic_cast<Button*> (eg->getDisplayableObject(0));
 	//if (button1->isInClickArea(iX, iY) && button1->getClickTimes() >= 0)
 	if (button1->isInClickArea())
-		eg->setState(new RunningState(eg));
-
+		//eg->setState(new RunningState(eg));
+		eg->setState(std::make_shared<RunningState>(eg));
+	
 }
 
 

@@ -40,7 +40,7 @@ void Zombie::drawBody() {
 
 void Zombie::virtDoUpdate(int iCurrentTime) {
 	checkIsLife();
-	if (isDied()) return;
+	if (isDied() || getEngine()->isPaused()) return;
 	updateAnimationFrame(iCurrentTime);
 	fixPosition();
 }

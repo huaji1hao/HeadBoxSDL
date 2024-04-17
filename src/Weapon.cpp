@@ -15,7 +15,7 @@ int Weapon::getWeaponY() {
 }
 
 void Weapon::virtDoUpdate(int iCurrentTime) {
-    if (!isVisible())
+    if (!isVisible() || getEngine()->isPaused())
         return;
 
     for (const auto& pair : movements) {

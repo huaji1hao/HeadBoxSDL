@@ -9,7 +9,7 @@ public:
     }
     ~StartUpState();
 
-    void initialiseState();
+    void initialiseStateObject() override;
 
     void virtSetupBackgroundBuffer() override;
 
@@ -19,6 +19,5 @@ public:
 
     void virtMouseDown(int iButton, int iX, int iY) override;
     void virtMouseUp(int iButton, int iX, int iY) override;
-
 };
 

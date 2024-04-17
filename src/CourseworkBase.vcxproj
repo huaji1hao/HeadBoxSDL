@@ -99,6 +99,7 @@
     <ClInclude Include="FlashingDemo.h" />
     <ClInclude Include="ObjectIndexes.h" />
     <ClInclude Include="ImageMappingDemo.h" />
+    <ClInclude Include="PauseState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="RunningState.h" />
@@ -154,6 +155,7 @@
     <ClCompile Include="BaseEngine.cpp" />
     <ClCompile Include="DisplayableObject.cpp" />
     <ClCompile Include="FontManager.cpp" />
+    <ClCompile Include="PauseState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="RunningState.cpp" />
     <ClCompile Include="Scyjz14CollisionDetection.cpp" />

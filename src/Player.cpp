@@ -7,7 +7,7 @@
 
 void Player::virtDoUpdate(int iCurrentTime)
 {
-	if (!isVisible()) return;
+	if (!isVisible() || getEngine()->isPaused()) return;
 	
 	// Handle key inputs to update position and direction
 

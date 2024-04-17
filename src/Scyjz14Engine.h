@@ -5,13 +5,16 @@
 #include "Scyjz14ImageManager.h"
 #include "RunningState.h"
 #include "StartUpState.h"
+#include "ExampleFilterPointClasses.h"
 
 class Scyjz14Engine :
     public BaseEngine
 {
 
 public:
-    Scyjz14Engine() {
+    Scyjz14Engine(): 
+    m_filterScaling(0, 0, this), m_filterTranslation(0, 0, &m_filterScaling) 
+    {
         //setState(new RunningState);
         m_oTiles.reset(new Scyjz14TileManager);
         state.reset(new StartUpState(this));
@@ -23,20 +26,35 @@ public:
     void virtMouseDown(int iButton, int iX, int iY) override;
     void virtMouseUp(int iButton, int iX, int iY) override;
     int virtInitialiseObjects() override;
+    int virtInitialise() override;
+    void virtMouseWheel(int x, int y, int which, int timestamp) override;
+    void virtKeyDown(int iKeyCode) override;
 
     // Get a reference to the current tile manager - which is defined below!
     Scyjz14TileManager* GetTileManager() { return m_oTiles.get(); }
 
-    void setState(State* newState) {
-        state.reset(newState);
-        state->initialiseState();
+    void setState(std::shared_ptr<State> newState) {
+        state = newState;
+
+        state->initialise();
+        state->initialiseStateObject();
+    }
+
+    void Scyjz14Engine::restoreState(std::shared_ptr<State> oldState) {
+        state = oldState;  // Assuming state is also a std::shared_ptr<State>
     }
 
 
+    FilterPointsScaling* getFilterPointScaling() { return &m_filterScaling; }
+    FilterPointsTranslation* getFilterPointsTranslation() { return &m_filterTranslation; }
+
+protected:
+    FilterPointsScaling m_filterScaling;
+    FilterPointsTranslation m_filterTranslation;
 
 private:
     // Contained object (composition) for the tile manager
     std::unique_ptr<Scyjz14TileManager> m_oTiles;
-    std::unique_ptr<State> state;
+    std::shared_ptr<State> state;
 };
 
