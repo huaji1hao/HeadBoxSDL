@@ -1,31 +1,37 @@
 #include "header.h"
 #include "Scyjz14TileManager.h"
 
-void Scyjz14TileManager::setUpTileManager(BaseEngine* pEngine) {
-	// Construct the map from a string
-	const char* data[] = {
-				"000000000000000000000000",
-				"000000000000000000000000",
-				"001100000000000000011000",
-				"002200000000000000022000",
-				"001100989009000900091000",
-				"002200000000000000029000",
-				"000000000000000000000000",
-				"000000000000000000000000",
-				"003456000000000000000000",
-				"000000000000000000000000",
-				"000000000789000000000000",
-				"000000000000000000000000",
-				"000000000000000000000000",
-				"000000000000000000000000",
-	};
+bool Scyjz14TileManager::loadMapFromFile(const char* filename) {
+	std::ifstream file(filename);
+	if (file.is_open()) {
+		int width, height;
+		file >> width >> height;
+		setMapSize(width, height);
 
-	// Specify how many tiles wide and high
-	setMapSize(24, 14);
-	// Set up the tiles
-	for (int y = 0; y < getMapHeight(); y++)
-		for (int x = 0; x < getMapWidth(); x++)
-			setMapValue(x, y, data[y][x] - '0');
+		for (int y = 0; y < height; y++) {
+			for (int x = 0; x < width; x++) {
+				char value;
+				file >> value;
+				setMapValue(x, y, value - '0');
+			}
+		}
+
+		file.close();
+		return true;
+	}
+	else {
+		printf("Something wrong when reading files\n");
+		return false;
+	}
+}
+
+void Scyjz14TileManager::setUpTileManager(BaseEngine* pEngine) {
+
+	if (!loadMapFromFile("resources/Map/Level2.txt")) {
+		printf("Load Map Error!\n");
+		return;
+	}
+	
 
 	// Output the map to check
 	for (int y = 0; y < getMapHeight(); y++) {

@@ -2,6 +2,7 @@
 #include "TileManager.h"
 #include "Scyjz14Image.h"
 #include "Scyjz14ImageManager.h"
+#include <fstream>
 
 class Scyjz14TileManager :
     public TileManager
@@ -32,6 +33,7 @@ public:
 
 	bool isPassableByObjectCentre(int iScreenX, int iScreenY, int offSet) const;
 
+	bool loadMapFromFile(const char* filename);
 
 	enum Type { 
 		NONE, WALL1, WALL2, WALL3, WALL4,

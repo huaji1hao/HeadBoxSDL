@@ -33,15 +33,19 @@ void Weapon::virtDoUpdate(int iCurrentTime) {
     // Check collision with zombies
     for (auto& id : ObjectIndexes::getZombieIndexes()) {
         // Get the player object
+
         Zombie* zb = dynamic_cast<Zombie*>(getEngine()->getDisplayableObject(id));
-        if (zb == nullptr || zb->isDied()) return;
+        if (zb == nullptr || zb->isDied()) continue;
 
         // Check if the zombie is colliding with the weapon
         if (Scyjz14CollisionDetection::checkPixel(getImage(), m_iCurrentFrameX * m_iDrawWidth, 0, m_iDrawWidth, m_iDrawHeight, getWeaponX(), getWeaponY(),
             zb->getImage(), zb->getCurrentFrameX() * zb->getDrawWidth(), zb->getDirection() * zb->getDrawHeight(), zb->getDrawWidth(), zb->getDrawHeight(), zb->getDrawingRegionLeft(), zb->getDrawingRegionTop()))
         {
             zb->lifeDecrease(1);
-            if (zb->isDied())zb->drawBody();
+            if (zb->isDied()) {
+                zb->checkIsLive();
+                zb->drawBody();
+            }
         }
     }
 

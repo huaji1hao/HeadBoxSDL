@@ -95,7 +95,9 @@ public:
 
 	bool isDied() { return lifeValue <= 0; }
 
-	void checkIsLife() { if (isDied()) setVisible(false); }
+	void checkIsLive() { if (isDied()) setVisible(false); }
+
+	void setRevealingTime(int timeStamp) { revealingTime = timeStamp; }
 
 protected:
 	Direction m_direction; // Current direction the object faces
@@ -104,6 +106,7 @@ protected:
 	int m_iPrevScreenY = 0;
 	int widthOffset = 12;
 	int lifeValue = 100;  
+	int revealingTime = 0;
 	Scyjz14TileManager* m_pTileManager = nullptr;
 	Scyjz14Image health_bar = nullptr;
 

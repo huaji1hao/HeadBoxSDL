@@ -8,6 +8,8 @@
 #include "PauseState.h"
 #include "Scyjz14Engine.h"
 #include "Weapon.h"
+#include <chrono>
+#include <thread>
 
 void RunningState::virtKeyDown(int iKeyCode) {
 	switch (iKeyCode)
@@ -20,22 +22,37 @@ void RunningState::virtKeyDown(int iKeyCode) {
 
 void RunningState::initialiseStateObject() {
 	
-
 	eg->notifyObjectsAboutMouse(true);
 	eg->drawableObjectsChanged();
 	eg->lockAndSetupBackground();
 	//eg->redrawDisplay();
 
-	eg->appendObjectToArray(new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
-	ObjectIndexes::addPlayerIndexes({ eg->getContentCount() - 1 });
+	eg->createObjectArray(20);
+
+	eg->storeObjectInArray(0, new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
+	ObjectIndexes::addPlayerIndex(0);
+	//eg->appendObjectToArray(new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
+	//ObjectIndexes::addPlayerIndex( eg->getContentCount() - 1 );
+	
 	eg->appendObjectToArray(new Weapon(0, 0, eg));
 
-
-	eg->appendObjectToArray(new Zombie(0, 0, eg, eg->GetTileManager()));
-	ObjectIndexes::addZombieIndexes({ eg->getContentCount() - 1 });
+	//refresh zombies randomly on "0" position
+	/*eg->appendObjectToArray(new Zombie(0, 0, eg, eg->GetTileManager(), 0));
+	ObjectIndexes::addZombieIndex( eg->getContentCount() - 1 );
 	
-	eg->appendObjectToArray(new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager()));
-	ObjectIndexes::addZombieIndexes({ eg->getContentCount() - 1 });
+	eg->appendObjectToArray(new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager(), 0));
+	ObjectIndexes::addZombieIndex( eg->getContentCount() - 1 );*/
+
+	int zombieNumber = 5;
+	int secondToMilli = 1000;
+	for (int i = 1; i <= zombieNumber; i++) {
+		//eg->appendObjectToArray(new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager(), i * secondToMilli));
+		//ObjectIndexes::addZombieIndex(eg->getContentCount() - 1);
+		eg->storeObjectInArray(i, new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
+		ObjectIndexes::addZombieIndex(i);
+	}
+
+	
 };
 
 void RunningState::virtSetupBackgroundBuffer() {
@@ -93,3 +110,21 @@ RunningState::~RunningState() {
 	eg->destroyOldObjects(true);
 	eg->clearContents();
 }
+
+void RunningState::virtMainLoopPreUpdate() {
+	// When all the zombies died
+	bool isAllZombiesDead = true;
+	for(auto index : ObjectIndexes::getZombieIndexes()) {
+		Zombie* zb = dynamic_cast<Zombie*>(eg->getDisplayableObject(index));
+		if (!zb->isDied()) {
+			isAllZombiesDead = false;
+			break;
+		}
+	}
+
+	 if (isAllZombiesDead) {
+	 	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
+	 	eg->setState(std::make_shared<StartUpState>(eg));
+	 }
+}
+

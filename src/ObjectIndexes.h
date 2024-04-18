@@ -30,20 +30,26 @@ public:
         zombieIndexes->push_back(index);
     }
 
+    //remove indexes from the zombie vector
+    static void removeZombieIndex(int index) {
+        for (auto it = zombieIndexes->begin(); it != zombieIndexes->end(); ++it) {
+            if (*it == index) {
+                zombieIndexes->erase(it);
+                break;
+            }
+        }
+    }
+
+    // conut the number of zombies
+    static int countZombies() {
+        return zombieIndexes->size();
+    }
+
     // add indexes to the player vector
     static void addPlayerIndex(int index) {
         playerIndexes->push_back(index);
     }
 
-    // add multiple indexes to the zombie vector
-    static void addZombieIndexes(const std::initializer_list<int>& indexes) {
-        zombieIndexes->insert(zombieIndexes->end(), indexes.begin(), indexes.end());
-    }
-
-    // add multiple indexes to the player vector
-    static void addPlayerIndexes(const std::initializer_list<int>& indexes) {
-        playerIndexes->insert(playerIndexes->end(), indexes.begin(), indexes.end());
-    }
 
 private:
     // use unique_ptr to avoid memory leaks

@@ -29,6 +29,9 @@ public:
     int virtInitialise() override;
     void virtMouseWheel(int x, int y, int which, int timestamp) override;
     void virtKeyDown(int iKeyCode) override;
+    void virtMainLoopDoBeforeUpdate() override;
+    void virtMainLoopPreUpdate() override;
+    void copyAllBackgroundBuffer() override;
 
     // Get a reference to the current tile manager - which is defined below!
     Scyjz14TileManager* GetTileManager() { return m_oTiles.get(); }
@@ -40,7 +43,7 @@ public:
         state->initialiseStateObject();
     }
 
-    void Scyjz14Engine::restoreState(std::shared_ptr<State> oldState) {
+    void restoreState(std::shared_ptr<State> oldState) {
         state = oldState;  // Assuming state is also a std::shared_ptr<State>
     }
 

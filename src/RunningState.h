@@ -21,9 +21,9 @@ public:
     void virtMouseUp(int iButton, int iX, int iY) override;
 
     void initialiseStateObject() override;
-    void initialise() override;
-    void virtMouseWheel(int x, int y, int which, int timestamp) override;
     void virtKeyDown(int iKeyCode) override;
+
+    void virtMainLoopPreUpdate() override;
 
 
 };

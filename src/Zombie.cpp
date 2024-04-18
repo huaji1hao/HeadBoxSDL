@@ -39,8 +39,8 @@ void Zombie::drawBody() {
 }
 
 void Zombie::virtDoUpdate(int iCurrentTime) {
-	checkIsLife();
-	if (isDied() || getEngine()->isPaused()) return;
+	if (isDied() || getEngine()->isPaused() || revealingTime >= iCurrentTime) return;
+	setVisible(true);
 	updateAnimationFrame(iCurrentTime);
 	fixPosition();
 }

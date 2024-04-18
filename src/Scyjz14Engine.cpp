@@ -55,5 +55,17 @@ void Scyjz14Engine::virtKeyDown(int iKeyCode) {
 	state->virtKeyDown(iKeyCode);
 }
 
+void Scyjz14Engine::virtMainLoopDoBeforeUpdate() {
+	state->virtMainLoopDoBeforeUpdate();
+}
+
+void Scyjz14Engine::virtMainLoopPreUpdate() {
+	state->virtMainLoopPreUpdate();
+}
+
+void Scyjz14Engine::copyAllBackgroundBuffer() {
+	BaseEngine::copyAllBackgroundBuffer();
+}
+
 
 

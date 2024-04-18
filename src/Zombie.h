@@ -7,7 +7,7 @@ class Zombie :
     public AgentBaseObject
 {
 public:
-    Zombie(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* pTileManager, std::string strURL = "resources/game/zombie/zombie_8.png",
+    Zombie(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* pTileManager, int revealTime, std::string strURL = "resources/game/zombie/zombie_8.png",
         int frameWidth = 45, int frameHeight = 50, bool useTopLeftFor00 = true, bool bVisible = true)
         : AgentBaseObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible)
     {
@@ -15,6 +15,8 @@ public:
         m_pTileManager = pTileManager;
         setSpeed(2);
         setFrameRate(30);
+        setVisible(false);
+        setRevealingTime(revealTime);
     }
     
 

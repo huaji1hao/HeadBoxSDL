@@ -20,6 +20,8 @@ public:
     virtual void virtMouseUp(int iButton, int iX, int iY) {};
     virtual void virtMouseWheel(int x, int y, int which, int timestamp) {};
     virtual void virtKeyDown(int iKeyCode) {};
+    virtual void virtMainLoopDoBeforeUpdate() {};
+    virtual void virtMainLoopPreUpdate() {};
     virtual ~State() {};
 
 protected:
