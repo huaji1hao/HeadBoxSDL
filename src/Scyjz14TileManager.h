@@ -35,6 +35,22 @@ public:
 
 	bool loadMapFromFile(const char* filename);
 
+	void drawAllTiles(BaseEngine* pEngine, DrawingSurface* pSurface, int offsetX, int offsetY) const
+	{
+		pSurface->mySDLLockSurface();
+		for (int iTX = 0; iTX < m_iMapWidth; iTX++)
+		{
+			for (int iTY = 0; iTY < m_iMapHeight; iTY++)
+			{
+				virtDrawTileAt(pEngine, pSurface,
+					iTX, iTY,
+					m_iBaseScreenX + getTileWidth() * iTX + offsetX,
+					m_iBaseScreenY + getTileHeight() * iTY + offsetY);
+			}
+		}
+		pSurface->mySDLUnlockSurface();
+	}
+
 	enum Type { 
 		NONE, WALL1, WALL2, WALL3, WALL4,
 		WALL5, WALL6, WALL7, WALL8, BARREL

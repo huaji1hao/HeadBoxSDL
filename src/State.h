@@ -22,6 +22,7 @@ public:
     virtual void virtKeyDown(int iKeyCode) {};
     virtual void virtMainLoopDoBeforeUpdate() {};
     virtual void virtMainLoopPreUpdate() {};
+    virtual void copyAllBackgroundBuffer();
     virtual ~State() {};
 
 protected:

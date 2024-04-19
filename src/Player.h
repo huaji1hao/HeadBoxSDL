@@ -20,6 +20,10 @@ public:
 
     void virtDoUpdate(int iCurrentTime) override;
 
+	int getX() const { return m_iCurrentScreenX; }
+
+	int getY() const { return m_iCurrentScreenY; }
+
     
 protected:
 

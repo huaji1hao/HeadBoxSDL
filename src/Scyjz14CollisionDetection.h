@@ -108,5 +108,58 @@ public:
 
         return false; // No collision detected
     }
+
+    static bool isImageContained(
+        int iScreenX1, int iScreenY1, int width1, int height1,
+        int iScreenX2, int iScreenY2, int width2, int height2) {
+        // Calculate the boundary of both images
+        int right1 = iScreenX1 + width1;
+        int bottom1 = iScreenY1 + height1;
+        int right2 = iScreenX2 + width2;
+        int bottom2 = iScreenY2 + height2;
+
+        // Check if all four sides of image2 are within image1
+        return (iScreenX2 >= iScreenX1 && iScreenY2 >= iScreenY1 &&
+            right2 <= right1 && bottom2 <= bottom1);
+    }
+
+
+    static bool checkPixelIsImg2InImg1(
+        Scyjz14Image image1, int iSourceX1, int iSourceY1, int width1, int height1, int iScreenX1, int iScreenY1,
+        Scyjz14Image image2, int iSourceX2, int iSourceY2, int width2, int height2, int iScreenX2, int iScreenY2) {
+
+        // First, check if the entire image2 is within the bounds of image1
+        if (!isImageContained(iScreenX1, iScreenY1, width1, height1, iScreenX2, iScreenY2, width2, height2))
+            return false;
+
+        // Iterate over each pixel in image2 to check containment
+        for (int y = 0; y < height2; y++) {
+            for (int x = 0; x < width2; x++) {
+                int posX2 = x + iSourceX2;
+                int posY2 = y + iSourceY2;
+                unsigned int pixel2 = image2.getPixelColour(posX2, posY2);
+                unsigned int alpha2 = pixel2 >> 24;
+
+                // Only consider non-transparent pixels in image2
+                if (alpha2 == 255) {
+                    // Check corresponding pixel in image1
+                    int posX1 = iScreenX2 - iScreenX1 + x + iSourceX1;
+                    int posY1 = iScreenY2 - iScreenY1 + y + iSourceY1;
+                    unsigned int pixel1 = image1.getPixelColour(posX1, posY1);
+                    unsigned int alpha1 = pixel1 >> 24;
+
+                    // If corresponding pixel in image1 is not opaque, return false
+                    if (alpha1 != 255) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        // All non-transparent pixels of image2 are contained within the opaque pixels of image1
+        return true;
+    }
+
 };
+
 

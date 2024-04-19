@@ -64,7 +64,7 @@ void Scyjz14Engine::virtMainLoopPreUpdate() {
 }
 
 void Scyjz14Engine::copyAllBackgroundBuffer() {
-	BaseEngine::copyAllBackgroundBuffer();
+	state->copyAllBackgroundBuffer();
 }
 
 

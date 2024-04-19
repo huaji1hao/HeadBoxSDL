@@ -8,6 +8,7 @@
 #include "PauseState.h"
 #include "Scyjz14Engine.h"
 #include "Weapon.h"
+#include "Door.h"
 #include <chrono>
 #include <thread>
 
@@ -36,14 +37,11 @@ void RunningState::initialiseStateObject() {
 	
 	eg->appendObjectToArray(new Weapon(0, 0, eg));
 
-	//refresh zombies randomly on "0" position
-	/*eg->appendObjectToArray(new Zombie(0, 0, eg, eg->GetTileManager(), 0));
-	ObjectIndexes::addZombieIndex( eg->getContentCount() - 1 );
-	
-	eg->appendObjectToArray(new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager(), 0));
-	ObjectIndexes::addZombieIndex( eg->getContentCount() - 1 );*/
+	eg->storeObjectInArray(10, new Door(400, 300, eg));
 
-	int zombieNumber = 5;
+	//refresh zombies randomly on "0" position
+
+	int zombieNumber = 1;
 	int secondToMilli = 1000;
 	for (int i = 1; i <= zombieNumber; i++) {
 		//eg->appendObjectToArray(new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager(), i * secondToMilli));
@@ -112,19 +110,40 @@ RunningState::~RunningState() {
 }
 
 void RunningState::virtMainLoopPreUpdate() {
-	// When all the zombies died
-	bool isAllZombiesDead = true;
-	for(auto index : ObjectIndexes::getZombieIndexes()) {
-		Zombie* zb = dynamic_cast<Zombie*>(eg->getDisplayableObject(index));
-		if (!zb->isDied()) {
-			isAllZombiesDead = false;
-			break;
-		}
-	}
 
-	 if (isAllZombiesDead) {
-	 	std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-	 	eg->setState(std::make_shared<StartUpState>(eg));
-	 }
 }
 
+void RunningState::virtMainLoopDoBeforeUpdate() {
+	// 获取玩家当前位置
+	auto playerid = ObjectIndexes::getPlayerIndexes()[0];
+	Player *player = dynamic_cast<Player*>(eg->getDisplayableObject(playerid));
+
+	int playerX = player->getX();
+	int playerY = player->getY();
+
+	// 计算背景偏移量
+	int offsetX = eg->getWindowWidth() / 2 - playerX;
+	int offsetY = eg->getWindowHeight() / 2 - playerY;
+
+	Scyjz14TileManager* tm = eg->GetTileManager();
+
+	// 确保背景偏移量不超出地图边界
+	offsetX = std::max(0, std::min(offsetX, tm->getMapWidth() * tm->getTileWidth() - eg->getWindowWidth()));
+	offsetY = std::max(0, std::min(offsetY, tm->getMapHeight() * tm->getTileHeight() - eg->getWindowHeight()));
+
+	// 更新背景偏移量
+	m_backgroundOffsetX = offsetX;
+	m_backgroundOffsetY = offsetY;
+
+	// 根据背景偏移量绘制背景
+	tm->drawAllTiles(eg, eg->getBackgroundSurface(), m_backgroundOffsetX, m_backgroundOffsetY);
+	dynamic_cast<Door*>(eg->getDisplayableObject(10))->virtDraw(offsetX, offsetY);
+}
+
+void RunningState::copyAllBackgroundBuffer() {
+	eg->BaseEngine::copyAllBackgroundBuffer();
+	/*eg->getBackgroundSurface()->copyRectangleFrom(eg->getBackgroundSurface(),
+		m_backgroundOffsetX, m_backgroundOffsetY,
+		eg->getWindowWidth(), eg->getWindowHeight(),
+		0, 0);*/
+}

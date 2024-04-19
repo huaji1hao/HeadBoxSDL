@@ -41,7 +41,7 @@ void Scyjz14TileManager::setUpTileManager(BaseEngine* pEngine) {
 	}
 
 	// Specify the screen x,y of top left corner
-	drawAllTiles(pEngine, pEngine->getBackgroundSurface());
+	TileManager::drawAllTiles(pEngine, pEngine->getBackgroundSurface());
 }
 
 

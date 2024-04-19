@@ -95,6 +95,7 @@
   <ItemGroup>
     <ClInclude Include="AStar.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="Door.h" />
     <ClInclude Include="DraggingDemo.h" />
     <ClInclude Include="FlashingDemo.h" />
     <ClInclude Include="ObjectIndexes.h" />
@@ -146,6 +147,7 @@
   <ItemGroup>
     <ClCompile Include="AStar.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="Door.cpp" />
     <ClCompile Include="DraggingDemo.cpp" />
     <ClCompile Include="DrawingSurface.cpp" />
     <ClCompile Include="FlashingDemo.cpp" />
