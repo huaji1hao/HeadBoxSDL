@@ -28,6 +28,11 @@ public:
         enter_image = Scyjz14ImageManager::loadImage(strURL, true);
     }
 
+    void useTopCentreFor00(){
+        m_iStartDrawPosX = -m_iDrawWidth / 2;
+        m_iStartDrawPosY = 0;
+    }
+
 
 private:
     int clickTimes;

@@ -1,12 +1,12 @@
 #pragma once
 #include "State.h"
-class WinState :
+class LoseState :
     public State
 {
 public:
-    WinState(Scyjz14Engine* engine) : State(engine) {
+    LoseState(Scyjz14Engine* engine) : State(engine) {
     }
-    ~WinState();
+    ~LoseState();
 
     void initialiseStateObject() override;
 
@@ -17,8 +17,5 @@ public:
     void virtDrawStringsOnTop() override;
 
     void virtMouseUp(int iButton, int iX, int iY) override;
-
-protected:
-    void saveScore(const std::string& name, int score);
 };
 

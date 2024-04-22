@@ -5,7 +5,6 @@
 #include "Scyjz14ImageManager.h"
 #include "StartUpState.h"
 #include "ExampleFilterPointClasses.h"
-#include "WinState.h"
 
 class Scyjz14Engine :
     public BaseEngine
@@ -15,10 +14,8 @@ public:
     Scyjz14Engine(): 
     m_filterScaling(0, 0, this), m_filterTranslation(0, 0, &m_filterScaling) 
     {
-        //setState(new RunningState);
         m_oTiles.reset(new Scyjz14TileManager);
-        //state.reset(new StartUpState(this));
-        state.reset(new WinState(this));
+        state.reset(new StartUpState(this));
     }
     
     void virtSetupBackgroundBuffer() override;

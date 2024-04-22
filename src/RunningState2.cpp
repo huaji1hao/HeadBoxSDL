@@ -6,6 +6,7 @@
 #include "ObjectIndexes.h"
 #include "ImagePixelMapping.h"
 #include "PauseState.h"
+#include "WinState.h"
 #include "Scyjz14Engine.h"
 #include "Weapon.h"
 #include "Door.h"

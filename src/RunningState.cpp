@@ -22,7 +22,7 @@ void RunningState::virtKeyDown(int iKeyCode) {
 
 void RunningState::initialiseStateObject() {
 	
-	eg->notifyObjectsAboutMouse(true);
+	eg->notifyObjectsAboutMouse(false);
 	eg->drawableObjectsChanged();
 	eg->lockAndSetupBackground();
 	//eg->redrawDisplay();

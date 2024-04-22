@@ -54,14 +54,9 @@ void WinState::initialiseStateObject() {
 	
 	TextInputField* textField = new TextInputField(220, 240, 270, 40, eg, eg->getFont("resources/Arial_Rounded_Bold.ttf", 27));
 
-
 	eg->storeObjectInArray(0, button1);
 	eg->storeObjectInArray(1, button2);
 	eg->storeObjectInArray(2, textField);
-
-}
-
-void WinState::virtMouseDown(int iButton, int iX, int iY) {
 
 }
 
