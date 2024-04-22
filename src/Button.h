@@ -9,9 +9,6 @@ public:
     {
         clickTimes = 0;
         clickBias = 5;
-        m_szLabel = nullptr;
-        m_iXLabelOffset = 0;
-        m_iYLabelOffset = 0;
         jumpState = false;
     }
 
@@ -25,7 +22,6 @@ public:
     // draw the button
     void virtDraw() override;
     void setJumpState(bool isJump) { jumpState = isJump; }
-    void setLabel(char* label, int xOffset, int yOffset);
     void virtDoUpdate(int iCurrentTime) override;
 
     void setEnterImage(std::string strURL) {
@@ -37,11 +33,6 @@ private:
     int clickTimes;
     bool isPressedWithin = false;
     int clickBias;
-    // Label to apply
-    const char* m_szLabel;
-    // Label offset in pixels
-    int m_iXLabelOffset;
-    int m_iYLabelOffset;
     bool jumpState;
     Scyjz14Image enter_image;
 };

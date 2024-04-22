@@ -1,6 +1,7 @@
 #include "header.h"
 #include "Zombie.h"
 #include "Button.h"
+#include "RunningState.h"
 #include "Scyjz14Engine.h"
 #include "StartUpState.h"
 #include "ObjectIndexes.h"

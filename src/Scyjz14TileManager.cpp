@@ -25,6 +25,26 @@ bool Scyjz14TileManager::loadMapFromFile(const char* filename) {
 	}
 }
 
+std::pair<int, int> Scyjz14TileManager::getRandomPassablePoint() {
+	int attempts = 0;
+	const int MAX_ATTEMPTS = 100;  // set a max value to prevent infinite loop
+
+	while (attempts < MAX_ATTEMPTS) {
+		int x = rand() % getMapWidth();
+		int y = rand() % getMapHeight();
+
+		if (getMapValue(x, y) == 0) {  // check is the point passible
+			// convert the screen position to map position
+			int screenX = x * getTileWidth();
+			int screenY = y * getTileHeight();
+			return std::make_pair(screenX, screenY);
+		}
+		attempts++;
+	}
+
+	return std::make_pair(-1, -1);  // special value when failed
+}
+
 void Scyjz14TileManager::setUpTileManager(BaseEngine* pEngine, const char* filename) {
 
 	if (!loadMapFromFile(filename)) {
@@ -109,6 +129,22 @@ void Scyjz14TileManager::virtDrawTileAt(
 
 	}
 	
+}
+
+void Scyjz14TileManager::drawAllTiles(BaseEngine* pEngine, DrawingSurface* pSurface, int offsetX, int offsetY) const
+{
+	pSurface->mySDLLockSurface();
+	for (int iTX = 0; iTX < m_iMapWidth; iTX++)
+	{
+		for (int iTY = 0; iTY < m_iMapHeight; iTY++)
+		{
+			virtDrawTileAt(pEngine, pSurface,
+				iTX, iTY,
+				m_iBaseScreenX + getTileWidth() * iTX + offsetX,
+				m_iBaseScreenY + getTileHeight() * iTY + offsetY);
+		}
+	}
+	pSurface->mySDLUnlockSurface();
 }
 
 bool Scyjz14TileManager::isPassable(int tileType) const {

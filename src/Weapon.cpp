@@ -1,6 +1,7 @@
 #include "Weapon.h"
 #include "Zombie.h"
 #include "Scyjz14CollisionDetection.h"
+#include "Scyjz14Engine.h"
 
 int Weapon::getWeaponX() {
     if (m_direction == LEFT) return m_pPlayer->getDrawingRegionLeft() - distance;
@@ -45,6 +46,10 @@ void Weapon::virtDoUpdate(int iCurrentTime) {
             if (zb->isDied()) {
                 zb->checkIsLive();
                 zb->drawBody();
+                
+                int timeDifference = abs(iCurrentTime - zb->getRevealingTime()) / 1000;  // Convert milliseconds to seconds
+                int scoreIncrease = 5 + (100 / (timeDifference + 1));  // Base Score = 5, Max Time Bonus gradually decreases
+                dynamic_cast<Scyjz14Engine*>(getEngine())->increaseScore(scoreIncrease);
             }
         }
     }

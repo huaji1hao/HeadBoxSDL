@@ -11,7 +11,7 @@ public:
 	Scyjz14TileManager(void) : TileManager(40, 30)
 	{
 		tileImage = Scyjz14ImageManager::loadImage("resources/game/tiles.png", true);
-		
+		srand(time(NULL));
 	}
 
 	~Scyjz14TileManager(void)
@@ -35,21 +35,9 @@ public:
 
 	bool loadMapFromFile(const char* filename);
 
-	void drawAllTiles(BaseEngine* pEngine, DrawingSurface* pSurface, int offsetX, int offsetY) const
-	{
-		pSurface->mySDLLockSurface();
-		for (int iTX = 0; iTX < m_iMapWidth; iTX++)
-		{
-			for (int iTY = 0; iTY < m_iMapHeight; iTY++)
-			{
-				virtDrawTileAt(pEngine, pSurface,
-					iTX, iTY,
-					m_iBaseScreenX + getTileWidth() * iTX + offsetX,
-					m_iBaseScreenY + getTileHeight() * iTY + offsetY);
-			}
-		}
-		pSurface->mySDLUnlockSurface();
-	}
+	void drawAllTiles(BaseEngine* pEngine, DrawingSurface* pSurface, int offsetX, int offsetY) const;
+
+	std::pair<int, int> getRandomPassablePoint();
 
 	enum Type { 
 		NONE, WALL1, WALL2, WALL3, WALL4,

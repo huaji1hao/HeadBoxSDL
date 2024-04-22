@@ -37,7 +37,7 @@ void RunningState2::initialiseStateObject() {
 
 	eg->appendObjectToArray(new Weapon(0, 0, eg));
 
-	auto nextState = std::make_shared<StartUpState>(eg);
+	auto nextState = std::make_shared<WinState>(eg);
 	eg->storeObjectInArray(10, new Door(400, 300, eg, nextState));
 
 	//refresh zombies randomly on "0" position
@@ -84,14 +84,9 @@ void RunningState2::virtDrawStringsUnderneath() {
 }
 
 void RunningState2::virtDrawStringsOnTop() {
-	// Initialize the time
-	//time_t now = time(0);
-	//struct tm* timeinfo = localtime(&now);
-
-	//// Build the string to print
-	//char buf[128];
-	//strftime(buf, sizeof(buf), "Time is %Y-%m-%d %H:%M:%S now", timeinfo);
-	//eg->drawForegroundString(150, 200, buf, 0xff00ff, eg->getFont("resources/kenvector_future.ttf", 24));
+	char buf[56];
+	sprintf(buf, "Score : %d", eg->getScore());
+	eg->drawForegroundString(0, 0, buf, 0xff0000, eg->getFont("resources/Truculenta-Regular.ttf", 36));
 }
 
 void RunningState2::virtMouseDown(int iButton, int iX, int iY) {

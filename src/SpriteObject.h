@@ -99,6 +99,8 @@ public:
 
 	void setRevealingTime(int timeStamp) { revealingTime = timeStamp; }
 
+	int getRevealingTime() { return revealingTime; }
+
 protected:
 	Direction m_direction; // Current direction the object faces
 	int moving_speed = 2;

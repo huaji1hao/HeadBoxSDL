@@ -1,16 +1,15 @@
 #pragma once
-#include "BaseEngine.h"
 #include "State.h"
-
-class RunningState :
-    public State, public std::enable_shared_from_this<RunningState>
+class WinState :
+    public State
 {
 public:
-    RunningState(Scyjz14Engine* engine) : State(engine)
-    {};
+    WinState(Scyjz14Engine* engine) : State(engine) {
+    }
+    ~WinState();
 
-    ~RunningState() override;
-    
+    void initialiseStateObject() override;
+
     void virtSetupBackgroundBuffer() override;
 
     void virtDrawStringsUnderneath() override;
@@ -20,8 +19,7 @@ public:
     void virtMouseDown(int iButton, int iX, int iY) override;
     void virtMouseUp(int iButton, int iX, int iY) override;
 
-    void initialiseStateObject() override;
-    void virtKeyDown(int iKeyCode) override;
-
+protected:
+    void saveScore(const std::string& name, int score);
 };
 

@@ -63,25 +63,4 @@ void Button::virtDraw()
 		else
 		    image.renderImageWithAlpha(getEngine()->getForegroundSurface(), 0, 0, m_iCurrentScreenX + m_iStartDrawPosX, m_iCurrentScreenY + m_iStartDrawPosY + yOffset, m_iDrawWidth, m_iDrawHeight);
 	}
-
-	//char buf2[56];
-	//sprintf(buf2, "Button has been clicked %d times", getClickTimes());
-	//getEngine()->drawForegroundString(400, 350, buf2, 0xff00ff, getEngine()->getFont("resources/Truculenta-Regular.ttf", 24));
-	
-	if ((m_szLabel != nullptr) && (strlen(m_szLabel) > 0))
-	{
-		if (isInClickArea()) 
-			getEngine()->drawForegroundString(getDrawingRegionLeft() + m_iXLabelOffset, getDrawingRegionTop() + m_iYLabelOffset, m_szLabel, 0xa6a6a6, getEngine()->getFont("resources/Arial_Rounded_Bold.ttf", 28));
-		else
-			getEngine()->drawForegroundString(getDrawingRegionLeft() + m_iXLabelOffset, getDrawingRegionTop() + m_iYLabelOffset, m_szLabel, 0x000000, getEngine()->getFont("resources/Arial_Rounded_Bold.ttf", 28));
-	}
-
-
-	
-}
-
-void Button::setLabel(char* label, int xOffset, int yOffset) {
-	m_szLabel = label;
-	m_iXLabelOffset = xOffset;
-	m_iYLabelOffset = yOffset;
 }

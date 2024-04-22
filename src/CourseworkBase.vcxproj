@@ -116,6 +116,7 @@
     <ClInclude Include="StarfieldDemo.h" />
     <ClInclude Include="StartUpState.h" />
     <ClInclude Include="State.h" />
+    <ClInclude Include="TextInputField.h" />
     <ClInclude Include="UtilCollisionDetection.h" />
     <ClInclude Include="DisplayableObjectContainer.h" />
     <ClInclude Include="ExampleDragableObjects.h" />
@@ -142,6 +143,7 @@
     <ClInclude Include="MazeDemoTileManager.h" />
     <ClInclude Include="SimpleDemo.h" />
     <ClInclude Include="Weapon.h" />
+    <ClInclude Include="WinState.h" />
     <ClInclude Include="Zombie.h" />
     <ClInclude Include="ZoomingDemo.h" />
   </ItemGroup>
@@ -174,6 +176,7 @@
     <ClCompile Include="StarfieldDemo.cpp" />
     <ClCompile Include="StartUpState.cpp" />
     <ClCompile Include="State.cpp" />
+    <ClCompile Include="TextInputField.cpp" />
     <ClCompile Include="TileManager.cpp" />
     <ClCompile Include="BouncingBall.cpp" />
     <ClCompile Include="BouncingBallMain.cpp" />
@@ -187,6 +190,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Weapon.cpp" />
+    <ClCompile Include="WinState.cpp" />
     <ClCompile Include="Zombie.cpp" />
     <ClCompile Include="ZoomingDemo.cpp" />
   </ItemGroup>

@@ -41,12 +41,14 @@ void RunningState::initialiseStateObject() {
 
 	//refresh zombies randomly on "0" position
 
-	int zombieNumber = 1;
+	int zombieNumber = 5;
 	int secondToMilli = 1000;
 	for (int i = 1; i <= zombieNumber; i++) {
-		//eg->appendObjectToArray(new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager(), i * secondToMilli));
-		//ObjectIndexes::addZombieIndex(eg->getContentCount() - 1);
-		eg->storeObjectInArray(i, new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
+		std::pair<int, int> rndPosition = eg->GetTileManager()->getRandomPassablePoint();
+		int zbX = rndPosition.first;
+		int zbY = rndPosition.second;
+
+		eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
 		ObjectIndexes::addZombieIndex(i);
 	}
 
@@ -79,14 +81,9 @@ void RunningState::virtDrawStringsUnderneath() {
 }
 
 void RunningState::virtDrawStringsOnTop() {
-	// Initialize the time
-	//time_t now = time(0);
-	//struct tm* timeinfo = localtime(&now);
-
-	//// Build the string to print
-	//char buf[128];
-	//strftime(buf, sizeof(buf), "Time is %Y-%m-%d %H:%M:%S now", timeinfo);
-	//eg->drawForegroundString(150, 200, buf, 0xff00ff, eg->getFont("resources/kenvector_future.ttf", 24));
+	char buf[56];
+	sprintf(buf, "Score : %d", eg->getScore());
+	eg->drawForegroundString(0, 0, buf, 0xff0000, eg->getFont("resources/Truculenta-Regular.ttf", 36));
 }
 
 void RunningState::virtMouseDown(int iButton, int iX, int iY) {
@@ -101,43 +98,4 @@ RunningState::~RunningState() {
 	ObjectIndexes::initialize();
 	eg->destroyOldObjects(true);
 	eg->clearContents();
-}
-
-void RunningState::virtMainLoopPreUpdate() {
-
-}
-
-void RunningState::virtMainLoopDoBeforeUpdate() {
-	// 获取玩家当前位置
-	//auto playerid = ObjectIndexes::getPlayerIndexes()[0];
-	//Player *player = dynamic_cast<Player*>(eg->getDisplayableObject(playerid));
-
-	//int playerX = player->getX();
-	//int playerY = player->getY();
-
-	//// 计算背景偏移量
-	//int offsetX = eg->getWindowWidth() / 2 - playerX;
-	//int offsetY = eg->getWindowHeight() / 2 - playerY;
-
-	//Scyjz14TileManager* tm = eg->GetTileManager();
-
-	//// 确保背景偏移量不超出地图边界
-	//offsetX = std::max(0, std::min(offsetX, tm->getMapWidth() * tm->getTileWidth() - eg->getWindowWidth()));
-	//offsetY = std::max(0, std::min(offsetY, tm->getMapHeight() * tm->getTileHeight() - eg->getWindowHeight()));
-
-	//// 更新背景偏移量
-	//m_backgroundOffsetX = offsetX;
-	//m_backgroundOffsetY = offsetY;
-
-	//// 根据背景偏移量绘制背景
-	//tm->drawAllTiles(eg, eg->getBackgroundSurface(), m_backgroundOffsetX, m_backgroundOffsetY);
-	//dynamic_cast<Door*>(eg->getDisplayableObject(10))->virtDraw(offsetX, offsetY);
-}
-
-void RunningState::copyAllBackgroundBuffer() {
-	eg->BaseEngine::copyAllBackgroundBuffer();
-	/*eg->getBackgroundSurface()->copyRectangleFrom(eg->getBackgroundSurface(),
-		m_backgroundOffsetX, m_backgroundOffsetY,
-		eg->getWindowWidth(), eg->getWindowHeight(),
-		0, 0);*/
 }

@@ -3,9 +3,9 @@
 #include "Scyjz14TileManager.h"
 #include "State.h"
 #include "Scyjz14ImageManager.h"
-#include "RunningState.h"
 #include "StartUpState.h"
 #include "ExampleFilterPointClasses.h"
+#include "WinState.h"
 
 class Scyjz14Engine :
     public BaseEngine
@@ -17,7 +17,8 @@ public:
     {
         //setState(new RunningState);
         m_oTiles.reset(new Scyjz14TileManager);
-        state.reset(new StartUpState(this));
+        //state.reset(new StartUpState(this));
+        state.reset(new WinState(this));
     }
     
     void virtSetupBackgroundBuffer() override;
@@ -47,6 +48,9 @@ public:
         state = oldState;  // Assuming state is also a std::shared_ptr<State>
     }
 
+    void increaseScore(int num) { score += num; }
+    void clearScore() { score = 0; }
+    int getScore() { return score; }
 
     FilterPointsScaling* getFilterPointScaling() { return &m_filterScaling; }
     FilterPointsTranslation* getFilterPointsTranslation() { return &m_filterTranslation; }
@@ -59,5 +63,6 @@ private:
     // Contained object (composition) for the tile manager
     std::unique_ptr<Scyjz14TileManager> m_oTiles;
     std::shared_ptr<State> state;
+    int score = 0;
 };
 
