@@ -25,7 +25,7 @@ public:
 		int iMapX, int iMapY,
 		int iStartPositionScreenX, int iStartPositionScreenY) const override;
 	
-	void setUpTileManager(BaseEngine* pEngine);
+	void setUpTileManager(BaseEngine* pEngine, const char* filename);
 
 	bool isPassable(int tileType) const;
 

@@ -25,9 +25,9 @@ bool Scyjz14TileManager::loadMapFromFile(const char* filename) {
 	}
 }
 
-void Scyjz14TileManager::setUpTileManager(BaseEngine* pEngine) {
+void Scyjz14TileManager::setUpTileManager(BaseEngine* pEngine, const char* filename) {
 
-	if (!loadMapFromFile("resources/Map/Level2.txt")) {
+	if (!loadMapFromFile(filename)) {
 		printf("Load Map Error!\n");
 		return;
 	}

@@ -65,7 +65,8 @@ void Door::virtDoUpdate(int iCurrentTime){
 		{
 			// If the zombie is colliding with the player, knock the player away
 			Scyjz14Engine* eg = dynamic_cast<Scyjz14Engine*>(m_pEngine);
-			eg->setState(std::make_shared<StartUpState>(eg));
+			//eg->setState(std::make_shared<StartUpState>(eg));
+			eg->setState(m_targetState);
 		}
 
 	}
