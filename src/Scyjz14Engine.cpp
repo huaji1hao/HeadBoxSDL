@@ -8,63 +8,75 @@
 #include "ObjectIndexes.h"
 #include <ctime>
 
+void Scyjz14Engine::setState(std::shared_ptr<State> newState) {
+	m_pState = newState;
+
+	m_pState->initialise();
+	m_pState->initialiseStateObject();
+}
+
+void Scyjz14Engine::restoreState(std::shared_ptr<State> oldState) {
+	m_pState = oldState;  // Assuming m_pState is also a std::shared_ptr<State>
+}
+
+
 void Scyjz14Engine::virtSetupBackgroundBuffer()
 {
-	state->virtSetupBackgroundBuffer();
+	m_pState->virtSetupBackgroundBuffer();
 
 }
 
 void Scyjz14Engine::virtDrawStringsUnderneath()
 {
-	state->virtDrawStringsUnderneath();
+	m_pState->virtDrawStringsUnderneath();
 	
 }
 
 void Scyjz14Engine::virtDrawStringsOnTop()
 {
-	state->virtDrawStringsOnTop();
+	m_pState->virtDrawStringsOnTop();
 	
 }
 
 void Scyjz14Engine::virtMouseDown(int iButton, int iX, int iY) {
-	state->virtMouseDown(iButton, iX, iY);
+	m_pState->virtMouseDown(iButton, iX, iY);
 }
 
 void Scyjz14Engine::virtMouseUp(int iButton, int iX, int iY) {
-	state->virtMouseUp(iButton, iX, iY);
+	m_pState->virtMouseUp(iButton, iX, iY);
 }
 
 int Scyjz14Engine::virtInitialiseObjects() {
 
 	// Initialize the object settings
-	state->initialiseStateObject();
+	m_pState->initialiseStateObject();
 
 	return 0;
 }
 
 int Scyjz14Engine::virtInitialise() {
-	state->initialise();
+	m_pState->initialise();
 	return BaseEngine::virtInitialise();
 }
 
 void Scyjz14Engine::virtMouseWheel(int x, int y, int which, int timestamp) {
-	state->virtMouseWheel(x, y, which, timestamp);
+	m_pState->virtMouseWheel(x, y, which, timestamp);
 }
 
 void Scyjz14Engine::virtKeyDown(int iKeyCode) {
-	state->virtKeyDown(iKeyCode);
+	m_pState->virtKeyDown(iKeyCode);
 }
 
 void Scyjz14Engine::virtMainLoopDoBeforeUpdate() {
-	state->virtMainLoopDoBeforeUpdate();
+	m_pState->virtMainLoopDoBeforeUpdate();
 }
 
 void Scyjz14Engine::virtMainLoopPreUpdate() {
-	state->virtMainLoopPreUpdate();
+	m_pState->virtMainLoopPreUpdate();
 }
 
 void Scyjz14Engine::copyAllBackgroundBuffer() {
-	state->copyAllBackgroundBuffer();
+	m_pState->copyAllBackgroundBuffer();
 }
 
 

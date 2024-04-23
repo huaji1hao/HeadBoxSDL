@@ -98,6 +98,7 @@
     <ClInclude Include="Door.h" />
     <ClInclude Include="DraggingDemo.h" />
     <ClInclude Include="FlashingDemo.h" />
+    <ClInclude Include="InstructionState.h" />
     <ClInclude Include="LeaderBoardState.h" />
     <ClInclude Include="LoseState.h" />
     <ClInclude Include="ObjectIndexes.h" />
@@ -156,6 +157,7 @@
     <ClCompile Include="DraggingDemo.cpp" />
     <ClCompile Include="DrawingSurface.cpp" />
     <ClCompile Include="FlashingDemo.cpp" />
+    <ClCompile Include="InstructionState.cpp" />
     <ClCompile Include="LeaderBoardState.cpp" />
     <ClCompile Include="LoseState.cpp" />
     <ClCompile Include="ObjectIndexes.cpp" />

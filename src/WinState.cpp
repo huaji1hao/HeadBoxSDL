@@ -48,7 +48,7 @@ void WinState::initialiseStateObject() {
 	Button* button1 = new Button(220, 310, eg, "resources/UI/SEND_SCORE_GREY.png");
 	button1->setEnterImage("resources/UI/SEND_SCORE_BLACK.png");
 	//button1->setJumpState(true);
-	Button* button2 = new Button(220, 390, eg, "resources/UI/GO_BACK_GREY.png");
+	Button* button2 = new Button(280, 390, eg, "resources/UI/GO_BACK_GREY.png");
 	button2->setEnterImage("resources/UI/GO_BACK_BLACK.png");
 	button2->setJumpState(false);
 	
@@ -74,8 +74,10 @@ void WinState::virtMouseUp(int iButton, int iX, int iY) {
 		int score = eg->getScore(); // Method to get the current score
 		saveScore(playerName, score); // Call the function to save the score
 		
+		eg->lockBackgroundForDrawing();
 		eg->drawBackgroundString(270, 350, "Send Successfully !",
 			0x2bb280, eg->getFont("resources/Arial_Rounded_Bold.ttf", 20));
+		eg->unlockBackgroundForDrawing();
 	}
 		
 	Button* backButton = dynamic_cast<Button*> (eg->getDisplayableObject(1));
@@ -85,15 +87,6 @@ void WinState::virtMouseUp(int iButton, int iX, int iY) {
 }
 
 void WinState::saveScore(const std::string& name, int score) {
-	//std::ofstream outFile("resources/Score/leaderboard.txt", std::ios::app); // Open in append mode
-	//if (outFile) {
-	//	outFile << name << ", " << score << std::endl;
-	//	outFile.close();
-	//}
-	//else {
-	//	std::cerr << "Failed to open scores file." << std::endl;
-	//}
-	
 	std::ofstream outFile("resources/Score/leaderboard.txt", std::ios::app); // Open in append mode
 	if (outFile) {
 		outFile << name << "\t" << score << std::endl; // Use tab character as the delimiter
@@ -108,6 +101,7 @@ void WinState::saveScore(const std::string& name, int score) {
 
 
 WinState::~WinState() {
+	eg->clearScore();
 	eg->destroyOldObjects(true);
 	eg->clearContents();
 }

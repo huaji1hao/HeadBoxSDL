@@ -3,6 +3,7 @@
 #include "BaseEngine.h"
 #include "DisplayableObject.h"
 #include "ImageManager.h"
+#include "Scyjz14Engine.h"
 
 
 void Player::virtDoUpdate(int iCurrentTime)
@@ -42,6 +43,11 @@ void Player::virtDoUpdate(int iCurrentTime)
 
 	// Ensure that the objects get redrawn on the display
 	this->redrawDisplay();
+
+	if (isDied()) {
+		Scyjz14Engine* eg = dynamic_cast<Scyjz14Engine*>(m_pEngine);
+		eg->setState(std::make_shared<LoseState>(eg));
+	}
 }
 
 void Player::knockedAway(int enemyX, int enemyY) {
