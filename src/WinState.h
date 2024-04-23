@@ -4,13 +4,17 @@ class WinState :
     public State
 {
 public:
-    WinState(Scyjz14Engine* engine) : State(engine) {
-    }
+    WinState(Scyjz14Engine* engine);
+
     ~WinState();
 
     void initialiseStateObject() override;
 
     void virtSetupBackgroundBuffer() override;
+
+    void virtMainLoopDoBeforeUpdate() override;
+
+    void copyAllBackgroundBuffer() override;
 
     void virtDrawStringsUnderneath() override;
 
@@ -20,5 +24,8 @@ public:
 
 protected:
     void saveScore(const std::string& name, int score);
-};
+    int m_iOffset;
+    DrawingSurface leftSurface;
+    DrawingSurface rightSurface;
 
+};

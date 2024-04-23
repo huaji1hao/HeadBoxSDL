@@ -44,6 +44,9 @@ void Player::virtDoUpdate(int iCurrentTime)
 	// Ensure that the objects get redrawn on the display
 	this->redrawDisplay();
 
+	/*Scyjz14Engine* eg = dynamic_cast<Scyjz14Engine*>(m_pEngine);
+	eg->setState(std::make_shared<WinState>(eg));*/
+
 	if (isDied()) {
 		Scyjz14Engine* eg = dynamic_cast<Scyjz14Engine*>(m_pEngine);
 		eg->setState(std::make_shared<LoseState>(eg));

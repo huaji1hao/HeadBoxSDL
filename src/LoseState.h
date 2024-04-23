@@ -5,6 +5,7 @@ class LoseState :
 {
 public:
     LoseState(Scyjz14Engine* engine);
+
     ~LoseState();
 
     void initialiseStateObject() override;
@@ -23,4 +24,3 @@ private:
     int m_iSwitchThreshold = 10; // Adjust this value to change the switch speed
     int m_iSwitchCounter;
 };
-

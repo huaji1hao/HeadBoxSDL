@@ -33,22 +33,20 @@ void RunningState2::initialiseStateObject() {
 
 	eg->storeObjectInArray(0, new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
 	ObjectIndexes::addPlayerIndex(0);
-	//eg->appendObjectToArray(new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
-	//ObjectIndexes::addPlayerIndex( eg->getContentCount() - 1 );
 
 	eg->appendObjectToArray(new Weapon(0, 0, eg));
 
 	auto nextState = std::make_shared<WinState>(eg);
 	eg->storeObjectInArray(10, new Door(400, 300, eg, nextState));
 
-	//refresh zombies randomly on "0" position
-
-	int zombieNumber = 5;
+	int zombieNumber = 8;
 	int secondToMilli = 1000;
 	for (int i = 1; i <= zombieNumber; i++) {
-		//eg->appendObjectToArray(new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager(), i * secondToMilli));
-		//ObjectIndexes::addZombieIndex(eg->getContentCount() - 1);
-		eg->storeObjectInArray(i, new Zombie(eg->getWindowWidth(), eg->getWindowHeight(), eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
+		std::pair<int, int> rndPosition = eg->GetTileManager()->getRandomPassablePoint();
+		int zbX = rndPosition.first;
+		int zbY = rndPosition.second;
+
+		eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
 		ObjectIndexes::addZombieIndex(i);
 	}
 
@@ -95,7 +93,7 @@ void RunningState2::virtMouseDown(int iButton, int iX, int iY) {
 }
 
 void RunningState2::virtMouseUp(int iButton, int iX, int iY) {
-	eg->setState(std::make_shared<StartUpState>(eg));
+	//eg->setState(std::make_shared<StartUpState>(eg));
 
 }
 
