@@ -25,7 +25,6 @@ void RunningState::initialiseStateObject() {
 	eg->notifyObjectsAboutMouse(false);
 	eg->drawableObjectsChanged();
 	eg->lockAndSetupBackground();
-	//eg->redrawDisplay();
 
 	eg->createObjectArray(20);
 

@@ -92,16 +92,14 @@ void InstructionState::virtDrawStringsOnTop() {
 void InstructionState::virtSetupBackgroundBuffer() {
 
 	Scyjz14Image background = Scyjz14ImageManager::loadImage("resources/background/menu_background.png", true);
-	//Scyjz14Image torch = Scyjz14ImageManager::loadImage("resources/game/explosion/torch.png", true);
+	/*Scyjz14Image pin = Scyjz14ImageManager::loadImage("resources/game/red_pin.png", true);*/
 
 	DrawingSurface* surface = eg->getBackgroundSurface();
-
+	//pin.renderImageWithAlpha(surface, 0, 0, 100, 100, pin.getWidth(), pin.getHeight());
+	/*ImagePixelMappingFlip flipMapper(ImagePixelMappingFlip::VERTICAL);
+	pin.renderImageWithAlphaAndApplyingMapping(eg, surface, 0, 0, 50, 50, pin.getWidth(), pin.getHeight(), &flipMapper);*/
 
 	background.renderImageWithAlpha(surface, 150, 0, 0, 0, 720, 560);
-
-	/*torch.renderImageWithAlpha(surface, 0, 0, 100, 100, torch.getWidth(), torch.getHeight());
-	ImagePixelMappingFlip flipMapper(ImagePixelMappingFlip::VERTICAL);
-	torch.renderImageWithAlphaAndApplyingMapping(eg, surface, 0, 0, 50, 50, torch.getWidth(), torch.getHeight(), &flipMapper);*/
 }
 
 void InstructionState::initialiseStateObject() {
@@ -113,13 +111,13 @@ void InstructionState::initialiseStateObject() {
 	// Create array with default size for one object
 	eg->createObjectArray(5);
 
-	Scyjz14ImageObject* instructionImg = new Scyjz14ImageObject(35, 30, eg, "resources/game/instruction.png");
+	Scyjz14ImageObject* instructionImg = new Scyjz14ImageObject(35, 50, eg, "resources/game/instruction.png");
 
-	Button* button1 = new Button(90, 1, eg, "resources/UI/GO_BACK_GREY.png");
+	Button* button1 = new Button(90, 12, eg, "resources/UI/GO_BACK_GREY.png");
 	button1->useTopCentreFor00();
 	button1->setEnterImage("resources/UI/GO_BACK_BLACK.png");
 
-	Button* button2 = new Button(365, 378, eg, "resources/UI/PLAY_GAME_GREY.png");
+	Button* button2 = new Button(485, 12, eg, "resources/UI/PLAY_GAME_GREY.png");
 	button2->setEnterImage("resources/UI/PLAY_GAME_BLACK.png");
 
 	eg->storeObjectInArray(0, instructionImg);

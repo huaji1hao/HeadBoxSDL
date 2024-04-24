@@ -11,11 +11,15 @@ public:
         if (!eg->isPaused()) eg->pause();
     };
 
-    ~PauseState() {}
+    ~PauseState();
 
     void virtKeyDown(int iKeyCode) override;
 
-    void virtDrawStringsUnderneath() override;
+    void initialiseStateObject() override;
+
+    void virtMouseUp(int iButton, int iX, int iY) override;
+
+    void virtDrawStringsOnTop() override;
 
 protected:
     std::shared_ptr<State> returnState;
