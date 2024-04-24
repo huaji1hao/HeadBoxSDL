@@ -26,8 +26,6 @@ public:
 
     void virtMainLoopDoBeforeUpdate() override;
 
-    void copyAllBackgroundBuffer() override;
-
 protected:
     int m_backgroundOffsetX = 0;
     int m_backgroundOffsetY = 0;

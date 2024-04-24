@@ -6,3 +6,4 @@ unsung hero	10
 unsung hero	25
 js	193
 nb666	205
+Cool	234

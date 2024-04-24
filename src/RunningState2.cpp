@@ -109,36 +109,28 @@ void RunningState2::virtMainLoopPreUpdate() {
 }
 
 void RunningState2::virtMainLoopDoBeforeUpdate() {
-	// 获取玩家当前位置
-	auto playerid = ObjectIndexes::getPlayerIndexes()[0];
-	Player* player = dynamic_cast<Player*>(eg->getDisplayableObject(playerid));
+	//// get player position
+	//auto playerid = ObjectIndexes::getPlayerIndexes()[0];
+	//Player* player = dynamic_cast<Player*>(eg->getDisplayableObject(playerid));
 
-	int playerX = player->getX();
-	int playerY = player->getY();
+	//int playerX = player->getX();
+	//int playerY = player->getY();
 
-	// 计算背景偏移量
-	int offsetX = eg->getWindowWidth() / 2 - playerX;
-	int offsetY = eg->getWindowHeight() / 2 - playerY;
+	//// calculate the background offset
+	//int offsetX = eg->getWindowWidth() / 2 - playerX;
+	//int offsetY = eg->getWindowHeight() / 2 - playerY;
 
-	Scyjz14TileManager* tm = eg->GetTileManager();
+	//Scyjz14TileManager* tm = eg->GetTileManager();
 
-	// 确保背景偏移量不超出地图边界
-	offsetX = std::max(0, std::min(offsetX, tm->getMapWidth() * tm->getTileWidth() - eg->getWindowWidth()));
-	offsetY = std::max(0, std::min(offsetY, tm->getMapHeight() * tm->getTileHeight() - eg->getWindowHeight()));
+	//// make sure the offset will not overbound the map bound
+	//offsetX = std::max(0, std::min(offsetX, tm->getMapWidth() * tm->getTileWidth() - eg->getWindowWidth()));
+	//offsetY = std::max(0, std::min(offsetY, tm->getMapHeight() * tm->getTileHeight() - eg->getWindowHeight()));
 
-	// 更新背景偏移量
-	m_backgroundOffsetX = offsetX;
-	m_backgroundOffsetY = offsetY;
+	//// update the background offset
+	//m_backgroundOffsetX = offsetX;
+	//m_backgroundOffsetY = offsetY;
 
-	// 根据背景偏移量绘制背景
-	tm->drawAllTiles(eg, eg->getBackgroundSurface(), m_backgroundOffsetX, m_backgroundOffsetY);
-	dynamic_cast<Door*>(eg->getDisplayableObject(10))->virtDraw(offsetX, offsetY);
-}
-
-void RunningState2::copyAllBackgroundBuffer() {
-	eg->BaseEngine::copyAllBackgroundBuffer();
-	/*eg->getBackgroundSurface()->copyRectangleFrom(eg->getBackgroundSurface(),
-		m_backgroundOffsetX, m_backgroundOffsetY,
-		eg->getWindowWidth(), eg->getWindowHeight(),
-		0, 0);*/
+	//// redraw the background
+	//tm->drawAllTiles(eg, eg->getBackgroundSurface(), m_backgroundOffsetX, m_backgroundOffsetY);
+	//dynamic_cast<Door*>(eg->getDisplayableObject(10))->virtDraw(offsetX, offsetY);
 }

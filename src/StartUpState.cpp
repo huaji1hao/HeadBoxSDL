@@ -40,11 +40,11 @@ void StartUpState::initialiseStateObject(){
 	button1->setEnterImage("resources/UI/SINGLE_PLAY_BLACK.png");
 	button1->setJumpState(true);
 
-	Button* button2 = new Button(220, 360, eg, "resources/UI/INSTRUCTIONS_GREY.png");
-	button2->setEnterImage("resources/UI/INSTRUCTIONS_BLACK.png");
+	Button* button2 = new Button(220, 360, eg, "resources/UI/LEADERBOARDS_GREY.png");
+	button2->setEnterImage("resources/UI/LEADERBOARDS_BLACK.png");
 
-	Button* button3 = new Button(220, 440, eg, "resources/UI/LEADERBOARDS_GREY.png");
-	button3->setEnterImage("resources/UI/LEADERBOARDS_BLACK.png");
+	Button* button3 = new Button(240, 440, eg, "resources/UI/EXIT_GAME_GREY.png");
+	button3->setEnterImage("resources/UI/EXIT_GAME_BLACK.png");
 
 	eg->storeObjectInArray(0, button1);
 	eg->storeObjectInArray(1, button2);
@@ -63,17 +63,17 @@ void StartUpState::virtMouseUp(int iButton, int iX, int iY) {
 	Button* button3 = dynamic_cast<Button*> (eg->getDisplayableObject(2));
 
 	if (button1 && button1->isInClickArea()) {
-		eg->setState(std::make_shared<RunningState>(eg));
-		return;
-	}
-
-	if (button2 && button2->isInClickArea()) {
 		eg->setState(std::make_shared<InstructionState>(eg));
 		return;
 	}
 
-	if (button3 && button3->isInClickArea()) {
+	if (button2 && button2->isInClickArea()) {
 		eg->setState(std::make_shared<LeaderBoardState>(eg));
+		return;
+	}
+
+	if (button3 && button3->isInClickArea()) {
+		eg->setExitWithCode(0);
 		return;
 	}
 		

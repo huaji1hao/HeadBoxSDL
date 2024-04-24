@@ -39,8 +39,7 @@ void RunningState::initialiseStateObject() {
 	auto nextState = std::make_shared<RunningState2>(eg);
 	eg->storeObjectInArray(10, new Door(400, 300, eg, nextState));
 
-	//refresh zombies randomly on "0" position
-
+	//refresh zombies randomly on passable position
 	int zombieNumber = 5;
 	int secondToMilli = 1000;
 	for (int i = 1; i <= zombieNumber; i++) {

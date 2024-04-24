@@ -40,15 +40,21 @@ void LeaderBoardState::virtSetupBackgroundBuffer() {
 }
 
 void LeaderBoardState::virtDrawStringsUnderneath() {
-	int startY = 64; // Initial Y position for the first score
+	int titleY = 50; // Y position for the title
+	int startY = 94; // Initial Y position for the first score
+
 	int offsetXName = 120; // X position for the name
 	int offsetXScore = 560; // Fixed X position for the score, adjusted to align right
 	int gapY = 45; // Vertical gap between each score
 	Font* font = eg->getFont("resources/Arial_Rounded_Bold.ttf", 24);
 
+	// Draw titles above the score entries
+	eg->drawBackgroundString(offsetXName + 10, titleY, "Player Name", 0x000000, font);
+	eg->drawBackgroundString(offsetXScore, titleY, "Score", 0x000000, font);
+
 	for (int i = 0; i < std::min(int(scores.size()), 10); i++) {
 		// Draw the rank and name
-		char bufName[24];
+		char bufName[100];
 		sprintf(bufName, "%2d. %s", i + 1, scores[i].name.c_str());
 		eg->drawBackgroundString(offsetXName, startY + i * gapY, bufName, 0x000000, font);
 
@@ -58,6 +64,7 @@ void LeaderBoardState::virtDrawStringsUnderneath() {
 		eg->drawBackgroundString(offsetXScore, startY + i * gapY, bufScore, 0x000000, font);
 	}
 }
+
 
 void LeaderBoardState::virtDrawStringsOnTop() {
 
