@@ -4,6 +4,7 @@
 #include "DisplayableObject.h"
 #include "ImageManager.h"
 #include "Scyjz14Engine.h"
+#include "LoseState.h"
 
 
 void Player::virtDoUpdate(int iCurrentTime)

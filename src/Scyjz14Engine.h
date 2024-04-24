@@ -5,15 +5,13 @@
 #include "Scyjz14ImageManager.h"
 #include "StartUpState.h"
 #include "ExampleFilterPointClasses.h"
-#include "LoseState.h"
-#include "WinState.h"
+#include "Scyjz14FilterPoints.h"
 
 class Scyjz14Engine :
     public BaseEngine
 {
 public:
-    Scyjz14Engine(): 
-    m_filterScaling(0, 0, this), m_filterTranslation(0, 0, &m_filterScaling) 
+    Scyjz14Engine(): m_filter(0, 0, this)
     {
         m_oTiles.reset(new Scyjz14TileManager);
         //m_pState.reset(new LoseState(this));
@@ -44,12 +42,11 @@ public:
 
     // Get a reference to the current tile manager - which is defined below!
     Scyjz14TileManager* GetTileManager() { return m_oTiles.get(); }
-    FilterPointsScaling* getFilterPointScaling() { return &m_filterScaling; }
-    FilterPointsTranslation* getFilterPointsTranslation() { return &m_filterTranslation; }
+    Scyjz14FilterPoints* getFilterPointScaling() { return &m_filter; }
+    FilterPointsTranslation* getFilterPointsTranslation() { return m_filter.getFilterPointsTranslation(); }
 
 protected:
-    FilterPointsScaling m_filterScaling;
-    FilterPointsTranslation m_filterTranslation;
+    Scyjz14FilterPoints m_filter;
 
 private:
     // Contained object (composition) for the tile manager

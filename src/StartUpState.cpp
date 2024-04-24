@@ -8,6 +8,7 @@
 #include "ObjectIndexes.h"
 #include "Scyjz14Image.h"
 #include "Scyjz14ImageManager.h"
+#include "InstructionState.h"
 
 void StartUpState::virtSetupBackgroundBuffer(){
 	Scyjz14Image background = Scyjz14ImageManager::loadImage("resources/background/menu_background.png", true);
@@ -58,10 +59,16 @@ void StartUpState::virtMouseDown(int iButton, int iX, int iY) {
 
 void StartUpState::virtMouseUp(int iButton, int iX, int iY) {
 	Button* button1 = dynamic_cast<Button*> (eg->getDisplayableObject(0));
+	Button* button2 = dynamic_cast<Button*> (eg->getDisplayableObject(1));
 	Button* button3 = dynamic_cast<Button*> (eg->getDisplayableObject(2));
 
 	if (button1 && button1->isInClickArea()) {
 		eg->setState(std::make_shared<RunningState>(eg));
+		return;
+	}
+
+	if (button2 && button2->isInClickArea()) {
+		eg->setState(std::make_shared<InstructionState>(eg));
 		return;
 	}
 

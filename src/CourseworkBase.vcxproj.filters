@@ -219,6 +219,9 @@
     <ClInclude Include="InstructionState.h">
       <Filter>Header Files\States</Filter>
     </ClInclude>
+    <ClInclude Include="Scyjz14FilterPoints.h">
+      <Filter>Header Files\Utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="mainfunction.cpp">
@@ -346,6 +349,9 @@
     </ClCompile>
     <ClCompile Include="InstructionState.cpp">
       <Filter>Source Files\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Scyjz14FilterPoints.cpp">
+      <Filter>Source Files\Utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

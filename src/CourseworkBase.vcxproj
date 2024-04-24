@@ -110,6 +110,7 @@
     <ClInclude Include="RunningState2.h" />
     <ClInclude Include="Scyjz14CollisionDetection.h" />
     <ClInclude Include="Scyjz14Engine.h" />
+    <ClInclude Include="Scyjz14FilterPoints.h" />
     <ClInclude Include="Scyjz14Image.h" />
     <ClInclude Include="Scyjz14ImageManager.h" />
     <ClInclude Include="Scyjz14RawImageData.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="RunningState2.cpp" />
     <ClCompile Include="Scyjz14CollisionDetection.cpp" />
     <ClCompile Include="Scyjz14Engine.cpp" />
+    <ClCompile Include="Scyjz14FilterPoints.cpp" />
     <ClCompile Include="Scyjz14Image.cpp" />
     <ClCompile Include="Scyjz14ImageManager.cpp" />
     <ClCompile Include="Scyjz14RawImageData.cpp" />
