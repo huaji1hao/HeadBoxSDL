@@ -9,7 +9,6 @@
 #include "Scyjz14Engine.h"
 #include "Weapon.h"
 #include "Door.h"
-#include "RunningState2.h"
 #include "WinState.h"
 
 void RunningState::virtKeyDown(int iKeyCode) {
@@ -50,7 +49,7 @@ void RunningState::initialiseStateObject() {
 	eg->appendObjectToArray(new Door(400, 300, eg, nextState));
 
 	//refresh zombies randomly on passable position
-	int zombieNumber = 2 * level;
+	int zombieNumber = 5 * level;
 	int secondToMilli = 1000;
 	for (int i = 1; i <= zombieNumber; i++) {
 		std::pair<int, int> rndPosition = eg->GetTileManager()->getRandomPassablePoint();

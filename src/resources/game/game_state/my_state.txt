@@ -1,4 +1,6 @@
-1 38 2
-Player 361 322 70
-Zombie 366 262 0
-Zombie 172 48 100
+2 139 4
+Player 318 378 90
+Zombie 472 360 0
+Zombie 390 376 89
+Zombie 232 178 100
+Zombie 420 20 100
