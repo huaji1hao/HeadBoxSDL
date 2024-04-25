@@ -20,6 +20,8 @@ public:
 
     void virtDoUpdate(int iCurrentTime) override;
 
+	void checkTriggerMechanism(int x, int y);
+
 	int getX() const { return m_iCurrentScreenX; }
 
 	int getY() const { return m_iCurrentScreenY; }
@@ -38,11 +40,6 @@ protected:
 		{ SDLK_s, { 0, moving_speed, DOWN }},
 		{ SDLK_a, { -moving_speed, 0, LEFT }},
 		{ SDLK_d, { moving_speed, 0, RIGHT }},
-
-		/*{ SDLK_UP, { 0, -moving_speed, UP }},
-		{ SDLK_DOWN, { 0, moving_speed, DOWN }},
-		{ SDLK_LEFT, { -moving_speed, 0, LEFT }},
-		{ SDLK_RIGHT, { moving_speed, 0, RIGHT }},*/
 	};
 };
 

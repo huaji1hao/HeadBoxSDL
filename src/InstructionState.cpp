@@ -151,4 +151,5 @@ InstructionState::~InstructionState() {
 
 	eg->destroyOldObjects(true);
 	eg->clearContents();
+	eg->clearScore();
 }

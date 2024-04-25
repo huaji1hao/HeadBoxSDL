@@ -6,6 +6,28 @@
 #include "Scyjz14Engine.h"
 #include "LoseState.h"
 
+void Player::checkTriggerMechanism(int x, int y) {
+	if (m_pTileManager->isValidTilePosition(x, y))
+	{
+		int iTileX = m_pTileManager->getMapXForScreenX(x);
+		int iTileY = m_pTileManager->getMapYForScreenY(y);
+
+		int iCurrentTile = m_pTileManager->getMapValue(iTileX, iTileY);
+
+		if (iCurrentTile == Scyjz14TileManager::MECHANISM) {
+			m_pTileManager->setAndRedrawMapValueAt(iTileX, iTileY, Scyjz14TileManager::NONE, getEngine(), getEngine()->getBackgroundSurface());
+			m_pTileManager->setAndRedrawMapValueAt(iTileX, iTileY, Scyjz14TileManager::MECHANISM_PRESSED, getEngine(), getEngine()->getBackgroundSurface());
+			
+			
+			m_pTileManager->setAndRedrawMapValueAt(12, 5, Scyjz14TileManager::WALL7, getEngine(), getEngine()->getBackgroundSurface());
+			m_pTileManager->setAndRedrawMapValueAt(11, 6, Scyjz14TileManager::WALL7, getEngine(), getEngine()->getBackgroundSurface());
+			m_pTileManager->setAndRedrawMapValueAt(13, 6, Scyjz14TileManager::WALL7, getEngine(), getEngine()->getBackgroundSurface());
+			m_pTileManager->setAndRedrawMapValueAt(12, 7, Scyjz14TileManager::WALL7, getEngine(), getEngine()->getBackgroundSurface());
+
+		}
+		
+	}
+}
 
 void Player::virtDoUpdate(int iCurrentTime)
 {
@@ -30,17 +52,8 @@ void Player::virtDoUpdate(int iCurrentTime)
 	fixPosition();
 
 	// If player is on a tile, change the tile
-	//if (m_pTileManager->isValidTilePosition(getXCentre(), getYCentre()))
-	//{
-	//	{ // Max undates once per 60ms - prevents a lot of updates at once, helping to reduce load
-	//		int iTileX = m_pTileManager->getMapXForScreenX(getXCentre());
-	//		int iTileY = m_pTileManager->getMapYForScreenY(getYCentre());
-	//		int iCurrentTile = m_pTileManager->getMapValue(iTileX, iTileY);
-	//		m_pTileManager->setAndRedrawMapValueAt(iTileX, iTileY, 0, getEngine(), getEngine()->getBackgroundSurface());
-	//		//m_pTileManager->setAndRedrawMapValueAt(iTileX, iTileY, (iCurrentTile + 1) % 10, getEngine(), getEngine()->getBackgroundSurface());
-	//		
-	//	}
-	//}
+	checkTriggerMechanism(getXCentre() - widthOffset, getYCentre() + 10);
+	checkTriggerMechanism(getXCentre() + widthOffset, getYCentre() + 10);
 
 	// Ensure that the objects get redrawn on the display
 	this->redrawDisplay();
@@ -66,5 +79,5 @@ void Player::knockedAway(int enemyX, int enemyY) {
 	m_iCurrentScreenX += static_cast<int> (k * dirX);
 	m_iCurrentScreenY += static_cast<int> (k * dirY);
 
-	lifeDecrease(10);
+	lifeDecrease(5);
 }

@@ -100,11 +100,14 @@ void Scyjz14TileManager::virtDrawTileAt(
 	case WALL7:
 		iXSource = 7;
 		break;
-	case WALL8:
-		iXSource = 8;
+	case MECHANISM:
+		iXSource = 9;
 		break;
 	case BARREL:
 		iXSource = 0;
+		break;
+	case MECHANISM_PRESSED:
+		iXSource = 10;
 		break;
 	}
 
@@ -150,6 +153,7 @@ void Scyjz14TileManager::drawAllTiles(BaseEngine* pEngine, DrawingSurface* pSurf
 bool Scyjz14TileManager::isPassable(int tileType) const {
 	switch (tileType) {
 	case NONE:
+	case MECHANISM:
 		return true; // NONE can pass
 	case WALL1:
 	case WALL2:
@@ -158,7 +162,6 @@ bool Scyjz14TileManager::isPassable(int tileType) const {
 	case WALL5:
 	case WALL6:
 	case WALL7:
-	case WALL8:
 	case BARREL:
 		return false; // barrier
 	default:

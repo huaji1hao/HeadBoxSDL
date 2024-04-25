@@ -9,7 +9,7 @@ bool Graph::isPassable(Point point) const {
     }
 
     // Otherwise, return true if the tile is passable
-    return data[point.y][point.x] == '0';
+    return tm->isPassable(data[point.y][point.x] - '0');
 }
 
 std::vector<Point> Graph::getNeighbors(Point point) const {

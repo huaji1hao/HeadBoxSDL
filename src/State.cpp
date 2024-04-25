@@ -59,8 +59,6 @@ int State::determineLevelFromSaveFile(const std::string& filename) {
     inFile >> level >> score;
     inFile.close();
 
-    eg->clearScore();
-    eg->increaseScore(score);
     return level;
 }
 
@@ -73,6 +71,9 @@ void State::loadGameState(const std::string& filename) {
 
     int level, score, zbNum;
     inFile >> level >> score >> zbNum;
+
+    eg->clearScore();
+    eg->increaseScore(score);
 
     std::string type;
     int x, y, life;

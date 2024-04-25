@@ -14,7 +14,7 @@
 void RunningState::virtKeyDown(int iKeyCode) {
 	switch (iKeyCode)
 	{
-	case SDLK_SPACE: // SPACE Pauses
+	case SDLK_ESCAPE: // SPACE Pauses SDLK_SPACE
 		std::shared_ptr<RunningState> currentState = shared_from_this();
 		eg->setState(std::make_shared<PauseState>(eg, currentState));
 	}
@@ -22,7 +22,7 @@ void RunningState::virtKeyDown(int iKeyCode) {
 
 std::shared_ptr<State> RunningState::createNextState(Scyjz14Engine* engine, int level) {
 	// create state according to current level
-	if (level + 1 > 2) {
+	if (level + 1 > 3) {
 		return std::make_shared<WinState>(engine);
 	}
 	else {
@@ -46,7 +46,7 @@ void RunningState::initialiseStateObject() {
 
 	auto nextState = createNextState(eg, level);
 
-	eg->appendObjectToArray(new Door(400, 300, eg, nextState));
+	eg->appendObjectToArray(new Door(450, 300, eg, nextState));
 
 	//refresh zombies randomly on passable position
 	int zombieNumber = 5 * level;
@@ -82,12 +82,15 @@ void RunningState::virtSetupBackgroundBuffer() {
 	else if (level == 2) {
 		mapFile = "resources/Map/Level2.txt";
 	}
+	else if (level == 3) {
+		mapFile = "resources/Map/Level3.txt";
+	}
 
 	eg->GetTileManager()->setUpTileManager(eg, mapFile.c_str());
 	// Draw an rectangle on the screen
-	int width = eg->getWindowWidth();
-	int height = eg->getWindowHeight();
-	eg->drawBackgroundRectangle(width / 2 - 50, height / 2 - 50, width / 2 + 50, height / 2 + 50, 0xffffffff);
+	//int width = eg->getWindowWidth();
+	//int height = eg->getWindowHeight();
+	//eg->drawBackgroundRectangle(width / 2 - 50, height / 2 - 50, width / 2 + 50, height / 2 + 50, 0xffffffff);
 
 }
 

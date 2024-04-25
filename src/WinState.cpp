@@ -138,7 +138,6 @@ void WinState::saveScore(const std::string& name, int score) {
 
 
 WinState::~WinState() {
-	eg->clearScore();
 	eg->destroyOldObjects(true);
 	eg->clearContents();
 }

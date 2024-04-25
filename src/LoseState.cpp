@@ -109,8 +109,8 @@ void LoseState::virtMouseUp(int iButton, int iX, int iY) {
 }
 
 LoseState::~LoseState() {
-	eg->resetBackgroundSurface();
 	eg->clearScore();
+	eg->resetBackgroundSurface();
 	eg->destroyOldObjects(true);
 	eg->clearContents();
 }
