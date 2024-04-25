@@ -91,6 +91,10 @@ public:
 
 	Direction getDirection() { return m_direction; }
 
+	int getLifeValue() { return lifeValue; }
+
+	void setLifeValue(int life) { lifeValue = life; }
+
 	void lifeDecrease(int value) { lifeValue -= value; if (lifeValue < 0) lifeValue = 0; }
 
 	bool isDied() { return lifeValue <= 0; }

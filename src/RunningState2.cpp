@@ -37,7 +37,7 @@ void RunningState2::initialiseStateObject() {
 	eg->appendObjectToArray(new Weapon(0, 0, eg));
 
 	auto nextState = std::make_shared<WinState>(eg);
-	eg->storeObjectInArray(10, new Door(400, 300, eg, nextState));
+	eg->appendObjectToArray(new Door(400, 300, eg, nextState));
 
 	int zombieNumber = 8;
 	int secondToMilli = 1000;

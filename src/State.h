@@ -23,7 +23,13 @@ public:
     virtual void virtMainLoopDoBeforeUpdate() {};
     virtual void virtMainLoopPreUpdate() {};
     virtual void copyAllBackgroundBuffer();
+    virtual int getLevelIdentifier();
     virtual ~State() {};
+
+    
+    void loadGameState(const std::string& filename);
+    void saveGameState(const std::string& filename, int LevelIdentifier);
+    int determineLevelFromSaveFile(const std::string& filename);
 
 protected:
     Scyjz14Engine* eg;

@@ -21,7 +21,7 @@ void Door::virtDraw(){
 			m_iCurrentScreenY + m_iStartDrawPosY,
 			m_iDrawWidth, m_iDrawHeight);
 
-		m_pEngine->lockBackgroundForDrawing();
+		m_pEngine->unlockBackgroundForDrawing();
 	}
 }
 
@@ -40,7 +40,7 @@ void Door::virtDraw(int offSetX, int offSetY) {
 			m_iCurrentScreenY + m_iStartDrawPosY + offSetY,
 			m_iDrawWidth, m_iDrawHeight);
 
-		m_pEngine->lockBackgroundForDrawing();
+		m_pEngine->unlockBackgroundForDrawing();
 	}
 }
 

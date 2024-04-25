@@ -5,8 +5,9 @@ class RunningState2 :
     public State, public std::enable_shared_from_this<RunningState2>
 {
 public:
-    RunningState2(Scyjz14Engine* engine) : State(engine)
-    {};
+    RunningState2(Scyjz14Engine* engine, bool load = false)
+        : State(engine)
+        , loadSavedState(load) {}
 
     ~RunningState2() override;
 
@@ -26,9 +27,15 @@ public:
 
     void virtMainLoopDoBeforeUpdate() override;
 
+    int getLevelIdentifier() override {
+        return 2;
+    }
+
 protected:
     int m_backgroundOffsetX = 0;
     int m_backgroundOffsetY = 0;
 
+private:
+    bool loadSavedState;
 };
 

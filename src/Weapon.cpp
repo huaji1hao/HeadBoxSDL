@@ -36,7 +36,7 @@ void Weapon::virtDoUpdate(int iCurrentTime) {
         // Get the player object
 
         Zombie* zb = dynamic_cast<Zombie*>(getEngine()->getDisplayableObject(id));
-        if (zb == nullptr || zb->isDied()) continue;
+        if (zb == nullptr || zb->isDied() || !zb->isVisible()) continue;
 
         // Check if the zombie is colliding with the weapon
         if (Scyjz14CollisionDetection::checkPixel(getImage(), m_iCurrentFrameX * m_iDrawWidth, 0, m_iDrawWidth, m_iDrawHeight, getWeaponX(), getWeaponY(),

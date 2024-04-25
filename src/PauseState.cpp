@@ -1,6 +1,9 @@
 #include "header.h"
 #include "PauseState.h"
 #include "Button.h"
+#include "ObjectIndexes.h"
+#include "Player.h"
+#include "Zombie.h"
 
 void PauseState::virtKeyDown(int iKeyCode){
     switch (iKeyCode)
@@ -15,6 +18,11 @@ void PauseState::virtKeyDown(int iKeyCode){
 void PauseState::virtDrawStringsOnTop()
 {
     eg->drawForegroundString(200, 160, "PAUSE MENU", 0x000000, eg->getFont("resources/Arial_Rounded_Bold.ttf", 48));
+
+    Button* saveButton = dynamic_cast<Button*> (eg->getDisplayableObject(eg->getContentCount() - 1));
+    if(saveButton->getClickTimes() > 0)
+        eg->drawForegroundString(270, 430, "Save Successfully !",
+            0x000000, eg->getFont("resources/Arial_Rounded_Bold.ttf", 20));
 }
 
 void PauseState::initialiseStateObject() {
@@ -24,7 +32,6 @@ void PauseState::initialiseStateObject() {
     Scyjz14ImageObject* board = new Scyjz14ImageObject(100, 50, eg, "resources/game/board.png");
 
     Button* goBackButton = new Button(280, 315, eg, "resources/UI/GO_BACK_GREY.png");
-    //goBackButton->useTopCentreFor00();
     goBackButton->setEnterImage("resources/UI/GO_BACK_BLACK.png");
 
     Button* resumeButton = new Button(245, 245, eg, "resources/UI/RESUME_GAME_GREY.png");
@@ -45,6 +52,8 @@ void PauseState::virtMouseUp(int iButton, int iX, int iY) {
     Button* saveButton = dynamic_cast<Button*> (eg->getDisplayableObject(eg->getContentCount() - 1));
 
     if (goBackButton && goBackButton->isInClickArea()) {
+        eg->clearScore();
+        eg->unpause();
         eg->setState(std::make_shared<StartUpState>(eg));
         return;
     }
@@ -55,8 +64,8 @@ void PauseState::virtMouseUp(int iButton, int iX, int iY) {
         return;
     }
 
-    if (saveButton && saveButton->isInClickArea()) {
-        
+    if (saveButton && saveButton->isInClickArea() && saveButton->getClickTimes() <= 0) {
+        saveGameState("resources/game/game_state/my_state.txt", returnState->getLevelIdentifier());
         return;
     }
 }

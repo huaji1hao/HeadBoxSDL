@@ -86,7 +86,11 @@ void StartUpState::virtMouseUp(int iButton, int iX, int iY) {
 		return;
 	}
 
-
+	if (button3 && button3->isInClickArea()) {
+		int loadLevel = determineLevelFromSaveFile("resources/game/game_state/my_state.txt");
+		eg->setState(std::make_shared<RunningState>(eg, loadLevel, true));
+		return;
+	}
 
 	if (button4 && button4->isInClickArea()) {
 		eg->setExitWithCode(0);

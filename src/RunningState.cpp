@@ -10,6 +10,7 @@
 #include "Weapon.h"
 #include "Door.h"
 #include "RunningState2.h"
+#include "WinState.h"
 
 void RunningState::virtKeyDown(int iKeyCode) {
 	switch (iKeyCode)
@@ -20,26 +21,36 @@ void RunningState::virtKeyDown(int iKeyCode) {
 	}
 }
 
+std::shared_ptr<State> RunningState::createNextState(Scyjz14Engine* engine, int level) {
+	// create state according to current level
+	if (level + 1 > 2) {
+		return std::make_shared<WinState>(engine);
+	}
+	else {
+		return std::make_shared<RunningState>(engine, level + 1);
+	}
+}
+
+
 void RunningState::initialiseStateObject() {
 	
 	eg->notifyObjectsAboutMouse(false);
 	eg->drawableObjectsChanged();
 	eg->lockAndSetupBackground();
 
-	eg->createObjectArray(20);
+	eg->createObjectArray(30);
 
 	eg->storeObjectInArray(0, new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
 	ObjectIndexes::addPlayerIndex(0);
-	//eg->appendObjectToArray(new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
-	//ObjectIndexes::addPlayerIndex( eg->getContentCount() - 1 );
 	
 	eg->appendObjectToArray(new Weapon(0, 0, eg));
 
-	auto nextState = std::make_shared<RunningState2>(eg);
-	eg->storeObjectInArray(10, new Door(400, 300, eg, nextState));
+	auto nextState = createNextState(eg, level);
+
+	eg->appendObjectToArray(new Door(400, 300, eg, nextState));
 
 	//refresh zombies randomly on passable position
-	int zombieNumber = 5;
+	int zombieNumber = 2 * level;
 	int secondToMilli = 1000;
 	for (int i = 1; i <= zombieNumber; i++) {
 		std::pair<int, int> rndPosition = eg->GetTileManager()->getRandomPassablePoint();
@@ -49,6 +60,8 @@ void RunningState::initialiseStateObject() {
 		eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
 		ObjectIndexes::addZombieIndex(i);
 	}
+
+	if (isloadSavedState) loadGameState("resources/game/game_state/my_state.txt");
 
 	
 };
@@ -61,8 +74,17 @@ void RunningState::virtSetupBackgroundBuffer() {
 	stains.setTransparencyColour(0);
 	// Rotate the images and draw them
 	DrawingSurface* surface = eg->getBackgroundSurface();
+
 	// Draw the tiles
-	eg->GetTileManager()->setUpTileManager(eg, "resources/Map/Level1.txt");
+	std::string mapFile = "";
+	if (level == 1) {
+		mapFile = "resources/Map/Level1.txt";
+	}
+	else if (level == 2) {
+		mapFile = "resources/Map/Level2.txt";
+	}
+
+	eg->GetTileManager()->setUpTileManager(eg, mapFile.c_str());
 	// Draw an rectangle on the screen
 	int width = eg->getWindowWidth();
 	int height = eg->getWindowHeight();
