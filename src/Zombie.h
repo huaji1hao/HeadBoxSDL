@@ -24,6 +24,8 @@ public:
 
     void drawBody();
 
+    void checkIsKilled();
+
 protected:
 
     struct DirectionVector {

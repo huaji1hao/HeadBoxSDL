@@ -5,6 +5,21 @@
 #include "ImageManager.h"
 #include "Scyjz14Engine.h"
 #include "LoseState.h"
+#include "Bullet.h"
+
+void Player::virtKeyDown(int iKeyCode) {
+	switch (iKeyCode) {
+	case SDLK_SPACE: // SPACE when pressed
+		Direction direction = getDirection();
+		int playerX = getXCentre();
+		int playerY = getYCentre();
+
+		auto bullet = dynamic_cast<Bullet*>(getEngine()->getDisplayableObject(getEngine()->getContentCount() - 1));
+		bullet->onFire(playerX, playerY, direction);
+
+		break;
+	}
+}
 
 void Player::checkTriggerMechanism(int x, int y) {
 	if (m_pTileManager->isValidTilePosition(x, y))
@@ -68,6 +83,7 @@ void Player::virtDoUpdate(int iCurrentTime)
 }
 
 void Player::knockedAway(int enemyX, int enemyY) {
+	if (getEngine()->getModifiedTime() <= invincibleTime) return;
 	// Calculate the direction vector from enemy to player
 	int dirX = getXCentre() - enemyX;
 	int dirY = getYCentre() - enemyY;
@@ -79,5 +95,7 @@ void Player::knockedAway(int enemyX, int enemyY) {
 	m_iCurrentScreenX += static_cast<int> (k * dirX);
 	m_iCurrentScreenY += static_cast<int> (k * dirY);
 
-	lifeDecrease(5);
+	lifeDecrease(10);
+
+	invincibleTime = getEngine()->getModifiedTime() + invincibleFrame;
 }

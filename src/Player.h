@@ -18,6 +18,8 @@ public:
     // when player is knocked away by enemy
     void knockedAway(int enemyX, int enemyY);
 
+	void virtKeyDown(int iKeyCode) override;
+
     void virtDoUpdate(int iCurrentTime) override;
 
 	void checkTriggerMechanism(int x, int y);
@@ -41,5 +43,7 @@ protected:
 		{ SDLK_a, { -moving_speed, 0, LEFT }},
 		{ SDLK_d, { moving_speed, 0, RIGHT }},
 	};
+	int invincibleTime = 0;
+	int invincibleFrame = 500;
 };
 

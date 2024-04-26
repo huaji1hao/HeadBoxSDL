@@ -4,6 +4,18 @@
 #include "ObjectIndexes.h"
 #include "UtilCollisionDetection.h"
 #include "Scyjz14CollisionDetection.h"
+#include "Scyjz14Engine.h"
+
+void Zombie::checkIsKilled() {
+	if (isDied()) {
+		checkIsLive();
+		drawBody();
+
+		int timeDifference = abs(getEngine()->getModifiedTime() - getRevealingTime()) / 1000;  // Convert milliseconds to seconds
+		int scoreIncrease = 5 + (100 / (timeDifference + 1));  // Base Score = 5, Max Time Bonus gradually decreases
+		dynamic_cast<Scyjz14Engine*>(getEngine())->increaseScore(scoreIncrease);
+	}
+}
 
 void Zombie::drawBody() {
 	Scyjz14Image body = Scyjz14ImageManager::loadImage("resources/game/zombie_die/zombie_died_with_blood.png", true);

@@ -10,6 +10,7 @@
 #include "Weapon.h"
 #include "Door.h"
 #include "WinState.h"
+#include "Bullet.h"
 
 void RunningState::virtKeyDown(int iKeyCode) {
 	switch (iKeyCode)
@@ -32,8 +33,8 @@ std::shared_ptr<State> RunningState::createNextState(Scyjz14Engine* engine, int 
 
 
 void RunningState::initialiseStateObject() {
-	
 	eg->notifyObjectsAboutMouse(false);
+	eg->notifyObjectsAboutKeys(true);
 	eg->drawableObjectsChanged();
 	eg->lockAndSetupBackground();
 
@@ -47,6 +48,8 @@ void RunningState::initialiseStateObject() {
 	auto nextState = createNextState(eg, level);
 
 	eg->appendObjectToArray(new Door(450, 300, eg, nextState));
+
+	eg->appendObjectToArray(new Bullet(0, 0, eg));
 
 	//refresh zombies randomly on passable position
 	int zombieNumber = 5 * level;

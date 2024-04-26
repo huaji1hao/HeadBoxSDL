@@ -43,14 +43,7 @@ void Weapon::virtDoUpdate(int iCurrentTime) {
             zb->getImage(), zb->getCurrentFrameX() * zb->getDrawWidth(), zb->getDirection() * zb->getDrawHeight(), zb->getDrawWidth(), zb->getDrawHeight(), zb->getDrawingRegionLeft(), zb->getDrawingRegionTop()))
         {
             zb->lifeDecrease(1);
-            if (zb->isDied()) {
-                zb->checkIsLive();
-                zb->drawBody();
-                
-                int timeDifference = abs(iCurrentTime - zb->getRevealingTime()) / 1000;  // Convert milliseconds to seconds
-                int scoreIncrease = 5 + (100 / (timeDifference + 1));  // Base Score = 5, Max Time Bonus gradually decreases
-                dynamic_cast<Scyjz14Engine*>(getEngine())->increaseScore(scoreIncrease);
-            }
+            zb->checkIsKilled();
         }
     }
 

@@ -52,6 +52,59 @@ public:
         return false;
     }
 
+    static bool checkPixelWithLine(
+        Scyjz14Image image, int iSourceX, int iSourceY, int width, int height, int iScreenX, int iScreenY,
+        int startX, int startY, int endX, int endY) {
+
+        // Determine if the line is horizontal or vertical
+        bool isHorizontal = (startY == endY);
+        bool isVertical = (startX == endX);
+
+        if (!isHorizontal && !isVertical) {
+            std::cerr << "Error: The line is neither horizontal nor vertical." << std::endl;
+            return false;
+        }
+
+        // Calculate the intersection of the line with the image's bounding box
+        int left = std::max(iScreenX, std::min(startX, endX));
+        int right = std::min(iScreenX + width, std::max(startX, endX));
+        int top = std::max(iScreenY, std::min(startY, endY));
+        int bottom = std::min(iScreenY + height, std::max(startY, endY));
+
+        // Check each pixel along the line within the bounds of the image
+        if (isHorizontal) {
+            int y = startY - iScreenY + iSourceY; // Y position in the source image
+            if (y < iSourceY || y >= iSourceY + height) return false; // Check if y is within image bounds
+            for (int x = left; x <= right; x++) {
+                int sourceX = x - iScreenX + iSourceX; // X position in the source image
+                if (sourceX >= iSourceX && sourceX < iSourceX + width) {
+                    unsigned int pixel = image.getPixelColour(sourceX, y);
+                    unsigned int alpha = pixel >> 24;
+                    if (alpha == 255) { // Fully opaque
+                        return true;
+                    }
+                }
+            }
+        }
+        else if (isVertical) {
+            int x = startX - iScreenX + iSourceX; // X position in the source image
+            if (x < iSourceX || x >= iSourceX + width) return false; // Check if x is within image bounds
+            for (int y = top; y <= bottom; y++) {
+                int sourceY = y - iScreenY + iSourceY; // Y position in the source image
+                if (sourceY >= iSourceY && sourceY < iSourceY + height) {
+                    unsigned int pixel = image.getPixelColour(x, sourceY);
+                    unsigned int alpha = pixel >> 24;
+                    if (alpha == 255) { // Fully opaque
+                        return true;
+                    }
+                }
+            }
+        }
+
+        return false;
+    }
+
+
     /*
         Expand the opaque part of picture 1 by `offset` pixels 
         and detect whether it collides with picture 2.
