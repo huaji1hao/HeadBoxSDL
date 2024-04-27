@@ -43,7 +43,7 @@ void RunningState::initialiseStateObject() {
 	eg->storeObjectInArray(0, new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
 	ObjectIndexes::addPlayerIndex(0);
 	
-	eg->appendObjectToArray(new Weapon(0, 0, eg));
+	eg->appendObjectToArray(new Sword(0, 0, eg));
 
 	auto nextState = createNextState(eg, level);
 

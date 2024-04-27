@@ -5,10 +5,10 @@
 #include "ObjectIndexes.h"
 
 
-class Weapon : public SpriteObject {
+class Sword : public SpriteObject {
 public:
     // Constructor
-    Weapon(int xStart, int yStart, BaseEngine* pEngine, std::string strURL = "resources/game/knife.png")
+    Sword(int xStart, int yStart, BaseEngine* pEngine, std::string strURL = "resources/game/knife.png")
         : SpriteObject(xStart, yStart, pEngine, strURL, 50, 50, true, true), m_iDamage(10) { // Damage inflicted by the weapon
         
         auto playerid = ObjectIndexes::getPlayerIndexes()[0];

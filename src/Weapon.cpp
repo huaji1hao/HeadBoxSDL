@@ -3,19 +3,19 @@
 #include "Scyjz14CollisionDetection.h"
 #include "Scyjz14Engine.h"
 
-int Weapon::getWeaponX() {
+int Sword::getWeaponX() {
     if (m_direction == LEFT) return m_pPlayer->getDrawingRegionLeft() - distance;
     else if (m_direction == RIGHT) return m_pPlayer->getDrawingRegionLeft() + distance;
     else return m_pPlayer->getDrawingRegionLeft();
 }
 
-int Weapon::getWeaponY() {
+int Sword::getWeaponY() {
     if (m_direction == UP) return m_pPlayer->getDrawingRegionTop() - distance;
     else if (m_direction == DOWN) return m_pPlayer->getDrawingRegionTop() + distance;
     else return m_pPlayer->getDrawingRegionTop();
 }
 
-void Weapon::virtDoUpdate(int iCurrentTime) {
+void Sword::virtDoUpdate(int iCurrentTime) {
     if (!isVisible() || getEngine()->isPaused())
         return;
 
@@ -49,7 +49,7 @@ void Weapon::virtDoUpdate(int iCurrentTime) {
 
 }
 
-void Weapon::virtDraw() {
+void Sword::virtDraw() {
     if (isVisible()) {
         // Calculate the source position based on the current frame indices
         int iXSource = m_iCurrentFrameX * m_iDrawWidth;
