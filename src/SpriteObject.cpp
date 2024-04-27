@@ -28,11 +28,11 @@ void AgentBaseObject::virtDraw(){
 		int bottomY = getDrawingRegionBottom();
 		if (!m_pTileManager->isPassableByObjectCentre(getXCentre(), bottomY, widthOffset)) {
 			// Draw the image covered by the wall
-			image.renderImageWithAlphaAndOverlay(getEngine()->getForegroundSurface(),
+			image.renderImageWithAlphaAndTwoOverlay(getEngine()->getForegroundSurface(),
 				iXSource, iYSource,
 				m_iCurrentScreenX + m_iStartDrawPosX,
 				m_iCurrentScreenY + m_iStartDrawPosY,
-				m_iDrawWidth, m_iDrawHeight, 0xEBDCC7);
+				m_iDrawWidth, m_iDrawHeight, 0xEBDCC7, 0xd9292e);
 		}
 		else {
 			// Draw the current frame with transparency
@@ -66,4 +66,23 @@ void AgentBaseObject::fixPosition() {
 		m_iPrevScreenX = m_iCurrentScreenX;
 		m_iPrevScreenY = m_iCurrentScreenY;
 	}
+}
+
+void AgentBaseObject::lifeDecrease(int value)
+{
+	lifeValue -= value; 
+	if (lifeValue < 0) lifeValue = 0;
+	Scyjz14Image blood = Scyjz14ImageManager::loadImage("resources/game/zombie_die/blood.png", true);
+
+	DrawingSurface* surface = m_pEngine->getBackgroundSurface();
+	m_pEngine->lockBackgroundForDrawing();
+	int bottomY = getDrawingRegionBottom();
+
+	// Draw the image covered by the wall
+	blood.renderImageWithAlphaAndOverlay(surface,
+		rand() % 4 * getDrawWidth(), 0,
+		getDrawingRegionLeft(),
+		getDrawingRegionTop(),
+		m_iDrawWidth, m_iDrawHeight, 0xEBDCC7);
+	m_pEngine->unlockBackgroundForDrawing();
 }

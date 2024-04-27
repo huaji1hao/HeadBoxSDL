@@ -58,8 +58,10 @@ void RunningState::initialiseStateObject() {
 		std::pair<int, int> rndPosition = eg->GetTileManager()->getRandomPassablePoint();
 		int zbX = rndPosition.first;
 		int zbY = rndPosition.second;
-
-		eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
+		if(i == 1)
+			eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli, true));
+		else
+			eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
 		ObjectIndexes::addZombieIndex(i);
 	}
 

@@ -49,7 +49,7 @@ void Bullet::checkZombieFired() {
         if (Scyjz14CollisionDetection::checkPixelWithLine(zb->getImage(), zb->getCurrentFrameX() * zb->getDrawWidth(), zb->getDirection() * zb->getDrawHeight(), zb->getDrawWidth(), zb->getDrawHeight(), zb->getDrawingRegionLeft(), zb->getDrawingRegionTop(),
             m_iStartX, m_iStartY, m_iEndX, m_iEndY))
         {
-            zb->lifeDecrease(damage);
+            zb->lifeDecrease(zb->getIsBoss() ? 1 : damage);
             zb->checkIsKilled();
         }
     }

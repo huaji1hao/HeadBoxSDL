@@ -7,16 +7,16 @@ class Zombie :
     public AgentBaseObject
 {
 public:
-    Zombie(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* pTileManager, int revealTime = 0, std::string strURL = "resources/game/zombie/zombie_8.png",
+    Zombie(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* pTileManager, int revealTime = 0, int isBoss = false, std::string strURL = "resources/game/zombie/zombies.png",
         int frameWidth = 45, int frameHeight = 50, bool useTopLeftFor00 = true, bool bVisible = true)
-        : AgentBaseObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible)
+        : AgentBaseObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible, revealTime), m_bIsBoss(isBoss)
     {
         m_direction = UP;
         m_pTileManager = pTileManager;
         setSpeed(2);
         setFrameRate(30);
+        if (isBoss) setBoss(true);
         setVisible(false);
-        setRevealingTime(revealTime);
     }
     
 
@@ -24,7 +24,12 @@ public:
 
     void drawBody();
 
+    void virtDraw() override;
+
     void checkIsKilled();
+    void setBoss(bool isBoss);
+
+    bool getIsBoss() { return m_bIsBoss; }
 
 protected:
 
@@ -44,16 +49,18 @@ protected:
         {1, 1, DOWNRIGHT},
     };
 
-    virtual void updateAnimationFrame(int iCurrentTime) override;
+    void updateAnimationFrame(int iCurrentTime) override;
 
     void updateDirection(int dx, int dy);
 
     void updateDirectionTowardsPlayer(Player* player);
 
     // the function to attack all the player
-    virtual void attackPlayer();
+    void attackPlayer();
 
     void fixPosition() override;
-
+        
+protected:
+    bool m_bIsBoss = false;
 };
 

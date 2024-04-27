@@ -75,8 +75,8 @@ class AgentBaseObject : public SpriteObject {
 public:
 	AgentBaseObject(int xStart, int yStart, BaseEngine* pEngine, const std::string& strURL,
 		int frameWidth, int frameHeight,
-		bool useTopLeftFor00 = true, bool bVisible = true)
-		: SpriteObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible) {
+		bool useTopLeftFor00 = true, bool bVisible = true, int revealTime = 0)
+		: SpriteObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible), revealingTime(revealTime) {
 		m_direction = UP; // Default direction
 		health_bar = Scyjz14ImageManager::loadImage("resources/game/my_blood/health_bar.png", true);
 
@@ -95,7 +95,7 @@ public:
 
 	void setLifeValue(int life) { lifeValue = life; }
 
-	void lifeDecrease(int value) { lifeValue -= value; if (lifeValue < 0) lifeValue = 0; }
+	void lifeDecrease(int value);
 
 	bool isDied() { return lifeValue <= 0; }
 

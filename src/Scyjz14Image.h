@@ -33,6 +33,11 @@ public:
 		int iXTarget, int iYTarget,
 		int iWidth, int iHeight, unsigned int backgroundColour) const;
 
+	void renderImageWithAlphaAndTwoOverlay(DrawingSurface* pTarget,
+		int iXSource, int iYSource,
+		int iXTarget, int iYTarget,
+		int iWidth, int iHeight, unsigned int backgroundColour1, unsigned int backgroundColour2) const;
+
 	void renderImageWithAlphaAndApplyingMapping(BaseEngine* pEngine, DrawingSurface* pTarget,
 		int iXSource, int iYSource,
 		int iXTarget, int iYTarget,

@@ -93,9 +93,11 @@ void State::loadGameState(const std::string& filename) {
     for (int i = 0; i < zbNum; ++i) {
         inFile >> type >> x >> y >> life;
         if (type == "Zombie") {
-            Zombie* zb = dynamic_cast<Zombie*>(eg->getDisplayableObject(totalZbNum - zbNum + i + 1));
+            int zbIndex = i == 0 ? 1 : totalZbNum - zbNum + i + 1;
+            Zombie* zb = dynamic_cast<Zombie*>(eg->getDisplayableObject(zbIndex));
             zb->setRevealingTime(0);
             zb->setPosition(x, y);
+            if (i == 0)zb->setBoss(true);
             zb->setLifeValue(life);
             if (zb->isDied()) {
                 zb->checkIsLive();

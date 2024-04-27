@@ -115,6 +115,46 @@ void Scyjz14Image::renderImageWithAlphaAndOverlay(DrawingSurface* pTarget,
 
 }
 
+void Scyjz14Image::renderImageWithAlphaAndTwoOverlay(DrawingSurface* pTarget, int iXSource, int iYSource, int iXTarget, int iYTarget, int iWidth, int iHeight, unsigned int backgroundColour1, unsigned int backgroundColour2) const
+{
+	if (!adjustXYWidthHeight(pTarget, iXSource, iYSource, iXTarget, iYTarget, iWidth, iHeight)) {
+		return;
+	}
+
+	backgroundColour1 &= 0xFFFFFF;
+	backgroundColour2 &= 0xFFFFFF;
+	int iXS, iYS = iYSource, iXT, iYT = iYTarget;
+
+	for (int iYOffset = 0; iYOffset < iHeight; iYOffset++) {
+		iXS = iXSource;
+		iXT = iXTarget;
+		for (int iXOffset = 0; iXOffset < iWidth; iXOffset++) {
+			unsigned int iPixel = theData->getRawPixelColour(iXS, iYS);
+
+			unsigned int alpha = iPixel >> 24;
+
+			unsigned int backgroundPixel = pTarget->getPixel(iXT, iYT) & 0xFFFFFF;
+
+			if (backgroundPixel == backgroundColour1 || backgroundPixel == backgroundColour2) {
+				if (alpha > 0) {
+					if (alpha == 255) {
+						pTarget->setPixel(iXT, iYT, iPixel);
+					}
+					else {
+						unsigned int blendedPixel = blendPixels(backgroundPixel, iPixel, alpha);
+						pTarget->setPixel(iXT, iYT, blendedPixel);
+					}
+				}
+			}
+
+			iXS++;
+			iXT++;
+		}
+		iYS++;
+		iYT++;
+	}
+}
+
 
 void Scyjz14Image::renderImageWithAlphaAndApplyingMapping(BaseEngine* pEngine, DrawingSurface* pTarget,
 	int iXSource, int iYSource,

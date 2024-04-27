@@ -13,12 +13,56 @@ void Zombie::checkIsKilled() {
 
 		int timeDifference = abs(getEngine()->getModifiedTime() - getRevealingTime()) / 1000;  // Convert milliseconds to seconds
 		int scoreIncrease = 5 + (100 / (timeDifference + 1));  // Base Score = 5, Max Time Bonus gradually decreases
-		dynamic_cast<Scyjz14Engine*>(getEngine())->increaseScore(scoreIncrease);
+		int extraBonus = getIsBoss() ? 5 : 1;
+		dynamic_cast<Scyjz14Engine*>(getEngine())->increaseScore(extraBonus * scoreIncrease);
 	}
 }
 
+void Zombie::setBoss(bool isBoss)
+{
+	m_bIsBoss = isBoss;
+	setFrameRate(20);
+}
+
+void Zombie::virtDraw() {
+	if (isVisible()) {
+		// Calculate the source position based on the current direction and frame index
+		int iXSource = m_iCurrentFrameX * m_iDrawWidth;
+		int imageBias = m_bIsBoss ? 8 : 0;
+		// Assuming each direction is in a different row
+		int iYSource = (m_direction + imageBias) * m_iDrawHeight;
+
+		// If any part of bottom is covered by the wall
+		int bottomY = getDrawingRegionBottom();
+		if (!m_pTileManager->isPassableByObjectCentre(getXCentre(), bottomY, widthOffset)) {
+			// Draw the image covered by the wall
+			image.renderImageWithAlphaAndTwoOverlay(getEngine()->getForegroundSurface(),
+				iXSource, iYSource,
+				m_iCurrentScreenX + m_iStartDrawPosX,
+				m_iCurrentScreenY + m_iStartDrawPosY,
+				m_iDrawWidth, m_iDrawHeight, 0xEBDCC7, 0xd9292e);
+		}
+		else {
+			// Draw the current frame with transparency
+			image.renderImageWithAlpha(getEngine()->getForegroundSurface(),
+				iXSource, iYSource,
+				m_iCurrentScreenX + m_iStartDrawPosX,
+				m_iCurrentScreenY + m_iStartDrawPosY,
+				m_iDrawWidth, m_iDrawHeight);
+		}
+
+		health_bar.renderImageWithAlpha(getEngine()->getForegroundSurface(),
+			lifeValue * 50, 0,
+			m_iCurrentScreenX + m_iStartDrawPosX,
+			m_iCurrentScreenY + m_iStartDrawPosY - 15,
+			50, 10);
+
+	}
+}
+
+
 void Zombie::drawBody() {
-	Scyjz14Image body = Scyjz14ImageManager::loadImage("resources/game/zombie_die/zombie_died_with_blood.png", true);
+	Scyjz14Image body = Scyjz14ImageManager::loadImage("resources/game/zombie_die/zombies_blood.png", true);
 
 	DrawingSurface* surface = m_pEngine->getBackgroundSurface();
 
@@ -28,20 +72,22 @@ void Zombie::drawBody() {
 	else if (bodyDir == DOWNLEFT) bodyDir = DOWN;
 	else if (bodyDir == DOWNRIGHT) bodyDir = LEFT;
 
+	int imgBiasY = getIsBoss() ? 50 : 0;
+
 	m_pEngine->lockBackgroundForDrawing();
 	int bottomY = getDrawingRegionBottom();
 	if (!m_pTileManager->isPassableByObjectCentre(getXCentre(), bottomY, widthOffset)) {
 		// Draw the image covered by the wall
-		body.renderImageWithAlphaAndOverlay(surface,
-			bodyDir * getDrawWidth(), 0,
+		body.renderImageWithAlphaAndTwoOverlay(surface,
+			bodyDir * getDrawWidth(), imgBiasY,
 			getDrawingRegionLeft(),
 			getDrawingRegionTop(),
-			m_iDrawWidth, m_iDrawHeight, 0xEBDCC7);
+			m_iDrawWidth, m_iDrawHeight, 0xEBDCC7, 0xd9292e);
 	}
 	else {
 		// Draw the current frame with transparency
 		body.renderImageWithAlpha(surface,
-			bodyDir * getDrawWidth(), 0,
+			bodyDir * getDrawWidth(), imgBiasY,
 			getDrawingRegionLeft(),
 			getDrawingRegionTop(),
 			m_iDrawWidth, m_iDrawHeight);
@@ -128,6 +174,8 @@ void Zombie::attackPlayer() {
 		{
 			// If the zombie is colliding with the player, knock the player away
 			player->knockedAway(getXCentre(), getYCentre());
+			// Boss will attack twice
+			if(getIsBoss()) player->knockedAway(getXCentre(), getYCentre());
 		}
 	}
 }

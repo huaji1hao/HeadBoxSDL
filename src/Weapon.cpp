@@ -42,7 +42,7 @@ void Weapon::virtDoUpdate(int iCurrentTime) {
         if (Scyjz14CollisionDetection::checkPixel(getImage(), m_iCurrentFrameX * m_iDrawWidth, 0, m_iDrawWidth, m_iDrawHeight, getWeaponX(), getWeaponY(),
             zb->getImage(), zb->getCurrentFrameX() * zb->getDrawWidth(), zb->getDirection() * zb->getDrawHeight(), zb->getDrawWidth(), zb->getDrawHeight(), zb->getDrawingRegionLeft(), zb->getDrawingRegionTop()))
         {
-            zb->lifeDecrease(1);
+            zb->lifeDecrease(zb->getIsBoss() ? rand() % 2 : 1);
             zb->checkIsKilled();
         }
     }
