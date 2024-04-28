@@ -81,15 +81,15 @@ void Scyjz14Engine::copyAllBackgroundBuffer() {
 }
 
 void Scyjz14Engine::increaseScore(int num) { 
-	score += num; 
+	m_iScore += num; 
 }
 
 void Scyjz14Engine::clearScore() { 
-	score = 0; 
+	m_iScore = 0; 
 }
 
 int Scyjz14Engine::getScore() { 
-	return score; 
+	return m_iScore; 
 }
 
 void Scyjz14Engine::setBackgroundSurface(DrawingSurface* surface) { 

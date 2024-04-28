@@ -54,6 +54,6 @@ protected:
 private:
     std::unique_ptr<Scyjz14TileManager> m_oTiles;
     std::shared_ptr<State> m_pState;
-    int score = 0;
+    int m_iScore = 0;
 };
 
