@@ -16,21 +16,21 @@ WinState::WinState(Scyjz14Engine* engine)
 	, leftSurface(engine)
 	, rightSurface(engine)
 {
-	leftSurface.createSurface(eg->getWindowWidth(), eg->getWindowHeight());
-	rightSurface.createSurface(eg->getWindowWidth(), eg->getWindowHeight());
+	leftSurface.createSurface(m_pEngine->getWindowWidth(), m_pEngine->getWindowHeight());
+	rightSurface.createSurface(m_pEngine->getWindowWidth(), m_pEngine->getWindowHeight());
 }
 
 void WinState::virtMainLoopDoBeforeUpdate() {
 	// Update the background offset
 	int speed = 1; 
-	m_iOffset = (m_iOffset + speed) % (2 * eg->getWindowWidth()); 
-	eg->redrawDisplay(); 
+	m_iOffset = (m_iOffset + speed) % (2 * m_pEngine->getWindowWidth()); 
+	m_pEngine->redrawDisplay(); 
 }
 
 void WinState::copyAllBackgroundBuffer() {
-	DrawingSurface* foreground = eg->getForegroundSurface();
-	int windowWidth = eg->getWindowWidth();
-	int windowHeight = eg->getWindowHeight();
+	DrawingSurface* foreground = m_pEngine->getForegroundSurface();
+	int windowWidth = m_pEngine->getWindowWidth();
+	int windowHeight = m_pEngine->getWindowHeight();
 
 	// Make the background scroll
 	if (m_iOffset <= windowWidth) {
@@ -51,8 +51,8 @@ void WinState::virtSetupBackgroundBuffer() {
 	leftSurface.mySDLLockSurface();
 	rightSurface.mySDLLockSurface();
 
-	backgroundImage.renderImageWithAlpha(&leftSurface, 0, 0, 0, 0, eg->getWindowWidth(), eg->getWindowHeight());
-	backgroundImage.renderImageWithAlpha(&rightSurface, eg->getWindowWidth() + 1, 0, 0, 0, eg->getWindowWidth(), eg->getWindowHeight());
+	backgroundImage.renderImageWithAlpha(&leftSurface, 0, 0, 0, 0, m_pEngine->getWindowWidth(), m_pEngine->getWindowHeight());
+	backgroundImage.renderImageWithAlpha(&rightSurface, m_pEngine->getWindowWidth() + 1, 0, 0, 0, m_pEngine->getWindowWidth(), m_pEngine->getWindowHeight());
 
 	rightSurface.mySDLUnlockSurface();
 	leftSurface.mySDLUnlockSurface();
@@ -61,63 +61,63 @@ void WinState::virtSetupBackgroundBuffer() {
 
 void WinState::virtDrawStringsUnderneath() {
 	// Print the string
-	eg->drawForegroundString(50, 80, "Congratulations on escaping the zombie siege!",
-		0xff0000, eg->getFont("resources/Arial_Rounded_Bold.ttf", 27));
+	m_pEngine->drawForegroundString(50, 80, "Congratulations on escaping the zombie siege!",
+		0xff0000, m_pEngine->getFont("resources/Arial_Rounded_Bold.ttf", 27));
 
 	// Build the string to print
 	char buf[56];
-	sprintf(buf, "Your score is %d", eg->getScore());
+	sprintf(buf, "Your score is %d", m_pEngine->getScore());
 
-	eg->drawForegroundString(237, 150, buf, 0xff0000, eg->getFont("resources/Arial_Rounded_Bold.ttf", 36));
+	m_pEngine->drawForegroundString(237, 150, buf, 0xff0000, m_pEngine->getFont("resources/Arial_Rounded_Bold.ttf", 36));
 	
-	Button* sendButton = dynamic_cast<Button*> (eg->getDisplayableObject(0));
+	Button* sendButton = dynamic_cast<Button*> (m_pEngine->getDisplayableObject(0));
 	if (sendButton->getClickTimes() > 0) 
-		eg->drawForegroundString(270, 350, "Send Successfully !",
-			0x2bb280, eg->getFont("resources/Arial_Rounded_Bold.ttf", 20));
+		m_pEngine->drawForegroundString(270, 350, "Send Successfully !",
+			0x2bb280, m_pEngine->getFont("resources/Arial_Rounded_Bold.ttf", 20));
 }
 
 void WinState::initialiseStateObject() {
-	eg->notifyObjectsAboutMouse(true);
-	eg->notifyObjectsAboutKeys(true);
-	eg->drawableObjectsChanged();
+	m_pEngine->notifyObjectsAboutMouse(true);
+	m_pEngine->notifyObjectsAboutKeys(true);
+	m_pEngine->drawableObjectsChanged();
 
-	eg->lockAndSetupBackground();
+	m_pEngine->lockAndSetupBackground();
 
 	// Create array with default size for one object
-	eg->createObjectArray(5);
-	Button* sendScoreButton = new Button(220, 310, eg, "resources/UI/SEND_SCORE_GREY.png");
+	m_pEngine->createObjectArray(5);
+	Button* sendScoreButton = new Button(220, 310, m_pEngine, "resources/UI/SEND_SCORE_GREY.png");
 	sendScoreButton->setEnterImage("resources/UI/SEND_SCORE_BLACK.png");
 	
-	Button* goBackButton = new Button(280, 390, eg, "resources/UI/GO_BACK_GREY.png");
+	Button* goBackButton = new Button(280, 390, m_pEngine, "resources/UI/GO_BACK_GREY.png");
 	goBackButton->setEnterImage("resources/UI/GO_BACK_BLACK.png");
 	goBackButton->setJumpState(false);
 
-	TextInputField* textField = new TextInputField(220, 240, 270, 40, eg, eg->getFont("resources/Arial_Rounded_Bold.ttf", 27));
+	TextInputField* textField = new TextInputField(220, 240, 270, 40, m_pEngine, m_pEngine->getFont("resources/Arial_Rounded_Bold.ttf", 27));
 
-	eg->storeObjectInArray(0, sendScoreButton);
-	eg->storeObjectInArray(1, goBackButton);
-	eg->storeObjectInArray(2, textField);
+	m_pEngine->storeObjectInArray(0, sendScoreButton);
+	m_pEngine->storeObjectInArray(1, goBackButton);
+	m_pEngine->storeObjectInArray(2, textField);
 
 }
 
 void WinState::virtMouseUp(int iButton, int iX, int iY) {
-	Button* sendButton = dynamic_cast<Button*> (eg->getDisplayableObject(0));
+	Button* sendButton = dynamic_cast<Button*> (m_pEngine->getDisplayableObject(0));
 
 	if (sendButton->isInClickArea() && sendButton->getClickTimes() <= 0) {
-		TextInputField* txf = dynamic_cast<TextInputField*> (eg->getDisplayableObject(2));
+		TextInputField* txf = dynamic_cast<TextInputField*> (m_pEngine->getDisplayableObject(2));
 		std::string playerName = txf->getText(); // Method to get the name from input field
 
 		if (playerName == "    <Enter Name>") {
 			playerName = "unsung hero";
 		}
 
-		int score = eg->getScore(); // Method to get the current score
+		int score = m_pEngine->getScore(); // Method to get the current score
 		saveScore(playerName, score); // Call the function to save the score
 	}
 
-	Button* backButton = dynamic_cast<Button*> (eg->getDisplayableObject(1));
+	Button* backButton = dynamic_cast<Button*> (m_pEngine->getDisplayableObject(1));
 	if (backButton->isInClickArea()) {
-		eg->setState(std::make_shared<StartUpState>(eg));
+		m_pEngine->setState(std::make_shared<StartUpState>(m_pEngine));
 	}
 }
 
@@ -135,6 +135,6 @@ void WinState::saveScore(const std::string& name, int score) {
 
 
 WinState::~WinState() {
-	eg->destroyOldObjects(true);
-	eg->clearContents();
+	m_pEngine->destroyOldObjects(true);
+	m_pEngine->clearContents();
 }

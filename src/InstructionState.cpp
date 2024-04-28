@@ -14,39 +14,39 @@
 
 void InstructionState::virtMouseWheel(int x, int y, int which, int timestamp) {
 	// Convert screen coordinates to virtual coordinates before zoom
-	int oldMouseX = eg->convertClickedToVirtualPixelXPosition(eg->getCurrentMouseX());
-	int oldMouseY = eg->convertClickedToVirtualPixelYPosition(eg->getCurrentMouseY());
+	int oldMouseX = m_pEngine->convertClickedToVirtualPixelXPosition(m_pEngine->getCurrentMouseX());
+	int oldMouseY = m_pEngine->convertClickedToVirtualPixelYPosition(m_pEngine->getCurrentMouseY());
 
-	float zoomLevel = eg->getFilterPointScaling()->getZoomX();
+	float zoomLevel = m_pEngine->getFilterPointScaling()->getZoomX();
 	// Zoom in or out based on the direction of the mouse wheel
 	if (y < 0) {
 		// cannot be smaller than orgianl size
 		if (zoomLevel <= 1) return;
-		eg->getFilterPointScaling()->compress();  // Zoom out
+		m_pEngine->getFilterPointScaling()->compress();  // Zoom out
 	}
 	else if (y > 0) {
-		eg->getFilterPointScaling()->stretch();   // Zoom in
+		m_pEngine->getFilterPointScaling()->stretch();   // Zoom in
 	}
 
 	// Convert screen coordinates to virtual coordinates after zoom
-	int newMouseX = eg->convertClickedToVirtualPixelXPosition(eg->getCurrentMouseX());
-	int newMouseY = eg->convertClickedToVirtualPixelYPosition(eg->getCurrentMouseY());
+	int newMouseX = m_pEngine->convertClickedToVirtualPixelXPosition(m_pEngine->getCurrentMouseX());
+	int newMouseY = m_pEngine->convertClickedToVirtualPixelYPosition(m_pEngine->getCurrentMouseY());
 
 	// Calculate the necessary translation to keep the mouse pointer steady
 	int offsetX = newMouseX - oldMouseX;
 	int offsetY = newMouseY - oldMouseY;
 
 	// Apply the translation so that the zooming appears centered around the cursor
-	eg->getFilterPointsTranslation()->changeOffset(offsetX, offsetY);
+	m_pEngine->getFilterPointsTranslation()->changeOffset(offsetX, offsetY);
 
 	// Redraw the display to update the changes
-	eg->redrawDisplay(); // Force total redraw
+	m_pEngine->redrawDisplay(); // Force total redraw
 }
 
 void InstructionState::initialise() {
 	// Set the scaling filter to the engine
-	eg->getBackgroundSurface()->setDrawPointsFilter(eg->getFilterPointsTranslation());
-	eg->getForegroundSurface()->setDrawPointsFilter(eg->getFilterPointsTranslation());
+	m_pEngine->getBackgroundSurface()->setDrawPointsFilter(m_pEngine->getFilterPointsTranslation());
+	m_pEngine->getForegroundSurface()->setDrawPointsFilter(m_pEngine->getFilterPointsTranslation());
 }
 
 void InstructionState::virtKeyDown(int iKeyCode)
@@ -55,24 +55,24 @@ void InstructionState::virtKeyDown(int iKeyCode)
 	switch (iKeyCode)
 	{
 	case SDLK_LEFT:
-		eg->getFilterPointsTranslation()->changeOffset(10, 0);
-		eg->redrawDisplay();
+		m_pEngine->getFilterPointsTranslation()->changeOffset(10, 0);
+		m_pEngine->redrawDisplay();
 		break;
 	case SDLK_RIGHT:
-		eg->getFilterPointsTranslation()->changeOffset(-10, 0);
-		eg->redrawDisplay();
+		m_pEngine->getFilterPointsTranslation()->changeOffset(-10, 0);
+		m_pEngine->redrawDisplay();
 		break;
 	case SDLK_UP:
-		eg->getFilterPointsTranslation()->changeOffset(0, 10);
-		eg->redrawDisplay();
+		m_pEngine->getFilterPointsTranslation()->changeOffset(0, 10);
+		m_pEngine->redrawDisplay();
 		break;
 	case SDLK_DOWN:
-		eg->getFilterPointsTranslation()->changeOffset(0, -10);
-		eg->redrawDisplay();
+		m_pEngine->getFilterPointsTranslation()->changeOffset(0, -10);
+		m_pEngine->redrawDisplay();
 		break;
 	case SDLK_SPACE: // Space moves the top left back to the zero coordinates - to be on initial location
-		eg->getFilterPointsTranslation()->setOffset(0, 0);
-		eg->redrawDisplay();
+		m_pEngine->getFilterPointsTranslation()->setOffset(0, 0);
+		m_pEngine->redrawDisplay();
 		break;
 	}
 }
@@ -80,58 +80,58 @@ void InstructionState::virtKeyDown(int iKeyCode)
 void InstructionState::virtSetupBackgroundBuffer() {
 	Scyjz14Image background = Scyjz14ImageManager::loadImage("resources/background/menu_background.png", true);
 
-	DrawingSurface* surface = eg->getBackgroundSurface();
+	DrawingSurface* surface = m_pEngine->getBackgroundSurface();
 
 	background.renderImageWithAlpha(surface, 150, 0, 0, 0, 720, 560);
 }
 
 void InstructionState::initialiseStateObject() {
-	eg->notifyObjectsAboutMouse(true);
-	eg->drawableObjectsChanged();
+	m_pEngine->notifyObjectsAboutMouse(true);
+	m_pEngine->drawableObjectsChanged();
 
-	eg->lockAndSetupBackground();
+	m_pEngine->lockAndSetupBackground();
 
 	// Create array with default size for one object
-	eg->createObjectArray(5);
+	m_pEngine->createObjectArray(5);
 
-	Scyjz14ImageObject* instructionImg = new Scyjz14ImageObject(35, 50, eg, "resources/game/instruction.png");
+	Scyjz14ImageObject* instructionImg = new Scyjz14ImageObject(35, 50, m_pEngine, "resources/game/instruction.png");
 
-	Button* button1 = new Button(90, 12, eg, "resources/UI/GO_BACK_GREY.png");
+	Button* button1 = new Button(90, 12, m_pEngine, "resources/UI/GO_BACK_GREY.png");
 	button1->useTopCentreFor00();
 	button1->setEnterImage("resources/UI/GO_BACK_BLACK.png");
 
-	Button* button2 = new Button(485, 12, eg, "resources/UI/PLAY_GAME_GREY.png");
+	Button* button2 = new Button(485, 12, m_pEngine, "resources/UI/PLAY_GAME_GREY.png");
 	button2->setEnterImage("resources/UI/PLAY_GAME_BLACK.png");
 
-	eg->storeObjectInArray(0, instructionImg);
-	eg->storeObjectInArray(1, button1);
-	eg->storeObjectInArray(2, button2);	
+	m_pEngine->storeObjectInArray(0, instructionImg);
+	m_pEngine->storeObjectInArray(1, button1);
+	m_pEngine->storeObjectInArray(2, button2);	
 }
 
 void InstructionState::virtMouseUp(int iButton, int iX, int iY) {
-	Button* goBackButton = dynamic_cast<Button*> (eg->getDisplayableObject(1));
-	Button* playButton = dynamic_cast<Button*> (eg->getDisplayableObject(2));
+	Button* goBackButton = dynamic_cast<Button*> (m_pEngine->getDisplayableObject(1));
+	Button* playButton = dynamic_cast<Button*> (m_pEngine->getDisplayableObject(2));
 
 	if (goBackButton && goBackButton->isInClickArea()) {
-		eg->setState(std::make_shared<StartUpState>(eg));
+		m_pEngine->setState(std::make_shared<StartUpState>(m_pEngine));
 		return;
 	}
 
 	if (playButton && playButton->isInClickArea()) {
-		eg->setState(std::make_shared<RunningState>(eg));
+		m_pEngine->setState(std::make_shared<RunningState>(m_pEngine));
 		return;
 	}
 }
 
 InstructionState::~InstructionState() {
 	// Restore the engine to its original position and size
-	eg->getFilterPointsTranslation()->setOffset(0, 0);
-	eg->getFilterPointScaling()->resetScalingSize();
+	m_pEngine->getFilterPointsTranslation()->setOffset(0, 0);
+	m_pEngine->getFilterPointScaling()->resetScalingSize();
 
-	eg->getBackgroundSurface()->setDrawPointsFilter(nullptr);
-	eg->getForegroundSurface()->setDrawPointsFilter(nullptr);
+	m_pEngine->getBackgroundSurface()->setDrawPointsFilter(nullptr);
+	m_pEngine->getForegroundSurface()->setDrawPointsFilter(nullptr);
 
-	eg->destroyOldObjects(true);
-	eg->clearContents();
-	eg->clearScore();
+	m_pEngine->destroyOldObjects(true);
+	m_pEngine->clearContents();
+	m_pEngine->clearScore();
 }

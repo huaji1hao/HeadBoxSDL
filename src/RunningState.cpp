@@ -33,7 +33,7 @@ void RunningState::virtKeyDown(int iKeyCode) {
 	{
 	case SDLK_ESCAPE: // when ESC is pressed, pause the game
 		std::shared_ptr<RunningState> currentState = shared_from_this();
-		eg->setState(std::make_shared<PauseState>(eg, currentState));
+		m_pEngine->setState(std::make_shared<PauseState>(m_pEngine, currentState));
 	}
 }
 
@@ -50,37 +50,37 @@ std::shared_ptr<State> RunningState::createNextState(Scyjz14Engine* engine, int 
 
 
 void RunningState::initialiseStateObject() {
-	eg->notifyObjectsAboutMouse(false);
-	eg->notifyObjectsAboutKeys(true);
-	eg->drawableObjectsChanged();
-	eg->lockAndSetupBackground();
+	m_pEngine->notifyObjectsAboutMouse(false);
+	m_pEngine->notifyObjectsAboutKeys(true);
+	m_pEngine->drawableObjectsChanged();
+	m_pEngine->lockAndSetupBackground();
 
-	eg->createObjectArray(30);
+	m_pEngine->createObjectArray(30);
 
-	eg->storeObjectInArray(0, new Player(eg->getWindowWidth() / 2, eg->getWindowHeight() / 2, eg, eg->GetTileManager()));
+	m_pEngine->storeObjectInArray(0, new Player(m_pEngine->getWindowWidth() / 2, m_pEngine->getWindowHeight() / 2, m_pEngine, m_pEngine->GetTileManager()));
 	ObjectIndexes::addPlayerIndex(0);
 	
-	eg->appendObjectToArray(new Sword(0, 0, eg));
+	m_pEngine->appendObjectToArray(new Sword(0, 0, m_pEngine));
 
-	auto nextState = createNextState(eg, level);
+	auto nextState = createNextState(m_pEngine, level);
 
-	eg->appendObjectToArray(new Door(450, 300, eg, nextState));
+	m_pEngine->appendObjectToArray(new Door(450, 300, m_pEngine, nextState));
 
-	eg->appendObjectToArray(new Bullet(0, 0, eg));
+	m_pEngine->appendObjectToArray(new Bullet(0, 0, m_pEngine));
 
 	// Create zombies and set their spawn time one by one
 	int zombieNumber = 5 * level;
 	int secondToMilli = 1000;
 	for (int i = 1; i <= zombieNumber; i++) {
 		// Refresh zombies randomly on passable position
-		std::pair<int, int> rndPosition = eg->GetTileManager()->getRandomPassablePoint();
+		std::pair<int, int> rndPosition = m_pEngine->GetTileManager()->getRandomPassablePoint();
 		int zbX = rndPosition.first;
 		int zbY = rndPosition.second;
 		// Each level has a number of 'level' Boss Zombies
 		if(i <= level)
-			eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli, true));
+			m_pEngine->storeObjectInArray(i, new Zombie(zbX, zbY, m_pEngine, m_pEngine->GetTileManager(), m_pEngine->getModifiedTime() + i * secondToMilli, true));
 		else
-			eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
+			m_pEngine->storeObjectInArray(i, new Zombie(zbX, zbY, m_pEngine, m_pEngine->GetTileManager(), m_pEngine->getModifiedTime() + i * secondToMilli));
 		ObjectIndexes::addZombieIndex(i);
 	}
 
@@ -90,8 +90,8 @@ void RunningState::initialiseStateObject() {
 
 void RunningState::virtSetupBackgroundBuffer() {
 	// Draw the background
-	eg->fillBackground(0xEBDCC7);
-	DrawingSurface* surface = eg->getBackgroundSurface();
+	m_pEngine->fillBackground(0xEBDCC7);
+	DrawingSurface* surface = m_pEngine->getBackgroundSurface();
 
 	// Define an array of file paths for each level
 	const std::array<std::string, 3> mapFiles = {
@@ -103,7 +103,7 @@ void RunningState::virtSetupBackgroundBuffer() {
 	// Check if the level index is within the valid range
 	if (level >= 1 && level <= mapFiles.size()) {
 		std::string mapFile = mapFiles[level - 1]; // Adjust index since 'level' starts at 1
-		eg->GetTileManager()->setUpTileManager(eg, mapFile.c_str());
+		m_pEngine->GetTileManager()->setUpTileManager(m_pEngine, mapFile.c_str());
 	}
 	else {
 		std::cerr << "Invalid level number: " << level << std::endl;
@@ -114,14 +114,14 @@ void RunningState::virtSetupBackgroundBuffer() {
 void RunningState::virtDrawStringsOnTop() {
 	// Draw the score on the top left corner
 	char buf[56];
-	sprintf(buf, "Score : %d", eg->getScore());
-	eg->drawForegroundString(0, 0, buf, 0xff0000, eg->getFont("resources/Truculenta-Regular.ttf", 36));
+	sprintf(buf, "Score : %d", m_pEngine->getScore());
+	m_pEngine->drawForegroundString(0, 0, buf, 0xff0000, m_pEngine->getFont("resources/Truculenta-Regular.ttf", 36));
 }
 
 
 RunningState::~RunningState() {
 	// Clear the game state and destroy the global indexes
 	ObjectIndexes::initialize();
-	eg->destroyOldObjects(true);
-	eg->clearContents();
+	m_pEngine->destroyOldObjects(true);
+	m_pEngine->clearContents();
 }

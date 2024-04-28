@@ -8,7 +8,7 @@ class Scyjz14Engine;
 class State
 {
 public:
-    State(Scyjz14Engine * engine): eg(engine) {}
+    State(Scyjz14Engine * engine): m_pEngine(engine) {}
     virtual void initialise() {};
     virtual void initialiseStateObject() {};
     virtual void virtSetupBackgroundBuffer() {};
@@ -32,6 +32,6 @@ public:
     int determineLevelFromSaveFile(const std::string& filename);
 
 protected:
-    Scyjz14Engine* eg;
+    Scyjz14Engine* m_pEngine;
 };
 

@@ -5,17 +5,17 @@
 #include "Zombie.h"
 
 void State::copyAllBackgroundBuffer() {
-	eg->BaseEngine::copyAllBackgroundBuffer(); 
+	m_pEngine->BaseEngine::copyAllBackgroundBuffer(); 
 };
 
 int State::getLevelIdentifier() {
 	return -1; 
 }
 
-inline int countAppearedZombies(Scyjz14Engine *eg) {
+inline int countAppearedZombies(Scyjz14Engine *m_pEngine) {
     int zbNum = 0;
     for (auto& id : ObjectIndexes::getZombieIndexes()) {
-        Zombie* zb = dynamic_cast<Zombie*>(eg->getDisplayableObject(id));
+        Zombie* zb = dynamic_cast<Zombie*>(m_pEngine->getDisplayableObject(id));
         if (zb && (zb->isVisible() || zb->isDied())) zbNum++;
     }
     return zbNum;
@@ -28,18 +28,18 @@ void State::saveGameState(const std::string& filename, int LevelIdentifier) {
         return;
     }
 
-    outFile << LevelIdentifier << " " << eg->getScore() << " " << countAppearedZombies(eg) << std::endl;
+    outFile << LevelIdentifier << " " << m_pEngine->getScore() << " " << countAppearedZombies(m_pEngine) << std::endl;
 
     // Save player state
     auto playerIndex = ObjectIndexes::getPlayerIndexes()[0];
-    Player* player = dynamic_cast<Player*>(eg->getDisplayableObject(playerIndex));
+    Player* player = dynamic_cast<Player*>(m_pEngine->getDisplayableObject(playerIndex));
     if (player) {
         outFile << "Player " << player->getDrawingRegionLeft() << " " << player->getDrawingRegionTop() << " " << player->getLifeValue() << std::endl;
     }
 
     // Save each zombie's state
     for (auto& id : ObjectIndexes::getZombieIndexes()) {
-        Zombie* zb = dynamic_cast<Zombie*>(eg->getDisplayableObject(id));
+        Zombie* zb = dynamic_cast<Zombie*>(m_pEngine->getDisplayableObject(id));
         if (zb && (zb->isVisible() || zb->isDied())) {
             outFile << "Zombie " << zb->getDrawingRegionLeft() << " " << zb->getDrawingRegionTop() << " " << zb->getLifeValue() << std::endl;
         }
@@ -72,8 +72,8 @@ void State::loadGameState(const std::string& filename) {
     int level, score, zbNum;
     inFile >> level >> score >> zbNum;
 
-    eg->clearScore();
-    eg->increaseScore(score);
+    m_pEngine->clearScore();
+    m_pEngine->increaseScore(score);
 
     std::string type;
     int x, y, life;
@@ -81,7 +81,7 @@ void State::loadGameState(const std::string& filename) {
     inFile >> type >> x >> y >> life;
     if (type == "Player") {
         // Assuming you have a method to set player's state
-        Player* player = dynamic_cast<Player*>(eg->getDisplayableObject(ObjectIndexes::getPlayerIndexes()[0]));
+        Player* player = dynamic_cast<Player*>(m_pEngine->getDisplayableObject(ObjectIndexes::getPlayerIndexes()[0]));
         if (player) {
             player->setPosition(x, y);
             player->setLifeValue(life);
@@ -94,7 +94,7 @@ void State::loadGameState(const std::string& filename) {
         inFile >> type >> x >> y >> life;
         if (type == "Zombie") {
             int zbIndex = i <= level - 1 ? i + 1 : totalZbNum - zbNum + i + 1;
-            Zombie* zb = dynamic_cast<Zombie*>(eg->getDisplayableObject(zbIndex));
+            Zombie* zb = dynamic_cast<Zombie*>(m_pEngine->getDisplayableObject(zbIndex));
             zb->setRevealingTime(0);
             zb->setPosition(x, y);
             if (i <= level - 1)zb->setBoss(true);
