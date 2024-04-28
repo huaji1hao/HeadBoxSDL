@@ -4,11 +4,9 @@
 
 class TextInputField : public DisplayableObject {
 public:
-    TextInputField(int x, int y, int width, int height, BaseEngine* pEngine, Font* font)
-        : DisplayableObject(x, y, pEngine, width, height, true),
-        text(""), cursorPosition(0), isActive(false), pFont(font) {
-        setVisible(true);
-    }
+
+    TextInputField(int x, int y, 
+        int width, int height, BaseEngine* pEngine, Font* font);
 
     int getTextWidth(const std::string& str);
 

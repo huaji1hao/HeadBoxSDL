@@ -18,9 +18,9 @@ public:
     void virtMainLoopDoBeforeUpdate() override;
 
 private:
-    std::vector<DrawingSurface> m_surfaces;
-    int m_iCurrentSurfaceNumber = 0;
+    std::vector<DrawingSurface> m_surfaces; // The surfaces for animation
+    int m_iCurrentSurfaceNumber = 0; // The current surface number
     const int numSurfaces; // The number of surfaces for animation
-    int m_iSwitchThreshold = 10; // Adjust this value to change the switch speed
-    int m_iSwitchCounter;
+    int m_iSwitchThreshold; // Higher the threshold, the slower the animation
+    int m_iSwitchCounter; // The counter for threshold
 };

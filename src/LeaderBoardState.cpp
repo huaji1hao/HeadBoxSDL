@@ -34,7 +34,6 @@ void LeaderBoardState::virtSetupBackgroundBuffer() {
 	Scyjz14Image background = Scyjz14ImageManager::loadImage("resources/background/menu_background.png", true);
 
 	DrawingSurface* surface = eg->getBackgroundSurface();
-	//title.renderImageWithMask(surface, 0, 0, 150, 200, 400, 169, -1);
 	background.renderImageWithAlpha(surface, 150, 0, 0, 0, 720, 560);
 
 }
@@ -65,10 +64,6 @@ void LeaderBoardState::virtDrawStringsUnderneath() {
 	}
 }
 
-
-void LeaderBoardState::virtDrawStringsOnTop() {
-
-}
 
 void LeaderBoardState::initialiseStateObject() {
 	eg->notifyObjectsAboutMouse(true);

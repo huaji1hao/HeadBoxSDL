@@ -13,17 +13,20 @@ public:
         BOTH // horizontal and vertical flip at the same time
     };
 
-    ImagePixelMappingFlip(FlipMode mode) : flipMode(mode) {}
+    // set the flip mode when initializing
+    ImagePixelMappingFlip(FlipMode mode) : m_flipMode(mode) {}
 
+    // set the flip mode
+    void setFlipMode(FlipMode mode) { m_flipMode = mode; }
+
+    // map the coordinates based on the flip mode
     bool mapCoordinates(double& x, double& y, const Scyjz14Image& image);
 
-    bool mapCoordinates(double& x, double& y, const SimpleImage& image) {
-        std::cout << "You are using worng function! Warning!" << std::endl;
-        return false;
-    };
+    // Fake function to warn the user that they are using the wrong function
+    bool mapCoordinates(double& x, double& y, const SimpleImage& image) override;
 
 protected:
-    FlipMode flipMode;
+    FlipMode m_flipMode;
 };
 
 

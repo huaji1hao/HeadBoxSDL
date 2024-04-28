@@ -7,6 +7,17 @@
 #include "LoseState.h"
 #include "Bullet.h"
 
+Player::Player(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* pTileManager, std::string strURL,
+	int frameWidth, int frameHeight, bool useTopLeftFor00, bool bVisible)
+	: AgentBaseObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible)
+{
+	m_pTileManager = pTileManager;
+	m_direction = DOWN;
+	invincibleTime = 0;
+	invincibleFrame = 500;
+}
+
+
 void Player::virtKeyDown(int iKeyCode) {
 	switch (iKeyCode) {
 	case SDLK_SPACE: // SPACE when pressed
@@ -29,11 +40,12 @@ void Player::checkTriggerMechanism(int x, int y) {
 
 		int iCurrentTile = m_pTileManager->getMapValue(iTileX, iTileY);
 
+		// If the player is on the trigger mechanism, change the tile
 		if (iCurrentTile == Scyjz14TileManager::MECHANISM) {
 			m_pTileManager->setAndRedrawMapValueAt(iTileX, iTileY, Scyjz14TileManager::NONE, getEngine(), getEngine()->getBackgroundSurface());
 			m_pTileManager->setAndRedrawMapValueAt(iTileX, iTileY, Scyjz14TileManager::MECHANISM_PRESSED, getEngine(), getEngine()->getBackgroundSurface());
 			
-			
+			// Make some walls appear
 			m_pTileManager->setAndRedrawMapValueAt(12, 5, Scyjz14TileManager::WALL7, getEngine(), getEngine()->getBackgroundSurface());
 			m_pTileManager->setAndRedrawMapValueAt(11, 6, Scyjz14TileManager::WALL7, getEngine(), getEngine()->getBackgroundSurface());
 			m_pTileManager->setAndRedrawMapValueAt(13, 6, Scyjz14TileManager::WALL7, getEngine(), getEngine()->getBackgroundSurface());
@@ -97,5 +109,6 @@ void Player::knockedAway(int enemyX, int enemyY) {
 
 	lifeDecrease(10);
 
+	// Set invincible time
 	invincibleTime = getEngine()->getModifiedTime() + invincibleFrame;
 }

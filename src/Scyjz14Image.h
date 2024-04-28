@@ -7,6 +7,7 @@ class Scyjz14Image :
 {
 public:
 	Scyjz14Image(){}
+
 	Scyjz14Image::Scyjz14Image(const SimpleImage& simpleImage) : SimpleImage(simpleImage) {
 	}
 
@@ -22,6 +23,7 @@ public:
 	// Get the colour of a specified pixel, by x and y position
 	int getPixelColour(int x, int y) const { return theData->getRawPixelColour(x, y); }
 
+	// Draw this image with transparency
 	void renderImageWithAlpha(DrawingSurface* pTarget,
 		int iXSource, int iYSource,
 		int iXTarget, int iYTarget,
@@ -33,17 +35,20 @@ public:
 		int iXTarget, int iYTarget,
 		int iWidth, int iHeight, unsigned int backgroundColour) const;
 
+	// Only draw the part which background is these two specfic colors
 	void renderImageWithAlphaAndTwoOverlay(DrawingSurface* pTarget,
 		int iXSource, int iYSource,
 		int iXTarget, int iYTarget,
 		int iWidth, int iHeight, unsigned int backgroundColour1, unsigned int backgroundColour2) const;
 
+	// Draw this image with transparency and apply a mapping to the pixels
 	void renderImageWithAlphaAndApplyingMapping(BaseEngine* pEngine, DrawingSurface* pTarget,
 		int iXSource, int iYSource,
 		int iXTarget, int iYTarget,
 		int iWidth, int iHeight,
 		ImagePixelMapping* mapping) const;
 
+	// Algorithm to blend two pixels together - this is a simple alpha blend
 	unsigned int blendPixels(unsigned int background, unsigned int foreground, unsigned int alpha) const;
 
 private:

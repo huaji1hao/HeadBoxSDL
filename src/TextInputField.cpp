@@ -1,6 +1,11 @@
 #include "header.h"
 #include "TextInputField.h"
 
+TextInputField::TextInputField(int x, int y, int width, int height, BaseEngine* pEngine, Font* font)
+    : DisplayableObject(x, y, pEngine, width, height, true),
+    text(""), cursorPosition(0), isActive(false), pFont(font) {
+    setVisible(true);
+}
 
 void TextInputField::virtMouseDown(int iButton, int iX, int iY) {
     // Activate the text field if clicked

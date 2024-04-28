@@ -1,13 +1,21 @@
 #include "header.h"
 #include "Scyjz14TileManager.h"
 
+Scyjz14TileManager::Scyjz14TileManager(void) : TileManager(40, 30)
+{
+	tileImage = Scyjz14ImageManager::loadImage("resources/game/tiles.png", true);
+	srand(time(NULL));
+}
+
 bool Scyjz14TileManager::loadMapFromFile(const char* filename) {
 	std::ifstream file(filename);
 	if (file.is_open()) {
+		// First two integers are the width and height of the map
 		int width, height;
 		file >> width >> height;
 		setMapSize(width, height);
 
+		// Read the map from the file
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
 				char value;
@@ -46,13 +54,12 @@ std::pair<int, int> Scyjz14TileManager::getRandomPassablePoint() {
 }
 
 void Scyjz14TileManager::setUpTileManager(BaseEngine* pEngine, const char* filename) {
-
+	// Load the map from the file first
 	if (!loadMapFromFile(filename)) {
 		printf("Load Map Error!\n");
 		return;
 	}
 	
-
 	// Output the map to check
 	for (int y = 0; y < getMapHeight(); y++) {
 		for (int x = 0; x < getMapWidth(); x++)
@@ -73,9 +80,7 @@ void Scyjz14TileManager::virtDrawTileAt(
 {
 	int iXSource = -1;
 	// Draw the tiles based on their value
-	switch (getMapValue(iMapX, iMapY))
-	{
-	
+	switch (getMapValue(iMapX, iMapY)) {
 	case NONE:
 		// Draw None
 		break;
@@ -113,6 +118,7 @@ void Scyjz14TileManager::virtDrawTileAt(
 
 	iXSource *= m_iTileWidth;
 
+	// Draw the tile if it is not NONE
 	if (iXSource >= 0) {
 
 		tileImage.renderImageWithAlpha(pEngine->getBackgroundSurface(),
@@ -129,9 +135,7 @@ void Scyjz14TileManager::virtDrawTileAt(
 			iStartPositionScreenX + getTileWidth() - 1,		// Right
 			iStartPositionScreenY + getTileHeight() - 1,	// Bottom
 			0xEBDCC7);	// Pixel colour
-
 	}
-	
 }
 
 void Scyjz14TileManager::drawAllTiles(BaseEngine* pEngine, DrawingSurface* pSurface, int offsetX, int offsetY) const
@@ -141,6 +145,7 @@ void Scyjz14TileManager::drawAllTiles(BaseEngine* pEngine, DrawingSurface* pSurf
 	{
 		for (int iTY = 0; iTY < m_iMapHeight; iTY++)
 		{
+			// Draw the tile with the specified offset
 			virtDrawTileAt(pEngine, pSurface,
 				iTX, iTY,
 				m_iBaseScreenX + getTileWidth() * iTX + offsetX,
@@ -154,7 +159,7 @@ bool Scyjz14TileManager::isPassable(int tileType) const {
 	switch (tileType) {
 	case NONE:
 	case MECHANISM:
-		return true; // NONE can pass
+		return true; // NONE  and MECHANISM are passable
 	case WALL1:
 	case WALL2:
 	case WALL3:
@@ -170,16 +175,20 @@ bool Scyjz14TileManager::isPassable(int tileType) const {
 }
 
 bool Scyjz14TileManager::isPassable(int iScreenX, int iScreenY) const {
+	// Convert the screen position to map position
 	int tileX = getMapXForScreenX(iScreenX);
 	int tileY = getMapYForScreenY(iScreenY);
 	int mapValue = getMapValue(tileX, tileY);
+	// Check if the tile is passable
 	return isPassable(mapValue);
 }
 
 bool Scyjz14TileManager::isPassableByObjectCentre(int iScreenX, int iScreenY, int offSet) const {
+	// Check if the centre of the object with the offset is passable
 	bool isLeftCentrePassible = isPassable(iScreenX - offSet, iScreenY);
 	bool isRightCentrePassible = isPassable(iScreenX + offSet, iScreenY);
-
+	
+	// Return true if both centres are passible
 	return isLeftCentrePassible && isRightCentrePassible;
 }
 

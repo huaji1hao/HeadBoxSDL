@@ -27,8 +27,6 @@ public:
 
     void virtDrawStringsUnderneath() override;
 
-    void virtDrawStringsOnTop() override;
-
     void virtMouseUp(int iButton, int iX, int iY) override;
 
     void loadScores();

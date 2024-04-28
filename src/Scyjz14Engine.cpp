@@ -8,6 +8,12 @@
 #include "ObjectIndexes.h"
 #include <ctime>
 
+Scyjz14Engine::Scyjz14Engine() : m_filter(0, 0, this)
+{
+	m_oTiles.reset(new Scyjz14TileManager);
+	m_pState.reset(new StartUpState(this));
+}
+
 void Scyjz14Engine::setState(std::shared_ptr<State> newState) {
 	m_pState = newState;
 
@@ -16,9 +22,8 @@ void Scyjz14Engine::setState(std::shared_ptr<State> newState) {
 }
 
 void Scyjz14Engine::restoreState(std::shared_ptr<State> oldState) {
-	m_pState = oldState;  // Assuming m_pState is also a std::shared_ptr<State>
+	m_pState = oldState;
 }
-
 
 void Scyjz14Engine::virtSetupBackgroundBuffer()
 {
@@ -28,14 +33,12 @@ void Scyjz14Engine::virtSetupBackgroundBuffer()
 
 void Scyjz14Engine::virtDrawStringsUnderneath()
 {
-	m_pState->virtDrawStringsUnderneath();
-	
+	m_pState->virtDrawStringsUnderneath();	
 }
 
 void Scyjz14Engine::virtDrawStringsOnTop()
 {
 	m_pState->virtDrawStringsOnTop();
-	
 }
 
 void Scyjz14Engine::virtMouseDown(int iButton, int iX, int iY) {
@@ -47,10 +50,8 @@ void Scyjz14Engine::virtMouseUp(int iButton, int iX, int iY) {
 }
 
 int Scyjz14Engine::virtInitialiseObjects() {
-
 	// Initialize the object settings
 	m_pState->initialiseStateObject();
-
 	return 0;
 }
 
@@ -77,6 +78,38 @@ void Scyjz14Engine::virtMainLoopPreUpdate() {
 
 void Scyjz14Engine::copyAllBackgroundBuffer() {
 	m_pState->copyAllBackgroundBuffer();
+}
+
+void Scyjz14Engine::increaseScore(int num) { 
+	score += num; 
+}
+
+void Scyjz14Engine::clearScore() { 
+	score = 0; 
+}
+
+int Scyjz14Engine::getScore() { 
+	return score; 
+}
+
+void Scyjz14Engine::setBackgroundSurface(DrawingSurface* surface) { 
+	m_pBackgroundSurface = surface; 
+}
+
+void Scyjz14Engine::resetBackgroundSurface() { 
+	m_pBackgroundSurface = &m_oTheBackgroundSurface; 
+}
+
+Scyjz14TileManager* Scyjz14Engine::GetTileManager() { 
+	return m_oTiles.get(); 
+}
+
+Scyjz14FilterPoints* Scyjz14Engine::getFilterPointScaling() { 
+	return &m_filter; 
+}
+
+FilterPointsTranslation* Scyjz14Engine::getFilterPointsTranslation() { 
+	return m_filter.getFilterPointsTranslation(); 
 }
 
 

@@ -8,9 +8,7 @@ class Scyjz14Engine;
 class State
 {
 public:
-    State(Scyjz14Engine * engine): eg(engine) {
-
-    }
+    State(Scyjz14Engine * engine): eg(engine) {}
     virtual void initialise() {};
     virtual void initialiseStateObject() {};
     virtual void virtSetupBackgroundBuffer() {};
@@ -26,9 +24,11 @@ public:
     virtual int getLevelIdentifier();
     virtual ~State() {};
 
-    
+    // load the game state from a file
     void loadGameState(const std::string& filename);
+    // save the game state to a file with the level identifier
     void saveGameState(const std::string& filename, int LevelIdentifier);
+    // determine the level identifier from the save file
     int determineLevelFromSaveFile(const std::string& filename);
 
 protected:

@@ -7,28 +7,23 @@ class Zombie :
     public AgentBaseObject
 {
 public:
-    Zombie(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* pTileManager, int revealTime = 0, int isBoss = false, std::string strURL = "resources/game/zombie/zombies.png",
-        int frameWidth = 45, int frameHeight = 50, bool useTopLeftFor00 = true, bool bVisible = true)
-        : AgentBaseObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible, revealTime), m_bIsBoss(isBoss)
-    {
-        m_direction = UP;
-        m_pTileManager = pTileManager;
-        setSpeed(2);
-        setFrameRate(30);
-        if (isBoss) setBoss(true);
-        setVisible(false);
-    }
+    Zombie(int xStart, int yStart, 
+        BaseEngine* pEngine, Scyjz14TileManager* pTileManager, 
+        int revealTime = 0, int isBoss = false, 
+        std::string strURL = "resources/game/zombie/zombies.png", int frameWidth = 45, int frameHeight = 50, 
+        bool useTopLeftFor00 = true, bool bVisible = true);
     
-
-    virtual void virtDoUpdate(int iCurrentTime) override;
-
+    // Update the zombie's position
+    void virtDoUpdate(int iCurrentTime) override;
+    // Draw the zombie's body when it is killed
     void drawBody();
-
+    // Draw the zombie
     void virtDraw() override;
-
+    // Check if the zombie is killed
     void checkIsKilled();
+    // Set the zombie as a boss
     void setBoss(bool isBoss);
-
+    // Get whether the zombie is a boss
     bool getIsBoss() { return m_bIsBoss; }
 
 protected:
@@ -49,15 +44,15 @@ protected:
         {1, 1, DOWNRIGHT},
     };
 
+    // Update the zombie's animation frame
     void updateAnimationFrame(int iCurrentTime) override;
-
+    // Update the zombie's direction
     void updateDirection(int dx, int dy);
-
+    // Update the zombie's direction towards the player
     void updateDirectionTowardsPlayer(Player* player);
-
-    // the function to attack all the player
+    // Attack the player
     void attackPlayer();
-
+    // Fixed zombie positions to try to avoid overlap between zombies
     void fixPosition() override;
         
 protected:

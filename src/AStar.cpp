@@ -15,6 +15,7 @@ bool Graph::isPassable(Point point) const {
 std::vector<Point> Graph::getNeighbors(Point point) const {
     std::vector<Point> neighbors;
 
+    // Add direct neighbors
     for (const auto& dir : directions) {
         Point newPoint = { point.x + dir.x, point.y + dir.y };
         if (isPassable(newPoint)) {
@@ -23,6 +24,7 @@ std::vector<Point> Graph::getNeighbors(Point point) const {
         }
     }
 
+    // Add diagonal neighbors
     for (const auto& diag : diagonals) {
         Point newPoint = { point.x + diag.x, point.y + diag.y };
         Point side1 = { point.x + diag.x, point.y };
@@ -44,6 +46,7 @@ double Graph::cost(Point from, Point to) const {
 }
 
 void Graph::getData() {
+    // Get the data from the tile manager to the data array
     for (int y = 0; y < tm->getMapHeight(); y++)
         for (int x = 0; x < tm->getMapWidth(); x++) {
             data[y][x] = tm->getMapValue(x, y) + '0';
@@ -64,12 +67,15 @@ std::vector<Point> AStar::reconstruct_path(Point start, Point goal, std::unorder
         path.push_back(current);
         current = came_from[current];
     }
-    path.push_back(start); // optional
+    path.push_back(start);
+
+    // Reverse the path to get the correct order
     std::reverse(path.begin(), path.end());
     return path;
 }
 
 std::pair<int, int> AStar::a_star_search(Graph& graph, Point start, Point startLeft, Point startRight, Point goal) {
+    // Initialize the A* algorithm variables
     std::priority_queue<Node> frontier;
     std::unordered_map<Point, Point> came_from;
     std::unordered_map<Point, double> cost_so_far;
@@ -108,7 +114,11 @@ std::pair<int, int> AStar::a_star_search(Graph& graph, Point start, Point startL
         for (Point next : graph.getNeighbors(current)) {
             if (!graph.isPassable(next)) continue; // Skip impassable
 
+            // Calculate the cost to move to the next point
             double new_cost = cost_so_far[current] + graph.cost(current, next);
+            
+            // If the cost is lower than the current cost or the point is not visited yet
+            // Update the cost and add the point to the frontier
             if (!cost_so_far.count(next) || new_cost < cost_so_far[next]) {
                 cost_so_far[next] = new_cost;
                 double priority = new_cost + heuristic(next, goal);

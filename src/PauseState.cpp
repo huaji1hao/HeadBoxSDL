@@ -5,6 +5,11 @@
 #include "Player.h"
 #include "Zombie.h"
 
+PauseState::PauseState(Scyjz14Engine* engine, std::shared_ptr<State> rtState)
+    : State(engine), returnState(rtState){
+    if (!eg->isPaused()) eg->pause();
+};
+
 void PauseState::virtKeyDown(int iKeyCode){
     switch (iKeyCode)
     {
@@ -71,7 +76,7 @@ void PauseState::virtMouseUp(int iButton, int iX, int iY) {
 }
 
 PauseState::~PauseState() {
-
+    // Manually delete the objects otherwise they will be shown in the next state
     for (int i = 1; i <= 4; ++i) {
         DisplayableObject* deleteObj = eg->getDisplayableObject(eg->getContentCount() - 1);
         eg->removeDisplayableObject(deleteObj);

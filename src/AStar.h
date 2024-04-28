@@ -12,6 +12,7 @@ struct Point {
 
     int x, y;
 
+    // Overload the operator to compare two points
     bool operator==(const Point& other) const {
         return x == other.x && y == other.y;
     }
@@ -23,6 +24,7 @@ struct Point {
 
 // Necessary to use Point as key in unordered_map
 namespace std {
+    // Hash function for Point
     template <>
     struct hash<Point> {
         size_t operator()(const Point& point) const {
@@ -54,9 +56,9 @@ public:
     Graph(Scyjz14TileManager* tm) {
         this->tm = tm;
         getData();
-        
     }
 
+    // The map data
     char data[127][127] = { 0 };
 
     // Directly adjacent neighbors (4-directional)
@@ -69,12 +71,16 @@ public:
         {1, 1}, {1, -1}, {-1, 1}, {-1, -1}
     };
 
+    // Check if a point is passable
     bool isPassable(Point point) const;
 
+    // Get the neighbors of a point
     std::vector<Point> getNeighbors(Point point) const;
 
+    // Get the cost of moving from one point to another
     double cost(Point from, Point to) const;
 
+    // Get the data from the map tp the data array
     void getData();
 
 private:
@@ -89,7 +95,7 @@ public:
     std::vector<Point> reconstruct_path(Point start, Point goal, std::unordered_map<Point, Point> came_from);
 
     /*
-      A* algorithm adaptation. 
+      Adaptive A* algorithm. 
       During initialization, 
       only nodes that are both neighbors of startLeft and startRight 
       will be added to the search queue.

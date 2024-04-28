@@ -18,14 +18,12 @@ public:
 
     void virtDrawStringsUnderneath() override;
 
-    void virtDrawStringsOnTop() override;
-
     void virtMouseUp(int iButton, int iX, int iY) override;
 
 protected:
     void saveScore(const std::string& name, int score);
-    int m_iOffset;
-    DrawingSurface leftSurface;
-    DrawingSurface rightSurface;
+    int m_iOffset; // Offset for the scrolling background
+    DrawingSurface leftSurface; // Left surface for the scrolling background
+    DrawingSurface rightSurface; // Right surface for the scrolling background
 
 };

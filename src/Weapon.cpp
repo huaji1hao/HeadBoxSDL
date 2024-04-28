@@ -3,6 +3,14 @@
 #include "Scyjz14CollisionDetection.h"
 #include "Scyjz14Engine.h"
 
+Sword::Sword(int xStart, int yStart, BaseEngine* pEngine, 
+    std::string strURL)
+    : SpriteObject(xStart, yStart, pEngine, strURL, 50, 50, true, true) {
+
+    auto playerid = ObjectIndexes::getPlayerIndexes()[0];
+    m_pPlayer = dynamic_cast<Player*>(getEngine()->getDisplayableObject(playerid));
+}
+
 int Sword::getWeaponX() {
     if (m_direction == LEFT) return m_pPlayer->getDrawingRegionLeft() - distance;
     else if (m_direction == RIGHT) return m_pPlayer->getDrawingRegionLeft() + distance;
@@ -33,8 +41,6 @@ void Sword::virtDoUpdate(int iCurrentTime) {
 
     // Check collision with zombies
     for (auto& id : ObjectIndexes::getZombieIndexes()) {
-        // Get the player object
-
         Zombie* zb = dynamic_cast<Zombie*>(getEngine()->getDisplayableObject(id));
         if (zb == nullptr || zb->isDied() || !zb->isVisible()) continue;
 
@@ -42,7 +48,7 @@ void Sword::virtDoUpdate(int iCurrentTime) {
         if (Scyjz14CollisionDetection::checkPixel(getImage(), m_iCurrentFrameX * m_iDrawWidth, 0, m_iDrawWidth, m_iDrawHeight, getWeaponX(), getWeaponY(),
             zb->getImage(), zb->getCurrentFrameX() * zb->getDrawWidth(), zb->getDirection() * zb->getDrawHeight(), zb->getDrawWidth(), zb->getDrawHeight(), zb->getDrawingRegionLeft(), zb->getDrawingRegionTop()))
         {
-            zb->lifeDecrease(zb->getIsBoss() ? rand() % 2 : 1);
+            zb->lifeDecrease(zb->getIsBoss() ? rand() % (m_iDamage + 1) : m_iDamage);
             zb->checkIsKilled();
         }
     }

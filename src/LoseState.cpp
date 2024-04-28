@@ -15,6 +15,7 @@
 LoseState::LoseState(Scyjz14Engine* engine) 
 	: State(engine)
 	, numSurfaces(5)
+	, m_iSwitchThreshold(10)
 	, m_iSwitchCounter(m_iSwitchThreshold - 1) 
 {
 	// Resize the vector to hold all required surfaces

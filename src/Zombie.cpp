@@ -6,14 +6,31 @@
 #include "Scyjz14CollisionDetection.h"
 #include "Scyjz14Engine.h"
 
+Zombie::Zombie(int xStart, int yStart, 
+	BaseEngine* pEngine, Scyjz14TileManager* pTileManager, 
+	int revealTime, int isBoss, 
+	std::string strURL, int frameWidth, int frameHeight, 
+	bool useTopLeftFor00, bool bVisible)
+	: AgentBaseObject(xStart, yStart, pEngine, strURL, frameWidth, frameHeight, useTopLeftFor00, bVisible, revealTime)
+{
+	m_direction = UP;
+	m_pTileManager = pTileManager;
+	setSpeed(2);
+	setFrameRate(30);
+	if (isBoss) setBoss(true);
+	setVisible(false);
+}
+
 void Zombie::checkIsKilled() {
 	if (isDied()) {
 		checkIsLive();
 		drawBody();
 
+		// Increase the score when the zombie is killed
 		int timeDifference = abs(getEngine()->getModifiedTime() - getRevealingTime()) / 1000;  // Convert milliseconds to seconds
 		int scoreIncrease = 5 + (100 / (timeDifference + 1));  // Base Score = 5, Max Time Bonus gradually decreases
 		int extraBonus = getIsBoss() ? 5 : 1;
+		// The score is increased by the extra Bouns * (base score + time bonus)
 		dynamic_cast<Scyjz14Engine*>(getEngine())->increaseScore(extraBonus * scoreIncrease);
 	}
 }
@@ -21,6 +38,7 @@ void Zombie::checkIsKilled() {
 void Zombie::setBoss(bool isBoss)
 {
 	m_bIsBoss = isBoss;
+	// Boss moves a little slower
 	setFrameRate(20);
 }
 
@@ -72,6 +90,7 @@ void Zombie::drawBody() {
 	else if (bodyDir == DOWNLEFT) bodyDir = DOWN;
 	else if (bodyDir == DOWNRIGHT) bodyDir = LEFT;
 
+	// Deterimine whether to draw the boss image or the normal image
 	int imgBiasY = getIsBoss() ? 50 : 0;
 
 	m_pEngine->lockBackgroundForDrawing();
@@ -97,6 +116,7 @@ void Zombie::drawBody() {
 }
 
 void Zombie::virtDoUpdate(int iCurrentTime) {
+	// If it is not time to reveal the zombie, then return
 	if (isDied() || getEngine()->isPaused() || revealingTime >= iCurrentTime) return;
 	setVisible(true);
 	updateAnimationFrame(iCurrentTime);
@@ -134,6 +154,7 @@ void Zombie::updateDirection(int dx, int dy) {
 void Zombie::updateDirectionTowardsPlayer(Player* player) {
 	if (player == nullptr || m_pTileManager == nullptr) return;
 
+	// Get the zombie's center, left, and right position on the map
 	Point zombieMapPos = {
 		m_pTileManager->getMapXForScreenX(getXCentre()),
 		m_pTileManager->getMapYForScreenY(getYCentre()) };
@@ -143,13 +164,14 @@ void Zombie::updateDirectionTowardsPlayer(Player* player) {
 	Point zombieMapPosRight = {
 		m_pTileManager->getMapXForScreenX(getXCentre() + widthOffset),
 		m_pTileManager->getMapYForScreenY(getYCentre()) };
-
+	// Get the player's center position on the map
 	Point playerMapPos = { 
 		m_pTileManager->getMapXForScreenX(player->getXCentre()),
 		m_pTileManager->getMapYForScreenY(player->getYCentre()) };
 
 	Graph graph(m_pTileManager);
 	AStar astar;
+	// Get the next step to the player by using adaptive A* search
 	std::pair<int, int> step = astar.a_star_search(graph, zombieMapPos, zombieMapPosLeft, zombieMapPosRight, playerMapPos);
 
 	// Now apply the step to your zombie's position
@@ -157,7 +179,7 @@ void Zombie::updateDirectionTowardsPlayer(Player* player) {
 	m_iCurrentScreenY += step.second * moving_speed;
 
 	updateDirection(step.first, step.second);
-
+	
 }
 
 void Zombie::attackPlayer() {
@@ -174,8 +196,6 @@ void Zombie::attackPlayer() {
 		{
 			// If the zombie is colliding with the player, knock the player away
 			player->knockedAway(getXCentre(), getYCentre());
-			// Boss will attack twice
-			if(getIsBoss()) player->knockedAway(getXCentre(), getYCentre());
 		}
 	}
 }

@@ -6,11 +6,13 @@ class Scyjz14FilterPoints :
 public:
 	Scyjz14FilterPoints(int xFactor, int yFactor, FilterPoints* pNextFilter);
 
+	// Restore the scaling size to the original size
 	void resetScalingSize();
 
+	// Get a reference to the FilterPoints Translation object
 	FilterPointsTranslation* getFilterPointsTranslation();
 
 protected:
-	FilterPointsTranslation translationFilter;
+	FilterPointsTranslation m_translationFilter;
 };
 

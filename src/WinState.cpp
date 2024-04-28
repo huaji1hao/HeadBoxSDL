@@ -21,6 +21,7 @@ WinState::WinState(Scyjz14Engine* engine)
 }
 
 void WinState::virtMainLoopDoBeforeUpdate() {
+	// Update the background offset
 	int speed = 1; 
 	m_iOffset = (m_iOffset + speed) % (2 * eg->getWindowWidth()); 
 	eg->redrawDisplay(); 
@@ -31,6 +32,7 @@ void WinState::copyAllBackgroundBuffer() {
 	int windowWidth = eg->getWindowWidth();
 	int windowHeight = eg->getWindowHeight();
 
+	// Make the background scroll
 	if (m_iOffset <= windowWidth) {
 		foreground->copyRectangleFrom(&leftSurface, 0, 0, windowWidth - m_iOffset, windowHeight, m_iOffset, 0);
 		foreground->copyRectangleFrom(&rightSurface, windowWidth - m_iOffset, 0, m_iOffset, windowHeight, m_iOffset - windowWidth, 0);
@@ -43,6 +45,7 @@ void WinState::copyAllBackgroundBuffer() {
 }
 
 void WinState::virtSetupBackgroundBuffer() {
+	// Read the background images
 	Scyjz14Image backgroundImage = Scyjz14ImageManager::loadImage("resources/background/menu_background.png", true);
 
 	leftSurface.mySDLLockSurface();
@@ -57,7 +60,6 @@ void WinState::virtSetupBackgroundBuffer() {
 }
 
 void WinState::virtDrawStringsUnderneath() {
-
 	// Print the string
 	eg->drawForegroundString(50, 80, "Congratulations on escaping the zombie siege!",
 		0xff0000, eg->getFont("resources/Arial_Rounded_Bold.ttf", 27));
@@ -74,10 +76,6 @@ void WinState::virtDrawStringsUnderneath() {
 			0x2bb280, eg->getFont("resources/Arial_Rounded_Bold.ttf", 20));
 }
 
-void WinState::virtDrawStringsOnTop() {
-
-}
-
 void WinState::initialiseStateObject() {
 	eg->notifyObjectsAboutMouse(true);
 	eg->notifyObjectsAboutKeys(true);
@@ -87,17 +85,17 @@ void WinState::initialiseStateObject() {
 
 	// Create array with default size for one object
 	eg->createObjectArray(5);
-	Button* button1 = new Button(220, 310, eg, "resources/UI/SEND_SCORE_GREY.png");
-	button1->setEnterImage("resources/UI/SEND_SCORE_BLACK.png");
-	//button1->setJumpState(true);
-	Button* button2 = new Button(280, 390, eg, "resources/UI/GO_BACK_GREY.png");
-	button2->setEnterImage("resources/UI/GO_BACK_BLACK.png");
-	button2->setJumpState(false);
+	Button* sendScoreButton = new Button(220, 310, eg, "resources/UI/SEND_SCORE_GREY.png");
+	sendScoreButton->setEnterImage("resources/UI/SEND_SCORE_BLACK.png");
+	
+	Button* goBackButton = new Button(280, 390, eg, "resources/UI/GO_BACK_GREY.png");
+	goBackButton->setEnterImage("resources/UI/GO_BACK_BLACK.png");
+	goBackButton->setJumpState(false);
 
 	TextInputField* textField = new TextInputField(220, 240, 270, 40, eg, eg->getFont("resources/Arial_Rounded_Bold.ttf", 27));
 
-	eg->storeObjectInArray(0, button1);
-	eg->storeObjectInArray(1, button2);
+	eg->storeObjectInArray(0, sendScoreButton);
+	eg->storeObjectInArray(1, goBackButton);
 	eg->storeObjectInArray(2, textField);
 
 }
@@ -134,7 +132,6 @@ void WinState::saveScore(const std::string& name, int score) {
 	}
 
 }
-
 
 
 WinState::~WinState() {

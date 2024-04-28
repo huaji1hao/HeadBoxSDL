@@ -6,6 +6,13 @@
 #include "StartUpState.h"
 #include "Scyjz14CollisionDetection.h"
 
+Door::Door(int xStart, int yStart, BaseEngine* pEngine, std::shared_ptr<State> targetState, std::string strURL)
+	: SpriteObject(xStart, yStart, pEngine, strURL, 60, 71, true, true),
+	m_targetState(targetState)
+{
+}
+
+
 void Door::virtDraw(){
 	if (isVisible()) {
 		// Calculate the source position based on the current frame indices
@@ -55,17 +62,19 @@ void Door::virtDoUpdate(int iCurrentTime){
 		}
 	}
 
+	// If all the zombies are dead, 
+	// check if the player is colliding with the door
 	if (isAllZombiesDead) {
+		// Open the door
 		setCurrentFrame(1, 0);
 
 		Player* player = dynamic_cast<Player*>(getEngine()->getDisplayableObject(ObjectIndexes::getPlayerIndexes()[0]));
 
+		// When the player is in the door, switch to the target state
 		if (Scyjz14CollisionDetection::checkPixelIsImg2InImg1(getImage(), m_iCurrentFrameX * m_iDrawWidth, 0, m_iDrawWidth, m_iDrawHeight, getDrawingRegionLeft(), getDrawingRegionTop(),
 			player->getImage(), player->getCurrentFrameX() * player->getDrawWidth(), player->getDirection() * player->getDrawHeight(), player->getDrawWidth(), player->getDrawHeight(), player->getDrawingRegionLeft(), player->getDrawingRegionTop()))
 		{
-			// If the zombie is colliding with the player, knock the player away
 			Scyjz14Engine* eg = dynamic_cast<Scyjz14Engine*>(m_pEngine);
-			//eg->setState(std::make_shared<StartUpState>(eg));
 			eg->setState(m_targetState);
 		}
 

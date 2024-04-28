@@ -44,12 +44,14 @@ void InstructionState::virtMouseWheel(int x, int y, int which, int timestamp) {
 }
 
 void InstructionState::initialise() {
+	// Set the scaling filter to the engine
 	eg->getBackgroundSurface()->setDrawPointsFilter(eg->getFilterPointsTranslation());
 	eg->getForegroundSurface()->setDrawPointsFilter(eg->getFilterPointsTranslation());
 }
 
 void InstructionState::virtKeyDown(int iKeyCode)
 {
+	// Handle the key press to scroll the foreground
 	switch (iKeyCode)
 	{
 	case SDLK_LEFT:
@@ -75,29 +77,10 @@ void InstructionState::virtKeyDown(int iKeyCode)
 	}
 }
 
-
-void InstructionState::virtMainLoopDoBeforeUpdate() {
-	
-
-}
-
-void InstructionState::virtDrawStringsUnderneath() {
-
-}
-
-void InstructionState::virtDrawStringsOnTop() {
-
-}
-
 void InstructionState::virtSetupBackgroundBuffer() {
-
 	Scyjz14Image background = Scyjz14ImageManager::loadImage("resources/background/menu_background.png", true);
-	/*Scyjz14Image pin = Scyjz14ImageManager::loadImage("resources/game/red_pin.png", true);*/
 
 	DrawingSurface* surface = eg->getBackgroundSurface();
-	//pin.renderImageWithAlpha(surface, 0, 0, 100, 100, pin.getWidth(), pin.getHeight());
-	/*ImagePixelMappingFlip flipMapper(ImagePixelMappingFlip::VERTICAL);
-	pin.renderImageWithAlphaAndApplyingMapping(eg, surface, 0, 0, 50, 50, pin.getWidth(), pin.getHeight(), &flipMapper);*/
 
 	background.renderImageWithAlpha(surface, 150, 0, 0, 0, 720, 560);
 }
@@ -122,9 +105,7 @@ void InstructionState::initialiseStateObject() {
 
 	eg->storeObjectInArray(0, instructionImg);
 	eg->storeObjectInArray(1, button1);
-	eg->storeObjectInArray(2, button2);
-	
-	
+	eg->storeObjectInArray(2, button2);	
 }
 
 void InstructionState::virtMouseUp(int iButton, int iX, int iY) {
@@ -143,6 +124,7 @@ void InstructionState::virtMouseUp(int iButton, int iX, int iY) {
 }
 
 InstructionState::~InstructionState() {
+	// Restore the engine to its original position and size
 	eg->getFilterPointsTranslation()->setOffset(0, 0);
 	eg->getFilterPointScaling()->resetScalingSize();
 

@@ -11,21 +11,38 @@
 #include "Door.h"
 #include "WinState.h"
 #include "Bullet.h"
+#include <array>
+#include <string>
+
+
+RunningState::RunningState(Scyjz14Engine* engine, int lev, bool load)
+	: State(engine)
+	, level(lev)
+	, isloadSavedState(load)
+{
+	// Ensure the level is within the valid range
+	if (level < 1 || level > 3) level = 1;
+}
+
+int RunningState::getLevelIdentifier() {
+	return level;
+}
 
 void RunningState::virtKeyDown(int iKeyCode) {
 	switch (iKeyCode)
 	{
-	case SDLK_ESCAPE: // SPACE Pauses SDLK_SPACE
+	case SDLK_ESCAPE: // when ESC is pressed, pause the game
 		std::shared_ptr<RunningState> currentState = shared_from_this();
 		eg->setState(std::make_shared<PauseState>(eg, currentState));
 	}
 }
 
 std::shared_ptr<State> RunningState::createNextState(Scyjz14Engine* engine, int level) {
-	// create state according to current level
+	// If the level is 3, return the WinState
 	if (level + 1 > 3) {
 		return std::make_shared<WinState>(engine);
 	}
+	// Otherwise, return a new RunningState with the next level
 	else {
 		return std::make_shared<RunningState>(engine, level + 1);
 	}
@@ -51,77 +68,59 @@ void RunningState::initialiseStateObject() {
 
 	eg->appendObjectToArray(new Bullet(0, 0, eg));
 
-	//refresh zombies randomly on passable position
+	// Create zombies and set their spawn time one by one
 	int zombieNumber = 5 * level;
 	int secondToMilli = 1000;
 	for (int i = 1; i <= zombieNumber; i++) {
+		// Refresh zombies randomly on passable position
 		std::pair<int, int> rndPosition = eg->GetTileManager()->getRandomPassablePoint();
 		int zbX = rndPosition.first;
 		int zbY = rndPosition.second;
-		if(i == 1)
+		// Each level has a number of 'level' Boss Zombies
+		if(i <= level)
 			eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli, true));
 		else
 			eg->storeObjectInArray(i, new Zombie(zbX, zbY, eg, eg->GetTileManager(), eg->getModifiedTime() + i * secondToMilli));
 		ObjectIndexes::addZombieIndex(i);
 	}
 
+	// If the game is loaded from a saved state, load the game state
 	if (isloadSavedState) loadGameState("resources/game/game_state/my_state.txt");
-
-	
 };
 
 void RunningState::virtSetupBackgroundBuffer() {
-	eg->fillBackground(0xEBDCC7);
-
 	// Draw the background
-	Scyjz14Image stains = ImageManager::loadImage("resources/background/uzi.png", true);
-	stains.setTransparencyColour(0);
-	// Rotate the images and draw them
+	eg->fillBackground(0xEBDCC7);
 	DrawingSurface* surface = eg->getBackgroundSurface();
 
-	// Draw the tiles
-	std::string mapFile = "";
-	if (level == 1) {
-		mapFile = "resources/Map/Level1.txt";
+	// Define an array of file paths for each level
+	const std::array<std::string, 3> mapFiles = {
+		"resources/Map/Level1.txt",
+		"resources/Map/Level2.txt",
+		"resources/Map/Level3.txt"
+	};
+
+	// Check if the level index is within the valid range
+	if (level >= 1 && level <= mapFiles.size()) {
+		std::string mapFile = mapFiles[level - 1]; // Adjust index since 'level' starts at 1
+		eg->GetTileManager()->setUpTileManager(eg, mapFile.c_str());
 	}
-	else if (level == 2) {
-		mapFile = "resources/Map/Level2.txt";
-	}
-	else if (level == 3) {
-		mapFile = "resources/Map/Level3.txt";
+	else {
+		std::cerr << "Invalid level number: " << level << std::endl;
 	}
 
-	eg->GetTileManager()->setUpTileManager(eg, mapFile.c_str());
-	// Draw an rectangle on the screen
-	//int width = eg->getWindowWidth();
-	//int height = eg->getWindowHeight();
-	//eg->drawBackgroundRectangle(width / 2 - 50, height / 2 - 50, width / 2 + 50, height / 2 + 50, 0xffffffff);
-
-}
-
-void RunningState::virtDrawStringsUnderneath() {
-	//// Build the string to print
-	//char buf[128];
-	//sprintf(buf, "Use 'UP, DOWN, LEFT, RIGHT' and 'W, A, S, D' to control the object");
-	//// Print the string
-	//eg->drawBackgroundString(50, 10, buf, 0xff00ff, eg->getFont("resources/Truculenta-Regular.ttf", 24));
 }
 
 void RunningState::virtDrawStringsOnTop() {
+	// Draw the score on the top left corner
 	char buf[56];
 	sprintf(buf, "Score : %d", eg->getScore());
 	eg->drawForegroundString(0, 0, buf, 0xff0000, eg->getFont("resources/Truculenta-Regular.ttf", 36));
 }
 
-void RunningState::virtMouseDown(int iButton, int iX, int iY) {
-	
-}
-
-void RunningState::virtMouseUp(int iButton, int iX, int iY) {
-	/*eg->setState(std::make_shared<StartUpState>(eg));*/
-}
 
 RunningState::~RunningState() {
+	// Clear the game state and destroy the global indexes
 	ObjectIndexes::initialize();
 	eg->destroyOldObjects(true);
 	eg->clearContents();

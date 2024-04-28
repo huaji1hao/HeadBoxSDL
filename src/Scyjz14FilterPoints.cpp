@@ -4,7 +4,7 @@
 
 Scyjz14FilterPoints::Scyjz14FilterPoints(int xFactor, int yFactor, FilterPoints* pNextFilter = nullptr)
 	: FilterPointsScaling(xFactor, yFactor, pNextFilter)
-	, translationFilter(0, 0, this)
+	, m_translationFilter(0, 0, this)
 {
 }
 
@@ -13,5 +13,5 @@ void Scyjz14FilterPoints::resetScalingSize() {
 }
 
 FilterPointsTranslation* Scyjz14FilterPoints::getFilterPointsTranslation() {
-	return &translationFilter; 
+	return &m_translationFilter; 
 }
