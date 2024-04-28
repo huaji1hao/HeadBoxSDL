@@ -54,7 +54,7 @@ struct Node {
 class Graph {
 public:
     Graph(Scyjz14TileManager* tm) {
-        this->tm = tm;
+        this->m_pTileManager = tm;
         getData();
     }
 
@@ -80,11 +80,11 @@ public:
     // Get the cost of moving from one point to another
     double cost(Point from, Point to) const;
 
-    // Get the data from the map tp the data array
+    // Get the data from the map to the data array
     void getData();
 
 private:
-    Scyjz14TileManager* tm = nullptr;
+    Scyjz14TileManager* m_pTileManager = nullptr;
 };
 
 

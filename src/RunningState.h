@@ -7,7 +7,7 @@ class RunningState :
 {
 public:
     // Set the default level to 1
-    RunningState(Scyjz14Engine* engine, int lev = 1, bool load = false);
+    RunningState(Scyjz14Engine* engine, int level = 1, bool load = false);
 
     ~RunningState() override;
     
@@ -25,6 +25,6 @@ public:
 
 protected:
     bool isloadSavedState;
-    int level;
+    int m_iLevel;
 };
 

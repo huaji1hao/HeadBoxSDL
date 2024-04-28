@@ -4,12 +4,13 @@
 bool Graph::isPassable(Point point) const {
     // Check if the location at point is passable or not
     // If the point is out of bounds, return false
-    if (point.x < 0 || point.x >= tm->getMapWidth() || point.y < 0 || point.y >= tm->getMapHeight()) {
+    if (point.x < 0 || point.x >= m_pTileManager->getMapWidth() || 
+        point.y < 0 || point.y >= m_pTileManager->getMapHeight()) {
         return false;
     }
 
     // Otherwise, return true if the tile is passable
-    return tm->isPassable(data[point.y][point.x] - '0');
+    return m_pTileManager->isPassable(data[point.y][point.x] - '0');
 }
 
 std::vector<Point> Graph::getNeighbors(Point point) const {
@@ -47,9 +48,9 @@ double Graph::cost(Point from, Point to) const {
 
 void Graph::getData() {
     // Get the data from the tile manager to the data array
-    for (int y = 0; y < tm->getMapHeight(); y++)
-        for (int x = 0; x < tm->getMapWidth(); x++) {
-            data[y][x] = tm->getMapValue(x, y) + '0';
+    for (int y = 0; y < m_pTileManager->getMapHeight(); y++)
+        for (int x = 0; x < m_pTileManager->getMapWidth(); x++) {
+            data[y][x] = m_pTileManager->getMapValue(x, y) + '0';
         }
 }
 

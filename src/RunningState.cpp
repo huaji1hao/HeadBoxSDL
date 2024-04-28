@@ -15,17 +15,17 @@
 #include <string>
 
 
-RunningState::RunningState(Scyjz14Engine* engine, int lev, bool load)
+RunningState::RunningState(Scyjz14Engine* engine, int level, bool load)
 	: State(engine)
-	, level(lev)
+	, m_iLevel(level)
 	, isloadSavedState(load)
 {
 	// Ensure the level is within the valid range
-	if (level < 1 || level > 3) level = 1;
+	if (m_iLevel < 1 || m_iLevel > 3) m_iLevel = 1;
 }
 
 int RunningState::getLevelIdentifier() {
-	return level;
+	return m_iLevel;
 }
 
 void RunningState::virtKeyDown(int iKeyCode) {
@@ -37,14 +37,14 @@ void RunningState::virtKeyDown(int iKeyCode) {
 	}
 }
 
-std::shared_ptr<State> RunningState::createNextState(Scyjz14Engine* engine, int level) {
+std::shared_ptr<State> RunningState::createNextState(Scyjz14Engine* engine, int m_iLevel) {
 	// If the level is 3, return the WinState
-	if (level + 1 > 3) {
+	if (m_iLevel + 1 > 3) {
 		return std::make_shared<WinState>(engine);
 	}
 	// Otherwise, return a new RunningState with the next level
 	else {
-		return std::make_shared<RunningState>(engine, level + 1);
+		return std::make_shared<RunningState>(engine, m_iLevel + 1);
 	}
 }
 
@@ -62,14 +62,14 @@ void RunningState::initialiseStateObject() {
 	
 	m_pEngine->appendObjectToArray(new Sword(0, 0, m_pEngine));
 
-	auto nextState = createNextState(m_pEngine, level);
+	auto nextState = createNextState(m_pEngine, m_iLevel);
 
 	m_pEngine->appendObjectToArray(new Door(450, 300, m_pEngine, nextState));
 
 	m_pEngine->appendObjectToArray(new Bullet(0, 0, m_pEngine));
 
 	// Create zombies and set their spawn time one by one
-	int zombieNumber = 5 * level;
+	int zombieNumber = 5 * m_iLevel;
 	int secondToMilli = 1000;
 	for (int i = 1; i <= zombieNumber; i++) {
 		// Refresh zombies randomly on passable position
@@ -77,7 +77,7 @@ void RunningState::initialiseStateObject() {
 		int zbX = rndPosition.first;
 		int zbY = rndPosition.second;
 		// Each level has a number of 'level' Boss Zombies
-		if(i <= level)
+		if(i <= m_iLevel)
 			m_pEngine->storeObjectInArray(i, new Zombie(zbX, zbY, m_pEngine, m_pEngine->GetTileManager(), m_pEngine->getModifiedTime() + i * secondToMilli, true));
 		else
 			m_pEngine->storeObjectInArray(i, new Zombie(zbX, zbY, m_pEngine, m_pEngine->GetTileManager(), m_pEngine->getModifiedTime() + i * secondToMilli));
@@ -101,12 +101,12 @@ void RunningState::virtSetupBackgroundBuffer() {
 	};
 
 	// Check if the level index is within the valid range
-	if (level >= 1 && level <= mapFiles.size()) {
-		std::string mapFile = mapFiles[level - 1]; // Adjust index since 'level' starts at 1
+	if (m_iLevel >= 1 && m_iLevel <= mapFiles.size()) {
+		std::string mapFile = mapFiles[m_iLevel - 1]; // Adjust index since 'level' starts at 1
 		m_pEngine->GetTileManager()->setUpTileManager(m_pEngine, mapFile.c_str());
 	}
 	else {
-		std::cerr << "Invalid level number: " << level << std::endl;
+		std::cerr << "Invalid level number: " << m_iLevel << std::endl;
 	}
 
 }

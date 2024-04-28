@@ -8,7 +8,7 @@
 
 Door::Door(int xStart, int yStart, BaseEngine* pEngine, std::shared_ptr<State> targetState, std::string strURL)
 	: SpriteObject(xStart, yStart, pEngine, strURL, 60, 71, true, true),
-	m_targetState(targetState)
+	m_pTargetState(targetState)
 {
 }
 
@@ -75,7 +75,7 @@ void Door::virtDoUpdate(int iCurrentTime){
 			player->getImage(), player->getCurrentFrameX() * player->getDrawWidth(), player->getDirection() * player->getDrawHeight(), player->getDrawWidth(), player->getDrawHeight(), player->getDrawingRegionLeft(), player->getDrawingRegionTop()))
 		{
 			Scyjz14Engine* eg = dynamic_cast<Scyjz14Engine*>(m_pEngine);
-			eg->setState(m_targetState);
+			eg->setState(m_pTargetState);
 		}
 
 	}

@@ -19,7 +19,7 @@ public:
 	void virtDoUpdate(int iCurrentTime) override;
 
 protected:
-	std::shared_ptr<State> m_targetState;  // Target state to switch to
+	std::shared_ptr<State> m_pTargetState;  // Target state to switch to
 
 	int getFrameCount() override {
 		// Manually count that it is 2 for Door
