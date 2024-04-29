@@ -6,6 +6,7 @@
 #include "Scyjz14Engine.h"
 #include "LoseState.h"
 #include "Bullet.h"
+#include "WinState.h"
 
 Player::Player(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* pTileManager, std::string strURL,
 	int frameWidth, int frameHeight, bool useTopLeftFor00, bool bVisible)

@@ -21,5 +21,14 @@ public:
     void initialise() override;
 
     void virtKeyDown(int iKeyCode) override;
+
+protected:
+    // Define a map that associates keys with x and y offsets
+    const std::map<int, std::pair<int, int>> keyOffsets = {
+        {SDLK_LEFT, {-10, 0}},
+        {SDLK_RIGHT, {10, 0}},
+        {SDLK_UP, {0, -10}},
+        {SDLK_DOWN, {0, 10}}
+    };
 };
 

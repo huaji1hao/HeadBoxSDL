@@ -52,24 +52,18 @@ void InstructionState::initialise() {
 void InstructionState::virtKeyDown(int iKeyCode)
 {
 	// Handle the key press to scroll the foreground
-	switch (iKeyCode)
-	{
-	case SDLK_LEFT:
-		m_pEngine->getFilterPointsTranslation()->changeOffset(-10, 0);
-		break;
-	case SDLK_RIGHT:
-		m_pEngine->getFilterPointsTranslation()->changeOffset(10, 0);
-		break;
-	case SDLK_UP:
-		m_pEngine->getFilterPointsTranslation()->changeOffset(0, -10);
-		break;
-	case SDLK_DOWN:
-		m_pEngine->getFilterPointsTranslation()->changeOffset(0, 10);
-		break;
-	case SDLK_SPACE: // Space moves the top left back to the zero coordinates - to be on initial location
-		m_pEngine->getFilterPointsTranslation()->setOffset(0, 0);
-		break;
+	// Check if the key is in the map
+	auto it = keyOffsets.find(iKeyCode);
+	if (it != keyOffsets.end()) {
+		// If found, apply the corresponding offset
+		m_pEngine->getFilterPointsTranslation()->changeOffset(it->second.first, it->second.second);
 	}
+	else if (iKeyCode == SDLK_SPACE) {
+		// Reset offsets if SPACE key is pressed
+		m_pEngine->getFilterPointsTranslation()->setOffset(0, 0);
+	}
+
+	// Redraw the display after handling the key
 	m_pEngine->redrawDisplay();
 }
 
@@ -83,6 +77,7 @@ void InstructionState::virtSetupBackgroundBuffer() {
 
 void InstructionState::initialiseStateObject() {
 	m_pEngine->notifyObjectsAboutMouse(true);
+	m_pEngine->notifyObjectsAboutKeys(true);
 	m_pEngine->drawableObjectsChanged();
 
 	m_pEngine->lockAndSetupBackground();

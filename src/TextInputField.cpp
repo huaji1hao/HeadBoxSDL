@@ -3,7 +3,7 @@
 
 TextInputField::TextInputField(int x, int y, int width, int height, BaseEngine* pEngine, Font* font)
     : DisplayableObject(x, y, pEngine, width, height, true),
-    text(""), cursorPosition(0), isActive(false), pFont(font) {
+    m_sText(""), cursorPosition(0), isActive(false), pFont(font) {
     setVisible(true);
 }
 
@@ -21,9 +21,9 @@ void TextInputField::virtMouseUp(int iButton, int iX, int iY) {
 
 
 std::string TextInputField::getText() const {
-    if (text.empty())
+    if (m_sText.empty())
         return "    <Enter Name>";
-    return text;
+    return m_sText;
 }
 
 
@@ -76,14 +76,14 @@ void TextInputField::virtKeyUp(int iKeyCode) {
     }
 
     // Insert the character if it's not null and within the max text length
-    if (charToAdd != '\0' && text.length() < maxTextLength) {
-        text.insert(text.begin() + cursorPosition, charToAdd);
+    if (charToAdd != '\0' && m_sText.length() < maxTextLength) {
+        m_sText.insert(m_sText.begin() + cursorPosition, charToAdd);
         cursorPosition++;
     }
 
     // Handle backspace for deletion
     if (iKeyCode == SDLK_BACKSPACE && cursorPosition > 0) {
-        text.erase(text.begin() + cursorPosition - 1);
+        m_sText.erase(m_sText.begin() + cursorPosition - 1);
         cursorPosition--;
     }
 
@@ -91,7 +91,7 @@ void TextInputField::virtKeyUp(int iKeyCode) {
     if (iKeyCode == SDLK_LEFT && cursorPosition > 0) {
         cursorPosition--;
     }
-    if (iKeyCode == SDLK_RIGHT && cursorPosition < text.length()) {
+    if (iKeyCode == SDLK_RIGHT && cursorPosition < m_sText.length()) {
         cursorPosition++;
     }
 
@@ -116,7 +116,7 @@ void TextInputField::virtDraw() {
 
     // Optionally, draw the cursor
     if (isActive) {
-        int cursorX = m_iCurrentScreenX + 5 + getTextWidth(text.substr(0, cursorPosition));
+        int cursorX = m_iCurrentScreenX + 5 + getTextWidth(m_sText.substr(0, cursorPosition));
         getEngine()->drawForegroundRectangle(cursorX, m_iCurrentScreenY + 5, cursorX, m_iCurrentScreenY + m_iDrawHeight - 10, 0x000000);
     }
 }

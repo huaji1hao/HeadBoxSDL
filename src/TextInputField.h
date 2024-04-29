@@ -26,7 +26,7 @@ public:
     std::string getText() const;
 
 protected:
-    std::string text;            // Text content of the input field
+    std::string m_sText;            // Text content of the input field
     int cursorPosition;          // Position of the cursor in the text
     const size_t maxTextLength = 16; // Max text length for simplicity
     bool isActive;               // Whether this text field is currently active

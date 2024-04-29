@@ -78,6 +78,7 @@ void LoseState::virtSetupBackgroundBuffer() {
 
 void LoseState::initialiseStateObject() {
 	m_pEngine->notifyObjectsAboutMouse(true);
+	m_pEngine->notifyObjectsAboutKeys(false);
 	m_pEngine->drawableObjectsChanged();
 
 	m_pEngine->lockAndSetupBackground();
