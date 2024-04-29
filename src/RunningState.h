@@ -19,6 +19,8 @@ public:
     
     void initialiseStateObject() override;
 
+    void virtMainLoopPostUpdate() override;
+
     int getLevelIdentifier() override;
 
     std::shared_ptr<State> createNextState(Scyjz14Engine* engine, int level);

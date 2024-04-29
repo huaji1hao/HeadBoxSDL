@@ -72,8 +72,8 @@ void Scyjz14Engine::virtMainLoopDoBeforeUpdate() {
 	m_pState->virtMainLoopDoBeforeUpdate();
 }
 
-void Scyjz14Engine::virtMainLoopPreUpdate() {
-	m_pState->virtMainLoopPreUpdate();
+void Scyjz14Engine::virtMainLoopPostUpdate(){
+	m_pState->virtMainLoopPostUpdate();
 }
 
 void Scyjz14Engine::copyAllBackgroundBuffer() {

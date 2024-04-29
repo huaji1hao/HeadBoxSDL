@@ -23,7 +23,7 @@ public:
     void virtMouseWheel(int x, int y, int which, int timestamp) override;
     void virtKeyDown(int iKeyCode) override;
     void virtMainLoopDoBeforeUpdate() override;
-    void virtMainLoopPreUpdate() override;
+    void virtMainLoopPostUpdate() override;
     void copyAllBackgroundBuffer() override;
 
     // Set a new state for the engine

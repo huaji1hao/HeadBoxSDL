@@ -66,7 +66,7 @@ void RunningState::initialiseStateObject() {
 
 	m_pEngine->appendObjectToArray(new Door(450, 300, m_pEngine, nextState));
 
-	m_pEngine->appendObjectToArray(new Bullet(0, 0, m_pEngine));
+	//m_pEngine->appendObjectToArray(new Bullet(0, 0, m_pEngine));
 
 	// Create zombies and set their spawn time one by one
 	int zombieNumber = 5 * m_iLevel;
@@ -86,7 +86,17 @@ void RunningState::initialiseStateObject() {
 
 	// If the game is loaded from a saved state, load the game state
 	if (isloadSavedState) loadGameState("resources/game/game_state/my_state.txt");
-};
+}
+
+void RunningState::virtMainLoopPostUpdate() {
+	m_pEngine->drawableObjectsChanged();
+	auto lastObject = m_pEngine->getDisplayableObject(m_pEngine->getContentCount() - 1);
+	if (!lastObject->deleteOnRemoval()) {
+		m_pEngine->removeDisplayableObject(lastObject);
+		delete lastObject;
+	}
+}
+
 
 void RunningState::virtSetupBackgroundBuffer() {
 	// Draw the background

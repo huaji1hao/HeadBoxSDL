@@ -76,11 +76,12 @@ void PauseState::virtMouseUp(int iButton, int iX, int iY) {
 }
 
 PauseState::~PauseState() {
+    m_pEngine->notifyObjectsAboutMouse(false);
+
     // Manually delete the objects otherwise they will be shown in the next state
     for (int i = 1; i <= 4; ++i) {
         DisplayableObject* deleteObj = m_pEngine->getDisplayableObject(m_pEngine->getContentCount() - 1);
         m_pEngine->removeDisplayableObject(deleteObj);
         delete deleteObj;
     }
-    
 }

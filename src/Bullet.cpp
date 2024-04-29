@@ -93,6 +93,8 @@ void Bullet::virtDraw() {
                 getEngine()->drawForegroundLine(m_iStartX, m_iStartY, m_iEndX + bias, m_iEndY, uColour);
                 break;
         }
+    } else {
+        setShouldDeleteOnRemoval(false);
     }
 
 }

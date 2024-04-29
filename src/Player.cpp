@@ -19,16 +19,18 @@ Player::Player(int xStart, int yStart, BaseEngine* pEngine, Scyjz14TileManager* 
 
 
 void Player::virtKeyDown(int iKeyCode) {
+	if (isDied() || getEngine()->isPaused()) return;
+
 	switch (iKeyCode) {
-	case SDLK_SPACE: // SPACE when pressed
-		Direction direction = getDirection();
-		int playerX = getXCentre();
-		int playerY = getYCentre();
+		case SDLK_SPACE: // SPACE when pressed
+			Direction direction = getDirection();
+			int playerX = getXCentre();
+			int playerY = getYCentre();
 
-		auto bullet = dynamic_cast<Bullet*>(getEngine()->getDisplayableObject(getEngine()->getContentCount() - 1));
-		bullet->onFire(playerX, playerY, direction);
-
-		break;
+			auto bullet = new Bullet(0, 0, m_pEngine);
+			bullet->onFire(playerX, playerY, direction);
+			getEngine()->appendObjectToArray(bullet);
+			break;
 	}
 }
 

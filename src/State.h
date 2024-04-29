@@ -19,7 +19,7 @@ public:
     virtual void virtMouseWheel(int x, int y, int which, int timestamp) {};
     virtual void virtKeyDown(int iKeyCode) {};
     virtual void virtMainLoopDoBeforeUpdate() {};
-    virtual void virtMainLoopPreUpdate() {};
+    virtual void virtMainLoopPostUpdate() {};
     virtual void copyAllBackgroundBuffer();
     virtual int getLevelIdentifier();
     virtual ~State() {};

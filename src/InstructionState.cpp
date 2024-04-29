@@ -55,26 +55,22 @@ void InstructionState::virtKeyDown(int iKeyCode)
 	switch (iKeyCode)
 	{
 	case SDLK_LEFT:
-		m_pEngine->getFilterPointsTranslation()->changeOffset(10, 0);
-		m_pEngine->redrawDisplay();
+		m_pEngine->getFilterPointsTranslation()->changeOffset(-10, 0);
 		break;
 	case SDLK_RIGHT:
-		m_pEngine->getFilterPointsTranslation()->changeOffset(-10, 0);
-		m_pEngine->redrawDisplay();
+		m_pEngine->getFilterPointsTranslation()->changeOffset(10, 0);
 		break;
 	case SDLK_UP:
-		m_pEngine->getFilterPointsTranslation()->changeOffset(0, 10);
-		m_pEngine->redrawDisplay();
+		m_pEngine->getFilterPointsTranslation()->changeOffset(0, -10);
 		break;
 	case SDLK_DOWN:
-		m_pEngine->getFilterPointsTranslation()->changeOffset(0, -10);
-		m_pEngine->redrawDisplay();
+		m_pEngine->getFilterPointsTranslation()->changeOffset(0, 10);
 		break;
 	case SDLK_SPACE: // Space moves the top left back to the zero coordinates - to be on initial location
 		m_pEngine->getFilterPointsTranslation()->setOffset(0, 0);
-		m_pEngine->redrawDisplay();
 		break;
 	}
+	m_pEngine->redrawDisplay();
 }
 
 void InstructionState::virtSetupBackgroundBuffer() {
