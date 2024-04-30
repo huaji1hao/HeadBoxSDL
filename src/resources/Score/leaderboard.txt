@@ -14,3 +14,4 @@ mz	90
 unsung hero	199
 mz	624
 new ty	512
+C++ cool guy!	390

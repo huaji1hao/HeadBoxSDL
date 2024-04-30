@@ -41,14 +41,6 @@
 
   <img src="https://eumcm.com/file/6756e558697aa141fccc3.png" width = 50% align=center />
 
-  
-
-### Demonstration in Video
-
-- Video Time: 00:15-00:17
-
-
-
 ## Requirement 2: Input/output features
 
 ### Attempted Tasks
@@ -88,7 +80,9 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 02:50-03:07
+
+
 
 ## Requirement 3: Use appropriate sub-classing with automated objects
 
@@ -124,7 +118,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 01:44
 
 
 
@@ -152,10 +146,6 @@
   <img src="https://eumcm.com/file/6255fae27979e3b4376be.png" width = 100% align=center />
 
   
-
-### Demonstration in Video
-
-- Video Time: 00:15-00:17
 
 ## Requirement 5: Complex intelligence on an automated moving object
 
@@ -235,7 +225,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 00:59-04:07
 
 
 
@@ -297,7 +287,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 02:25
 
 ## Requirement 7: Implement a scrolling background by manipulating the way that the background image is drawn
 
@@ -324,7 +314,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 04:09
 
 
 
@@ -349,7 +339,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 04:59
 
 
 
@@ -386,7 +376,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 00:55
 
 
 
@@ -409,13 +399,13 @@
 
   <img src="https://eumcm.com/file/34c623418588bd29c55ef.png" width = 70% align=center />
 
-  <img src="https://eumcm.com/file/76777991dcb4dc996aed5.png" width = 60% align=center />
+  <img src="https://eumcm.com/file/0e1d5560e53643d6f1973.png" width = 60% align=center />
 
   
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 00:59-04:07
 
 
 
@@ -440,7 +430,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 00:11
 
 
 
@@ -477,7 +467,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 02:15; 03:20
 
 
 
@@ -510,9 +500,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
-
-
+- Video Time: 04:17
 
 ## Requirement 14: Show your understanding of templates, operator overloading OR smart pointers
 
@@ -532,10 +520,6 @@
   <img src="https://eumcm.com/file/a866cfd442b31910283d9.png" width = 70% align=center />
 
   <img src="https://eumcm.com/file/505afed4e2efc11aef703.png" width = 80% align=center />
-
-### Demonstration in Video
-
-- Video Time: 00:15-00:17
 
 
 
@@ -576,7 +560,7 @@
 
 ### Demonstration in Video
 
-- Video Time: 00:15-00:17
+- Video Time: 04:17
 
 
 
