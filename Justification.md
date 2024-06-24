@@ -41,6 +41,8 @@
 
   <img src="https://eumcm.com/file/6756e558697aa141fccc3.png" width = 50% align=center />
 
+<div STYLE="page-break-after: always;"></div>
+
 ## Requirement 2: Input/output features
 
 ### Attempted Tasks
@@ -145,7 +147,8 @@
 
   <img src="https://eumcm.com/file/6255fae27979e3b4376be.png" width = 100% align=center />
 
-  
+
+<div STYLE="page-break-after: always;"></div>
 
 ## Requirement 5: Complex intelligence on an automated moving object
 
@@ -227,7 +230,7 @@
 
 - Video Time: 00:59-04:07
 
-
+<div STYLE="page-break-after: always;"></div>
 
 ## Requirement 6: Non-trivial pixel-perfect collision detection between objects
 
@@ -306,17 +309,17 @@
 
   <img src="https://eumcm.com/file/5806bd8def61ce043661a.png" width = 100% align=center />
 
-  <img src="https://eumcm.com/file/be0ba617454025f77a189.png" width = 40% align=center />
+  <img src="https://eumcm.com/file/be0ba617454025f77a189.png" width = 60% align=center />
 
-  <img src="https://eumcm.com/file/a0c99c01ff0e10d40495e.png" width = 40% align=center />
+  <img src="https://eumcm.com/file/a0c99c01ff0e10d40495e.png" width = 60% align=center />
 
-  <img src="https://eumcm.com/file/b6f0a80ba58597c1a218b.png" width = 40% align=center />
+  <img src="https://eumcm.com/file/b6f0a80ba58597c1a218b.png" width = 60% align=center />
 
 ### Demonstration in Video
 
 - Video Time: 04:09
 
-
+<div STYLE="page-break-after: always;"></div>
 
 ## Requirement 8: Have an animated or changing background by utilising multiple images
 
@@ -378,7 +381,7 @@
 
 - Video Time: 00:55
 
-
+<div STYLE="page-break-after: always;"></div>
 
 ## Requirement 10: Animate moving objects
 
@@ -401,13 +404,9 @@
 
   <img src="https://eumcm.com/file/0e1d5560e53643d6f1973.png" width = 60% align=center />
 
-  
-
 ### Demonstration in Video
 
 - Video Time: 00:59-04:07
-
-
 
 ## Requirement 11: Image rotation/manipulation using the `ImagePixelMapping` object
 
@@ -426,7 +425,7 @@
 
   <img src="https://eumcm.com/file/833be3a4e8d118140de61.png" width = 100% align=center />
 
-  <img src="https://eumcm.com/file/83d178120a8c79f96540f.png" width = 60% align=center />
+  <img src="https://eumcm.com/file/83d178120a8c79f96540f.png" width = 50% align=center />
 
 ### Demonstration in Video
 
@@ -468,8 +467,6 @@
 ### Demonstration in Video
 
 - Video Time: 02:15; 03:20
-
-
 
 ## Requirement 13: Allow user to enter text which appears on the graphical display
 
@@ -521,7 +518,7 @@
 
   <img src="https://eumcm.com/file/505afed4e2efc11aef703.png" width = 80% align=center />
 
-
+<div STYLE="page-break-after: always;"></div>
 
 ## Requirement 15: Additional complexity
 
@@ -546,9 +543,9 @@
 
 - **Task a**: 
 
-  <img src="https://eumcm.com/file/475ee0715baff09c9cc1c.png" width = 60% align=center />
+  <img src="https://eumcm.com/file/475ee0715baff09c9cc1c.png" width = 50% align=center />
 
-  <img src="https://eumcm.com/file/9f3f65f057faeced65c66.png" width = 60% align=center />
+  <img src="https://eumcm.com/file/9f3f65f057faeced65c66.png" width = 50% align=center />
 
 - **Task b**
 
@@ -615,6 +612,8 @@
     It runs smoothly except on an unplugged gaming laptop
 
   - [x] everything looks good with no problems
+
+  <div STYLE="page-break-after: always;"></div>
 
 - **Task b**
 

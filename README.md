@@ -1,5 +1,7 @@
 # Zombie Escape Game 🧟‍♂️🏃‍♂️
 
+[中文版 zh-CN](README.zh-CN.md)
+
 Welcome to Zombie Escape, a thrilling C++ mini-game based on my childhood game Boxhead, where your goal is to evade a horde of zombies and survive!
 
 ## Game Introduction 🎮
